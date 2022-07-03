@@ -1,0 +1,33 @@
+.catalog-menu {
+    padding: 16px 16px 8px 23px;
+    background-color: $c-white;
+    height: fit-content;
+    border-radius: 5px;
+    max-width: 348px;
+    color: $c-text;
+
+    &__part {
+        overflow: hidden;
+        height: 476px;
+    }
+
+    &__all {
+        overflow: visible;
+        height: auto;
+    }
+}
+
+.catalog-menu-item {
+    justify-content: flex-start;
+    @include f-Lato-Regular;
+    align-items: center;
+    line-height: 24px;
+    font-size: 16px;
+    display: flex;
+    gap: 15px;
+}
+
+.catalog-menu-item svg {
+    height: 22px;
+    width: 22px;
+}

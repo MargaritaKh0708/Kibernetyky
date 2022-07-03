@@ -1,0 +1,548 @@
+//Main product list style 
+
+.product-list {
+    margin-top: 20px;
+
+    //! Filter-line styles
+
+    &__filter-line {
+        flex-wrap: nowrap;
+        margin-top: 24px;
+        display: flex;
+        gap: 8px;
+    }
+
+    &__filter-line-item {
+        border: 1px solid $c-white;
+        justify-content: center;
+        background: $c-white;
+        align-items: center;
+        border-radius: 20px;
+        width: fit-content;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        display: flex;
+        height: 27px;
+
+        @include media('max', 'iPad-horizontal') {
+            font-size: 12px;
+        }
+
+        &:hover {
+            border: 1px solid $c-main-gray;
+            background: $c-brand-yellow;
+        }
+    }
+
+    &__filter-line-input {
+        display: none;
+    }
+
+}
+
+
+.product-card-list {
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    display: flex;
+    height: 570px;
+    gap: 5px;
+
+    // Create opacity block
+
+    &__opacity-block {
+        background: linear-gradient(0deg, #F8F8F8 0%, #F8F8F8 25.31%, rgba(248, 248, 248, 0.9) 40.42%, rgba(248, 248, 248, 0.6) 74.79%, rgba(248, 248, 248, 0) 100%);
+        position: absolute;
+        height: 160px;
+        width: 1600px;
+        z-index: 3;
+        bottom: 0;
+    }
+
+    &__opacity-block:hover {
+        background: none;
+    }
+
+    &__btn {
+        background: $c-brand-yellow;
+        border: 1px solid $c-background;
+        justify-content: center;
+        border-radius: 20px;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin: 0 auto;
+        display: flex;
+        width: 134px;
+        height: 37px;
+    }
+
+    &__btn:hover {
+        border-color: $c-main-gray;
+    }
+}
+
+
+
+// Main card style
+
+.product-card {
+    background-color: $c-white;
+    box-shadow: $box-shadow;
+    position: relative;
+    border-radius: 5px;
+    min-height: 328px;
+    font-size: 12px;
+    color: $c-text;
+    padding: 10px;
+    width: 262px;
+
+    @include media('min', 'fullHd') {
+        width: 232px;
+    }
+
+    @include media('within', 'fullHd') {
+        width: 245px;
+    }
+
+    @include media('within', 'iPad-horizontal') {
+        width: 236px;
+    }
+
+    @include media('within', 'hd') {
+        width: 247px;
+    }
+
+    @include media('within', 'iPad') {
+        width: 260px;
+    }
+
+    @include media('within', 'mobile-horizontal') {
+        width: 175px;
+    }
+
+
+    @include media('max', 'mobile') {
+        width: 175px;
+    }
+
+    &__wrapper {
+        position: relative;
+    }
+
+    // Promo phrases style
+    &__promo {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    &__picture {
+        padding-top: 10px;
+        max-width: 163px;
+        margin: 0 auto;
+
+        @include media ('max', 'mobile-horizontal') {
+            max-width: 119px;
+        }
+    }
+
+    // The good's color panel styles
+
+    &__colors-panel {
+        flex-direction: column;
+        position: absolute;
+        display: flex;
+        right: 0px;
+        gap: 7px;
+        top: 0px;
+
+        @include media ('max', 'mobile-horizontal') {
+            right: -5px;
+            gap: 4px;
+            top: -3px;
+        }
+
+    }
+
+    &__colors-panel-item {
+        border: 1px solid $c-white;
+        background-color: $c-white;
+        position: relative;
+        height: 16px;
+        width: 16px;
+    }
+
+    &__colors-panel-item:hover {
+        border: 1px solid $c-text;
+    }
+
+    &__active-color {
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+    }
+
+    &__color {
+        // background задаем динамично - це кольори продукта 
+        background-color: black;
+        position: absolute;
+        height: 12px;
+        width: 12px;
+        left: 1px;
+        top: 1px;
+    }
+
+    // Styles of avaliable and cashback fields
+
+    &__info {
+        justify-content: space-between;
+        color: $c-light-gray;
+        display: flex;
+    }
+
+    &__availiable {
+        align-items: center;
+        display: flex;
+        gap: 8px;
+    }
+
+    &__cashback-sum {
+        justify-content: center;
+        align-items: stretch;
+        display: flex;
+        gap: 2px;
+    }
+
+    &__cashback {
+        align-items: center;
+        display: flex;
+        gap: 6px;
+
+        @include media(max, 'mobile-horizontal') {
+            display: none;
+        }
+
+
+    }
+
+    // Style of good name position
+
+    &__goodname {
+        line-height: 18px;
+        margin-top: 5px;
+    }
+
+    // Style of star-rating & review fields
+    &__clients-mark {
+        align-items: center;
+        display: flex;
+        gap: 10px;
+    }
+
+    &__rating {
+        align-items: baseline;
+        display: flex;
+        gap: 4px;
+    }
+
+    &__rating-value {
+        color: $c-light-gray;
+        width: 18px;
+    }
+
+    // Styles of 'get favorite' & 'let's compare' items
+    &__step-to-buy {
+        align-items: center;
+        display: flex;
+        gap: 20px;
+
+        @include media ('max', 'mobile-horizontal') {
+            display: none;
+        }
+
+    }
+
+    &__compare {
+        position: relative;
+    }
+
+    &__compare-input,
+    &__likes-input {
+        display: none;
+    }
+
+    &__likes:checked svg {
+        fill: $c-red;
+    }
+
+    // Price fields styles
+
+    &__price {
+        flex-direction: column;
+        display: flex;
+    }
+
+    &__price-value {
+        align-items: center;
+        display: flex;
+        gap: 7px;
+    }
+
+    &__price-old {
+        text-decoration: line-through;
+        color: $c-light-gray;
+        font-size: 12px;
+        padding: 2px 0;
+
+        @include media ('max', 'mobile-horizontal') {
+            font-size: 10px;
+        }
+    }
+
+    &__benefit {
+        background-color: $c-red;
+        align-items: center;
+        border-radius: 10px;
+        width: fit-content;
+        flex-wrap: nowrap;
+        color: $c-white;
+        display: flex;
+        height: 13px;
+        padding: 2px;
+
+        @include media ('max', 'mobile-horizontal') {
+            font-size: 10px;
+        }
+    }
+
+    &__price-new-value {
+        @include f-Lato-Bold;
+        font-size: 16px;
+    }
+
+
+    // Card hide part slyles
+
+    &__hide-list {
+        flex-direction: column;
+        line-height: 21px;
+        font-size: 14px;
+        display: flex;
+        gap: 5px;
+    }
+
+    &__hide-list-item-value {
+        color: $c-light-gray;
+    }
+
+}
+
+
+// Promo phrases style
+.top,
+.sale {
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 4px;
+    flex-wrap: nowrap;
+    padding: 3px 5px;
+    display: flex;
+    height: 20px;
+}
+
+.top {
+    background-color: $c-brand-yellow;
+}
+
+.sale {
+    background-color: $c-red;
+    margin-top: 8px;
+    color: $c-white;
+}
+
+
+
+// Style of star-rating & review fields
+
+.clients-mark {
+    justify-content: space-between;
+    margin-top: 7px;
+    display: flex;
+}
+
+
+// Styles of 'get favorite' & 'let's compare' items
+
+.likes svg:hover {
+    fill: $c-red;
+}
+
+.likes-color svg {
+    fill: $c-red;
+}
+
+.success {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    z-index: 1;
+    top: -2px;
+    right: 0;
+}
+
+//! Select field style 
+
+.product-card__pay-ways-list {
+    border: solid 1px $c-brand-yellow;
+    padding: 8px 10px 8px 10px;
+    box-shadow: $box-shadow;
+    border-radius: 20px;
+    appearance: none;
+    display: block;
+    outline: none;
+    height: 30px;
+    width: 194px;
+}
+
+// Bottom part of card
+
+.bottom-part {
+    justify-content: space-between;
+    margin-top: 52px;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.main-info-part {
+    margin-top: 20px;
+}
+
+.pay-ways-block {
+    position: absolute;
+    margin-top: 12px;
+    z-index: 2;
+}
+
+
+// Basket button styles
+
+.product-card__basket-btn {
+    background-color: $c-brand-yellow;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 6px 10px;
+    flex-wrap: nowrap;
+    cursor: pointer;
+    display: flex;
+    border: none;
+    width: 104px;
+    height: 36px;
+
+    @include media ('max', 'mobile-horizontal') {
+        width: 54px;
+    }
+
+}
+
+.product-card__basket-btn:hover svg {
+    fill: $c-black;
+}
+
+.product-card__basket-icon {
+    position: relative;
+    height: 26px;
+    width: 26px;
+}
+
+.product-card__basket-title {
+    margin-left: 6px;
+
+    @include media ('max', 'mobile-horizontal') {
+        display: none;
+    }
+}
+
+.in-basket {
+    background-color: $c-white;
+}
+
+// Hide part styles
+
+.hide-part {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top: 1px solid white;
+    background-color: $c-white;
+    box-shadow: $box-shadow;
+    position: absolute;
+    margin-top: 10px;
+    padding: 10px;
+    display: none;
+    width: 262px;
+    left: -10px;
+    z-index: 1;
+    top: 308px;
+
+    @include media('within', 'fullHd') {
+        width: 245px;
+    }
+
+    @include media('within', 'iPad-horizontal') {
+        width: 236px;
+    }
+}
+
+.product-card__goodname:hover~.hide-part {
+
+    @include media('min', 'hd') {
+        border-top: 1px solid $c-extra-gray;
+        display: block;
+    }
+
+}
+
+.product-card__goodname:hover {
+    text-decoration: underline;
+}
+
+// .select__head.open::after {
+//     // прокрутить стрелку
+//     transform: translateY(50%) rotate(180deg);
+// }
+
+
+// Hovers
+
+.review:hover svg {
+    fill: $c-green;
+}
+
+
+// Helpers
+
+.h-height {
+    height: auto;
+}
+
+.h-small-version {
+    display: none;
+
+    @include media(max, 'mobile-horizontal') {
+        display: flex;
+    }
+}
+
+.h-small-version-cashback {
+
+    @include media(max, 'mobile-horizontal') {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+    }
+}

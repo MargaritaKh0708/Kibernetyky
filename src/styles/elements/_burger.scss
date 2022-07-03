@@ -1,0 +1,49 @@
+//! Main burger styles 
+
+.header__burger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    // Adaptive changes 
+
+}
+
+
+.burger {
+    background: content-box;
+    pointer-events: visible;
+    flex-direction: column;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s;
+    padding: 10px;
+    display: flex;
+    border: none;
+    opacity: 1;
+
+    &__event {
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+// Hover effect
+
+.burger:hover span {
+    background-color: $c-brand-yellow;
+    transition: .5s;
+}
+
+.burger span {
+    background-color: $c-brand-yellow;
+    display: inline-block;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    width: 22px;
+    height: 2px;
+}
+
+
+.burger span:last-child {
+    margin-bottom: 0;
+}

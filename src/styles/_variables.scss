@@ -1,0 +1,41 @@
+//! COLLORS
+
+//main
+$c-brand-yellow: #F9E505;
+$c-background: #f8f8f8e6;
+$c-light-gray: #9E9E9E;
+$c-extra-gray: #F2F2F2;
+$c-main-gray: #404040;
+$c-shadow: #1f1f240d;
+$c-white: #FFFFFF;
+$c-black: #000000;
+$c-text: #2B2A29;
+
+// good-cards colors
+$c-dark-violet: #5B537A;
+$c-brown: #806666;
+$c-red: #F54503;
+
+
+// baners background
+$c-light-yellow: #FFF4C9;
+$c-green: #05B263;
+$c-blue: #3D03F2;
+
+
+//! Window sizes
+
+$sizes: (
+    'mobile':375px,
+    'mobile-horizontal':812px,
+    "iPad":1024px,
+    "hd":1280px,
+    "iPad-horizontal":1366px,
+    "fullHd":1920px,
+    "2K":2560px
+);
+
+
+//Shadow
+
+$box-shadow: 0px 4px 4px $c-shadow;

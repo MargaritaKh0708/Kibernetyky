@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.App {
+    overflow: hidden;
+}
+
+body {
+    background-color: $c-background;
+    @include f-Lato-Regular;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+img {
+    width: 100%;
+}
+
+svg {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.container {
+    max-width: 1700px;
+    padding: 0 50px;
+    margin: 0 auto;
+    width: 100%;
+
+    @include media('max', 'iPad-horizontal') {
+        padding: 0 10px;
+    }
+}
+
+
+.title {
+
+    font: {
+        size: 24px;
+        weight: 400;
+    }
+
+}

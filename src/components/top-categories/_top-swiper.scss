@@ -1,0 +1,93 @@
+//? All Top-categories block styles
+
+.top-categories-block {
+    position: relative;
+
+    &__all-view-btn-arrow {
+        border-right: 1px solid $c-black;
+        border-top: 1px solid $c-black;
+        transform: rotate(45deg);
+        display: block;
+        height: 7px;
+        width: 7px;
+    }
+
+    &__header {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+    }
+
+    &__all-view-btn {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        gap: 8px;
+    }
+
+    &__opacity-block {
+        background: linear-gradient(271.62deg, #F8F8F8 1.38%, #F8F8F8 40.88%, rgba(248, 248, 248, 0.9) 64.69%, rgba(248, 248, 248, 0.5) 83.43%, rgba(248, 248, 248, 0) 98.62%);
+        position: absolute;
+        height: 300px;
+        width: 200px;
+        z-index: 1;
+        top: 30px;
+        right: 0;
+
+        @include media(max, 'iPad') {
+            display: none;
+        }
+    }
+}
+
+//? Swiper styles
+
+.top-card {
+    justify-content: space-between;
+    flex-direction: column;
+    box-shadow: $box-shadow;
+    background: $c-white;
+    align-items: center;
+    border-radius: 5px;
+    padding: 24px 26px;
+    max-width: 262px;
+    height: 276px;
+    display: flex;
+
+    @include media(max, 'iPad') {
+        max-width: 224px;
+    }
+
+    @include media('within', 'iPad-horizontal') {
+        max-width: 232px;
+    }
+
+    &__title {
+        @include f-Lato-Regular;
+        text-align: center;
+        font-weight: 18px;
+        font-size: 16px;
+    }
+
+    &__image {
+        max-width: 140px;
+        height: 120px;
+    }
+
+    &__view-btn {
+        background-color: $c-brand-yellow;
+        border: 1px solid $c-white;
+        @include f-Lato-SemiBold;
+        color: $c-main-gray;
+        border-radius: 20px;
+        padding: 10px 16px;
+        width: fit-content;
+        cursor: pointer;
+    }
+
+    &__view-btn:hover {
+        border-color: $c-main-gray;
+    }
+
+
+}

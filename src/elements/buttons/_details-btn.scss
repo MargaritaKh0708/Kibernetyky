@@ -1,0 +1,31 @@
+.details-btn {
+    background-color: $c-white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: fit-content;
+    flex-wrap: nowrap;
+    cursor: pointer;
+    display: flex;
+    height: 41px;
+
+    &__yellow {
+        box-shadow: 9px 4px 2px 1px $c-brand-yellow;
+    }
+
+    &__blue {
+        box-shadow: 9px 4px 2px 1px $c-blue;
+    }
+
+    &__green {
+        box-shadow: 9px 4px 2px 1px $c-green;
+    }
+}
+
+.details-btn__description {
+    @include f-Lato-SemiBold;
+    white-space: nowrap;
+    padding: 10px 16px;
+    font-size: 16px;
+    color: $c-text;
+}

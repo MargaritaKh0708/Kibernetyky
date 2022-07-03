@@ -1,0 +1,129 @@
+.brand-block {
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+
+    &__logo-list {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        margin-top: 16px;
+        display: flex;
+        gap: 17px;
+
+        @include media('max', 'iPad-horizontal') {
+            gap: 8px;
+        }
+
+        @include media('max', 'mobile-horizontal') {
+            gap: 5px;
+        }
+    }
+
+    &__logo-btn {
+        background-color: $c-white;
+        justify-content: center;
+        border-radius: 50px;
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        height: 64px;
+
+        @include media('max', 'fullHd') {
+            height: 46px;
+        }
+
+        @include media('within', 'iPad-horizontal') {
+            height: 64px;
+        }
+
+    }
+
+    &__logo-btn:hover {
+        box-shadow: $box-shadow;
+    }
+
+    &__title {
+        @include f-Lato-Regular;
+        font-size: 24px;
+    }
+
+    &__logo {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 163px;
+
+
+        @include media('within', 'fullHd') {
+            width: 131px;
+        }
+
+        @include media('within', 'iPad-horizontal') {
+            width: 127px;
+        }
+
+        @include media('within', 'hd') {
+            width: 104px;
+        }
+
+        @include media('within', 'iPad') {
+            width: 99px;
+        }
+
+        @include media('within', 'mobile-horizontal') {
+            width: 99px;
+        }
+
+        // @include media('max', 'mobile') {
+        //     width: 99px;
+        // }
+
+    }
+
+    &__logo img {
+        // max-width: 100%;
+        object-fit: contain;
+        // max-height: 100%;
+        max-height: 30px;
+        display: block;
+        height: auto;
+
+        @include media('max', 'iPad-horizontal') {
+            max-height: 22px;
+        }
+    }
+
+
+}
+
+.brand-block__see-all-btn {
+    background-color: $c-brand-yellow;
+    border: 1px solid $c-white;
+    @include f-Lato-SemiBold;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    width: fit-content;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    height: 64px;
+
+    @include media('max', 'fullHd') {
+        height: 46px;
+    }
+
+    @include media('within', 'iPad-horizontal') {
+        height: 64px;
+    }
+
+    &:hover {
+        border-color: $c-main-gray;
+    }
+}
+
+.brand-block__see-all-text {
+
+    white-space: nowrap;
+    text-align: center;
+}

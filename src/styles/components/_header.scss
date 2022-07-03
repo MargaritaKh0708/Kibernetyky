@@ -1,0 +1,231 @@
+//Main header style
+
+
+.header {
+    background-color: $c-main-gray;
+
+    &__icon-personal,
+    &__icon-likes,
+    &__icon-compare,
+    &__icon-contacts,
+    &__icon-basket {
+        border-right: 1px solid $c-brand-yellow;
+        color: $c-brand-yellow;
+        align-items: center;
+        padding: 0 16px;
+        display: flex;
+        height: 24px;
+        gap: 7px;
+    }
+
+    &__wrapper {
+        align-items: center;
+        display: flex;
+        height: 84px;
+
+        @include media('max', 'iPad-horizontal') {
+            padding: 0;
+        }
+    }
+
+    &__icon-catalog {
+        height: 22px;
+        width: 22px;
+    }
+
+    &__icon-audio {
+        position: absolute;
+        right: 100px;
+    }
+
+    &__icon-listen {
+        border: 1px solid $c-brand-yellow;
+        position: absolute;
+        border-radius: 50%;
+        right: 100px;
+    }
+
+
+    &__icon-search {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        left: 18px;
+    }
+
+    &__icon-personal,
+    &__icon-likes,
+    &__icon-compare,
+    &__icon-contacts {
+        @include media('max', 'iPad') {
+            display: none;
+        }
+    }
+
+}
+
+.dictaphone-btn {
+    position: absolute;
+    cursor: pointer;
+    height: 100%;
+    right: 100px;
+    width: 20px;
+    opacity: 0;
+}
+
+.logo {
+    margin: 0 40px;
+    display: none;
+    width: 138px;
+    height: 44px;
+
+    @include media('min', 'hd') {
+        display: block;
+    }
+}
+
+.catalog {
+    align-items: center;
+    display: flex;
+    display: none;
+
+    @include media('min', 'hd') {
+        margin-right: 20px;
+        display: flex;
+    }
+
+    @include media('min', 'fullHd') {
+        margin-right: 0px;
+
+    }
+}
+
+
+.catalog__href {
+    color: $c-brand-yellow;
+    padding-left: 9px;
+    font-size: 14px;
+}
+
+//Search field
+
+.search-field {
+    background-color: $c-white;
+    border-radius: 20px;
+    align-items: center;
+    position: relative;
+    margin: 0 40px;
+    display: flex;
+    width: 764px;
+    height: 36px;
+
+    // @include media('within', 'fullHd') {
+    //     width: 574px;
+    // }
+
+    @include media('max', 'iPad-horizontal') {
+        margin: 0 auto;
+    }
+
+    // @include media('within', 'hd') {
+    //     width: 685px;
+    // }
+
+    // @include media('within', 'iPad') {
+    //     width: 690px;
+    // }
+
+    // @include media('max', 'mobile-horizontal') {
+    //     width: 253px;
+    // }
+
+    &__input {
+        border-radius: 20px;
+        margin-left: 48px;
+        padding: 10px 0;
+        outline: none;
+        border: none;
+        height: 100%;
+
+        @include media('within', 'fullHd') {
+            width: 526px; // width - margin
+        }
+
+        @include media('within', 'iPad-horizontal') {
+            width: 375px;
+        }
+
+        @include media('within', 'hd') {
+            width: 637px;
+        }
+
+        @include media('within', 'iPad') {
+            width: 642px;
+        }
+
+        @include media('max', 'mobile-horizontal') {
+            width: 205px;
+        }
+    }
+
+    &__btn {
+        background-color: $c-brand-yellow;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        position: absolute;
+        cursor: pointer;
+        height: 100%;
+        border: none;
+        width: 79px;
+        right: 0;
+    }
+}
+
+
+
+.help-army {
+    text-align: center;
+
+    @include media('max', 'iPad-horizontal') {
+        display: none;
+    }
+
+    &__text {
+        color: $c-brand-yellow;
+        @include f-Lato-Regular;
+        padding-left: 18px;
+        font-size: 14px;
+        padding: 0 5px;
+    }
+
+    &__href {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+        gap: 5px;
+    }
+}
+
+// Menu styles
+
+.menu-block {
+    display: flex;
+}
+
+
+
+
+.menu-block div:last-child {
+    border: none;
+}
+
+
+// Catalog 
+
+.modal-catalog {
+    height: fit-content;
+    margin-left: 404px;
+    margin-top: 100px;
+    width: 1250px;
+
+}

@@ -1,0 +1,91 @@
+.select {
+    border: 1px solid $c-brand-yellow;
+    background-color: $c-white;
+    box-shadow: $box-shadow;
+    border-radius: 20px;
+    position: relative;
+    flex-wrap: nowrap;
+    font-size: 10px;
+    height: 30px; // 177px
+    width: 194px;
+
+    @include media ('max', 'mobile-horizontal') {
+        width: 160px;
+    }
+
+    &__input {
+        justify-content: flex-start;
+        align-items: center;
+        border-radius: 20px;
+        display: flex;
+        font-size: 12px;
+        width: 100%;
+
+        @include media ('max', 'mobile-horizontal') {
+            font-size: 10px;
+        }
+    }
+
+
+    &__btn {
+        align-items: center;
+        padding: 6px 10px;
+        background: none;
+        display: flex;
+        border: none;
+        width: 100%;
+    }
+
+    &__discription {
+        align-items: center;
+        display: flex;
+        gap: 5px;
+    }
+
+    &__discription:hover {
+        background: $c-extra-gray;
+        border-radius: 20px;
+    }
+
+    &__item-description {
+        flex-direction: column;
+        display: flex;
+        gap: 5px;
+    }
+
+    &__item-title {
+        @include f-Roboto-Medium;
+    }
+
+    &__item-value {
+        @include f-Roboto-Regular;
+    }
+
+    &__item-input {
+        display: none;
+    }
+
+    &__hidden-list {
+        flex-direction: column;
+        padding: 8px 10px;
+        display: none;
+        gap: 16px;
+    }
+
+}
+
+.arrow-down {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.active {
+    display: flex;
+}
+
+.active-select {
+    height: 177px;
+    border: none;
+    border-bottom: 1px solid $c-extra-gray;
+}

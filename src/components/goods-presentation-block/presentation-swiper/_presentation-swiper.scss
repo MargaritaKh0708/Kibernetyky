@@ -1,0 +1,51 @@
+.swiper {
+    // max-width: 1390px;
+    max-width: 1600px;
+    margin-top: 16px;
+
+    @media screen and (max-width: 375px) {
+        max-width: 375px;
+    }
+}
+
+.swiper-slide {
+    width: 270px;
+
+    @include media ('max', 'iPad') {
+        width: 296px;
+    }
+}
+
+.swiper-card {
+    justify-content: space-between;
+    background-size: cover;
+    flex-direction: column;
+    padding: 24px 16px;
+    border-radius: 5px;
+    min-height: 465px;
+    display: flex;
+
+    @include media ('max', 'iPad') {
+        min-height: 377px;
+    }
+}
+
+.swiper-card__img {
+    margin: 0 auto;
+    height: 170px;
+    width: 170px;
+
+    @include media ('max', 'iPad') {
+        height: 115px;
+        width: 115px;
+    }
+}
+
+.swiper-pagination {
+    margin-top: 16px;
+    position: static !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: $c-brand-yellow  !important;
+}
