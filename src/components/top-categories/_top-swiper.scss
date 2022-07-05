@@ -3,15 +3,6 @@
 .top-categories-block {
     position: relative;
 
-    &__all-view-btn-arrow {
-        border-right: 1px solid $c-black;
-        border-top: 1px solid $c-black;
-        transform: rotate(45deg);
-        display: block;
-        height: 7px;
-        width: 7px;
-    }
-
     &__header {
         justify-content: space-between;
         align-items: center;
@@ -21,12 +12,17 @@
     &__all-view-btn {
         justify-content: space-between;
         align-items: center;
+        color: $c-main-gray;
         display: flex;
         gap: 8px;
+
+        @include media(max, 'iPad') {
+            display: none;
+        }
     }
 
     &__opacity-block {
-        background: linear-gradient(271.62deg, #F8F8F8 1.38%, #F8F8F8 40.88%, rgba(248, 248, 248, 0.9) 64.69%, rgba(248, 248, 248, 0.5) 83.43%, rgba(248, 248, 248, 0) 98.62%);
+        background: $linear;
         position: absolute;
         height: 300px;
         width: 200px;

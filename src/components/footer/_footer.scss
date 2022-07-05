@@ -1,0 +1,102 @@
+.footer {
+    background-color: $c-main-gray;
+    padding: 40px 0 16px 0;
+    color: $c-white;
+
+
+    &__wrapper {
+        justify-content: space-between;
+        flex-direction: column;
+        min-height: 302px;
+        display: flex;
+
+        @include media (max, 'iPad') {
+            gap: 32px;
+        }
+    }
+
+
+    &__main-content {
+        justify-content: space-between;
+        display: flex;
+
+        @include media (max, 'iPad') {
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+    }
+
+    &__main-content-list {
+        flex-direction: column;
+        font-size: 14px;
+        display: flex;
+        gap: 14px;
+
+        @include media (max, 'iPad') {
+            justify-content: space-between;
+        }
+
+        & a {
+            color: $c-white;
+        }
+    }
+
+    &__main-content-list-item:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    &__main-content-list-item:nth-child(2) {
+        margin-top: 2px;
+    }
+
+    &__main-content-list-item:first-child {
+        @include f-Lato-Bold;
+    }
+
+    &__main-content-list-item-pic {
+        width: 108px;
+
+        @include media (max, 'mobile-horizontal') {
+            margin: 0 auto;
+        }
+    }
+
+    &__main-content-list-item_flex {
+        justify-content: flex-start;
+        align-items: center;
+        display: flex;
+        gap: 16px;
+    }
+
+    &__sub-content {
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 12px;
+        display: flex;
+        gap: 30px;
+    }
+}
+
+.social-media {
+    border-radius: 5px;
+    display: block;
+    height: 24px;
+    width: 24px;
+}
+
+.hidden-part {
+    display: none;
+
+    @include media (max, 'iPad') {
+        justify-content: flex-start;
+        display: flex;
+    }
+}
+
+.visible-part {
+    @include media (max, 'iPad') {
+        display: none;
+    }
+}

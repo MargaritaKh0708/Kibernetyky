@@ -3,21 +3,6 @@ import { useState, useEffect } from 'react';
 import { CardsFilterLine } from './CardsFilterLine';
 import { IProductCardList, WindowVariant } from './ProductCardLeadersList';
 
-// export interface IProductCardList {
-//   data: IProductCardListItem[];
-//   handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-// }
-
-// export enum WindowVariant {
-//   mobile = 375,
-//   mobileHorizontal = 812,
-//   iPad = 1024,
-//   hd = 1280,
-//   iPadHorizontal = 1366,
-//   fullHd = 1920,
-//   TwoK = 2560,
-// }
-
 export const ProductCardNoveltiesList: React.FC<IProductCardList> = ({
   data,
 }) => {
@@ -84,11 +69,16 @@ export const ProductCardNoveltiesList: React.FC<IProductCardList> = ({
             <ProductCard
               available={item.available}
               oldprice={item.oldprice}
+              goodModel={item.model}
+              leaders={item.leader}
+              goodName={item.name}
+              productId={item.id}
               price={item.price}
+              products={data}
               key={item.id}
             />
           ))}
-          <div className='product-card-list__opacity-block' />
+          <div className='product-card-list__opacity-block opacity' />
         </div>
         <button onClick={() => setN(n + 2)} className='product-card-list__btn'>
           <span>Дивитись ще</span>

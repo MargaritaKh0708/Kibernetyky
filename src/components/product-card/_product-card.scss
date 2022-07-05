@@ -12,6 +12,10 @@
         gap: 8px;
     }
 
+    &__filter-line-title {
+        white-space: nowrap;
+    }
+
     &__filter-line-item {
         border: 1px solid $c-white;
         justify-content: center;
@@ -55,12 +59,7 @@
     // Create opacity block
 
     &__opacity-block {
-        background: linear-gradient(0deg, #F8F8F8 0%, #F8F8F8 25.31%, rgba(248, 248, 248, 0.9) 40.42%, rgba(248, 248, 248, 0.6) 74.79%, rgba(248, 248, 248, 0) 100%);
-        position: absolute;
         height: 160px;
-        width: 1600px;
-        z-index: 3;
-        bottom: 0;
     }
 
     &__opacity-block:hover {

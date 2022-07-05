@@ -20,8 +20,8 @@ export const BrandsLine: React.FC<IProductCardList> = ({ data }) => {
         <h2 className='brand-block__title'> Популярні бренди </h2>
         <div className='brand-block__logo-list'>
           {brandsList.map((item) => (
-            <div className='brand-block__logo-btn'>
-              <div className='brand-block__logo' key={item.id}>
+            <div className='brand-block__logo-btn' key={item.id}>
+              <div className='brand-block__logo'>
                 <img src={item.logo} alt='' />
               </div>
             </div>

@@ -1,6 +1,10 @@
 //! Fonts mixins 
 
 //Lato
+@mixin f-Lato-Light {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
 
 @mixin f-Lato-Regular {
     font-family: 'Lato', sans-serif;

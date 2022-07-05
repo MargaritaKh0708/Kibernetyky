@@ -11,7 +11,7 @@ export const TopCategoriesBlock: React.FC<IProductCardList> = ({ data }) => {
           href='https://rozetka.com.ua/ua/?utm_source=cpatrafmag'
         >
           <span>Дивитись усі</span>
-          <span className='top-categories-block__all-view-btn-arrow'></span>
+          <span className='top-categories-block__all-view-btn-arrow arrow'></span>
         </a>
       </div>
       <TopCategoriesSwiper data={data}></TopCategoriesSwiper>

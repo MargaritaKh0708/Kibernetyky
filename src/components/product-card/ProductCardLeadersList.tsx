@@ -2,11 +2,18 @@ import { ProductCard } from 'components/product-card/ProductCard';
 import { useState, useEffect } from 'react';
 import { CardsFilterLine } from './CardsFilterLine';
 
+// coupled - category id , that connect with goods of current category. Array, cause its can be a few
+// novelty - is good mark as a 'new'
+//leader - is good is a leader of sales
+
 export interface IProductCardListItem {
+  name: string;
+  model: string;
   available: boolean;
   novelty: boolean;
   category: {
     mainImage: string;
+    coupled: number[];
     top: boolean;
     name: string;
     id: number;
@@ -104,15 +111,21 @@ export const ProductCardLeadearsList: React.FC<IProductCardList> = ({
             <ProductCard
               available={item.available}
               oldprice={item.oldprice}
+              goodModel={item.model}
+              leaders={item.leader}
+              goodName={item.name}
+              productId={item.id}
               price={item.price}
+              products={data}
               key={item.id}
             />
           ))}
-          <div className='product-card-list__opacity-block' />
+          <div className='product-card-list__opacity-block opacity' />
         </div>
         <button onClick={() => setN(n + 2)} className='product-card-list__btn'>
           <span>Дивитись ще</span>
         </button>
+        {/* <AddToCart products={data}/> */}
       </section>
     </>
   );

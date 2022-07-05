@@ -1,15 +1,23 @@
 import React from 'react';
 import './index.css';
 import { Header } from 'components/header/Header';
-import { AsideMenuSvgSelector } from 'components/AsideMenu/AsideMenuSvgSelector';
+import { AsideMenuSvgSelector } from 'components/goods-presentation-block/AsideMenu/AsideMenuSvgSelector';
 import { nanoid } from 'nanoid';
 import { PresentationSwiper } from 'components/goods-presentation-block/presentation-swiper/PresentationSwiper';
 import { PresentationBlockSvgSelector } from 'components/goods-presentation-block/presentation-swiper/PresentationBlockSvgSelector';
 import { ProductCardLeadearsList } from 'components/product-card/ProductCardLeadersList';
 import { ProductCardNoveltiesList } from 'components/product-card/ProductCardNoveltiesList';
 import { BrandsLine } from 'components/popular-brands-line/BrandsLine';
-import { BrandsSvgImgSelector } from 'components/popular-brands-line/BrandsSvgImgSelector';
 import { TopCategoriesBlock } from 'components/top-categories/TopCategoriesBlock';
+import { VideoReviewBlock } from 'components/video-review/VideoReviewBlock';
+import { BenefitsLine } from 'components/benefits-line/BenefitsLine';
+import { SubscriptionBlock } from 'components/subscription-block/SubscriptionBlock';
+import { ShopHistory } from 'components/shop-history/ShopHistory';
+import { AddToCart } from 'components/basket/AddToBasketWindow.tsx/AddToBasket';
+import { Catalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
+import { GoodsPresentationBlock } from 'components/goods-presentation-block/GoodsPresentationBlock';
+
+import { Footer } from 'components/footer/Footer';
 
 import pic from 'assets/main-page/presentation-block-swiper/green/main-picture.png';
 import phones from 'assets/main-page/phones.png';
@@ -424,13 +432,16 @@ const data = [
 ];
 const data1 = [
   {
-    available: true,
-    novelty: false,
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
+    price: 453,
     oldprice: 1400,
     leader: true,
-    price: 453,
+    available: true,
+    novelty: false,
     id: nanoid(),
     category: {
+      coupled: [113],
       name: 'Планшеты',
       mainImage: tablets,
       top: true,
@@ -444,6 +455,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     novelty: false,
     available: true,
     leader: false,
@@ -451,6 +464,7 @@ const data1 = [
     price: 1902,
     id: nanoid(),
     category: {
+      coupled: [113],
       name: 'Телефони',
       id: 1,
       mainImage: phones,
@@ -464,6 +478,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: false,
     leader: false,
     oldprice: 1400,
@@ -471,6 +487,7 @@ const data1 = [
     price: 453,
     id: nanoid(),
     category: {
+      coupled: [113],
       name: 'Телефони',
       id: 1,
       mainImage: phones,
@@ -484,6 +501,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: false,
     novelty: true,
     oldprice: 2091,
@@ -492,6 +511,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Планшети',
+      coupled: [113],
       id: 2,
       mainImage: tablets,
       top: false,
@@ -504,6 +524,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     novelty: false,
     oldprice: 1400,
@@ -512,6 +534,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Ноутбуки',
+      coupled: [113],
       mainImage: tv,
       top: false,
       id: 3,
@@ -524,6 +547,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     novelty: true,
     oldprice: 4000,
@@ -532,6 +557,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Телефони',
+      coupled: [113],
       mainImage: phones,
       top: true,
       id: 1,
@@ -544,6 +570,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     novelty: true,
@@ -553,6 +581,7 @@ const data1 = [
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
+      coupled: [113],
       top: true,
       id: 11,
     },
@@ -564,6 +593,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     leader: true,
     novelty: false,
@@ -573,6 +604,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Ноутбуки',
+      coupled: [113],
       mainImage: tv,
       top: true,
       id: 56,
@@ -585,6 +617,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: false,
     oldprice: 5643,
     novelty: true,
@@ -594,6 +628,7 @@ const data1 = [
     category: {
       name: 'Телефони',
       mainImage: phones,
+      coupled: [113],
       top: true,
       id: 1,
     },
@@ -605,6 +640,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     leader: true,
     novelty: false,
@@ -614,6 +651,7 @@ const data1 = [
     category: {
       name: 'VR / Робототехніка/ Товари для дітей',
       mainImage: pic,
+      coupled: [5, 113],
       top: true,
       id: 3,
     },
@@ -625,6 +663,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     leader: true,
     novelty: true,
@@ -634,6 +674,7 @@ const data1 = [
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
+      coupled: [113],
       top: true,
       id: 11,
     },
@@ -645,6 +686,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 3999,
     novelty: false,
@@ -654,6 +697,7 @@ const data1 = [
     category: {
       name: 'Телефони',
       mainImage: phones,
+      coupled: [113],
       top: true,
       id: 1,
     },
@@ -665,6 +709,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     novelty: true,
     leader: true,
@@ -674,6 +720,7 @@ const data1 = [
     category: {
       name: 'Телефони',
       mainImage: phones,
+      coupled: [113],
       top: true,
       id: 1,
     },
@@ -685,6 +732,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     leader: true,
     novelty: false,
@@ -694,6 +743,7 @@ const data1 = [
     category: {
       name: 'Планшети',
       mainImage: tablets,
+      coupled: [113],
       top: false,
       id: 2,
     },
@@ -705,6 +755,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 9033,
     novelty: true,
@@ -714,6 +766,7 @@ const data1 = [
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
+      coupled: [4, 113],
       top: true,
       id: 3,
     },
@@ -725,6 +778,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     leader: true,
     oldprice: 1400,
@@ -733,6 +788,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Телефони',
+      coupled: [113],
       mainImage: phones,
       top: true,
       id: 1,
@@ -745,6 +801,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     leader: true,
@@ -754,6 +812,7 @@ const data1 = [
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
+      coupled: [4],
       top: true,
       id: 3,
     },
@@ -765,6 +824,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     novelty: false,
@@ -774,6 +835,7 @@ const data1 = [
     category: {
       name: 'Планшети',
       mainImage: tablets,
+      coupled: [113],
       top: false,
       id: 2,
     },
@@ -787,6 +849,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     novelty: true,
@@ -796,6 +860,7 @@ const data1 = [
     category: {
       name: 'Телефони',
       mainImage: phones,
+      coupled: [113],
       top: true,
       id: 1,
     },
@@ -807,6 +872,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     novelty: false,
@@ -815,6 +882,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Побутова техніка',
+      coupled: [3],
       mainImage: vr,
       top: true,
       id: 4,
@@ -827,6 +895,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     novelty: true,
     oldprice: 1400,
@@ -835,6 +905,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Ноутбуки',
+      coupled: [113],
       mainImage: tv,
       top: true,
       id: 4,
@@ -847,6 +918,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     novelty: false,
     oldprice: 1400,
@@ -856,6 +929,7 @@ const data1 = [
     category: {
       name: 'Планшети',
       mainImage: tablets,
+      coupled: [113],
       top: false,
       id: 2,
     },
@@ -867,6 +941,8 @@ const data1 = [
     },
   },
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     novelty: false,
@@ -875,6 +951,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Телефони',
+      coupled: [113],
       mainImage: phones,
       top: true,
       id: 1,
@@ -888,6 +965,8 @@ const data1 = [
   },
 
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     leader: true,
@@ -896,6 +975,7 @@ const data1 = [
     id: nanoid(),
     category: {
       name: 'Навушники',
+      coupled: [1],
       mainImage: headphones,
       top: true,
       id: 113,
@@ -911,6 +991,8 @@ const data1 = [
   },
 
   {
+    name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    model: 'ZA5T0095UA',
     available: true,
     oldprice: 1400,
     novelty: false,
@@ -920,6 +1002,7 @@ const data1 = [
     category: {
       name: 'Планшети',
       mainImage: tablets,
+      coupled: [113],
       top: false,
       id: 2,
     },
@@ -931,15 +1014,22 @@ const data1 = [
     },
   },
 ];
+
 function App() {
   return (
     <div className='App'>
-      <Header goods={data}></Header>
-      <PresentationSwiper />
+      <Header goods={data} />
+      <GoodsPresentationBlock goods={data} />
+      {/* <PresentationSwiper /> */}
       <BrandsLine data={data1} />
       <ProductCardLeadearsList data={data1} />
       <ProductCardNoveltiesList data={data1} />
       <TopCategoriesBlock data={data1} />
+      {/* <VideoReviewBlock /> */}
+      <BenefitsLine />
+      <SubscriptionBlock />
+      <ShopHistory />
+      <Footer />
     </div>
   );
 }

@@ -3,23 +3,43 @@ import { ProductCardSvgSelector } from './ProductCardSvgSelector';
 import { StarRating, IStarRatingProps } from './star-rating/StarRating';
 import { useState } from 'react';
 import { SelectList } from './select-list/SelectList';
-// import { IProductCardListItem} from './ProductCardList';
+import { AddToCart } from 'components/basket/AddToBasketWindow.tsx/AddToBasket';
+import { IProductCardListItem } from 'components/product-card/ProductCardLeadersList';
+
+// interface IProductCardProps {
+//   available: boolean;
+//   oldprice: number;
+//   price: number;
+//   id: string;
+// }
 
 interface IProductCardProps {
+  products: IProductCardListItem[]; //array of products
   available: boolean;
+  productId: string; //id of good that we want to bye
+  leaders: boolean;
   oldprice: number;
+  goodName: string;
+  goodModel: string;
   price: number;
 }
 
 export const ProductCard: React.FC<IProductCardProps> = ({
+  goodModel,
   available,
+  productId,
+  goodName,
+  products,
   oldprice,
+  leaders,
   price,
 }) => {
   const [rating, setRating] = useState<number>(0); // Star rating value
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
   const [deal, setDeal] = useState<boolean>(false); // Basket changes
+
+  const [viewCart, setViewCart] = useState<boolean>(false); // for pre-basket card
 
   const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
 
@@ -40,12 +60,18 @@ export const ProductCard: React.FC<IProductCardProps> = ({
         <div className='product-card__wrapper'>
           <div className='product-card__part'>
             <div className='product-card__promo'>
-              <div className='top'>
-                <span>Топ продажів</span>
-              </div>
-              <div className='sale'>
-                <span> Акція </span>
-              </div>
+              {leaders ? (
+                <div className='top'>
+                  <span>Топ продажів</span>
+                </div>
+              ) : (
+                ''
+              )}
+              {
+                <div className='sale'>
+                  <span> Акція </span>
+                </div>
+              }
             </div>
             <div className='product-card__picture'>
               <img src={mainPic} alt='good' />
@@ -89,7 +115,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             </div>
           </div>
           <span className='product-card__goodname'>
-            Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)
+            {goodName} ({goodModel})
           </span>
           <div className='product-card__part clients-mark'>
             <div className='product-card__clients-mark'>
@@ -179,7 +205,10 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                   ? 'product-card__basket-btn in-basket'
                   : 'product-card__basket-btn'
               }
-              onClick={() => setDeal(deal ? false : true)}
+              onClick={() => {
+                setDeal(deal ? false : true);
+                setViewCart(viewCart ? false : true);
+              }}
             >
               <div className='product-card__basket-icon'>
                 {deal ? <ProductCardSvgSelector id='success' /> : ''}
@@ -189,6 +218,12 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 {deal ? 'Видалити' : 'У кошик'}
               </span>
             </button>
+            <AddToCart
+              products={products}
+              productId={productId}
+              isActive={viewCart}
+              closeHandler={() => setViewCart(viewCart ? false : true)}
+            />
           </div>
           <div className='product-card__part hide-part'>
             <ul className='product-card__hide-list'>

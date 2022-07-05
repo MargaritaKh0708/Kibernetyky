@@ -1,0 +1,29 @@
+// Main video slider styles 
+
+
+.video-slide {
+    background-color: $c-white;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 323px;
+    height: 249px;
+
+
+    &:hover {
+        box-shadow: $box-shadow;
+    }
+
+    &__content {
+        border-radius: 5px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    &__title {
+        line-height: 17px;
+        margin-top: 16px;
+        padding: 0 10px;
+        font-size: 14px;
+        display: flex;
+    }
+}

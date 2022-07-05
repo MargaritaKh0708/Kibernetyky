@@ -25,6 +25,7 @@ svg {
 
 a {
     text-decoration: none;
+    color: $c-main-gray;
     cursor: pointer;
 }
 
@@ -44,6 +45,8 @@ ul {
 }
 
 
+// Main styles 
+
 .title {
 
     font: {
@@ -51,4 +54,21 @@ ul {
         weight: 400;
     }
 
+}
+
+.opacity {
+    background: linear-gradient(0deg, #F8F8F8 0%, #F8F8F8 25.31%, rgba(248, 248, 248, 0.9) 40.42%, rgba(248, 248, 248, 0.6) 74.79%, rgba(248, 248, 248, 0) 100%);
+    position: absolute;
+    width: 1600px;
+    z-index: 3;
+    bottom: 0;
+}
+
+.arrow {
+    border-right: 1px solid $c-black;
+    border-top: 1px solid $c-black;
+    transform: rotate(45deg);
+    display: block;
+    height: 7px;
+    width: 7px;
 }

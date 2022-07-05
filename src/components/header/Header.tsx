@@ -5,7 +5,11 @@ import classNames from 'classnames';
 import '../../index.css';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { useState } from 'react';
-import { Catalog, ICatalog } from 'components/AsideMenu/AsideMenu';
+import {
+  Catalog,
+  ICatalog,
+} from 'components/goods-presentation-block/AsideMenu/AsideMenu';
+import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 
 export const Header: React.FC<ICatalog> = ({ goods }) => {
   const [modalActive, setModalActive] = useState<boolean>(false);
@@ -19,9 +23,7 @@ export const Header: React.FC<ICatalog> = ({ goods }) => {
             <span className='burger__item'></span>
             <span className='burger__item'></span>
           </div>
-          <ModalWindow active={modalActive} setActive={setModalActive}>
-            {/* Тут нужно вставить начинку */}
-          </ModalWindow>
+          <BurgerMenu active={modalActive} setActive={setModalActive} />
           <div className='logo'>
             <HeaderSvgSelector id='logo' />
           </div>

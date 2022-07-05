@@ -1,10 +1,14 @@
+.catalog {
+    height: 465px;
+}
+
 .catalog-menu {
     padding: 16px 16px 8px 23px;
     background-color: $c-white;
     height: fit-content;
     border-radius: 5px;
-    max-width: 348px;
     color: $c-text;
+    width: 348px;
 
     &__part {
         overflow: hidden;
