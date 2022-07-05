@@ -10,7 +10,7 @@ import 'swiper/css/autoplay';
 //здесь укажем контент которій будет отображаться - реализовать фильтр!
 
 export interface IVideoReviewSlideItem {
-  iframe: JSX.Element; // это будет вытягиваться по запросу (API: AIzaSyCOUCBxRhAEZogJRdaDxbtge14vlRVVo4g)
+  iframe: JSX.Element; // это будет вытягиваться по запросу (API:)
   title: string;
 }
 

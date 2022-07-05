@@ -1,0 +1,83 @@
+.call-back-modal {
+    transform: translate(10%, 50%);
+    padding: 20px 22px 24px 16px;
+    border-radius: 5px;
+    margin: 0 auto;
+    height: 436px;
+    width: 400px;
+}
+
+.call-back-form {
+    width: 100%;
+
+    &__title {
+        font-size: 14px;
+    }
+
+    &__contacts,
+    &__number-list {
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
+    }
+
+    &__contacts {
+        margin-top: 27px;
+        gap: 16px;
+    }
+
+    &__support {
+        justify-content: flex-start;
+        display: flex;
+        gap: 9px;
+    }
+
+    &__number-list {
+        gap: 8px;
+    }
+
+    &__user-phone {
+        border-top: 1px solid $c-extra-gray;
+        padding-top: 20px;
+        margin-top: 16px;
+    }
+
+    &__number-list-item {
+        color: $c-light-gray;
+        font-size: 14px;
+    }
+
+    &__input {
+        border: 1px solid $c-extra-gray;
+        border-radius: 5px;
+        margin-top: 12px;
+        outline: none;
+        padding: 8px;
+        height: 37px;
+        width: 100%;
+
+    }
+
+    &__submit {
+        background-color: $c-extra-gray;
+        border-radius: 20px;
+        margin: 24px auto 0;
+        display: block;
+        height: 43px;
+        width: 323px;
+        border: none;
+
+        &_color {
+            background-color: $c-brand-yellow;
+        }
+    }
+
+    &__submit-title {
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding: 12px 0;
+        display: flex;
+    }
+
+}

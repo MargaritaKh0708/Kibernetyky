@@ -1,4 +1,3 @@
-import React from 'react';
 import './index.css';
 import { Header } from 'components/header/Header';
 import { AsideMenuSvgSelector } from 'components/goods-presentation-block/AsideMenu/AsideMenuSvgSelector';
@@ -13,8 +12,6 @@ import { VideoReviewBlock } from 'components/video-review/VideoReviewBlock';
 import { BenefitsLine } from 'components/benefits-line/BenefitsLine';
 import { SubscriptionBlock } from 'components/subscription-block/SubscriptionBlock';
 import { ShopHistory } from 'components/shop-history/ShopHistory';
-import { AddToCart } from 'components/basket/AddToBasketWindow.tsx/AddToBasket';
-import { Catalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { GoodsPresentationBlock } from 'components/goods-presentation-block/GoodsPresentationBlock';
 
 import { Footer } from 'components/footer/Footer';

@@ -77,9 +77,10 @@
 
 .burger-modal {
     flex-direction: column;
-    overflow: auto;
+    overflow-x: hidden;
     width: 348px;
     height: 100%;
+
 
     //! Scroll-bar styles
 

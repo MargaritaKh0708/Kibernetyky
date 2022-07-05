@@ -5,25 +5,31 @@ import classNames from 'classnames';
 import '../../index.css';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { useState } from 'react';
-import {
-  Catalog,
-  ICatalog,
-} from 'components/goods-presentation-block/AsideMenu/AsideMenu';
+import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
+import { CallBackForm } from '../burger-menu/CallBackForm';
 
 export const Header: React.FC<ICatalog> = ({ goods }) => {
-  const [modalActive, setModalActive] = useState<boolean>(false);
+  const [burgerActive, setBurgerActive] = useState<boolean>(false);
   const [catalog, setCatalog] = useState<boolean>(false);
+
+  const [contactsModalActive, setContactsModalActive] =
+    useState<boolean>(false);
+
   return (
     <>
       <header className='header'>
         <div className={classNames('container', 'header__wrapper')}>
-          <div className='burger' onClick={() => setModalActive(true)}>
+          <div className='burger' onClick={() => setBurgerActive(true)}>
             <span className='burger__item'></span>
             <span className='burger__item'></span>
             <span className='burger__item'></span>
           </div>
-          <BurgerMenu active={modalActive} setActive={setModalActive} />
+          <BurgerMenu
+            burgerState={burgerActive}
+            setBurgerState={setBurgerActive}
+            setContactsModalState={setContactsModalActive}
+          />
           <div className='logo'>
             <HeaderSvgSelector id='logo' />
           </div>
@@ -34,7 +40,7 @@ export const Header: React.FC<ICatalog> = ({ goods }) => {
             </a>
           </div>
           <ModalWindow active={catalog} setActive={setCatalog}>
-            <Catalog goods={goods} />
+            {/* <Catalog goods={goods} /> */}
           </ModalWindow>
           <div className='search-field'>
             <HeaderIconsSelector id='search' />
@@ -72,7 +78,7 @@ export const Header: React.FC<ICatalog> = ({ goods }) => {
               <HeaderSvgSelector id='zsu' />
             </a>
           </div>
-          <div className='menu-block'>
+          <nav className='menu-block'>
             <HeaderSvgSelector id='personal' />
             <HeaderSvgSelector id='likes'>
               <span> 0 </span>
@@ -83,9 +89,23 @@ export const Header: React.FC<ICatalog> = ({ goods }) => {
             <HeaderSvgSelector id='basket'>
               <span>(0)</span>
             </HeaderSvgSelector>
-            <HeaderSvgSelector id='contacts' />
-          </div>
+            <div
+              className='menu-block__contacts'
+              onClick={() =>
+                setContactsModalActive(contactsModalActive ? false : true)
+              }
+            >
+              <HeaderSvgSelector id='contacts' />
+            </div>
+          </nav>
         </div>
+        <ModalWindow
+          active={contactsModalActive}
+          setActive={setContactsModalActive}
+          className='call-back-modal'
+        >
+          <CallBackForm />
+        </ModalWindow>
       </header>
     </>
   );

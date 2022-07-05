@@ -68,6 +68,8 @@ ul {
     border-right: 1px solid $c-black;
     border-top: 1px solid $c-black;
     transform: rotate(45deg);
+    transition: .5s;
+    cursor: pointer;
     display: block;
     height: 7px;
     width: 7px;

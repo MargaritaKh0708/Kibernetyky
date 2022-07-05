@@ -1,37 +1,64 @@
-.catalog {
+.goods-presentation-block__catalog {
+    width: fit-content;
+    position: relative;
+    margin-right: 16px;
+    display: block;
     height: 465px;
+
+    @include media (max, 'iPad') {
+        display: none;
+    }
+
 }
 
-.catalog-menu {
-    padding: 16px 16px 8px 23px;
+.goods-presentation-block__catalog-menu {
+    padding: 16px 16px 8px 18px;
     background-color: $c-white;
-    height: fit-content;
     border-radius: 5px;
+    position: initial;
+    min-height: 465px;
     color: $c-text;
     width: 348px;
+    z-index: 1;
 
-    &__part {
-        overflow: hidden;
-        height: 476px;
-    }
-
-    &__all {
-        overflow: visible;
-        height: auto;
-    }
 }
 
-.catalog-menu-item {
-    justify-content: flex-start;
+.goods-presentation-block__menu__item {
+    justify-content: space-between;
     @include f-Lato-Regular;
     align-items: center;
     line-height: 24px;
+    cursor: pointer;
     font-size: 16px;
     display: flex;
-    gap: 15px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    & svg {
+        height: 22px;
+        width: 22px;
+    }
+
+    & .goods-presentation-block__menu-category-name {
+        display: flex;
+        gap: 15px;
+    }
+
 }
 
-.catalog-menu-item svg {
-    height: 22px;
-    width: 22px;
+
+.catalog-menu__arrow-down {
+    transform: rotate(135deg);
+    position: absolute;
+    display: block;
+    bottom: 8px;
+    left: 50%;
+}
+
+.catalog-menu__arrow-up {
+    transform: rotate(-45deg);
+    margin: 0 auto;
+    display: block;
 }

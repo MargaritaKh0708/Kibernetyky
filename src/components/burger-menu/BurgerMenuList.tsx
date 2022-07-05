@@ -1,7 +1,17 @@
 import { FooterImgSelector } from 'components/footer/FooterImgSelector';
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
+import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
+import { CallBackForm } from './CallBackForm';
 
-export const BurgerMenuList: React.FC = () => {
+interface IBurgerMenuList {
+  contactsModalState: (value: boolean) => void;
+}
+
+export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
+  contactsModalState,
+}) => {
+  // const [cityModalActive, setCityModalActive] = useState<boolean>(false);
+
   return (
     <div className='burger__list'>
       <ul className='burger__list-items'>
@@ -46,7 +56,10 @@ export const BurgerMenuList: React.FC = () => {
           <HeaderSvgSelector id='contacts-b' className='burger-icon' />
           <a href='tel:0800-33-26-96'> +38 050-853-23-83</a>
         </li>
-        <li className='burger__list-item burger__list-item_flex'>
+        <li
+          className='burger__list-item burger__list-item_flex'
+          onClick={() => contactsModalState(true)}
+        >
           <HeaderSvgSelector id='incontacts' className='burger-icon'>
             <span>Передзвоніть мені</span>
           </HeaderSvgSelector>
