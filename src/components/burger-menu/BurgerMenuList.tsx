@@ -1,7 +1,5 @@
 import { FooterImgSelector } from 'components/footer/FooterImgSelector';
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
-import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
-import { CallBackForm } from './CallBackForm';
 
 interface IBurgerMenuList {
   contactsModalState: (value: boolean) => void;

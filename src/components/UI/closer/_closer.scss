@@ -1,0 +1,18 @@
+.closer {
+    position: relative;
+    padding-right: 8px;
+
+    &__part {
+        transform: rotate(45deg);
+        cursor: pointer;
+        display: block;
+        height: 12px;
+        width: 12px;
+
+        &_left {
+            transform: rotate(-45deg);
+            position: absolute;
+            left: 8px;
+        }
+    }
+}

@@ -3,7 +3,10 @@ import { ProductCardSvgSelector } from './ProductCardSvgSelector';
 import { StarRating, IStarRatingProps } from './star-rating/StarRating';
 import { useState } from 'react';
 import { SelectList } from './select-list/SelectList';
-import { AddToCart } from 'components/basket/AddToBasketWindow.tsx/AddToBasket';
+import {
+  AddToCart,
+  IOrder,
+} from 'components/basket/AddToBasketWindow/AddToBasket';
 import { IProductCardListItem } from 'components/product-card/ProductCardLeadersList';
 
 // interface IProductCardProps {
@@ -52,6 +55,38 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     onChange: (newRating: number) => {
       setRating(newRating);
     },
+  };
+
+  const addToCartHandler: () => void = () => {
+    // get products in cart from localStorage
+    const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
+
+    if (deal) {
+      // delete product by productId
+      const changedOrderProducts = orderProducts.filter(
+        (order: IOrder) => order.productId !== productId
+      );
+      // write to localStorage if product was deleted
+      if (orderProducts.length !== changedOrderProducts.length) {
+        localStorage.setItem('order', JSON.stringify(changedOrderProducts));
+      }
+    } else {
+      // add product to cart
+      const orderItems = orderProducts.filter(
+        (order: IOrder) => order.productId === productId // compare good id that we choose with that which in basket already
+      );
+      if (orderItems.length === 0) {
+        localStorage.setItem(
+          'order',
+          JSON.stringify([
+            ...orderProducts,
+            { productId, count: 1, credit: false },
+          ])
+        );
+        setViewCart(viewCart ? false : true);
+      }
+    }
+    setDeal(deal ? false : true);
   };
 
   return (
@@ -206,8 +241,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                   : 'product-card__basket-btn'
               }
               onClick={() => {
-                setDeal(deal ? false : true);
-                setViewCart(viewCart ? false : true);
+                addToCartHandler();
               }}
             >
               <div className='product-card__basket-icon'>

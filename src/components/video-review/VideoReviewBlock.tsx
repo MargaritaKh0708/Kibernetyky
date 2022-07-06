@@ -1,4 +1,3 @@
-import { IProductCardList } from 'components/product-card/ProductCardLeadersList';
 import { VideoReviewSwiper } from './VideoReviewSwiper';
 
 const videoData = [
@@ -20,7 +19,7 @@ const videoData = [
     iframe: (
       <iframe
         width='100%'
-        src='https://www.youtube-nocookie.com/embed/pdnRum_gJug?controls=0&origin=https://*localhost:3002'
+        src='https://www.youtube-nocookie.com/embed/pdnRum_gJug?controls=0&origin=https://localhost:3002'
         title='YouTube video player'
         frameBorder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

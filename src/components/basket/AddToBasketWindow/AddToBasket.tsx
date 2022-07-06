@@ -1,6 +1,8 @@
-import { IProductCardListItem } from 'components/product-card/ProductCardLeadersList';
+import {
+  IProductCardListItem,
+  ProductCardList,
+} from 'components/product-card/ProductCardList';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
-import { ProductCardLeadearsList } from 'components/product-card/ProductCardLeadersList';
 import { useEffect, useState } from 'react';
 
 interface AddToCartType {
@@ -39,7 +41,7 @@ export const AddToCart: React.FC<AddToCartType> = ({
       }
     }
     //will done every time orderProductsCount changes
-  }, [orderProductsCount]);
+  }, [orderProductsCount, isActive]);
 
   // save order to localStorage
   const addProductToOrder: (credit: boolean) => void = (credit) => {
@@ -71,40 +73,54 @@ export const AddToCart: React.FC<AddToCartType> = ({
   );
 
   const ProductJsx = (
-    <div className='row'>
-      <div className='img-block'>
-        <img src={product.category.mainImage} alt='img'></img>
-      </div>
-      <div className='buy-block'>
-        <p className='buy-block__text'>Додано в кошик</p>
-        <p className='buy-block__text'>{orderProductsCount} товарів у кошику</p>
-        <div className='buy-block__footer'>
-          <div className='buy-block__link'>
-            <a href='#'>Перейти до кошику</a>
-          </div>
-          <div className='buy-block__buttons'>
-            <button
-              className='buy-block__credit-btn'
-              onClick={() => addProductToOrder(true)}
-            >
-              Купити в кредит
-            </button>
-            <button
-              className='buy-block__buy-btn'
-              onClick={() => addProductToOrder(false)}
-            >
-              Купити
-            </button>
+    <div className='container'>
+      <div className='row'>
+        <div className='img-block'>
+          <img src={product.category.mainImage} alt='img'></img>
+        </div>
+        <div className='buy-block'>
+          <p className='buy-block__text'>
+            {product.name}
+            <span className='buy-block__text--bold'> додано до кошика</span>
+          </p>
+          <p className='buy-block__text'>
+            Товарів у кошику:
+            <span className='buy-block__text--bold'>{orderProductsCount}</span>
+          </p>
+          <div className='buy-block__footer'>
+            <div className='buy-block__link'>
+              <a href='#'>Перейти до кошику</a>
+            </div>
+            <div className='buy-block__buttons'>
+              <button
+                className='buy-block__credit-btn'
+                onClick={() => addProductToOrder(true)}
+              >
+                Купити в кредит
+              </button>
+              <button
+                className='buy-block__buy-btn'
+                onClick={() => addProductToOrder(false)}
+              >
+                Купити
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 
-  const CoupledProductsJsx = <ProductCardLeadearsList data={coupledProducts} />;
+  const CoupledProductsJsx = (
+    <ProductCardList type='coupled' data={coupledProducts} />
+  );
 
   return (
-    <ModalWindow active={isActive} setActive={closeHandler}>
+    <ModalWindow
+      active={isActive}
+      setActive={closeHandler}
+      className='add-to-basket-modal'
+    >
       <>{[ProductJsx, CoupledProductsJsx]}</>
     </ModalWindow>
   );

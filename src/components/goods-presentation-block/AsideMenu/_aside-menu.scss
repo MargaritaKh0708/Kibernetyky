@@ -5,6 +5,10 @@
     display: block;
     height: 465px;
 
+    &_overflow {
+        overflow: hidden;
+    }
+
     @include media (max, 'iPad') {
         display: none;
     }
@@ -16,10 +20,15 @@
     background-color: $c-white;
     border-radius: 5px;
     position: initial;
-    min-height: 465px;
+    height: 465px;
     color: $c-text;
     width: 348px;
     z-index: 1;
+
+    &_height {
+        height: fit-content;
+        min-height: 465px;
+    }
 
 }
 
@@ -49,16 +58,23 @@
 }
 
 
-.catalog-menu__arrow-down {
-    transform: rotate(135deg);
-    position: absolute;
-    display: block;
-    bottom: 8px;
-    left: 50%;
+.catalog-menu {
+
+    &__arrow-down {
+        transform: rotate(135deg);
+        margin: 0 auto;
+        display: block;
+    }
+
+    &__detailed-information {
+        width: fit-content;
+        max-width: 100%;
+        height: auto
+    }
+
 }
 
-.catalog-menu__arrow-up {
-    transform: rotate(-45deg);
-    margin: 0 auto;
-    display: block;
+
+.static-catalog-opacity {
+    display: none;
 }

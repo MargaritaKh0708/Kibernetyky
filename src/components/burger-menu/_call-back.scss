@@ -1,17 +1,50 @@
+// Main modal window style (contacts)
+
 .call-back-modal {
     transform: translate(10%, 50%);
-    padding: 20px 22px 24px 16px;
     border-radius: 5px;
-    margin: 0 auto;
-    height: 436px;
-    width: 400px;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+
+
+    @include media('min', 'mobile-horizontal') {
+        padding: 20px 22px 24px 16px;
+        margin: 40px auto 0;
+        height: fit-content;
+        width: 400px;
+
+    }
 }
 
 .call-back-form {
     width: 100%;
 
+
+    &__head-part {
+        justify-content: space-between;
+        background-color: $c-main-gray;
+        align-items: center;
+        display: flex;
+        height: 48px;
+
+        @include media('min',
+            'mobile-horizontal') {
+            background-color: $c-white;
+        }
+    }
+
     &__title {
+        color: $c-brand-yellow;
+        padding-left: 10px;
         font-size: 14px;
+
+        @include media('min',
+            'mobile-horizontal') {
+            padding-left: 0px;
+            color: $c-text;
+        }
     }
 
     &__contacts,
@@ -22,14 +55,21 @@
     }
 
     &__contacts {
-        margin-top: 27px;
+        padding-left: 10px;
+        margin-top: 15px;
         gap: 16px;
+
+        @include media('min', 'mobile-horizontal') {
+            margin-top: 27px;
+            padding-left: 0;
+        }
     }
 
     &__support {
         justify-content: flex-start;
         display: flex;
         gap: 9px;
+
     }
 
     &__number-list {
@@ -38,8 +78,15 @@
 
     &__user-phone {
         border-top: 1px solid $c-extra-gray;
-        padding-top: 20px;
+        padding-top: 16px;
+        padding-left: 10px;
         margin-top: 16px;
+
+        @include media('min', 'mobile-horizontal') {
+
+            padding-left: 0;
+        }
+
     }
 
     &__number-list-item {
@@ -61,11 +108,21 @@
     &__submit {
         background-color: $c-extra-gray;
         border-radius: 20px;
-        margin: 24px auto 0;
+        margin: 40px 10px 0;
+        cursor: pointer;
         display: block;
         height: 43px;
-        width: 323px;
+        width: 100%;
         border: none;
+
+        @include media('min', 'mobile-horizontal') {
+            margin: 24px auto 0;
+            width: 323px;
+        }
+
+        &:hover {
+            box-shadow: $box-shadow;
+        }
 
         &_color {
             background-color: $c-brand-yellow;
@@ -78,6 +135,45 @@
         flex-wrap: nowrap;
         padding: 12px 0;
         display: flex;
+
+
+        &_color {
+            @include f-Lato-SemiBold;
+            font-size: 16px;
+            color: $c-text;
+            height: 18px;
+        }
     }
 
+    &__user-msg {
+        color: $c-light-gray;
+        margin-top: 8px;
+        font-size: 12px;
+
+        & span {
+            color: $c-text;
+        }
+    }
+
+    &__thanks-msg {
+        text-align: center;
+        line-height: 30px;
+        font-size: 20px;
+    }
+
+}
+
+.contacts-closer__color {
+    border-top: 1px solid $c-brand-yellow;
+
+    @include media('min',
+        'mobile-horizontal') {
+        border-top: 1px solid $c-text;
+    }
+}
+
+// Helpers 
+
+.h-hidden {
+    display: none;
 }

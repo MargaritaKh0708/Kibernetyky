@@ -19,8 +19,8 @@ export const ModalWindow: React.FC<IModalWindow> = ({
       <div
         className={
           active
-            ? `modal__content ${className} active`
-            : `modal__content ${className}`
+            ? `modal__content ${className || ''} active`
+            : `modal__content ${className || ''}`
         }
         onClick={(e) => e.stopPropagation()}
       >

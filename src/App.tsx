@@ -2,10 +2,7 @@ import './index.css';
 import { Header } from 'components/header/Header';
 import { AsideMenuSvgSelector } from 'components/goods-presentation-block/AsideMenu/AsideMenuSvgSelector';
 import { nanoid } from 'nanoid';
-import { PresentationSwiper } from 'components/goods-presentation-block/presentation-swiper/PresentationSwiper';
 import { PresentationBlockSvgSelector } from 'components/goods-presentation-block/presentation-swiper/PresentationBlockSvgSelector';
-import { ProductCardLeadearsList } from 'components/product-card/ProductCardLeadersList';
-import { ProductCardNoveltiesList } from 'components/product-card/ProductCardNoveltiesList';
 import { BrandsLine } from 'components/popular-brands-line/BrandsLine';
 import { TopCategoriesBlock } from 'components/top-categories/TopCategoriesBlock';
 import { VideoReviewBlock } from 'components/video-review/VideoReviewBlock';
@@ -13,6 +10,7 @@ import { BenefitsLine } from 'components/benefits-line/BenefitsLine';
 import { SubscriptionBlock } from 'components/subscription-block/SubscriptionBlock';
 import { ShopHistory } from 'components/shop-history/ShopHistory';
 import { GoodsPresentationBlock } from 'components/goods-presentation-block/GoodsPresentationBlock';
+import { ProductCardList } from 'components/product-card/ProductCardList';
 
 import { Footer } from 'components/footer/Footer';
 
@@ -310,23 +308,6 @@ const data = [
   {
     icon: <AsideMenuSvgSelector id='portativ_electronics' />,
     goodType: 'Портативна електроніка',
-    id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
-  },
-  {
-    icon: <AsideMenuSvgSelector id='sale' />,
-    goodType: 'Розпродаж!!!',
     id: nanoid(),
     goodslist: {
       code: nanoid(),
@@ -1017,10 +998,9 @@ function App() {
     <div className='App'>
       <Header goods={data} />
       <GoodsPresentationBlock goods={data} />
-      {/* <PresentationSwiper /> */}
       <BrandsLine data={data1} />
-      <ProductCardLeadearsList data={data1} />
-      <ProductCardNoveltiesList data={data1} />
+      <ProductCardList type='leaders' data={data1} />
+      <ProductCardList type='novelties' data={data1} />
       <TopCategoriesBlock data={data1} />
       {/* <VideoReviewBlock /> */}
       <BenefitsLine />

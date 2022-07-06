@@ -1,19 +1,17 @@
 import { ModalWindow, IModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { BurgerMenuList } from './BurgerMenuList';
-import { useState } from 'react';
 import { HeaderSvgSelector } from '../header/HeaderSvgSelector';
-import { CallBackForm } from './CallBackForm';
 
 interface IBurgerMenu {
-  burgerState: boolean;
-  setBurgerState: (value: boolean) => void;
   setContactsModalState: (value: boolean) => void;
+  setBurgerState: (value: boolean) => void;
+  burgerState: boolean;
 }
 
 export const BurgerMenu: React.FC<IBurgerMenu> = ({
-  burgerState,
-  setBurgerState,
   setContactsModalState,
+  setBurgerState,
+  burgerState,
 }) => {
   return (
     <>

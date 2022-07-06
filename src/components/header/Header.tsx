@@ -11,7 +11,7 @@ import { CallBackForm } from '../burger-menu/CallBackForm';
 
 export const Header: React.FC<ICatalog> = ({ goods }) => {
   const [burgerActive, setBurgerActive] = useState<boolean>(false);
-  const [catalog, setCatalog] = useState<boolean>(false);
+  // const [catalog, setCatalog] = useState<boolean>(false);
 
   const [contactsModalActive, setContactsModalActive] =
     useState<boolean>(false);
@@ -33,15 +33,16 @@ export const Header: React.FC<ICatalog> = ({ goods }) => {
           <div className='logo'>
             <HeaderSvgSelector id='logo' />
           </div>
-          <div className='catalog' onClick={() => setCatalog(true)}>
+          <div className='catalog'>
+            {/* {' //onClick={() => setCatalog(true)} '} */}
             <HeaderSvgSelector id='catalog' />
             <a href='#' className='catalog__href'>
               <span> Каталог </span>
             </a>
           </div>
-          <ModalWindow active={catalog} setActive={setCatalog}>
-            {/* <Catalog goods={goods} /> */}
-          </ModalWindow>
+          {/* <ModalWindow active={catalog} setActive={setCatalog}>
+            <Catalog goods={goods} />
+          </ModalWindow> */}
           <div className='search-field'>
             <HeaderIconsSelector id='search' />
             <input
@@ -104,7 +105,7 @@ export const Header: React.FC<ICatalog> = ({ goods }) => {
           setActive={setContactsModalActive}
           className='call-back-modal'
         >
-          <CallBackForm />
+          <CallBackForm closeBtnFunction={setContactsModalActive} />
         </ModalWindow>
       </header>
     </>
