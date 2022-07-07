@@ -1,4 +1,4 @@
-import { ModalWindow, IModalWindow } from 'elements/ModalWindow/ModalWindow';
+import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { BurgerMenuList } from './BurgerMenuList';
 import { HeaderSvgSelector } from '../header/HeaderSvgSelector';
 

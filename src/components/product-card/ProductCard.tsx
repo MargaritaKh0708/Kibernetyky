@@ -1,13 +1,13 @@
 import mainPic from 'assets/icons/goods-card-icons/mainPic.png';
 import { ProductCardSvgSelector } from './ProductCardSvgSelector';
 import { StarRating, IStarRatingProps } from './star-rating/StarRating';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SelectList } from './select-list/SelectList';
 import {
   AddToCart,
   IOrder,
 } from 'components/basket/AddToBasketWindow/AddToBasket';
-import { IProductCardListItem } from 'components/product-card/ProductCardLeadersList';
+import { IProductCardListItem } from 'components/product-card/ProductCardList';
 
 // interface IProductCardProps {
 //   available: boolean;
@@ -19,12 +19,14 @@ import { IProductCardListItem } from 'components/product-card/ProductCardLeaders
 interface IProductCardProps {
   products: IProductCardListItem[]; //array of products
   available: boolean;
-  productId: string; //id of good that we want to bye
+  productId: number; //id of good that we want to bye
   leaders: boolean;
   oldprice: number;
   goodName: string;
   goodModel: string;
   price: number;
+  setOrderCountHandler?: (count: number) => void;
+  setFavoriteCountHandler?: (count: number) => void;
 }
 
 export const ProductCard: React.FC<IProductCardProps> = ({
@@ -36,6 +38,8 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   oldprice,
   leaders,
   price,
+  setOrderCountHandler,
+  setFavoriteCountHandler,
 }) => {
   const [rating, setRating] = useState<number>(0); // Star rating value
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
@@ -57,6 +61,26 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     },
   };
 
+  // load data from localStorage
+  useEffect(() => {
+    // get products in cart from localStorage
+    const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
+    orderProducts.forEach((order: IOrder) => {
+      if (order.productId === productId) setDeal(true);
+    });
+    setOrderProductsCount(orderProducts);
+
+    // get fovorites from localStorage
+    const favorites = JSON.parse(localStorage.getItem('favorite') || '[]');
+    favorites.forEach((favoriteProductId: number) => {
+      if (favoriteProductId === productId) {
+        setFavorite(true);
+      }
+    });
+    setFavoriteProductsCount(favorites);
+  });
+
+  //
   const addToCartHandler: () => void = () => {
     // get products in cart from localStorage
     const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
@@ -69,6 +93,8 @@ export const ProductCard: React.FC<IProductCardProps> = ({
       // write to localStorage if product was deleted
       if (orderProducts.length !== changedOrderProducts.length) {
         localStorage.setItem('order', JSON.stringify(changedOrderProducts));
+        // set count
+        setOrderProductsCount(changedOrderProducts);
       }
     } else {
       // add product to cart
@@ -83,10 +109,69 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             { productId, count: 1, credit: false },
           ])
         );
+        // set count
+        setOrderProductsCount([
+          ...orderProducts,
+          { productId, count: 1, credit: false },
+        ]);
         setViewCart(viewCart ? false : true);
       }
     }
     setDeal(deal ? false : true);
+  };
+
+  // set count of products in cart
+  const setOrderProductsCount: (orderProducts: IOrder[]) => void = (
+    orderProducts
+  ) => {
+    // calc count of products in order
+    let count = 0;
+    orderProducts.forEach((order) => (count += order.count));
+    if (setOrderCountHandler) {
+      setOrderCountHandler(count);
+    }
+  };
+
+  const setFavoriteHandler: () => void = () => {
+    // get fovorites from localStorage
+    const favorites = JSON.parse(localStorage.getItem('favorite') || '[]');
+
+    if (favorite) {
+      // delete favorite by productId
+      const changedFavorites = favorites.filter(
+        (favoriteProductId: number) => favoriteProductId !== productId
+      );
+      // write to localStorage if product was deleted
+      if (favorites.length !== changedFavorites.length) {
+        localStorage.setItem('favorite', JSON.stringify(changedFavorites));
+        // set count
+        setFavoriteProductsCount(changedFavorites);
+      }
+    } else {
+      // add favorite product to localStorage
+      const favoriteItems = favorites.filter(
+        (favoriteProductId: number) => favoriteProductId === productId
+      );
+      if (favoriteItems.length === 0) {
+        localStorage.setItem(
+          'favorite',
+          JSON.stringify([...favorites, productId])
+        );
+        // set count
+        setFavoriteProductsCount([...favorites, productId]);
+      }
+    }
+    setFavorite(favorite ? false : true);
+  };
+
+  // set count of favorite products
+  const setFavoriteProductsCount: (favorites: number[]) => void = (
+    favorites
+  ) => {
+    // calc count of favorites products
+    if (setFavoriteCountHandler) {
+      setFavoriteCountHandler(favorites.length);
+    }
   };
 
   return (
@@ -177,7 +262,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 <input type='checkbox' className='product-card__likes-input' />
                 <div
                   className={favorite ? 'likes likes-color' : 'likes'}
-                  onClick={() => setFavorite(favorite ? false : true)}
+                  onClick={() => setFavoriteHandler()}
                 >
                   <ProductCardSvgSelector id='likes' />
                 </div>
@@ -228,7 +313,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 <input type='checkbox' className='product-card__likes-input' />
                 <div
                   className={favorite ? 'likes likes-color' : 'likes'}
-                  onClick={() => setFavorite(favorite ? false : true)}
+                  onClick={() => setFavoriteHandler()}
                 >
                   <ProductCardSvgSelector id='likes' />
                 </div>
@@ -257,6 +342,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
               productId={productId}
               isActive={viewCart}
               closeHandler={() => setViewCart(viewCart ? false : true)}
+              setOrderCountHandler={setOrderCountHandler}
             />
           </div>
           <div className='product-card__part hide-part'>
@@ -316,5 +402,3 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     </>
   );
 };
-
-//TODO hide-list-item - в массиве считываем {свойство} и {значение} опеределенного блока с кратким и характеристиками и выводим их

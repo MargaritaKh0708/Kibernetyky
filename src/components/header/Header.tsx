@@ -9,7 +9,16 @@ import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMen
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
 
-export const Header: React.FC<ICatalog> = ({ goods }) => {
+interface IHeader extends ICatalog {
+  orderProductsCount: number;
+  favoriteCount: number;
+}
+
+export const Header: React.FC<IHeader> = ({
+  goods,
+  orderProductsCount,
+  favoriteCount,
+}) => {
   const [burgerActive, setBurgerActive] = useState<boolean>(false);
   // const [catalog, setCatalog] = useState<boolean>(false);
 
@@ -82,13 +91,13 @@ export const Header: React.FC<ICatalog> = ({ goods }) => {
           <nav className='menu-block'>
             <HeaderSvgSelector id='personal' />
             <HeaderSvgSelector id='likes'>
-              <span> 0 </span>
+              <span>{favoriteCount}</span>
             </HeaderSvgSelector>
             <HeaderSvgSelector id='compare'>
               <span>0</span>
             </HeaderSvgSelector>
             <HeaderSvgSelector id='basket'>
-              <span>(0)</span>
+              <span>({orderProductsCount})</span>
             </HeaderSvgSelector>
             <div
               className='menu-block__contacts'

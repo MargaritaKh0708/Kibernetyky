@@ -1,11 +1,15 @@
 // import Swiper core and required modules
 import { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IProductCardList } from 'components/product-card/ProductCardLeadersList';
+import { IProductCardListItem } from '../product-card/ProductCardList';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+
+interface IProductCardList {
+  data: IProductCardListItem[];
+}
 
 //здесь укажем контент которій будет отображаться - реализовать фильтр!
 

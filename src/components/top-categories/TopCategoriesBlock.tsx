@@ -1,5 +1,9 @@
 import { TopCategoriesSwiper } from './TopCategoriesSwiper';
-import { IProductCardList } from 'components/product-card/ProductCardLeadersList';
+import { IProductCardListItem } from 'components/product-card/ProductCardList';
+
+interface IProductCardList {
+  data: IProductCardListItem[];
+}
 
 export const TopCategoriesBlock: React.FC<IProductCardList> = ({ data }) => {
   return (

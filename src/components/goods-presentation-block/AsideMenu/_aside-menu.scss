@@ -3,7 +3,7 @@
     position: relative;
     margin-right: 16px;
     display: block;
-    height: 465px;
+    // height: 465px;
 
     &_overflow {
         overflow: hidden;
@@ -16,18 +16,20 @@
 }
 
 .goods-presentation-block__catalog-menu {
+    justify-content: space-between;
     padding: 16px 16px 8px 18px;
     background-color: $c-white;
+    flex-direction: column;
     border-radius: 5px;
     position: initial;
-    height: 465px;
     color: $c-text;
+    display: flex;
+    height: 465px;
     width: 348px;
     z-index: 1;
 
     &_height {
-        height: fit-content;
-        min-height: 465px;
+        height: 100%;
     }
 
 }
@@ -55,26 +57,4 @@
         gap: 15px;
     }
 
-}
-
-
-.catalog-menu {
-
-    &__arrow-down {
-        transform: rotate(135deg);
-        margin: 0 auto;
-        display: block;
-    }
-
-    &__detailed-information {
-        width: fit-content;
-        max-width: 100%;
-        height: auto
-    }
-
-}
-
-
-.static-catalog-opacity {
-    display: none;
 }

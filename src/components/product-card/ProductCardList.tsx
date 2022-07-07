@@ -2,10 +2,10 @@ import { ProductCard } from 'components/product-card/ProductCard';
 import { useState, useEffect } from 'react';
 import { CardsFilterLine } from './CardsFilterLine';
 
-//*Notes:
-//?  coupled - category id , that connect with goods of current category. Array, cause its can be a few;
-//*  novelty - is goods mark as a 'new';
-//? leader - is a good as a leader of sales;
+//*NOTES
+//? coupled - category id , that connect with goods of current category. Array, cause its can be a few
+//* novelty - is good mark as a 'new'
+//? leader - is good is a leader of sales
 
 export interface IProductCardListItem {
   name: string;
@@ -22,11 +22,11 @@ export interface IProductCardListItem {
   oldprice: number;
   leader: boolean;
   price: number;
-  id: string;
+  id: number;
   brand: {
-    country: string;
     name: string;
     logo: string;
+    country: string;
     id: number;
   };
 }
@@ -35,6 +35,8 @@ export interface IProductCardList {
   data: IProductCardListItem[];
   handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   type: string;
+  setOrderCountHandler?: (count: number) => void;
+  setFavoriteCountHandler?: (count: number) => void;
 }
 
 export enum WindowVariant {
@@ -47,12 +49,17 @@ export enum WindowVariant {
   TwoK = 2560,
 }
 
-export const ProductCardList: React.FC<IProductCardList> = ({ data, type }) => {
+export const ProductCardList: React.FC<IProductCardList> = ({
+  data,
+  type,
+  setOrderCountHandler,
+  setFavoriteCountHandler,
+}) => {
   const [n, setN] = useState<number>(2); // state on numbers of row
   const [cardQuantity, setCardQuantity] = useState<number>(6); // state on numbers of column
   const [categoryId, setCategoryId] = useState<number>(0); // state on category of good
 
-  //* ADAPTIVE
+  //! ADAPTIVE
 
   useEffect(() => {
     const handleResize: () => void = () => {
@@ -82,7 +89,6 @@ export const ProductCardList: React.FC<IProductCardList> = ({ data, type }) => {
   });
 
   // find products by type
-
   let list: IProductCardListItem[] = [];
   if (type === 'leaders') {
     // Finds 'leaders' in big data
@@ -102,7 +108,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({ data, type }) => {
     // Finds 'coupled' by category
     list = data.filter((item) =>
       categoryId > 0 ? item.category.id === categoryId : true
-    ); //data уже содержит связанные товары. Они фильтруются в AddToBasket
+    );
   }
 
   // choose title by type
@@ -123,6 +129,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({ data, type }) => {
   const categoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCategoryId(() => parseInt(event.target.value));
   };
+
   return (
     <>
       <section className='product-list product-list-leaders container'>
@@ -142,6 +149,8 @@ export const ProductCardList: React.FC<IProductCardList> = ({ data, type }) => {
               price={item.price}
               products={data}
               key={item.id}
+              setOrderCountHandler={setOrderCountHandler}
+              setFavoriteCountHandler={setFavoriteCountHandler}
             />
           ))}
           <div className='product-card-list__opacity-block opacity' />
@@ -149,9 +158,8 @@ export const ProductCardList: React.FC<IProductCardList> = ({ data, type }) => {
         <button onClick={() => setN(n + 2)} className='product-card-list__btn'>
           <span>Дивитись ще</span>
         </button>
+        {/* <AddToCart products={data}/> */}
       </section>
     </>
   );
 };
-
-//! oldprice price avail - тянутся с массива !! add props

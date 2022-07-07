@@ -72,7 +72,7 @@ export const Catalog: React.FC<ICatalog> = ({ goods }) => {
           showDetailedInformation={setDetailedInformation}
         />
         <div
-          className='catalog-menu__detailed-information'
+          className='catalog-menu__detailed-part'
           style={
             detailedInformation.length > 0
               ? { background: 'white', display: 'block' }
@@ -80,7 +80,17 @@ export const Catalog: React.FC<ICatalog> = ({ goods }) => {
           }
         >
           {detailedInformationItem.map((item) => (
-            <span key={item.id}>{item.id}</span>
+            <div key={item.id} className='catalog-menu__detailed-wrapper'>
+              <div className='catalog-menu__detailed-item'>
+                <span>{item.id}</span>
+              </div>
+              <div className='catalog-menu__detailed-item'>
+                <span>{item.goodType}</span>
+              </div>
+              <div className='catalog-menu__detailed-item'>
+                <span>{item.icon}</span>
+              </div>
+            </div>
           ))}
         </div>
       </ModalWindow>

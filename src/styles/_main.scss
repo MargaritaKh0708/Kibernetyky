@@ -10,6 +10,7 @@
 
 body {
     background-color: $c-background;
+    transition: 1s;
     @include f-Lato-Regular;
     overflow-x: hidden;
     min-height: 100vh;

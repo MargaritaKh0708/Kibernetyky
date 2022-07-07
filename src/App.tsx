@@ -11,7 +11,7 @@ import { SubscriptionBlock } from 'components/subscription-block/SubscriptionBlo
 import { ShopHistory } from 'components/shop-history/ShopHistory';
 import { GoodsPresentationBlock } from 'components/goods-presentation-block/GoodsPresentationBlock';
 import { ProductCardList } from 'components/product-card/ProductCardList';
-
+import { useState } from 'react';
 import { Footer } from 'components/footer/Footer';
 
 import pic from 'assets/main-page/presentation-block-swiper/green/main-picture.png';
@@ -417,7 +417,7 @@ const data1 = [
     leader: true,
     available: true,
     novelty: false,
-    id: nanoid(),
+    id: 1,
     category: {
       coupled: [113],
       name: 'Планшеты',
@@ -440,7 +440,7 @@ const data1 = [
     leader: false,
     oldprice: 3000,
     price: 1902,
-    id: nanoid(),
+    id: 2,
     category: {
       coupled: [113],
       name: 'Телефони',
@@ -463,7 +463,7 @@ const data1 = [
     oldprice: 1400,
     novelty: false,
     price: 453,
-    id: nanoid(),
+    id: 3,
     category: {
       coupled: [113],
       name: 'Телефони',
@@ -486,7 +486,7 @@ const data1 = [
     oldprice: 2091,
     leader: true,
     price: 1900,
-    id: nanoid(),
+    id: 4,
     category: {
       name: 'Планшети',
       coupled: [113],
@@ -509,7 +509,7 @@ const data1 = [
     oldprice: 1400,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 5,
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -532,7 +532,7 @@ const data1 = [
     oldprice: 4000,
     leader: true,
     price: 1000,
-    id: nanoid(),
+    id: 6,
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -555,7 +555,7 @@ const data1 = [
     novelty: true,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 7,
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
@@ -579,7 +579,7 @@ const data1 = [
     oldprice: 1400,
     price: 453,
 
-    id: nanoid(),
+    id: 8,
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -602,7 +602,7 @@ const data1 = [
     novelty: true,
     leader: false,
     price: 1200,
-    id: nanoid(),
+    id: 9,
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -625,7 +625,7 @@ const data1 = [
     novelty: false,
     oldprice: 2000,
     price: 1400,
-    id: nanoid(),
+    id: 10,
     category: {
       name: 'VR / Робототехніка/ Товари для дітей',
       mainImage: pic,
@@ -648,7 +648,7 @@ const data1 = [
     novelty: true,
     oldprice: 1400,
     price: 453,
-    id: nanoid(),
+    id: 11,
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
@@ -671,7 +671,7 @@ const data1 = [
     novelty: false,
     leader: true,
     price: 1400,
-    id: nanoid(),
+    id: 12,
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -694,7 +694,7 @@ const data1 = [
     leader: true,
     oldprice: 1400,
     price: 453,
-    id: nanoid(),
+    id: 13,
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -717,7 +717,7 @@ const data1 = [
     novelty: false,
     oldprice: 4932,
     price: 1092,
-    id: nanoid(),
+    id: 14,
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -740,7 +740,7 @@ const data1 = [
     novelty: true,
     leader: true,
     price: 2999,
-    id: nanoid(),
+    id: 15,
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
@@ -763,7 +763,7 @@ const data1 = [
     oldprice: 1400,
     price: 453,
     novelty: false,
-    id: nanoid(),
+    id: 16,
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -786,7 +786,7 @@ const data1 = [
     leader: true,
     novelty: true,
     price: 453,
-    id: nanoid(),
+    id: 17,
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
@@ -809,7 +809,7 @@ const data1 = [
     novelty: false,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 18,
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -834,7 +834,7 @@ const data1 = [
     novelty: true,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 19,
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -857,7 +857,7 @@ const data1 = [
     novelty: false,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 20,
     category: {
       name: 'Побутова техніка',
       coupled: [3],
@@ -880,7 +880,7 @@ const data1 = [
     oldprice: 1400,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 21,
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -903,7 +903,7 @@ const data1 = [
     oldprice: 1400,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 22,
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -926,7 +926,7 @@ const data1 = [
     novelty: false,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 23,
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -950,7 +950,7 @@ const data1 = [
     leader: true,
     novelty: false,
     price: 453,
-    id: nanoid(),
+    id: 24,
     category: {
       name: 'Навушники',
       coupled: [1],
@@ -976,7 +976,7 @@ const data1 = [
     novelty: false,
     leader: true,
     price: 453,
-    id: nanoid(),
+    id: 25,
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -994,15 +994,33 @@ const data1 = [
 ];
 
 function App() {
+  const [orderProductsCount, setOrderProductsCount] = useState(0);
+  const [favoriteCount, setFavoriteCount] = useState(0);
+
   return (
     <div className='App'>
-      <Header goods={data} />
+      <Header
+        goods={data}
+        orderProductsCount={orderProductsCount}
+        favoriteCount={favoriteCount}
+      />
       <GoodsPresentationBlock goods={data} />
+      {/* <PresentationSwiper /> */}
       <BrandsLine data={data1} />
-      <ProductCardList type='leaders' data={data1} />
-      <ProductCardList type='novelties' data={data1} />
+      <ProductCardList
+        type='leaders'
+        data={data1}
+        setOrderCountHandler={setOrderProductsCount}
+        setFavoriteCountHandler={setFavoriteCount}
+      />
+      <ProductCardList
+        type='novelties'
+        data={data1}
+        setOrderCountHandler={setOrderProductsCount}
+        setFavoriteCountHandler={setFavoriteCount}
+      />
       <TopCategoriesBlock data={data1} />
-      {/* <VideoReviewBlock /> */}
+      <VideoReviewBlock />
       <BenefitsLine />
       <SubscriptionBlock />
       <ShopHistory />

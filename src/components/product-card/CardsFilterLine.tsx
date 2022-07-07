@@ -1,6 +1,10 @@
-import { IProductCardList } from './ProductCardLeadersList';
+import { IProductCardListItem } from './ProductCardList';
 
-export const CardsFilterLine: React.FC<IProductCardList> = ({
+interface IProductCardLine {
+  data: IProductCardListItem[];
+  handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+export const CardsFilterLine: React.FC<IProductCardLine> = ({
   data,
   handler,
 }) => {

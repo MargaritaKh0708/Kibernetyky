@@ -1,4 +1,8 @@
-import { IProductCardList } from '../product-card/ProductCardLeadersList';
+import { IProductCardListItem } from '../product-card/ProductCardList';
+
+interface IProductCardList {
+  data: IProductCardListItem[];
+}
 
 export const BrandsLine: React.FC<IProductCardList> = ({ data }) => {
   let brandsList: {

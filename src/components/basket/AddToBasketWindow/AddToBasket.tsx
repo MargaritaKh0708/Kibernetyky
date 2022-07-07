@@ -1,19 +1,19 @@
-import {
-  IProductCardListItem,
-  ProductCardList,
-} from 'components/product-card/ProductCardList';
+import { IProductCardListItem } from '../../product-card/ProductCardList';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { useEffect, useState } from 'react';
+import { ProductCardList } from 'components/product-card/ProductCardList';
 
 interface AddToCartType {
   products: IProductCardListItem[]; //array of products
   closeHandler: () => void; // for modal w
   isActive: boolean; // for modal w
-  productId: string; //id of good that we want to bye
+  productId: number; //id of good that we want to bye
+  setOrderCountHandler?: (count: number) => void;
+  setFavoriteCountHanler?: (count: number) => void;
 }
 
 export interface IOrder {
-  productId: string;
+  productId: number;
   count: number;
   credit: boolean;
 }
@@ -23,6 +23,8 @@ export const AddToCart: React.FC<AddToCartType> = ({
   closeHandler,
   isActive,
   productId,
+  setOrderCountHandler,
+  setFavoriteCountHanler,
 }) => {
   const [orderProducts, setOrderProducts] = useState<IOrder[]>([]); //basket compatible - goods inside
   const [orderProductsCount, setOrderProductsCount] = useState<number>(0); // count of goods inside
@@ -46,7 +48,7 @@ export const AddToCart: React.FC<AddToCartType> = ({
   // save order to localStorage
   const addProductToOrder: (credit: boolean) => void = (credit) => {
     const orderItems = orderProducts.filter(
-      (order) => order.productId === productId // compare good id that we choose with thts which in basket already
+      (order) => order.productId === productId // compare good id that we choose with that which in basket already
     );
     if (orderItems.length === 0) {
       localStorage.setItem(
@@ -112,15 +114,16 @@ export const AddToCart: React.FC<AddToCartType> = ({
   );
 
   const CoupledProductsJsx = (
-    <ProductCardList type='coupled' data={coupledProducts} />
+    <ProductCardList
+      type='coupled'
+      data={coupledProducts}
+      setOrderCountHandler={setOrderCountHandler}
+      setFavoriteCountHandler={setFavoriteCountHanler}
+    />
   );
 
   return (
-    <ModalWindow
-      active={isActive}
-      setActive={closeHandler}
-      className='add-to-basket-modal'
-    >
+    <ModalWindow active={isActive} setActive={closeHandler}>
       <>{[ProductJsx, CoupledProductsJsx]}</>
     </ModalWindow>
   );
