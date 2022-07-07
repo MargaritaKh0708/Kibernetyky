@@ -26,6 +26,8 @@ import apple from 'assets/icons/brands-icons/apple.png';
 import haier from 'assets/icons/brands-icons/haier.png';
 import lenovo from 'assets/icons/brands-icons/lenovo.png';
 import xiaomi from 'assets/icons/brands-icons/xiaomi.png'; // забрать все картинки в селектор !
+import { Route, Routes } from 'react-router';
+import { Cart } from 'components/basket/AddToBasketWindow/Cart';
 
 const data = [
   {
@@ -993,7 +995,7 @@ const data1 = [
   },
 ];
 
-function App() {
+function MainPage() {
   const [orderProductsCount, setOrderProductsCount] = useState(0);
   const [favoriteCount, setFavoriteCount] = useState(0);
 
@@ -1026,6 +1028,35 @@ function App() {
       <ShopHistory />
       <Footer />
     </div>
+  );
+}
+
+function CartPage() {
+  const [orderProductsCount, setOrderProductsCount] = useState(0);
+  const [favoriteCount, setFavoriteCount] = useState(0);
+
+  return (
+    <div className='App'>
+      <Header
+        goods={data}
+        orderProductsCount={orderProductsCount}
+        favoriteCount={favoriteCount}
+      />
+      <Cart data = {data1}
+        setOrderCountHandler = {setOrderProductsCount}
+        setFavoriteCountHandler = {setFavoriteCount}
+      />
+      <Footer />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path = '/' element = {<MainPage />}></Route>
+      <Route path = '/cart' element = {<CartPage />}></Route>
+    </Routes>
   );
 }
 

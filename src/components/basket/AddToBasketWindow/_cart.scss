@@ -1,0 +1,124 @@
+.cart {
+    &-title {
+        font-size: 24px;
+        line-height: 36px;
+        font-weight: 400;
+        margin: 16px 0;
+    }
+
+    &-form {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.info-form {
+    max-width: 988px;
+}
+
+.product-form {
+    width: auto;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        font-size: 20px;
+        line-height: 30px;
+
+        &--line-through {
+            @extend .product-form__title;
+            text-decoration: line-through;
+            padding-left: 10px;
+        }
+
+        &--check {
+            @extend .product-form__title;
+            padding-left: 10px;
+        }
+    }
+
+    &__link {
+        font-size: 16px;
+        line-height: 24px;
+        color: #235ED0;
+        font-weight: 600;
+        text-decoration: underline;
+    }
+
+    &__products {
+        margin-top: 0;
+    }
+
+    &__product {
+        display: flex;
+        padding: 16px 0;
+        border-bottom: 1px solid #F2F2F2;
+    }
+
+    &__photo {
+        max-width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__details {
+        padding: 0 10px;
+    }
+
+    &__subtitle {
+        font-size: 14px;
+        line-height: 21px;
+        padding-bottom: 5px;
+
+        &--grey {
+            @extend .product-form__subtitle;
+            color: #9E9E9E;
+        }
+    }
+
+    &__bonuses {
+        padding: 16px 0;
+        border-bottom: 1px solid #F2F2F2;
+    }
+
+    &__promo {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 0;
+        border-bottom: 1px solid #F2F2F2;
+    }
+
+    &__price {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 5px;
+
+        &:last-child {
+            border-top: 1px solid #F2F2F2;
+        }
+    }
+
+    &__confirm {
+        display: flex;
+        justify-content: end;
+        margin: 16px 0;
+    }
+
+    &__button {
+        font-size: 16px;
+        line-height: 19px;
+        padding: 12px 70px;
+        background: #F2F2F2;
+        border-radius: 50px;
+        color: #9E9E9E;
+        border: none;
+    }
+}
+
+.grivna-sign {
+    padding: 0 4px;
+}
