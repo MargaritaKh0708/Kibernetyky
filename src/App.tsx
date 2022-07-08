@@ -29,380 +29,111 @@ const data = [
     icon: <AsideMenuSvgSelector id='accessory' />,
     goodType: 'Аксесуари',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='cables' />,
     goodType: 'Зарядні пристрої та кабелі',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: true,
-        presentativeSettings: {
-          background: <PresentationBlockSvgSelector id='green-bg' />,
-          image: pic,
-          logotype: <PresentationBlockSvgSelector id='transparent-logo' />,
-        },
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='computerTechnique' />,
     goodType: "Комп'ютерна техніка",
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: true,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='computers' />,
     goodType: "Комп'ютерні комплектуючі",
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: true,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='elTransport' />,
     goodType: 'Електротранспорт',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='flash' />,
     goodType: 'Накопичувачі інформації',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: true,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='games' />,
     goodType: 'Ігрові приставки',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='headphones' />,
     goodType: 'Навушники',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='multimedia' />,
     goodType: 'Мультимедіа',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='other' />,
     goodType: 'Інше',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='powerbank' />,
     goodType: 'Power Bank і аксесуари до них',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='tablet' />,
     goodType: 'Планшети та електронні книги',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='tv' />,
     goodType: 'TV, Фото, Видео',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='vr' />,
     goodType: 'VR/Робототехніка/Товари для дітей',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='appliances' />,
     goodType: 'Побутова техніка дрібна',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='warmers' />,
     goodType: 'Обігрівачі/куртки з підігрівом',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='portativ_electronics' />,
     goodType: 'Портативна електроніка',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='software' />,
     goodType: 'Програмне забезпечення',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='smart_house' />,
     goodType: 'Розумний будинок',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='phones' />,
     goodType: 'Смартфони, Телефони',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='sim' />,
     goodType: 'Стартові пакети та скретч карти',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
   {
     icon: <AsideMenuSvgSelector id='services' />,
     goodType: 'Послуги',
     id: nanoid(),
-    goodslist: {
-      code: nanoid(),
-      availability: true,
-      oldprice: '1200',
-      price: '1000',
-      image: '',
-      model: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey (ZA5T0095UA)',
-      brand: 'Lenovo',
-      specifications: {
-        setpresentativ: false,
-      },
-    },
   },
 ];
 const data1 = [
@@ -990,41 +721,46 @@ const data1 = [
   },
 ];
 
-// function CartPage() {
-//   const [orderProductsCount, setOrderProductsCount] = useState(0);
-//   const [favoriteCount, setFavoriteCount] = useState(0);
-
-//   return (
-//     <div className='cart-page-content main-content'>
-//       <Cart
-//         setOrderCountHandler={setOrderProductsCount}
-//         setFavoriteCountHandler={setFavoriteCount}
-//         data={data1}
-//       />
-//     </div>
-//   );
-// }
-
 function App() {
   const [orderProductsCount, setOrderProductsCount] = useState(0);
-  const [open, setOpen] = useState<boolean>(false); // DETELE
   const [favoriteCount, setFavoriteCount] = useState(0);
+
+  //Catalog
+  const [open, setOpen] = useState<boolean>(false); // open or close modal w
+  const [detailedInformation, setDetailedInformation] = useState<string>(''); // Show 2nd part of modal window
+  const [displayWidth, setDisplayWidth] = useState<boolean>(false); // Watch of display-width to control modal window shape
+  const [lastTargetName, setLastTargetName] = useState<string>(''); // Read last target name for come-back BTN
+  const [hideCategoryList, setHideCategoryList] = useState<boolean>(false); // Property for hidden category list im mobile version work
 
   return (
     <div className='App'>
-      <OpenCatalogContext.Provider value={{ open, setOpen }}>
+      <OpenCatalogContext.Provider
+        value={{
+          setDetailedInformation,
+          detailedInformation,
+          setHideCategoryList,
+          setLastTargetName,
+          hideCategoryList,
+          setDisplayWidth,
+          lastTargetName,
+          displayWidth,
+          setOpen,
+          open,
+        }}
+      >
         <Header
-          goods={data}
           orderProductsCount={orderProductsCount}
           favoriteCount={favoriteCount}
+          goods={data}
+          maindata={data1}
         />
         <Routes>
           <Route
             path='/'
             element={
               <MainPage
-                setFavoriteCount={setFavoriteCount}
                 setOrderProductsCount={setOrderProductsCount}
+                setFavoriteCount={setFavoriteCount}
                 oldgoods={data}
                 goods={data1}
               />

@@ -114,9 +114,9 @@
     border-radius: 20px;
     align-items: center;
     position: relative;
-    margin: 0 40px;
     display: flex;
-    width: 764px;
+    // width: 764px;
+    width: 100%;
     height: 36px;
 
     // @include media('within', 'fullHd') {
@@ -147,8 +147,12 @@
         border: none;
         height: 100%;
 
-        @include media('within', 'fullHd') {
+        @include media('within', '2K') {
             width: 526px; // width - margin
+        }
+
+        @include media('within', 'fullHd') {
+            width: 423px; // width - margin
         }
 
         @include media('within', 'iPad-horizontal') {
@@ -180,7 +184,6 @@
         right: 0;
     }
 }
-
 
 
 .help-army {
@@ -217,15 +220,4 @@
 
 .menu-block div:last-child {
     border: none;
-}
-
-
-// Catalog 
-
-.modal-catalog {
-    height: fit-content;
-    margin-left: 404px;
-    margin-top: 100px;
-    width: 1250px;
-
 }

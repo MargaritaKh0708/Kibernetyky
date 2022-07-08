@@ -1,6 +1,4 @@
-import Dictaphone from 'elements/Recording/Dictaphone';
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
-import { HeaderIconsSelector } from 'components/header/HeaderIconsSelector';
 import classNames from 'classnames';
 import '../../index.css';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
@@ -9,18 +7,24 @@ import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMen
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
 import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/OpenCatalogContext';
+import { CatalogModal } from 'components/goods-presentation-block/AsideMenu/CatalogModal';
+import { SearchFieldForm } from './search-field/SearchFieldForm';
+import { IProductCardListItem } from 'components/product-card/ProductCardList';
 
 interface IHeader extends ICatalog {
   orderProductsCount: number;
   favoriteCount: number;
+  maindata: IProductCardListItem[];
 }
 
 export const Header: React.FC<IHeader> = ({
-  goods,
   orderProductsCount,
   favoriteCount,
+  maindata,
+  goods,
 }) => {
   const [burgerActive, setBurgerActive] = useState<boolean>(false); // for BURGER open
+  // const [searchActive, setSearchActive] = useState<boolean>(false); // for SEARCH field open
 
   const [contactsModalActive, setContactsModalActive] =
     useState<boolean>(false); // for menu 'CONTACTS' open
@@ -50,31 +54,7 @@ export const Header: React.FC<IHeader> = ({
               <span> Каталог </span>
             </a>
           </div>
-          <div className='search-field'>
-            <HeaderIconsSelector id='search' />
-            <input
-              type='text'
-              placeholder='Пошук'
-              name='search'
-              className='search-field__input'
-            />
-            <Dictaphone />
-            <button className='search-field__btn'>
-              <span> Знайти </span>
-            </button>
-          </div>
-          <div>
-            {/* <NavLink to='' className='language__ua'>
-              {" "}
-              (//TODO -- не забыть вставить ссылку или шо?)
-              <span> укр </span>
-            </NavLink> */}
-            {/* <NavLink to='' className='catalog__href'>
-              {" "}
-              (//TODO -- не забыть вставить ссылку или шо?)
-              <span> рус </span>
-            </NavLink> */}
-          </div>
+          <SearchFieldForm data={goods} goods={maindata} />
           <div className='help-army'>
             <a
               className='help-army__href'
@@ -114,6 +94,7 @@ export const Header: React.FC<IHeader> = ({
         >
           <CallBackForm closeBtnFunction={setContactsModalActive} />
         </ModalWindow>
+        <CatalogModal goods={goods} />
       </header>
     </>
   );
