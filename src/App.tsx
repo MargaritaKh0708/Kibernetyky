@@ -28,6 +28,7 @@ import lenovo from 'assets/icons/brands-icons/lenovo.png';
 import xiaomi from 'assets/icons/brands-icons/xiaomi.png'; // забрать все картинки в селектор !
 import { Route, Routes } from 'react-router';
 import { Cart } from 'components/basket/AddToBasketWindow/Cart';
+import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
 
 const data = [
   {
@@ -998,6 +999,9 @@ const data1 = [
 function MainPage() {
   const [orderProductsCount, setOrderProductsCount] = useState(0);
   const [favoriteCount, setFavoriteCount] = useState(0);
+  const [addToCartActive, setAddToCartActive] = useState<boolean>(false);
+  const [currentProductId, setCurrentProductId] = useState(0);
+  const [compareCount, setCompareCount] = useState(0);
 
   return (
     <div className='App'>
@@ -1005,7 +1009,16 @@ function MainPage() {
         goods={data}
         orderProductsCount={orderProductsCount}
         favoriteCount={favoriteCount}
+        compareCount={compareCount}
       />
+      <AddToCart products={data1} 
+        productId = {currentProductId} 
+        isActive = {addToCartActive}
+        setOrderCountHandler={setOrderProductsCount}
+        setCompareCountHandler={setCompareCount}
+        setFavoriteCountHandler={setFavoriteCount} 
+        viewHandler = {setAddToCartActive}
+        setCurrentProductIdHandler = {setCurrentProductId} />
       <GoodsPresentationBlock goods={data} />
       {/* <PresentationSwiper /> */}
       <BrandsLine data={data1} />
@@ -1014,12 +1027,20 @@ function MainPage() {
         data={data1}
         setOrderCountHandler={setOrderProductsCount}
         setFavoriteCountHandler={setFavoriteCount}
+        setCompareCountHandler={setCompareCount}
+        setAddToCartActiveHandler = {setAddToCartActive}
+        setCurrentProductIdHandler = {setCurrentProductId}
+        addToCartActive = {addToCartActive}
       />
       <ProductCardList
         type='novelties'
         data={data1}
         setOrderCountHandler={setOrderProductsCount}
         setFavoriteCountHandler={setFavoriteCount}
+        setCompareCountHandler={setCompareCount}
+        setAddToCartActiveHandler = {setAddToCartActive}
+        setCurrentProductIdHandler = {setCurrentProductId}
+        addToCartActive = {addToCartActive}
       />
       <TopCategoriesBlock data={data1} />
       <VideoReviewBlock />
@@ -1034,6 +1055,7 @@ function MainPage() {
 function CartPage() {
   const [orderProductsCount, setOrderProductsCount] = useState(0);
   const [favoriteCount, setFavoriteCount] = useState(0);
+  const [compareCount, setCompareCount] = useState(0);
 
   return (
     <div className='App'>
@@ -1041,10 +1063,12 @@ function CartPage() {
         goods={data}
         orderProductsCount={orderProductsCount}
         favoriteCount={favoriteCount}
+        compareCount={compareCount}
       />
       <Cart data = {data1}
         setOrderCountHandler = {setOrderProductsCount}
         setFavoriteCountHandler = {setFavoriteCount}
+        setCompareCountHandler = {setCompareCount}
       />
       <Footer />
     </div>

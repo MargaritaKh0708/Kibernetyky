@@ -37,6 +37,10 @@ export interface IProductCardList {
   type: string;
   setOrderCountHandler?: (count: number) => void;
   setFavoriteCountHandler?: (count: number) => void;
+  setCompareCountHandler: (count: number) => void;
+  setAddToCartActiveHandler: (state: boolean) => void;
+  setCurrentProductIdHandler: (productId: number) => void;
+  addToCartActive: boolean;
 }
 
 export enum WindowVariant {
@@ -54,6 +58,10 @@ export const ProductCardList: React.FC<IProductCardList> = ({
   type,
   setOrderCountHandler,
   setFavoriteCountHandler,
+  setCompareCountHandler,
+  setAddToCartActiveHandler,
+  setCurrentProductIdHandler,
+  addToCartActive,
 }) => {
   const [n, setN] = useState<number>(2); // state on numbers of row
   const [cardQuantity, setCardQuantity] = useState<number>(6); // state on numbers of column
@@ -151,6 +159,10 @@ export const ProductCardList: React.FC<IProductCardList> = ({
               key={item.id}
               setOrderCountHandler={setOrderCountHandler}
               setFavoriteCountHandler={setFavoriteCountHandler}
+              setCompareCountHandler={setCompareCountHandler}
+              setAddToCartActiveHandler={setAddToCartActiveHandler}
+              setCurrentProductIdHandler={setCurrentProductIdHandler}
+              addToCartActive={addToCartActive}
             />
           ))}
           <div className='product-card-list__opacity-block opacity' />

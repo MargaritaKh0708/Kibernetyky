@@ -8,6 +8,7 @@ interface ICart {
     data: IProductCardListItem[];
     setOrderCountHandler: (count: number) => void;
     setFavoriteCountHandler: (count: number) => void;
+    setCompareCountHandler: (count: number) => void;
 };
 
 interface IProductData {
@@ -22,7 +23,8 @@ interface IProductData {
 export const Cart: React.FC<ICart> = ({ 
     data, 
     setOrderCountHandler,  
-    setFavoriteCountHandler
+    setFavoriteCountHandler,
+    setCompareCountHandler,
 }) => {
     const [orderProducts, setOrderProducts] = useState<IOrder[]>([]);
 
@@ -36,6 +38,10 @@ export const Cart: React.FC<ICart> = ({
         // get favorites from localStorage
         const favorites = JSON.parse(localStorage.getItem('favorite') || '[]');
         setFavoriteProductsCount(favorites);
+
+        // get compare data from localStorage
+        const compareIdList = JSON.parse(localStorage.getItem('compare') || '[]');
+        setCompareProductsCount(compareIdList);
     }, []);
 
     // set count of products in cart
@@ -57,6 +63,16 @@ export const Cart: React.FC<ICart> = ({
         // calc count of favorites products
         if (setFavoriteCountHandler) {
             setFavoriteCountHandler(favorites.length);
+        }
+    };
+
+    // set count of favorite products
+    const setCompareProductsCount: (compareIdList: number[]) => void = (
+        compareIdList
+    ) => {
+        // set count of favorites products
+        if (setCompareCountHandler) {
+            setCompareCountHandler(compareIdList.length);
         }
     };
 
@@ -161,9 +177,9 @@ export const Cart: React.FC<ICart> = ({
             <div className='cart-form'>
                 <div className='info-form'>
                     <Accordion>
-                        <AccordionItem title="Ваші контактні дані">Contacts</AccordionItem>
-                        <AccordionItem title="Доставка">Delivery</AccordionItem>
-                        <AccordionItem title="Оплата">Payment</AccordionItem>
+                        <AccordionItem title="1. Ваші контактні дані" btnStyle="product-form__title">Contacts</AccordionItem>
+                        <AccordionItem title="2. Доставка" btnStyle="product-form__title">Delivery</AccordionItem>
+                        <AccordionItem title="3. Оплата" btnStyle="product-form__title">Payment</AccordionItem>
                     </Accordion>
                 </div>
                 <>{productFormJsx}</>

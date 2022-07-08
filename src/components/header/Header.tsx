@@ -8,16 +8,19 @@ import { useState } from 'react';
 import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
+import { Link } from 'react-router-dom';
 
 interface IHeader extends ICatalog {
   orderProductsCount: number;
   favoriteCount: number;
+  compareCount: number;
 }
 
 export const Header: React.FC<IHeader> = ({
   goods,
   orderProductsCount,
   favoriteCount,
+  compareCount,
 }) => {
   const [burgerActive, setBurgerActive] = useState<boolean>(false);
   // const [catalog, setCatalog] = useState<boolean>(false);
@@ -39,9 +42,11 @@ export const Header: React.FC<IHeader> = ({
             setBurgerState={setBurgerActive}
             setContactsModalState={setContactsModalActive}
           />
-          <div className='logo'>
-            <HeaderSvgSelector id='logo' />
-          </div>
+          <Link to="/">
+            <div className='logo'>
+              <HeaderSvgSelector id='logo' />
+            </div>
+          </Link>
           <div className='catalog'>
             {/* {' //onClick={() => setCatalog(true)} '} */}
             <HeaderSvgSelector id='catalog' />
@@ -94,11 +99,13 @@ export const Header: React.FC<IHeader> = ({
               <span>{favoriteCount}</span>
             </HeaderSvgSelector>
             <HeaderSvgSelector id='compare'>
-              <span>0</span>
+              <span>{compareCount}</span>
             </HeaderSvgSelector>
-            <HeaderSvgSelector id='basket'>
-              <span>({orderProductsCount})</span>
-            </HeaderSvgSelector>
+            <Link to="/cart">
+              <HeaderSvgSelector id='basket'>
+                <span>({orderProductsCount})</span>
+              </HeaderSvgSelector>
+            </Link>
             <div
               className='menu-block__contacts'
               onClick={() =>

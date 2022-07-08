@@ -5,11 +5,13 @@ import { ProductCardList } from 'components/product-card/ProductCardList';
 
 interface AddToCartType {
   products: IProductCardListItem[]; //array of products
-  closeHandler: () => void; // for modal w
+  viewHandler: (state: boolean) => void; // for modal w
   isActive: boolean; // for modal w
   productId: number; //id of good that we want to bye
-  setOrderCountHandler?: (count: number) => void;
-  setFavoriteCountHanler?: (count: number) => void;
+  setOrderCountHandler: (count: number) => void;
+  setFavoriteCountHandler: (count: number) => void;
+  setCompareCountHandler: (count: number) => void;
+  setCurrentProductIdHandler: (productId: number) => void;
 }
 
 export interface IOrder {
@@ -20,11 +22,13 @@ export interface IOrder {
 
 export const AddToCart: React.FC<AddToCartType> = ({
   products,
-  closeHandler,
+  viewHandler,
   isActive,
   productId,
   setOrderCountHandler,
-  setFavoriteCountHanler,
+  setFavoriteCountHandler,
+  setCompareCountHandler,
+  setCurrentProductIdHandler,
 }) => {
   const [orderProducts, setOrderProducts] = useState<IOrder[]>([]); //basket compatible - goods inside
   const [orderProductsCount, setOrderProductsCount] = useState<number>(0); // count of goods inside
@@ -65,7 +69,11 @@ export const AddToCart: React.FC<AddToCartType> = ({
 
   // return if can't find product
   if (!product) {
-    return <p>Товар не знайдено</p>;
+    return (
+      <ModalWindow active={isActive} setActive={viewHandler}>
+        <p>Товар не знайдено</p>
+      </ModalWindow>
+    );
   }
 
   // find coupled products
@@ -118,12 +126,16 @@ export const AddToCart: React.FC<AddToCartType> = ({
       type='coupled'
       data={coupledProducts}
       setOrderCountHandler={setOrderCountHandler}
-      setFavoriteCountHandler={setFavoriteCountHanler}
+      setFavoriteCountHandler={setFavoriteCountHandler}
+      setCompareCountHandler={setCompareCountHandler}
+      setAddToCartActiveHandler = {viewHandler}
+      setCurrentProductIdHandler = {setCurrentProductIdHandler}
+      addToCartActive = {isActive}
     />
   );
 
   return (
-    <ModalWindow active={isActive} setActive={closeHandler}>
+    <ModalWindow active={isActive} setActive={viewHandler}>
       <>{[ProductJsx, CoupledProductsJsx]}</>
     </ModalWindow>
   );

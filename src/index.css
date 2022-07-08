@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Lato";
   src: url("./assets/fonts/Lato/Lato-Light.ttf") format("truetype");
@@ -2015,10 +2016,13 @@ ul {
 
 .info-form {
   max-width: 988px;
+  flex-grow: 2;
 }
 
 .product-form {
   width: auto;
+  background-color: #fff;
+  padding: 10px;
 }
 .product-form__header {
   display: flex;
@@ -2109,8 +2113,7 @@ ul {
   /* Style the accordion panel. Note: hidden by default */
 }
 .accordion__button {
-  background-color: #eee;
-  color: #444;
+  background-color: #fff;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -2121,17 +2124,42 @@ ul {
   /* Add a background color to the button if it is clicked on  */
 }
 .accordion__button--active, .accordion__button:hover {
-  background-color: #ccc;
+  background-color: #fff;
 }
 .accordion__container {
   display: block;
 }
+.accordion__sym {
+  position: relative;
+  transform: scale(0.7);
+  margin-left: 5px;
+  top: 5px;
+  display: inline-block;
+}
+.accordion__symbol {
+  position: relative;
+}
+.accordion__symbol::after {
+  position: absolute;
+  content: "⌄";
+  /* Unicode character for "arrow down" sign */
+  font-size: 14px;
+  color: #777;
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+  transform: translate(-50%, -50%);
+}
 .accordion__panel {
   padding: 0 18px;
   background-color: white;
-  display: none;
+  max-height: 0;
   overflow: hidden;
+  transition: all 0.2s ease-out;
 }
 .accordion__panel--active {
-  display: block;
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
 }/*# sourceMappingURL=index.css.map */

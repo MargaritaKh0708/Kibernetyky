@@ -9,6 +9,7 @@ export interface IStarRatingProps {
   color?: string;
   count: number;
   size?: number;
+  value?: number;
 }
 
 export const StarRating: React.FC<IStarRatingProps> = ({
@@ -19,6 +20,7 @@ export const StarRating: React.FC<IStarRatingProps> = ({
   count,
   color,
   size,
+  value,
 }) => {
   return (
     <ReactStars
@@ -29,6 +31,7 @@ export const StarRating: React.FC<IStarRatingProps> = ({
       color={color}
       count={count}
       size={size}
+      value={value}
     />
   );
 };

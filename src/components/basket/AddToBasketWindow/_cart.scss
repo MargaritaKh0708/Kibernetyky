@@ -14,10 +14,13 @@
 
 .info-form {
     max-width: 988px;
+    flex-grow: 2;
 }
 
 .product-form {
     width: auto;
+    background-color: #fff;
+    padding: 10px;
 
     &__header {
         display: flex;

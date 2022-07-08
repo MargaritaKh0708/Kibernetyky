@@ -1,6 +1,7 @@
 import React from 'react';
 import { ProductCardSvgSelector } from '../ProductCardSvgSelector';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useOnClickOutside } from 'usehooks-ts';
 
 interface ISelectListProps {
   hiddenList: boolean;
@@ -16,7 +17,8 @@ export const SelectList: React.FC<ISelectListProps> = ({
   const [mainValue, setMainValue] = useState<string>(
     `Розстрочка ${Math.round(price / 7)} грн - 7 міс`
   );
-
+  
+  const ref = useRef(null);
   const isRadioSelected = (value: string): boolean => mainValue === value;
 
   const Handler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,9 +26,15 @@ export const SelectList: React.FC<ISelectListProps> = ({
     setHiddenList(true);
   };
 
+  const handleClickOutside = () => {
+    setHiddenList(true);
+  }
+
+  useOnClickOutside(ref, handleClickOutside);
+
   return (
     <>
-      <div className={hiddenList ? 'select' : 'select active-select'}>
+      <div className={hiddenList ? 'select' : 'select active-select'} ref={ref}>
         <button
           className='select__btn'
           onClick={() => setHiddenList(hiddenList ? false : true)}
@@ -98,5 +106,4 @@ export const SelectList: React.FC<ISelectListProps> = ({
     </>
   );
 };
-
 //TODO - месяц - переменная, сумма - переменная, value - подтягивает динамично
