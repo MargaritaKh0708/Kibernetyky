@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
+import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/OpenCatalogContext';
 
 interface IHeader extends ICatalog {
   orderProductsCount: number;
@@ -19,11 +20,12 @@ export const Header: React.FC<IHeader> = ({
   orderProductsCount,
   favoriteCount,
 }) => {
-  const [burgerActive, setBurgerActive] = useState<boolean>(false);
-  // const [catalog, setCatalog] = useState<boolean>(false);
+  const [burgerActive, setBurgerActive] = useState<boolean>(false); // for BURGER open
 
   const [contactsModalActive, setContactsModalActive] =
-    useState<boolean>(false);
+    useState<boolean>(false); // for menu 'CONTACTS' open
+
+  const { open, setOpen } = useOpenCatalogContext(); // for open catalog from 3 pleces - header, burger, presentation-block
 
   return (
     <>
@@ -42,16 +44,12 @@ export const Header: React.FC<IHeader> = ({
           <div className='logo'>
             <HeaderSvgSelector id='logo' />
           </div>
-          <div className='catalog'>
-            {/* {' //onClick={() => setCatalog(true)} '} */}
+          <div className='catalog' onClick={() => setOpen(open ? false : true)}>
             <HeaderSvgSelector id='catalog' />
             <a href='#' className='catalog__href'>
               <span> Каталог </span>
             </a>
           </div>
-          {/* <ModalWindow active={catalog} setActive={setCatalog}>
-            <Catalog goods={goods} />
-          </ModalWindow> */}
           <div className='search-field'>
             <HeaderIconsSelector id='search' />
             <input

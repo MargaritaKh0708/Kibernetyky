@@ -3,16 +3,20 @@
     position: relative;
     margin-right: 16px;
     display: block;
-    // height: 465px;
+
+    @include media ('max', 'iPad') {
+        margin-right: 0;
+    }
 
     &_overflow {
         overflow: hidden;
     }
+}
 
-    @include media (max, 'iPad') {
+.goods-presentation-block__catalog.static-catalog-hide {
+    @include media ('max', 'iPad') {
         display: none;
     }
-
 }
 
 .goods-presentation-block__catalog-menu {
@@ -28,10 +32,15 @@
     width: 348px;
     z-index: 1;
 
+    @include media ('max', 'iPad') {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        width: 100%;
+    }
+
     &_height {
         height: 100%;
     }
-
 }
 
 .goods-presentation-block__menu__item {

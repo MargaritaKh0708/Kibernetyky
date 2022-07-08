@@ -10,11 +10,26 @@
 
 body {
     background-color: $c-background;
-    transition: 1s;
     @include f-Lato-Regular;
     overflow-x: hidden;
     min-height: 100vh;
     color: $c-text;
+    height: 100%;
+}
+
+#root {
+    min-height: 100vh;
+    height: 100%;
+}
+
+.App {
+    flex-direction: column;
+    min-height: 100vh;
+    display: flex;
+}
+
+.main-content {
+    flex: 1 0 auto
 }
 
 img {

@@ -1,5 +1,6 @@
 import { FooterImgSelector } from 'components/footer/FooterImgSelector';
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
+import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/OpenCatalogContext';
 
 interface IBurgerMenuList {
   contactsModalState: (value: boolean) => void;
@@ -8,7 +9,7 @@ interface IBurgerMenuList {
 export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
   contactsModalState,
 }) => {
-  // const [cityModalActive, setCityModalActive] = useState<boolean>(false);
+  const { setOpen } = useOpenCatalogContext();
 
   return (
     <div className='burger__list'>
@@ -18,7 +19,7 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
           <span>Вхід</span>
           <span>Реєстрація</span>
         </li>
-        <li className='burger__list-item'>
+        <li className='burger__list-item' onClick={() => setOpen(true)}>
           <HeaderSvgSelector id='catalog-b' className='burger-icon' />
           <span>Каталог товарів</span>
         </li>

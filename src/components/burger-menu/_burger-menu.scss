@@ -81,6 +81,9 @@
     width: 348px;
     height: 100%;
 
+    @include media (max, 'mobile-horizontal') {
+        width: 100vw;
+    }
 
     //! Scroll-bar styles
 
@@ -95,4 +98,7 @@
     &::-webkit-scrollbar-thumb {
         background-color: $c-brand-yellow;
     }
+
+
+
 }

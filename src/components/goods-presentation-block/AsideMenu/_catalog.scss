@@ -1,17 +1,68 @@
-.goods-presentation-block__catalog {
-    display: flex;
+.goods-presentation-block {
 
+    &__catalog {
+        display: flex;
+
+        @include media ('max', 'iPad') {
+            width: 100%;
+        }
+    }
+
+    &__catalog-hidden {
+        display: none;
+    }
+
+    &__catalog-title {
+        background-color: $c-main-gray;
+        justify-content: space-between;
+        color: $c-brand-yellow;
+        align-items: center;
+        padding: 13px 10px;
+        display: none;
+        height: 48px;
+
+
+        @include media (max, 'iPad') {
+            display: flex;
+        }
+    }
+
+    &__name {
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: 10px;
+        font-size: 14px;
+        display: flex;
+        gap: 10px;
+    }
+
+    &__catalog-content {
+        display: flex;
+    }
 }
 
+
 .catalog-modal {
+    flex-direction: column;
     margin: 100px auto 0;
     max-width: 1600px;
     background: none;
     transform: none;
+    overflow: auto;
     height: 690px;
     width: 100%;
 
-    // width: 70vw;
+    @media screen and (max-width: 1600px) {
+        justify-content: flex-start;
+        width: 90vw;
+    }
+
+    @include media (max, 'iPad') {
+        background-color: white;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+    }
 }
 
 .catalog-menu {
@@ -26,23 +77,31 @@
         padding: 32px 24px;
         border-radius: 5px;
         width: fit-content;
-        max-width: 100%;
         height: auto;
+        width: 100%;
+
+        @include media ('max', 'iPad') {
+            display: none;
+        }
     }
 
     &__detailed-wrapper {
         justify-content: space-between;
         display: flex;
         height: 100%;
+        gap: 50px;
+
+        @include media ('max', 'iPad') {
+            gap: 10px;
+        }
     }
 
     &__detailed-item {
         border-right: 1px solid $c-extra-gray;
         justify-content: flex-start;
         flex-direction: column;
-        max-width: 300px;
         display: flex;
-        width: 100%;
+
 
 
         &:last-child {
@@ -50,8 +109,35 @@
         }
     }
 
+    &__detailed-come-back-btn {
+        color: $c-light-gray;
+        font-size: 12px;
+        display: none;
+        margin: 17px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        @include media ('max', 'iPad') {
+            align-items: center;
+            display: flex;
+            gap: 10px;
+        }
+    }
+
+    &__detailed-arrow {
+        border-color: $c-light-gray;
+        transform: rotate(-135deg);
+        height: 8px;
+        width: 8px;
+    }
 }
 
 .static-catalog-opacity {
     display: none;
+}
+
+.catalog__arrow {
+    border-top: 1px solid $c-brand-yellow;
 }

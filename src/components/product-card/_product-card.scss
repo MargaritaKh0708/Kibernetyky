@@ -49,8 +49,10 @@
 .product-card-list {
     justify-content: space-between;
     position: relative;
+    pointer-events: all;
     overflow: hidden;
     margin-top: 10px;
+    transition: 1s;
     flex-wrap: wrap;
     display: flex;
     height: 570px;
@@ -63,7 +65,8 @@
     }
 
     &__opacity-block:hover {
-        background: none;
+        opacity: 0;
+        height: 0;
     }
 
 

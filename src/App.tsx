@@ -3,16 +3,11 @@ import { Header } from 'components/header/Header';
 import { AsideMenuSvgSelector } from 'components/goods-presentation-block/AsideMenu/AsideMenuSvgSelector';
 import { nanoid } from 'nanoid';
 import { PresentationBlockSvgSelector } from 'components/goods-presentation-block/presentation-swiper/PresentationBlockSvgSelector';
-import { BrandsLine } from 'components/popular-brands-line/BrandsLine';
-import { TopCategoriesBlock } from 'components/top-categories/TopCategoriesBlock';
-import { VideoReviewBlock } from 'components/video-review/VideoReviewBlock';
-import { BenefitsLine } from 'components/benefits-line/BenefitsLine';
-import { SubscriptionBlock } from 'components/subscription-block/SubscriptionBlock';
-import { ShopHistory } from 'components/shop-history/ShopHistory';
-import { GoodsPresentationBlock } from 'components/goods-presentation-block/GoodsPresentationBlock';
-import { ProductCardList } from 'components/product-card/ProductCardList';
 import { useState } from 'react';
 import { Footer } from 'components/footer/Footer';
+import { OpenCatalogContext } from 'components/goods-presentation-block/AsideMenu/OpenCatalogContext';
+import { Route, Routes } from 'react-router';
+import { CartPage } from 'components/Pages/CartPage';
 
 import pic from 'assets/main-page/presentation-block-swiper/green/main-picture.png';
 import phones from 'assets/main-page/phones.png';
@@ -26,6 +21,8 @@ import apple from 'assets/icons/brands-icons/apple.png';
 import haier from 'assets/icons/brands-icons/haier.png';
 import lenovo from 'assets/icons/brands-icons/lenovo.png';
 import xiaomi from 'assets/icons/brands-icons/xiaomi.png'; // забрать все картинки в селектор !
+
+import { MainPage } from 'components/Pages/MainPage';
 
 const data = [
   {
@@ -993,38 +990,59 @@ const data1 = [
   },
 ];
 
+// function CartPage() {
+//   const [orderProductsCount, setOrderProductsCount] = useState(0);
+//   const [favoriteCount, setFavoriteCount] = useState(0);
+
+//   return (
+//     <div className='cart-page-content main-content'>
+//       <Cart
+//         setOrderCountHandler={setOrderProductsCount}
+//         setFavoriteCountHandler={setFavoriteCount}
+//         data={data1}
+//       />
+//     </div>
+//   );
+// }
+
 function App() {
   const [orderProductsCount, setOrderProductsCount] = useState(0);
+  const [open, setOpen] = useState<boolean>(false); // DETELE
   const [favoriteCount, setFavoriteCount] = useState(0);
 
   return (
     <div className='App'>
-      <Header
-        goods={data}
-        orderProductsCount={orderProductsCount}
-        favoriteCount={favoriteCount}
-      />
-      <GoodsPresentationBlock goods={data} />
-      {/* <PresentationSwiper /> */}
-      <BrandsLine data={data1} />
-      <ProductCardList
-        type='leaders'
-        data={data1}
-        setOrderCountHandler={setOrderProductsCount}
-        setFavoriteCountHandler={setFavoriteCount}
-      />
-      <ProductCardList
-        type='novelties'
-        data={data1}
-        setOrderCountHandler={setOrderProductsCount}
-        setFavoriteCountHandler={setFavoriteCount}
-      />
-      <TopCategoriesBlock data={data1} />
-      <VideoReviewBlock />
-      <BenefitsLine />
-      <SubscriptionBlock />
-      <ShopHistory />
-      <Footer />
+      <OpenCatalogContext.Provider value={{ open, setOpen }}>
+        <Header
+          goods={data}
+          orderProductsCount={orderProductsCount}
+          favoriteCount={favoriteCount}
+        />
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <MainPage
+                setFavoriteCount={setFavoriteCount}
+                setOrderProductsCount={setOrderProductsCount}
+                oldgoods={data}
+                goods={data1}
+              />
+            }
+          ></Route>
+          <Route
+            path='/cart'
+            element={
+              <CartPage
+                setOrderProductsCount={setOrderProductsCount}
+                setFavoriteCount={setFavoriteCount}
+                goods={data1}
+              />
+            }
+          ></Route>
+        </Routes>
+        <Footer />
+      </OpenCatalogContext.Provider>
     </div>
   );
 }

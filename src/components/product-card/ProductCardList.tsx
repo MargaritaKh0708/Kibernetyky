@@ -32,11 +32,13 @@ export interface IProductCardListItem {
 }
 
 export interface IProductCardList {
-  data: IProductCardListItem[];
-  handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type: string;
   setOrderCountHandler?: (count: number) => void;
   setFavoriteCountHandler?: (count: number) => void;
+  handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  data: IProductCardListItem[];
+  extraStyles?: string;
+  rowQuantity: number;
+  type: string;
 }
 
 export enum WindowVariant {
@@ -50,12 +52,14 @@ export enum WindowVariant {
 }
 
 export const ProductCardList: React.FC<IProductCardList> = ({
+  setFavoriteCountHandler,
+  setOrderCountHandler,
+  rowQuantity,
+  extraStyles,
   data,
   type,
-  setOrderCountHandler,
-  setFavoriteCountHandler,
 }) => {
-  const [n, setN] = useState<number>(2); // state on numbers of row
+  const [n, setN] = useState<number>(rowQuantity); // state on numbers of row
   const [cardQuantity, setCardQuantity] = useState<number>(6); // state on numbers of column
   const [categoryId, setCategoryId] = useState<number>(0); // state on category of good
 
@@ -132,7 +136,9 @@ export const ProductCardList: React.FC<IProductCardList> = ({
 
   return (
     <>
-      <section className='product-list product-list-leaders container'>
+      <section
+        className={`product-list product-list-leaders container ${extraStyles}`}
+      >
         <h2 className='product-list__title title'>{title}</h2>
         <CardsFilterLine data={data} handler={categoryChange} />
         <div
@@ -140,6 +146,8 @@ export const ProductCardList: React.FC<IProductCardList> = ({
         >
           {renderItems.map((item) => (
             <ProductCard
+              setFavoriteCountHandler={setFavoriteCountHandler}
+              setOrderCountHandler={setOrderCountHandler}
               available={item.available}
               oldprice={item.oldprice}
               goodModel={item.model}
@@ -149,8 +157,6 @@ export const ProductCardList: React.FC<IProductCardList> = ({
               price={item.price}
               products={data}
               key={item.id}
-              setOrderCountHandler={setOrderCountHandler}
-              setFavoriteCountHandler={setFavoriteCountHandler}
             />
           ))}
           <div className='product-card-list__opacity-block opacity' />
@@ -158,7 +164,6 @@ export const ProductCardList: React.FC<IProductCardList> = ({
         <button onClick={() => setN(n + 2)} className='product-card-list__btn'>
           <span>Дивитись ще</span>
         </button>
-        {/* <AddToCart products={data}/> */}
       </section>
     </>
   );

@@ -9,13 +9,6 @@ import {
 } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 
-// interface IProductCardProps {
-//   available: boolean;
-//   oldprice: number;
-//   price: number;
-//   id: string;
-// }
-
 interface IProductCardProps {
   products: IProductCardListItem[]; //array of products
   available: boolean;
@@ -30,6 +23,8 @@ interface IProductCardProps {
 }
 
 export const ProductCard: React.FC<IProductCardProps> = ({
+  setFavoriteCountHandler,
+  setOrderCountHandler,
   goodModel,
   available,
   productId,
@@ -38,8 +33,6 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   oldprice,
   leaders,
   price,
-  setOrderCountHandler,
-  setFavoriteCountHandler,
 }) => {
   const [rating, setRating] = useState<number>(0); // Star rating value
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
@@ -337,13 +330,13 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 {deal ? 'Видалити' : 'У кошик'}
               </span>
             </button>
-            <AddToCart
+            {/* <AddToCart
               products={products}
               productId={productId}
               isActive={viewCart}
               closeHandler={() => setViewCart(viewCart ? false : true)}
               setOrderCountHandler={setOrderCountHandler}
-            />
+            /> */}
           </div>
           <div className='product-card__part hide-part'>
             <ul className='product-card__hide-list'>

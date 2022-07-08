@@ -75,33 +75,37 @@ export const AddToCart: React.FC<AddToCartType> = ({
   );
 
   const ProductJsx = (
-    <div className='container'>
-      <div className='row'>
-        <div className='img-block'>
+    <div className='add-to-cart-modal__head-part'>
+      <div className='add-to-cart-modal__row'>
+        <div className='add-to-cart-modal__img-block'>
           <img src={product.category.mainImage} alt='img'></img>
         </div>
-        <div className='buy-block'>
-          <p className='buy-block__text'>
+        <div className='add-to-cart-modal__buy-block'>
+          <p className='add-to-cart-modal__text'>
             {product.name}
-            <span className='buy-block__text--bold'> додано до кошика</span>
+            <span className='add-to-cart-modal__text_bold'>
+              &nbsp; додано до кошика
+            </span>
           </p>
-          <p className='buy-block__text'>
-            Товарів у кошику:
-            <span className='buy-block__text--bold'>{orderProductsCount}</span>
+          <p className='add-to-cart-modal__text'>
+            Товарів у кошику: &nbsp;
+            <span className='add-to-cart-modal__text_bold'>
+              {orderProductsCount}
+            </span>
           </p>
-          <div className='buy-block__footer'>
-            <div className='buy-block__link'>
+          <div className='add-to-cart-modal__footer'>
+            <div className='add-to-cart-modal__link'>
               <a href='#'>Перейти до кошику</a>
             </div>
-            <div className='buy-block__buttons'>
+            <div className='add-to-cart-modal__buttons'>
               <button
-                className='buy-block__credit-btn'
+                className='add-to-cart-modal__credit-btn'
                 onClick={() => addProductToOrder(true)}
               >
                 Купити в кредит
               </button>
               <button
-                className='buy-block__buy-btn'
+                className='add-to-cart-modal__buy-btn'
                 onClick={() => addProductToOrder(false)}
               >
                 Купити
@@ -115,15 +119,21 @@ export const AddToCart: React.FC<AddToCartType> = ({
 
   const CoupledProductsJsx = (
     <ProductCardList
-      type='coupled'
-      data={coupledProducts}
-      setOrderCountHandler={setOrderCountHandler}
+      rowQuantity={1}
+      extraStyles='add-to-cart__list'
       setFavoriteCountHandler={setFavoriteCountHanler}
+      setOrderCountHandler={setOrderCountHandler}
+      data={coupledProducts}
+      type='coupled'
     />
   );
 
   return (
-    <ModalWindow active={isActive} setActive={closeHandler}>
+    <ModalWindow
+      className='add-to-cart-modal'
+      setActive={closeHandler}
+      active={isActive}
+    >
       <>{[ProductJsx, CoupledProductsJsx]}</>
     </ModalWindow>
   );

@@ -1,24 +1,42 @@
 import { ICatalogItem } from './AsideMenu';
+import { useOpenCatalogContext } from './OpenCatalogContext';
 
 interface ICatalogView {
   showDetailedInformation: (value: string) => void;
-  setOpenCatalog: () => void;
+  setHideCategoryList: (value: boolean) => void;
+  setDisplayWidth: (value: boolean) => void;
+  readItemName: (value: string) => void;
+  hideCategoryList: boolean;
+  displayWidth?: boolean;
   data: ICatalogItem[];
   changeSize?: string;
+  changeView?: string;
 }
 
 export const CatalogView: React.FC<ICatalogView> = ({
   showDetailedInformation,
-  setOpenCatalog,
+  setHideCategoryList,
+  hideCategoryList,
+  setDisplayWidth,
+  readItemName,
+  displayWidth,
   changeSize,
+  changeView,
   data,
 }) => {
-  // const handler = (e:React.MouseEvent<HTMLSpanElement>) => {
-
-  // }
+  const { setOpen } = useOpenCatalogContext(); // for open CATALOG
 
   const catalogView = (
-    <div className='goods-presentation-block__catalog '>
+    <div
+      onClick={() => setOpen(true)}
+      className={
+        displayWidth
+          ? `goods-presentation-block__catalog ${changeView || ''}`
+          : hideCategoryList
+          ? 'goods-presentation-block__catalog-hidden'
+          : `goods-presentation-block__catalog ${changeView || ''}`
+      }
+    >
       <div
         className={`goods-presentation-block__catalog-menu ${
           changeSize || ''
@@ -29,7 +47,14 @@ export const CatalogView: React.FC<ICatalogView> = ({
             <div
               className='goods-presentation-block__menu__item'
               key={item.id}
-              onMouseOver={() => showDetailedInformation(item.id)}
+              onClick={() => {
+                setDisplayWidth(false); // show 2d part of window
+                showDetailedInformation(item.id); //read id for render item information
+                readItemName(item.goodType); // read its name for come-back btn
+                displayWidth
+                  ? setHideCategoryList(true)
+                  : setHideCategoryList(false);
+              }}
             >
               <div className='goods-presentation-block__menu-category-name'>
                 {item.icon}
@@ -39,12 +64,7 @@ export const CatalogView: React.FC<ICatalogView> = ({
             </div>
           ))}
         </div>
-        <span
-          onClick={() => {
-            setOpenCatalog();
-          }}
-          className='arrow catalog-menu__arrow-down'
-        ></span>
+        <span className='arrow catalog-menu__arrow-down'></span>
       </div>
     </div>
   );
