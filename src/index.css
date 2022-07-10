@@ -2094,7 +2094,7 @@ ul {
   justify-content: end;
   margin: 16px 0;
 }
-.product-form__button {
+.product-form__button, .cart-block__btn {
   font-size: 16px;
   line-height: 19px;
   padding: 12px 70px;
@@ -2106,6 +2106,68 @@ ul {
 
 .grivna-sign {
   padding: 0 4px;
+}
+
+.cart-block {
+  padding: 15px 0;
+}
+.cart-block__row {
+  display: flex;
+  margin-bottom: 15px;
+}
+.cart-block-input {
+  margin-right: 15px;
+}
+.cart-block-input__radio-label, .cart-block-input__checkbox-label, .cart-block-input__radio-block, .cart-block-input__radio-block--push {
+  font-size: 14px;
+  line-height: 17px;
+  margin-right: 15px;
+}
+.cart-block-input__radio-label > input, .cart-block-input__checkbox-label > input, .cart-block-input__radio-block > input, .cart-block-input__radio-block--push > input {
+  margin-right: 5px;
+}
+.cart-block-input__radio-block, .cart-block-input__radio-block--push {
+  padding-bottom: 10px;
+  display: block;
+  margin-right: 0;
+}
+.cart-block-input__radio-block > input, .cart-block-input__radio-block--push > input {
+  display: inline-block;
+}
+.cart-block-input__radio-block--push {
+  padding: 10px;
+}
+.cart-block-input__radio-subtitle {
+  font-size: 14px;
+  line-height: 17px;
+  color: #9E9E9E;
+  padding: 10px 0 10px 15px;
+}
+.cart-block-input__checkbox-label {
+  margin-right: 10px;
+}
+.cart-block-input__name {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  color: #9E9E9E;
+  padding-bottom: 3px;
+}
+.cart-block-input__field {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 10px 10px 10px 16px;
+  border: 1px solid #F2F2F2;
+  border-radius: 5px;
+  min-width: 300px;
+}
+.cart-block-input__required {
+  color: red;
+}
+.cart-block__btn {
+  background-color: #F9E505;
+  color: #2B2A29;
 }
 
 /* Style the buttons that are used to open and close the accordion panel */

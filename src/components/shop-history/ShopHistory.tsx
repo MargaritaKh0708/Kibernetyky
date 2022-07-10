@@ -16,7 +16,7 @@ export const ShopHistory: React.FC = () => {
       }
     >
       <h2 className='shop-history-block__title title'>
-        Інтернет мазагин електроніки та цифрової техніки "КІБЕРНЕТИКИ"
+        Інтернет магазин електроніки та цифрової техніки "КІБЕРНЕТИКИ"
       </h2>
       <span className='shop-history-block__description'>
         ТМ "Кібернетики" – торгова марка, заснована в 2009 році, що динамічно

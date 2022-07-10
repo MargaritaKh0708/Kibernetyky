@@ -18,7 +18,7 @@ export const AccordionItem: React.FC<IAccordionItem> = ({ children, title, btnSt
                 <AccordionSvgSelector id= {active ? "arrow-up": "arrow-down"} className="accordion__sym" />
             </button>
             <div className={active ? "accordion__panel accordion__panel--active" : "accordion__panel"}>
-                <p>{children}</p>
+                <div>{children}</div>
             </div>
         </>
         
