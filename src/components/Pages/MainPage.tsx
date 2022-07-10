@@ -7,35 +7,64 @@ import { SubscriptionBlock } from 'components/subscription-block/SubscriptionBlo
 import { ShopHistory } from 'components/shop-history/ShopHistory';
 import { ICatalogItem } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
+import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
 
 export interface IMainPage {
-  setOrderProductsCount: (value: number) => void;
-  setFavoriteCount: (value: number) => void;
+  setOrderCountHandler: (value: number) => void;
+  setFavoriteCountHandler: (value: number) => void;
+  setCurrentProductIdHandler: (value: number) => void;
+  setAddToCartActiveHandler: (value: boolean) => void;
+  setCompareCountHandler: (value: number) => void;
+  viewHandler: (value: boolean) => void;
   goods: IProductCardListItem[];
   oldgoods: ICatalogItem[];
+  isActive: boolean;
+  productId: number;
 }
 
 export const MainPage: React.FC<IMainPage> = ({
-  setOrderProductsCount,
-  setFavoriteCount,
+  setCurrentProductIdHandler,
+  setAddToCartActiveHandler,
+  setFavoriteCountHandler,
+  setCompareCountHandler,
+  setOrderCountHandler,
+  viewHandler,
+  productId,
+  isActive,
   oldgoods,
   goods,
 }) => {
   return (
     <div className='main-page-content main-content'>
+      <AddToCart
+        setCurrentProductIdHandler={setCurrentProductIdHandler}
+        setOrderCountHandler={setOrderCountHandler}
+        setFavoriteCountHandler={setFavoriteCountHandler}
+        setCompareCountHandler={setCompareCountHandler}
+        viewHandler={viewHandler}
+        productId={productId}
+        isActive={isActive}
+        products={goods}
+      />
       <GoodsPresentationBlock goods={oldgoods} />
       <BrandsLine data={goods} />
       <ProductCardList
-        setOrderCountHandler={setOrderProductsCount}
-        setFavoriteCountHandler={setFavoriteCount}
-        rowQuantity={2}
+        setCurrentProductIdHandler={setCurrentProductIdHandler}
+        setAddToCartActiveHandler={setAddToCartActiveHandler}
+        setOrderCountHandler={setOrderCountHandler}
+        setFavoriteCountHandler={setFavoriteCountHandler}
+        setCompareCountHandler={setCompareCountHandler}
+        addToCartActive={isActive}
         type='leaders'
         data={goods}
       />
       <ProductCardList
-        setFavoriteCountHandler={setFavoriteCount}
-        setOrderCountHandler={setOrderProductsCount}
-        rowQuantity={2}
+        setCurrentProductIdHandler={setCurrentProductIdHandler}
+        setAddToCartActiveHandler={setAddToCartActiveHandler}
+        setOrderCountHandler={setOrderCountHandler}
+        setFavoriteCountHandler={setFavoriteCountHandler}
+        setCompareCountHandler={setCompareCountHandler}
+        addToCartActive={isActive}
         type='novelties'
         data={goods}
       />

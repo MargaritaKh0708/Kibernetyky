@@ -7,6 +7,7 @@ export interface IStarRatingProps {
   filledIcon?: string;
   isHalf?: boolean;
   color?: string;
+  value?: number;
   count: number;
   size?: number;
 }
@@ -15,6 +16,7 @@ export const StarRating: React.FC<IStarRatingProps> = ({
   activeColor,
   filledIcon,
   onChange,
+  value,
   isHalf,
   count,
   color,
@@ -27,6 +29,7 @@ export const StarRating: React.FC<IStarRatingProps> = ({
       onChange={onChange}
       isHalf={isHalf}
       color={color}
+      value={value}
       count={count}
       size={size}
     />

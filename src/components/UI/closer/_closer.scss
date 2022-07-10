@@ -1,6 +1,9 @@
 .closer {
-    position: relative;
+    position: absolute;
     padding-right: 8px;
+    z-index: 31;
+    right: 17px;
+    top: 17px;
 
     &__part {
         transform: rotate(45deg);

@@ -8,15 +8,21 @@ import { CardsFilterLine } from './CardsFilterLine';
 //? leader - is good is a leader of sales
 
 export interface IProductCardListItem {
-  name: string;
-  model: string;
+  imageCollection: string[];
   available: boolean;
   novelty: boolean;
+  model: string;
+  name: string;
+  specifications: {
+    description: string;
+    icon: string | JSX.Element;
+    value: string;
+  }[];
   category: {
     mainImage: string;
     coupled: number[];
-    top: boolean;
     name: string;
+    top: boolean;
     id: number;
   };
   oldprice: number;
@@ -24,20 +30,22 @@ export interface IProductCardListItem {
   price: number;
   id: number;
   brand: {
+    country: string;
     name: string;
     logo: string;
-    country: string;
     id: number;
   };
 }
 
 export interface IProductCardList {
-  setOrderCountHandler?: (count: number) => void;
-  setFavoriteCountHandler?: (count: number) => void;
   handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setCurrentProductIdHandler: (productId: number) => void;
+  setAddToCartActiveHandler: (state: boolean) => void;
+  setFavoriteCountHandler?: (count: number) => void;
+  setCompareCountHandler: (count: number) => void;
+  setOrderCountHandler?: (count: number) => void;
   data: IProductCardListItem[];
-  extraStyles?: string;
-  rowQuantity: number;
+  addToCartActive: boolean;
   type: string;
 }
 
@@ -52,18 +60,26 @@ export enum WindowVariant {
 }
 
 export const ProductCardList: React.FC<IProductCardList> = ({
+  setCurrentProductIdHandler,
+  setAddToCartActiveHandler,
   setFavoriteCountHandler,
+  setCompareCountHandler,
   setOrderCountHandler,
-  rowQuantity,
-  extraStyles,
+  addToCartActive,
   data,
   type,
 }) => {
-  const [n, setN] = useState<number>(rowQuantity); // state on numbers of row
-  const [cardQuantity, setCardQuantity] = useState<number>(6); // state on numbers of column
+  const [cardQuantity, setCardQuantity] = useState<number>(0); // state on numbers of column
   const [categoryId, setCategoryId] = useState<number>(0); // state on category of good
+  const [n, setN] = useState<number>(2); // state on numbers of row
 
   //! ADAPTIVE
+
+  // useEffect(() => {
+  //   console.log(n);
+  //   console.log(window.innerWidth);
+  //   console.log(cardQuantity);
+  // }, []);
 
   useEffect(() => {
     const handleResize: () => void = () => {
@@ -89,6 +105,8 @@ export const ProductCardList: React.FC<IProductCardList> = ({
       )
         setCardQuantity(2);
     };
+    handleResize();
+    console.log(cardQuantity);
     window.addEventListener('resize', handleResize);
   });
 
@@ -136,9 +154,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
 
   return (
     <>
-      <section
-        className={`product-list product-list-leaders container ${extraStyles}`}
-      >
+      <section className='product-list product-list-leaders container'>
         <h2 className='product-list__title title'>{title}</h2>
         <CardsFilterLine data={data} handler={categoryChange} />
         <div
@@ -146,8 +162,6 @@ export const ProductCardList: React.FC<IProductCardList> = ({
         >
           {renderItems.map((item) => (
             <ProductCard
-              setFavoriteCountHandler={setFavoriteCountHandler}
-              setOrderCountHandler={setOrderCountHandler}
               available={item.available}
               oldprice={item.oldprice}
               goodModel={item.model}
@@ -157,11 +171,24 @@ export const ProductCardList: React.FC<IProductCardList> = ({
               price={item.price}
               products={data}
               key={item.id}
+              setOrderCountHandler={setOrderCountHandler}
+              setFavoriteCountHandler={setFavoriteCountHandler}
+              setCompareCountHandler={setCompareCountHandler}
+              setAddToCartActiveHandler={setAddToCartActiveHandler}
+              setCurrentProductIdHandler={setCurrentProductIdHandler}
+              addToCartActive={addToCartActive}
             />
           ))}
           <div className='product-card-list__opacity-block opacity' />
         </div>
-        <button onClick={() => setN(n + 2)} className='product-card-list__btn'>
+        <button
+          onClick={() => {
+            setN(n + 2);
+            console.log(n);
+            console.log(cardQuantity);
+          }}
+          className='product-card-list__btn'
+        >
           <span>Дивитись ще</span>
         </button>
       </section>

@@ -10,16 +10,19 @@ import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/Ope
 import { CatalogModal } from 'components/goods-presentation-block/AsideMenu/CatalogModal';
 import { SearchFieldForm } from './search-field/SearchFieldForm';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
+import { Link } from 'react-router-dom';
 
 interface IHeader extends ICatalog {
+  maindata: IProductCardListItem[];
   orderProductsCount: number;
   favoriteCount: number;
-  maindata: IProductCardListItem[];
+  compareCount: number;
 }
 
 export const Header: React.FC<IHeader> = ({
   orderProductsCount,
   favoriteCount,
+  compareCount,
   maindata,
   goods,
 }) => {
@@ -35,19 +38,23 @@ export const Header: React.FC<IHeader> = ({
     <>
       <header className='header'>
         <div className={classNames('container', 'header__wrapper')}>
-          <div className='burger' onClick={() => setBurgerActive(true)}>
-            <span className='burger__item'></span>
-            <span className='burger__item'></span>
-            <span className='burger__item'></span>
-          </div>
-          <BurgerMenu
-            burgerState={burgerActive}
-            setBurgerState={setBurgerActive}
-            setContactsModalState={setContactsModalActive}
-          />
-          <div className='logo'>
-            <HeaderSvgSelector id='logo' />
-          </div>
+          <button type='button' className='header__btn header__btn--border'>
+            <div className='burger' onClick={() => setBurgerActive(true)}>
+              <span className='burger__item'></span>
+              <span className='burger__item'></span>
+              <span className='burger__item'></span>
+            </div>
+            <BurgerMenu
+              burgerState={burgerActive}
+              setBurgerState={setBurgerActive}
+              setContactsModalState={setContactsModalActive}
+            />
+          </button>
+          <Link to='/'>
+            <div className='logo'>
+              <HeaderSvgSelector id='logo' />
+            </div>
+          </Link>
           <div className='catalog' onClick={() => setOpen(open ? false : true)}>
             <HeaderSvgSelector id='catalog' />
             <a href='#' className='catalog__href'>
@@ -67,24 +74,39 @@ export const Header: React.FC<IHeader> = ({
             </a>
           </div>
           <nav className='menu-block'>
-            <HeaderSvgSelector id='personal' />
-            <HeaderSvgSelector id='likes'>
-              <span>{favoriteCount}</span>
-            </HeaderSvgSelector>
-            <HeaderSvgSelector id='compare'>
-              <span>0</span>
-            </HeaderSvgSelector>
-            <HeaderSvgSelector id='basket'>
-              <span>({orderProductsCount})</span>
-            </HeaderSvgSelector>
-            <div
-              className='menu-block__contacts'
-              onClick={() =>
-                setContactsModalActive(contactsModalActive ? false : true)
-              }
+            <button type='button' className='header__btn header__btn--personal'>
+              <HeaderSvgSelector id='personal' />
+            </button>
+            <button type='button' className='header__btn header__btn--likes'>
+              <HeaderSvgSelector id='likes'>
+                <span>{favoriteCount}</span>
+              </HeaderSvgSelector>
+            </button>
+            <button type='button' className='header__btn header__btn--compare'>
+              <HeaderSvgSelector id='compare'>
+                <span>{compareCount}</span>
+              </HeaderSvgSelector>
+            </button>
+            <Link to='/cart'>
+              <button type='button' className='header__btn'>
+                <HeaderSvgSelector id='basket'>
+                  <span>({orderProductsCount})</span>
+                </HeaderSvgSelector>
+              </button>
+            </Link>
+            <button
+              type='button'
+              className='header__btn header__btn--border header__btn--contacts'
             >
-              <HeaderSvgSelector id='contacts' />
-            </div>
+              <div
+                className='menu-block__contacts'
+                onClick={() =>
+                  setContactsModalActive(contactsModalActive ? false : true)
+                }
+              >
+                <HeaderSvgSelector id='contacts' />
+              </div>
+            </button>
           </nav>
         </div>
         <ModalWindow

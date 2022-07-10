@@ -3,12 +3,14 @@ import { IProductCardListItem } from 'components/product-card/ProductCardList';
 
 export interface ICartPage {
   setOrderProductsCount: (value: number) => void;
+  setCompareCountHandler: (value: number) => void;
   setFavoriteCount: (value: number) => void;
   goods: IProductCardListItem[];
 }
 
 export const CartPage: React.FC<ICartPage> = ({
   setOrderProductsCount,
+  setCompareCountHandler,
   setFavoriteCount,
   goods,
 }) => {
@@ -17,6 +19,7 @@ export const CartPage: React.FC<ICartPage> = ({
       <Cart
         setOrderCountHandler={setOrderProductsCount}
         setFavoriteCountHandler={setFavoriteCount}
+        setCompareCountHandler={setCompareCountHandler}
         data={goods}
       />
     </div>

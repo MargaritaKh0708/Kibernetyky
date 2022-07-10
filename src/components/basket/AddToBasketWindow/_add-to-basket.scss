@@ -1,12 +1,17 @@
 // Modal w styles
 
 .add-to-cart-modal {
+    background: #f8f8f8;
     margin: 40px auto 0;
-    height: fit-content;
     border-radius: 5px;
+    height: fit-content;
     display: block;
     padding: 16px;
     width: 990px;
+
+    &--display {
+        display: none;
+    }
 
     &__head-part {
         border-bottom: 1px solid $c-extra-gray;
@@ -98,4 +103,8 @@
 .add-to-cart__list {
     margin-top: 24px;
     padding: 0;
+}
+
+.add-to-cart-arrow {
+    border-top: 1px solid $c-main-gray;
 }

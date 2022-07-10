@@ -1,8 +1,7 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     &__button {
-        background-color: #eee;
-        color: #444;
+        background-color: #fff;
         cursor: pointer;
         padding: 18px;
         width: 100%;
@@ -14,7 +13,7 @@
         /* Add a background color to the button if it is clicked on  */
         &--active,
         &:hover {
-            background-color: #ccc;
+            background-color: #fff;
         }
     }
 
@@ -22,15 +21,42 @@
         display: block;
     }
 
+    &__sym {
+        position: relative;
+        transform: scale(0.7);
+        margin-left: 5px;
+        top: 5px;
+        display: inline-block;
+    }
+
+    &__symbol {
+        position: relative;
+    }
+
+    &__symbol::after {
+        position: absolute;
+        content: '\2304';
+        /* Unicode character for "arrow down" sign */
+        font-size: 14px;
+        color: #777;
+        top: 50%;
+        /* position the top  edge of the element at the middle of the parent */
+        left: 50%;
+        /* position the left edge of the element at the middle of the parent */
+
+        transform: translate(-50%, -50%);
+    }
+
     /* Style the accordion panel. Note: hidden by default */
     &__panel {
         padding: 0 18px;
         background-color: white;
-        display: none;
+        max-height: 0;
         overflow: hidden;
+        transition: all 0.2s ease-out;
 
         &--active {
-            display: block;
+            max-height: fit-content;
         }
     }
 }

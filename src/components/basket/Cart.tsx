@@ -5,24 +5,26 @@ import { Accordion } from '../UI/accordion/Accordion';
 import { AccordionItem } from '../UI/accordion/AccordionItem';
 
 interface ICart {
-  setFavoriteCountHandler: (count: number) => void;
-  setOrderCountHandler: (count: number) => void;
   data: IProductCardListItem[];
+  setOrderCountHandler: (count: number) => void;
+  setFavoriteCountHandler: (count: number) => void;
+  setCompareCountHandler: (count: number) => void;
 }
 
 interface IProductData {
-  oldPrice: number;
+  id: number;
+  name: string;
   count: number;
   price: number;
+  oldPrice: number;
   photo: string;
-  name: string;
-  id: number;
 }
 
 export const Cart: React.FC<ICart> = ({
-  setFavoriteCountHandler,
-  setOrderCountHandler,
   data,
+  setOrderCountHandler,
+  setFavoriteCountHandler,
+  setCompareCountHandler,
 }) => {
   const [orderProducts, setOrderProducts] = useState<IOrder[]>([]);
 
@@ -36,7 +38,11 @@ export const Cart: React.FC<ICart> = ({
     // get favorites from localStorage
     const favorites = JSON.parse(localStorage.getItem('favorite') || '[]');
     setFavoriteProductsCount(favorites);
-  }, []); // empty array need for only 1 iterration of use effect after component did mount
+
+    // get compare data from localStorage
+    const compareIdList = JSON.parse(localStorage.getItem('compare') || '[]');
+    setCompareProductsCount(compareIdList);
+  }, []);
 
   // set count of products in cart
   const setOrderProductsCount: (orderProducts: IOrder[]) => void = (
@@ -57,6 +63,16 @@ export const Cart: React.FC<ICart> = ({
     // calc count of favorites products
     if (setFavoriteCountHandler) {
       setFavoriteCountHandler(favorites.length);
+    }
+  };
+
+  // set count of favorite products
+  const setCompareProductsCount: (compareIdList: number[]) => void = (
+    compareIdList
+  ) => {
+    // set count of favorites products
+    if (setCompareCountHandler) {
+      setCompareCountHandler(compareIdList.length);
     }
   };
 
@@ -123,9 +139,7 @@ export const Cart: React.FC<ICart> = ({
     <div className='product-form'>
       <div className='product-form__header'>
         <p className='product-form__title'>Ваше замовлення</p>
-        <a href='' className='product-form__link'>
-          Змінити
-        </a>
+        <a className='product-form__link'>Змінити</a>
       </div>
       <div className='product-form__products'>{orderProductsDataRendered}</div>
       <div className='product-form__bonuses'>
@@ -182,9 +196,18 @@ export const Cart: React.FC<ICart> = ({
       <div className='cart-form'>
         <div className='info-form'>
           <Accordion>
-            <AccordionItem title='Ваші контактні дані'>Contacts</AccordionItem>
-            <AccordionItem title='Доставка'>Delivery</AccordionItem>
-            <AccordionItem title='Оплата'>Payment</AccordionItem>
+            <AccordionItem
+              title='1. Ваші контактні дані'
+              btnStyle='product-form__title'
+            >
+              Contacts
+            </AccordionItem>
+            <AccordionItem title='2. Доставка' btnStyle='product-form__title'>
+              Delivery
+            </AccordionItem>
+            <AccordionItem title='3. Оплата' btnStyle='product-form__title'>
+              Payment
+            </AccordionItem>
           </Accordion>
         </div>
         <>{productFormJsx}</>

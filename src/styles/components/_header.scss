@@ -4,12 +4,35 @@
 .header {
     background-color: $c-main-gray;
 
+
+    &__btn {
+        border: none;
+        border-right: 1px solid $c-brand-yellow;
+        width: fit-content;
+        background: none;
+        height: auto;
+
+        &--border {
+            border: none;
+        }
+
+        &--personal,
+        &--likes,
+        &--compare,
+        &--contacts {
+            @include media('max', 'iPad') {
+                display: none;
+            }
+        }
+    }
+
+
+
     &__icon-personal,
     &__icon-likes,
     &__icon-compare,
     &__icon-contacts,
     &__icon-basket {
-        border-right: 1px solid $c-brand-yellow;
         color: $c-brand-yellow;
         align-items: center;
         padding: 0 16px;
@@ -19,6 +42,7 @@
     }
 
     &__wrapper {
+        justify-content: space-between;
         align-items: center;
         display: flex;
         height: 84px;
@@ -53,14 +77,7 @@
         left: 18px;
     }
 
-    &__icon-personal,
-    &__icon-likes,
-    &__icon-compare,
-    &__icon-contacts {
-        @include media('max', 'iPad') {
-            display: none;
-        }
-    }
+
 
 }
 

@@ -9,6 +9,11 @@ import {
 } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 
+interface IRating {
+  productId: number;
+  value: number;
+}
+
 interface IProductCardProps {
   products: IProductCardListItem[]; //array of products
   available: boolean;
@@ -20,11 +25,19 @@ interface IProductCardProps {
   price: number;
   setOrderCountHandler?: (count: number) => void;
   setFavoriteCountHandler?: (count: number) => void;
+  setCompareCountHandler: (count: number) => void;
+  setAddToCartActiveHandler: (state: boolean) => void;
+  setCurrentProductIdHandler: (productId: number) => void;
+  addToCartActive: Boolean;
 }
 
 export const ProductCard: React.FC<IProductCardProps> = ({
-  setFavoriteCountHandler,
   setOrderCountHandler,
+  setCompareCountHandler,
+  setFavoriteCountHandler,
+  addToCartActive,
+  setAddToCartActiveHandler,
+  setCurrentProductIdHandler,
   goodModel,
   available,
   productId,
@@ -39,7 +52,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
   const [deal, setDeal] = useState<boolean>(false); // Basket changes
 
-  const [viewCart, setViewCart] = useState<boolean>(false); // for pre-basket card
+  //const [viewCart, setViewCart] = useState<boolean>(false); // for pre-basket card
 
   const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
 
@@ -49,8 +62,9 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     color: '#9E9E9E',
     activeColor: '#F9E505',
     isHalf: true,
+    value: rating,
     onChange: (newRating: number) => {
-      setRating(newRating);
+      setRatingHandler(newRating);
     },
   };
 
@@ -63,7 +77,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     });
     setOrderProductsCount(orderProducts);
 
-    // get fovorites from localStorage
+    // get favorites from localStorage
     const favorites = JSON.parse(localStorage.getItem('favorite') || '[]');
     favorites.forEach((favoriteProductId: number) => {
       if (favoriteProductId === productId) {
@@ -71,7 +85,50 @@ export const ProductCard: React.FC<IProductCardProps> = ({
       }
     });
     setFavoriteProductsCount(favorites);
-  });
+
+    // get compare data from localStorage
+    const compareIdList = JSON.parse(localStorage.getItem('compare') || '[]');
+    compareIdList.forEach((compareProductId: number) => {
+      if (compareProductId === productId) {
+        setCompare(true);
+      }
+    });
+    setCompareProductsCount(compareIdList);
+
+    // get rating data from localStorage
+    const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
+    ratings.forEach((rating: IRating) => {
+      if (rating.productId === productId) {
+        setRating(rating.value);
+      }
+    });
+  }, []);
+
+  const setRatingHandler: (ratingValue: number) => void = (ratingValue) => {
+    // get ratings from localStorage
+    const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
+
+    const foundRating = ratings.filter(
+      (rating: IRating) => rating.productId === productId
+    );
+
+    let ratingsToSave: IRating[] = [];
+    if (foundRating.length === 0) {
+      ratingsToSave = ratings;
+    } else {
+      // replace rating value
+      const changedRating = ratings.filter(
+        (rating: IRating) => rating.productId !== productId
+      );
+      ratingsToSave = changedRating;
+    }
+    // save rating
+    localStorage.setItem(
+      'rating',
+      JSON.stringify([...ratingsToSave, { productId, value: ratingValue }])
+    );
+    setRating(ratingValue);
+  };
 
   //
   const addToCartHandler: () => void = () => {
@@ -89,7 +146,14 @@ export const ProductCard: React.FC<IProductCardProps> = ({
         // set count
         setOrderProductsCount(changedOrderProducts);
       }
+      // change icon
+      setDeal(false);
     } else {
+      // return if product is not available
+      if (!available) {
+        return;
+      }
+
       // add product to cart
       const orderItems = orderProducts.filter(
         (order: IOrder) => order.productId === productId // compare good id that we choose with that which in basket already
@@ -107,10 +171,16 @@ export const ProductCard: React.FC<IProductCardProps> = ({
           ...orderProducts,
           { productId, count: 1, credit: false },
         ]);
-        setViewCart(viewCart ? false : true);
+
+        // set productId for AddToCart component
+        setCurrentProductIdHandler(productId);
+        // toggle view of AddToCart component
+        setAddToCartActiveHandler(addToCartActive ? false : true);
+        //setViewCart(viewCart ? false : true);
+        // change icon
+        setDeal(true);
       }
     }
-    setDeal(deal ? false : true);
   };
 
   // set count of products in cart
@@ -161,10 +231,51 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   const setFavoriteProductsCount: (favorites: number[]) => void = (
     favorites
   ) => {
-    // calc count of favorites products
+    // set count of favorites products
     if (setFavoriteCountHandler) {
       setFavoriteCountHandler(favorites.length);
     }
+  };
+
+  const setCompareHandler: () => void = () => {
+    // get compare data from localStorage
+    const compareIdList = JSON.parse(localStorage.getItem('compare') || '[]');
+
+    if (compare) {
+      // delete compare by productId
+      const changedCompareIdList = compareIdList.filter(
+        (compareProductId: number) => compareProductId !== productId
+      );
+      // write to localStorage if product was deleted
+      if (compareIdList.length !== changedCompareIdList.length) {
+        localStorage.setItem('compare', JSON.stringify(changedCompareIdList));
+        // set count
+        setCompareProductsCount(changedCompareIdList);
+      }
+    } else {
+      // add compare product to localStorage
+      const compareItems = compareIdList.filter(
+        (compareProductId: number) => compareProductId === productId
+      );
+      if (compareItems.length === 0) {
+        localStorage.setItem(
+          'compare',
+          JSON.stringify([...compareIdList, productId])
+        );
+        // set count
+        setCompareProductsCount([...compareIdList, productId]);
+      }
+    }
+    setCompare(compare ? false : true);
+  };
+
+  // set count of compare products
+  const setCompareProductsCount: (compareIdList: number[]) => void = (
+    compareIdList
+  ) => {
+    // set count of compare products
+    setCompareCountHandler(compareIdList.length);
+    return undefined;
   };
 
   return (
@@ -243,7 +354,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             <div className='product-card__step-to-buy'>
               <label className='product-card__compare'>
                 <input
-                  onChange={() => setCompare(compare ? false : true)}
+                  onChange={() => setCompareHandler()}
                   type='checkbox'
                   className='product-card__compare-input'
                   checked={compare}
@@ -294,7 +405,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             <div className='product-card__step-to-buy h-small-version'>
               <label className='product-card__compare'>
                 <input
-                  onChange={() => setCompare(compare ? false : true)}
+                  onChange={() => setCompareHandler()}
                   type='checkbox'
                   className='product-card__compare-input'
                   checked={compare}
@@ -330,13 +441,6 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 {deal ? 'Видалити' : 'У кошик'}
               </span>
             </button>
-            {/* <AddToCart
-              products={products}
-              productId={productId}
-              isActive={viewCart}
-              closeHandler={() => setViewCart(viewCart ? false : true)}
-              setOrderCountHandler={setOrderCountHandler}
-            /> */}
           </div>
           <div className='product-card__part hide-part'>
             <ul className='product-card__hide-list'>

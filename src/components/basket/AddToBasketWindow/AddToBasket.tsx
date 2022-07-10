@@ -2,14 +2,18 @@ import { IProductCardListItem } from '../../product-card/ProductCardList';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { useEffect, useState } from 'react';
 import { ProductCardList } from 'components/product-card/ProductCardList';
+import { Closer } from '../../UI/closer/Closer';
+import { Link } from 'react-router-dom';
 
 interface AddToCartType {
   products: IProductCardListItem[]; //array of products
-  closeHandler: () => void; // for modal w
+  viewHandler: (state: boolean) => void; // for modal w
   isActive: boolean; // for modal w
   productId: number; //id of good that we want to bye
-  setOrderCountHandler?: (count: number) => void;
-  setFavoriteCountHanler?: (count: number) => void;
+  setCurrentProductIdHandler: (productId: number) => void;
+  setFavoriteCountHandler: (count: number) => void;
+  setCompareCountHandler: (count: number) => void;
+  setOrderCountHandler: (count: number) => void;
 }
 
 export interface IOrder {
@@ -19,12 +23,14 @@ export interface IOrder {
 }
 
 export const AddToCart: React.FC<AddToCartType> = ({
+  setCurrentProductIdHandler,
+  setFavoriteCountHandler,
+  setCompareCountHandler,
+  setOrderCountHandler,
+  viewHandler,
   products,
-  closeHandler,
   isActive,
   productId,
-  setOrderCountHandler,
-  setFavoriteCountHanler,
 }) => {
   const [orderProducts, setOrderProducts] = useState<IOrder[]>([]); //basket compatible - goods inside
   const [orderProductsCount, setOrderProductsCount] = useState<number>(0); // count of goods inside
@@ -65,7 +71,11 @@ export const AddToCart: React.FC<AddToCartType> = ({
 
   // return if can't find product
   if (!product) {
-    return <p>Товар не знайдено</p>;
+    return (
+      <ModalWindow active={isActive} setActive={viewHandler}>
+        <p>Товар не знайдено</p>
+      </ModalWindow>
+    );
   }
 
   // find coupled products
@@ -94,9 +104,9 @@ export const AddToCart: React.FC<AddToCartType> = ({
             </span>
           </p>
           <div className='add-to-cart-modal__footer'>
-            <div className='add-to-cart-modal__link'>
-              <a href='#'>Перейти до кошику</a>
-            </div>
+            <Link to='/cart'>
+              <span className='add-to-cart-modal__link'>Перейти до кошику</span>
+            </Link>
             <div className='add-to-cart-modal__buttons'>
               <button
                 className='add-to-cart-modal__credit-btn'
@@ -117,24 +127,36 @@ export const AddToCart: React.FC<AddToCartType> = ({
     </div>
   );
 
-  const CoupledProductsJsx = (
-    <ProductCardList
-      rowQuantity={1}
-      extraStyles='add-to-cart__list'
-      setFavoriteCountHandler={setFavoriteCountHanler}
-      setOrderCountHandler={setOrderCountHandler}
-      data={coupledProducts}
-      type='coupled'
-    />
-  );
+  // const CoupledProductsJsx = (
+  //   <ProductCardList
+  //     setCurrentProductIdHandler={setCurrentProductIdHandler}
+  //     setFavoriteCountHandler={setFavoriteCountHandler}
+  //     setCompareCountHandler={setCompareCountHandler}
+  //     setOrderCountHandler={setOrderCountHandler}
+  //     setAddToCartActiveHandler={viewHandler}
+  //     addToCartActive={isActive}
+  //     data={coupledProducts}
+  //     type='coupled'
+  //   />
+  // );
 
   return (
     <ModalWindow
-      className='add-to-cart-modal'
-      setActive={closeHandler}
+      className={
+        isActive
+          ? 'add-to-cart-modal'
+          : 'add-to-cart-modal add-to-cart-modal--display'
+      }
+      setActive={viewHandler}
       active={isActive}
     >
-      <>{[ProductJsx, CoupledProductsJsx]}</>
+      <>
+        <Closer
+          closeFunction={() => viewHandler(false)}
+          arrowBorder='add-to-cart-arrow'
+        />
+        {[ProductJsx]}
+      </>
     </ModalWindow>
   );
-};
+}; //был коупл

@@ -14,9 +14,12 @@
 
 .info-form {
     max-width: 988px;
+    flex-grow: 2;
 }
 
 .product-form {
+    background-color: $c-white;
+    padding: 10px;
     width: auto;
 
     &__header {

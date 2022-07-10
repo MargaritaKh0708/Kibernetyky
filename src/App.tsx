@@ -2,12 +2,12 @@ import './index.css';
 import { Header } from 'components/header/Header';
 import { AsideMenuSvgSelector } from 'components/goods-presentation-block/AsideMenu/AsideMenuSvgSelector';
 import { nanoid } from 'nanoid';
-import { PresentationBlockSvgSelector } from 'components/goods-presentation-block/presentation-swiper/PresentationBlockSvgSelector';
 import { useState } from 'react';
 import { Footer } from 'components/footer/Footer';
 import { OpenCatalogContext } from 'components/goods-presentation-block/AsideMenu/OpenCatalogContext';
 import { Route, Routes } from 'react-router';
 import { CartPage } from 'components/Pages/CartPage';
+import { ProductCardSvgSelector } from 'components/product-card/extended-product-card/ExtendedProductCardSvgSelector';
 
 import pic from 'assets/main-page/presentation-block-swiper/green/main-picture.png';
 import phones from 'assets/main-page/phones.png';
@@ -22,7 +22,15 @@ import haier from 'assets/icons/brands-icons/haier.png';
 import lenovo from 'assets/icons/brands-icons/lenovo.png';
 import xiaomi from 'assets/icons/brands-icons/xiaomi.png'; // забрать все картинки в селектор !
 
+import pic0 from 'assets/goods-card/iphone/pic1.jpg';
+import pic1 from 'assets/goods-card/iphone/pic2.jpg';
+import pic2 from 'assets/goods-card/iphone/pic3.jpg';
+import pic3 from 'assets/goods-card/iphone/pic4.jpg';
+import pic4 from 'assets/goods-card/iphone/pic5.jpg';
+import pic5 from 'assets/goods-card/iphone/pic6.jpg';
+
 import { MainPage } from 'components/Pages/MainPage';
+import { ExtendedProductCard } from './components/product-card/extended-product-card/ExtendedProductCard';
 
 const data = [
   {
@@ -139,13 +147,46 @@ const data = [
 const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
+    imageCollection: [pic0, pic1, pic2, pic3, pic4, pic5],
     model: 'ZA5T0095UA',
-    price: 453,
     oldprice: 1400,
+    price: 453,
     leader: true,
     available: true,
     novelty: false,
-    id: 1,
+    id: 199001,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       coupled: [113],
       name: 'Планшеты',
@@ -163,12 +204,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     novelty: false,
     available: true,
     leader: false,
     oldprice: 3000,
     price: 1902,
-    id: 2,
+    id: 199002,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       coupled: [113],
       name: 'Телефони',
@@ -186,12 +260,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: false,
     leader: false,
     oldprice: 1400,
     novelty: false,
     price: 453,
-    id: 3,
+    id: 199003,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       coupled: [113],
       name: 'Телефони',
@@ -209,12 +316,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: false,
     novelty: true,
     oldprice: 2091,
     leader: true,
     price: 1900,
-    id: 4,
+    id: 199004,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Планшети',
       coupled: [113],
@@ -232,12 +372,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     novelty: false,
     oldprice: 1400,
     leader: true,
     price: 453,
-    id: 5,
+    id: 199005,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -255,12 +428,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     novelty: true,
     oldprice: 4000,
     leader: true,
     price: 1000,
-    id: 6,
+    id: 199006,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -278,12 +484,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     novelty: true,
     leader: true,
     price: 453,
-    id: 7,
+    id: 199007,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
@@ -301,13 +540,46 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     leader: true,
     novelty: false,
     oldprice: 1400,
     price: 453,
 
-    id: 8,
+    id: 199008,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -325,12 +597,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: false,
     oldprice: 5643,
     novelty: true,
     leader: false,
     price: 1200,
-    id: 9,
+    id: 199009,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -348,12 +653,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     leader: true,
     novelty: false,
     oldprice: 2000,
     price: 1400,
-    id: 10,
+    id: 199010,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'VR / Робототехніка/ Товари для дітей',
       mainImage: pic,
@@ -371,12 +709,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     leader: true,
     novelty: true,
     oldprice: 1400,
     price: 453,
-    id: 11,
+    id: 199011,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
@@ -394,12 +765,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 3999,
     novelty: false,
     leader: true,
     price: 1400,
-    id: 12,
+    id: 199012,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -417,12 +821,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     novelty: true,
     leader: true,
     oldprice: 1400,
     price: 453,
-    id: 13,
+    id: 199013,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -440,12 +877,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     leader: true,
     novelty: false,
     oldprice: 4932,
     price: 1092,
-    id: 14,
+    id: 199014,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -463,12 +933,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 9033,
     novelty: true,
     leader: true,
     price: 2999,
-    id: 15,
+    id: 199015,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
@@ -486,12 +989,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     leader: true,
     oldprice: 1400,
     price: 453,
     novelty: false,
-    id: 16,
+    id: 199016,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -509,12 +1045,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     leader: true,
     novelty: true,
     price: 453,
-    id: 17,
+    id: 199017,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
@@ -532,12 +1101,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     novelty: false,
     leader: true,
     price: 453,
-    id: 18,
+    id: 199018,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -557,12 +1159,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     novelty: true,
     leader: true,
     price: 453,
-    id: 19,
+    id: 199019,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -580,12 +1215,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     novelty: false,
     leader: true,
     price: 453,
-    id: 20,
+    id: 199020,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Побутова техніка',
       coupled: [3],
@@ -603,12 +1271,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     novelty: true,
     oldprice: 1400,
     leader: true,
     price: 453,
-    id: 21,
+    id: 199021,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -626,12 +1327,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     novelty: false,
     oldprice: 1400,
     leader: true,
     price: 453,
-    id: 22,
+    id: 199022,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -649,12 +1383,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     novelty: false,
     leader: true,
     price: 453,
-    id: 23,
+    id: 199023,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -673,12 +1440,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     leader: true,
     novelty: false,
     price: 453,
-    id: 24,
+    id: 199024,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Навушники',
       coupled: [1],
@@ -699,12 +1499,45 @@ const data1 = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
+    imageCollection: [],
     available: true,
     oldprice: 1400,
     novelty: false,
     leader: true,
     price: 453,
-    id: 25,
+    id: 199025,
+    specifications: [
+      {
+        icon: <ProductCardSvgSelector id='screen' />,
+        description: 'Діагональ екрану',
+        value: '6.7”',
+      },
+      {
+        icon: <ProductCardSvgSelector id='camera' />,
+        description: 'Основна камера',
+        value: '12 Мп + 12 Мп + 12 Мп',
+      },
+      {
+        icon: <ProductCardSvgSelector id='frontalcamera' />,
+        description: 'Фронтальна камера. Мп',
+        value: 'A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='cpu' />,
+        description: 'Процесор',
+        value: 'Apple A15 Bionic',
+      },
+      {
+        icon: <ProductCardSvgSelector id='core' />,
+        description: 'Кількість ядер',
+        value: '6 ядер',
+      },
+      {
+        icon: <ProductCardSvgSelector id='batery' />,
+        description: 'Місткість батареї',
+        value: '4352 мАч',
+      },
+    ],
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -731,6 +1564,9 @@ function App() {
   const [displayWidth, setDisplayWidth] = useState<boolean>(false); // Watch of display-width to control modal window shape
   const [lastTargetName, setLastTargetName] = useState<string>(''); // Read last target name for come-back BTN
   const [hideCategoryList, setHideCategoryList] = useState<boolean>(false); // Property for hidden category list im mobile version work
+  const [addToCartActive, setAddToCartActive] = useState<boolean>(false);
+  const [currentProductId, setCurrentProductId] = useState<number>(0);
+  const [compareCount, setCompareCount] = useState<number>(0);
 
   return (
     <div className='App'>
@@ -751,16 +1587,23 @@ function App() {
         <Header
           orderProductsCount={orderProductsCount}
           favoriteCount={favoriteCount}
-          goods={data}
+          compareCount={compareCount}
           maindata={data1}
+          goods={data}
         />
         <Routes>
           <Route
             path='/'
             element={
               <MainPage
-                setOrderProductsCount={setOrderProductsCount}
-                setFavoriteCount={setFavoriteCount}
+                setAddToCartActiveHandler={setAddToCartActive}
+                setCurrentProductIdHandler={setCurrentProductId}
+                setOrderCountHandler={setOrderProductsCount}
+                setFavoriteCountHandler={setFavoriteCount}
+                setCompareCountHandler={setCompareCount}
+                viewHandler={setAddToCartActive}
+                productId={currentProductId}
+                isActive={addToCartActive}
                 oldgoods={data}
                 goods={data1}
               />
@@ -772,9 +1615,14 @@ function App() {
               <CartPage
                 setOrderProductsCount={setOrderProductsCount}
                 setFavoriteCount={setFavoriteCount}
+                setCompareCountHandler={setCompareCount}
                 goods={data1}
               />
             }
+          ></Route>
+          <Route
+            path='/product'
+            element={<ExtendedProductCard good={data1[0]} />}
           ></Route>
         </Routes>
         <Footer />

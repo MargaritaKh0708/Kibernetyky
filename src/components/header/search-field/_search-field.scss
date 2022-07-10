@@ -3,6 +3,28 @@
     margin: 0 40px;
     width: 764px;
 
+    @include media (max, 'hd') {
+        margin: 0;
+    }
+
+    &__closer {
+        border-top: 1px solid $c-main-gray;
+    }
+
+    &__results-field {
+
+        @include media (max, 'mobile-horizontal') {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
+            z-index: 30;
+            bottom: 0;
+            top: 74px;
+            left: 0;
+        }
+
+    }
+
     &__pic {
         height: 60px;
         width: 60px;
@@ -19,6 +41,13 @@
         display: none;
         z-index: 20;
         width: 90%;
+
+
+        @include media (max, 'mobile-horizontal') {
+            margin-top: 0;
+            height: 100%;
+            width: 100%;
+        }
     }
 
     &__onfocus-shape.search-active {
@@ -69,46 +98,84 @@
     &__searching-shape.search-active {
         justify-content: space-between;
         display: flex;
+
+        @include media (max, 'mobile-horizontal') {
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 16px;
+        }
     }
 
     &__searching-aside-results {
+        border-right: 1px solid $c-light-gray;
         flex-direction: column;
-        max-width: 200px;
+        color: $c-light-gray;
         font-size: 12px;
         display: flex;
-        height: 100%;
+        width: 200px;
+
+        @include media (max, 'mobile-horizontal') {
+            border-bottom: 1px solid $c-light-gray;
+            padding-bottom: 16px;
+            border-right: none;
+            width: 100%;
+        }
+
+        &.no-result {
+            font-size: 14px;
+            border: none;
+            width: 100%;
+        }
     }
 
-    &__search__random-item:first-child,
-    &____category-item:first-child {
+    &__category-item:first-child {
         @include f-Lato-Medium;
+        color: $c-main-gray;
         font-size: 14px;
     }
 
-    &__searching-aside-category,
-    &__searching-aside-random-proposition {
+    &__searching-aside-category {
         flex-direction: column;
         display: flex;
         gap: 16px;
     }
 
     &__searching-main-result {
-        border-left: 1px solid $c-light-gray;
         flex-direction: column;
         padding-left: 24px;
         display: flex;
         gap: 33px;
+
+        @include media (max, 'mobile-horizontal') {
+            padding-left: 0;
+        }
     }
 
     &__main-result-item {
         justify-content: space-between;
         align-items: center;
         display: flex;
+        gap: 5px;
     }
 
-    &__searching-good-descrip,
-    &__searching-price-descrip {
+    &__searching-descrip {
         flex-direction: column;
         display: flex;
+        gap: 5px;
     }
+
+    &__searching-descrip-code,
+    &__searching-descrip-oldprice {
+        color: $c-light-gray;
+        font-size: 8px;
+    }
+
+    &__searching-descrip-oldprice {
+        text-decoration: line-through;
+    }
+
+}
+
+.search_results-field--display {
+    display: none;
 }
