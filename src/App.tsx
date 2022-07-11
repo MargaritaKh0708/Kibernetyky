@@ -7,7 +7,7 @@ import { Footer } from 'components/footer/Footer';
 import { OpenCatalogContext } from 'components/goods-presentation-block/AsideMenu/OpenCatalogContext';
 import { Route, Routes } from 'react-router';
 import { CartPage } from 'components/Pages/CartPage';
-import { ProductCardSvgSelector } from 'components/product-card/extended-product-card/ExtendedProductCardSvgSelector';
+import { ExtendedProductCardSvgSelector } from 'components/product-card/extended-product-card/ExtendedProductCardSvgSelector';
 
 import pic from 'assets/main-page/presentation-block-swiper/green/main-picture.png';
 import phones from 'assets/main-page/phones.png';
@@ -22,6 +22,7 @@ import haier from 'assets/icons/brands-icons/haier.png';
 import lenovo from 'assets/icons/brands-icons/lenovo.png';
 import xiaomi from 'assets/icons/brands-icons/xiaomi.png'; // забрать все картинки в селектор !
 
+//iPhone
 import pic0 from 'assets/goods-card/iphone/pic1.jpg';
 import pic1 from 'assets/goods-card/iphone/pic2.jpg';
 import pic2 from 'assets/goods-card/iphone/pic3.jpg';
@@ -29,10 +30,101 @@ import pic3 from 'assets/goods-card/iphone/pic4.jpg';
 import pic4 from 'assets/goods-card/iphone/pic5.jpg';
 import pic5 from 'assets/goods-card/iphone/pic6.jpg';
 
+//PayWays
+import applepay from 'assets/icons/payway/apple.png';
+import cash from 'assets/icons/payway/cash.png';
+import google from 'assets/icons/payway/google.png';
+import master from 'assets/icons/payway/master.png';
+import mono from 'assets/icons/payway/mono.png';
+import nocash from 'assets/icons/payway/nocath.png';
+import privat24 from 'assets/icons/payway/privat24.png';
+import privatpart from 'assets/icons/payway/privatpart.png';
+import visa from 'assets/icons/payway/visa.png';
+
 import { MainPage } from 'components/Pages/MainPage';
 import { ExtendedProductCard } from './components/product-card/extended-product-card/ExtendedProductCard';
 
-const data = [
+const AdditionalServices = {
+  insurance: [
+    {
+      currency: '₴',
+      duration: '12 міс.',
+      condition:
+        '*СТРАХУВАННЯ - безкоштовний ремонт пристрою або компенсація у негарантійних випадках у період дії Договору страхування (механічні пошкодження, потрапляння рідини та ін.). *ДОДАТКОВІ ГАРАНТІЇ - безкоштовний ремонт пристрою або компенсація при гарантійних поломках починаючи з 366 дня від дати придбання. Більш детально про товар дізнайтесь клікнувши на його назву, за номером 0800300100 або у продавців у магазинах Кібернетики !!! Оформлення даного товару можливе лише у роздрібні магазини Кібернетики',
+      name: 'Страхування “Кібернетики Захист” 12 міс.',
+      price: 7350,
+      id: '351287',
+    },
+    {
+      currency: '₴',
+      duration: '12 міс.',
+      condition:
+        '*СТРАХУВАННЯ - безкоштовний ремонт пристрою або компенсація у негарантійних випадках у період дії Договору страхування (механічні пошкодження, потрапляння рідини та ін.). *ДОДАТКОВІ ГАРАНТІЇ - безкоштовний ремонт пристрою або компенсація при гарантійних поломках починаючи з 366 дня від дати придбання. Більш детально про товар дізнайтесь клікнувши на його назву, за номером 0800300100 або у продавців у магазинах Кібернетики !!! Оформлення даного товару можливе лише у роздрібні магазини Кібернетики',
+      name: 'Кібернетики “Додаткова гарантія” 1 рік',
+      price: 4900,
+      id: '351945',
+    },
+    {
+      currency: '₴',
+      duration: '12 міс.',
+      condition:
+        '*СТРАХУВАННЯ - безкоштовний ремонт пристрою або компенсація у негарантійних випадках у період дії Договору страхування (механічні пошкодження, потрапляння рідини та ін.). *ДОДАТКОВІ ГАРАНТІЇ - безкоштовний ремонт пристрою або компенсація при гарантійних поломках починаючи з 366 дня від дати придбання. Більш детально про товар дізнайтесь клікнувши на його назву, за номером 0800300100 або у продавців у магазинах Кібернетики !!! Оформлення даного товару можливе лише у роздрібні магазини Кібернетики',
+      name: 'Страхування “Кібернетики захист екрану” 12 міс.',
+      price: 5880,
+      id: '351289',
+    },
+    {
+      currency: '₴',
+      duration: '6 міс.',
+      condition:
+        '*СТРАХУВАННЯ - безкоштовний ремонт пристрою або компенсація у негарантійних випадках у період дії Договору страхування (механічні пошкодження, потрапляння рідини та ін.). *ДОДАТКОВІ ГАРАНТІЇ - безкоштовний ремонт пристрою або компенсація при гарантійних поломках починаючи з 366 дня від дати придбання. Більш детально про товар дізнайтесь клікнувши на його назву, за номером 0800300100 або у продавців у магазинах Кібернетики !!! Оформлення даного товару можливе лише у роздрібні магазини Кібернетики',
+      name: 'Кібернетики “Додаткова захист” 6 міс.',
+      price: 4900,
+      id: '351237',
+    },
+    {
+      currency: '₴',
+      duration: '24 міс.',
+      condition:
+        '*СТРАХУВАННЯ - безкоштовний ремонт пристрою або компенсація у негарантійних випадках у період дії Договору страхування (механічні пошкодження, потрапляння рідини та ін.). *ДОДАТКОВІ ГАРАНТІЇ - безкоштовний ремонт пристрою або компенсація при гарантійних поломках починаючи з 366 дня від дати придбання. Більш детально про товар дізнайтесь клікнувши на його назву, за номером 0800300100 або у продавців у магазинах Кібернетики !!! Оформлення даного товару можливе лише у роздрібні магазини Кібернетики',
+      name: 'Кібернетики “Додаткова гарантія” 2 роки',
+      price: 7350,
+      id: '359487',
+    },
+    {
+      currency: '₴',
+      duration: '6 міс.',
+      condition:
+        '*СТРАХУВАННЯ - безкоштовний ремонт пристрою або компенсація у негарантійних випадках у період дії Договору страхування (механічні пошкодження, потрапляння рідини та ін.). *ДОДАТКОВІ ГАРАНТІЇ - безкоштовний ремонт пристрою або компенсація при гарантійних поломках починаючи з 366 дня від дати придбання. Більш детально про товар дізнайтесь клікнувши на його назву, за номером 0800300100 або у продавців у магазинах Кібернетики !!! Оформлення даного товару можливе лише у роздрібні магазини Кібернетики',
+      name: 'Страхування “Кібернетики захист екрану” 6 міс.',
+      price: 3920,
+      id: '351307',
+    },
+    {
+      currency: '₴',
+      duration: '36 міс.',
+      condition:
+        '*СТРАХУВАННЯ - безкоштовний ремонт пристрою або компенсація у негарантійних випадках у період дії Договору страхування (механічні пошкодження, потрапляння рідини та ін.). *ДОДАТКОВІ ГАРАНТІЇ - безкоштовний ремонт пристрою або компенсація при гарантійних поломках починаючи з 366 дня від дати придбання. Більш детально про товар дізнайтесь клікнувши на його назву, за номером 0800300100 або у продавців у магазинах Кібернетики !!! Оформлення даного товару можливе лише у роздрібні магазини Кібернетики',
+      name: 'Кібернетики “Додаткова гарантія” 3 роки',
+      price: 9800,
+      id: '921287',
+    },
+  ],
+};
+
+const PayWayList = [
+  { icon: applepay, name: 'Pay' },
+  { icon: google, name: 'Pay' },
+  { icon: privat24, name: 'Pay' },
+  { icon: visa, name: '' },
+  { icon: master, name: '' },
+  { icon: mono, name: '' },
+  { icon: privatpart, name: '' },
+  { icon: nocash, name: 'Безготівковий розрахунок' },
+  { icon: cash, name: 'Готівка' },
+];
+
+const CategoryList = [
   {
     icon: <AsideMenuSvgSelector id='accessory' />,
     goodType: 'Аксесуари',
@@ -144,7 +236,7 @@ const data = [
     id: nanoid(),
   },
 ];
-const data1 = [
+const MainGoodsData = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     imageCollection: [pic0, pic1, pic2, pic3, pic4, pic5],
@@ -155,38 +247,65 @@ const data1 = [
     available: true,
     novelty: false,
     id: 199001,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       coupled: [113],
       name: 'Планшеты',
@@ -211,38 +330,65 @@ const data1 = [
     oldprice: 3000,
     price: 1902,
     id: 199002,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       coupled: [113],
       name: 'Телефони',
@@ -267,38 +413,65 @@ const data1 = [
     novelty: false,
     price: 453,
     id: 199003,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       coupled: [113],
       name: 'Телефони',
@@ -323,38 +496,65 @@ const data1 = [
     leader: true,
     price: 1900,
     id: 199004,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Планшети',
       coupled: [113],
@@ -379,38 +579,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199005,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -435,38 +662,65 @@ const data1 = [
     leader: true,
     price: 1000,
     id: 199006,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -491,38 +745,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199007,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
@@ -548,38 +829,65 @@ const data1 = [
     price: 453,
 
     id: 199008,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -604,38 +912,65 @@ const data1 = [
     leader: false,
     price: 1200,
     id: 199009,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -660,38 +995,65 @@ const data1 = [
     oldprice: 2000,
     price: 1400,
     id: 199010,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'VR / Робототехніка/ Товари для дітей',
       mainImage: pic,
@@ -716,38 +1078,65 @@ const data1 = [
     oldprice: 1400,
     price: 453,
     id: 199011,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Планшети та електронні книги',
       mainImage: tablets,
@@ -772,38 +1161,65 @@ const data1 = [
     leader: true,
     price: 1400,
     id: 199012,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -828,38 +1244,65 @@ const data1 = [
     oldprice: 1400,
     price: 453,
     id: 199013,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -884,38 +1327,65 @@ const data1 = [
     oldprice: 4932,
     price: 1092,
     id: 199014,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -940,38 +1410,65 @@ const data1 = [
     leader: true,
     price: 2999,
     id: 199015,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
@@ -996,38 +1493,65 @@ const data1 = [
     price: 453,
     novelty: false,
     id: 199016,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -1052,38 +1576,65 @@ const data1 = [
     novelty: true,
     price: 453,
     id: 199017,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'VR / Робототехніка / Товари для дітей',
       mainImage: pic,
@@ -1108,38 +1659,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199018,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -1166,38 +1744,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199019,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Телефони',
       mainImage: phones,
@@ -1222,38 +1827,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199020,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Побутова техніка',
       coupled: [3],
@@ -1278,38 +1910,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199021,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Ноутбуки',
       coupled: [113],
@@ -1334,38 +1993,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199022,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -1390,38 +2076,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199023,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Телефони',
       coupled: [113],
@@ -1447,38 +2160,65 @@ const data1 = [
     novelty: false,
     price: 453,
     id: 199024,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Навушники',
       coupled: [1],
@@ -1506,38 +2246,65 @@ const data1 = [
     leader: true,
     price: 453,
     id: 199025,
-    specifications: [
-      {
-        icon: <ProductCardSvgSelector id='screen' />,
-        description: 'Діагональ екрану',
-        value: '6.7”',
-      },
-      {
-        icon: <ProductCardSvgSelector id='camera' />,
-        description: 'Основна камера',
-        value: '12 Мп + 12 Мп + 12 Мп',
-      },
-      {
-        icon: <ProductCardSvgSelector id='frontalcamera' />,
-        description: 'Фронтальна камера. Мп',
-        value: 'A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='cpu' />,
-        description: 'Процесор',
-        value: 'Apple A15 Bionic',
-      },
-      {
-        icon: <ProductCardSvgSelector id='core' />,
-        description: 'Кількість ядер',
-        value: '6 ядер',
-      },
-      {
-        icon: <ProductCardSvgSelector id='batery' />,
-        description: 'Місткість батареї',
-        value: '4352 мАч',
-      },
-    ],
+    specifications: {
+      main: [
+        {
+          icon: <ExtendedProductCardSvgSelector id='screen' />,
+          description: 'Діагональ екрану',
+          value: '6.7”',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='camera' />,
+          description: 'Основна камера',
+          value: '12 Мп + 12 Мп + 12 Мп',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='frontalcamera' />,
+          description: 'Фронтальна камера. Мп',
+          value: 'A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='cpu' />,
+          description: 'Процесор',
+          value: 'Apple A15 Bionic',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='core' />,
+          description: 'Кількість ядер',
+          value: '6 ядер',
+        },
+        {
+          icon: <ExtendedProductCardSvgSelector id='batery' />,
+          description: 'Місткість батареї',
+          value: '4352 мАч',
+        },
+      ],
+      colors: [
+        {
+          color: '#255149',
+          colorName: 'Green',
+        },
+        {
+          color: '#909090',
+          colorName: 'Grey',
+        },
+        {
+          color: '#AFCEEB',
+          colorName: 'Light Blue',
+        },
+        {
+          color: '#000',
+          colorName: 'Black',
+        },
+        {
+          color: '#111',
+          colorName: 'White',
+        },
+      ],
+      ram: [3, 4, 6, 8, 10, 12, 16],
+      memorySize: ['128ГБ', '256ГБ', '512ГБ', '1ТБ'],
+      corps: ['Метал', 'Пластик'],
+    },
     category: {
       name: 'Планшети',
       mainImage: tablets,
@@ -1588,8 +2355,8 @@ function App() {
           orderProductsCount={orderProductsCount}
           favoriteCount={favoriteCount}
           compareCount={compareCount}
-          maindata={data1}
-          goods={data}
+          goods={CategoryList}
+          maindata={MainGoodsData}
         />
         <Routes>
           <Route
@@ -1604,8 +2371,8 @@ function App() {
                 viewHandler={setAddToCartActive}
                 productId={currentProductId}
                 isActive={addToCartActive}
-                oldgoods={data}
-                goods={data1}
+                oldgoods={CategoryList}
+                goods={MainGoodsData}
               />
             }
           ></Route>
@@ -1614,15 +2381,21 @@ function App() {
             element={
               <CartPage
                 setOrderProductsCount={setOrderProductsCount}
-                setFavoriteCount={setFavoriteCount}
                 setCompareCountHandler={setCompareCount}
-                goods={data1}
+                setFavoriteCount={setFavoriteCount}
+                goods={MainGoodsData}
               />
             }
           ></Route>
           <Route
             path='/product'
-            element={<ExtendedProductCard good={data1[0]} />}
+            element={
+              <ExtendedProductCard
+                serviseList={AdditionalServices}
+                good={MainGoodsData[0]}
+                payWaysList={PayWayList}
+              />
+            }
           ></Route>
         </Routes>
         <Footer />

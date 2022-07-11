@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
 import { Navigation, Mousewheel, FreeMode, Thumbs } from 'swiper';
 import { Swiper, SwiperOptions } from 'swiper';
-import { IExtendedProductCard } from '../extended-product-card/ExtendedProductCard';
 
-export const ExtendedProductCardsSwiper: React.FC<IExtendedProductCard> = ({
-  good,
-}) => {
+import { IProductCardListItem } from '../ProductCardList';
+
+interface IExtendedProductCardsSwiper {
+  good: IProductCardListItem;
+}
+
+export const ExtendedProductCardsSwiper: React.FC<
+  IExtendedProductCardsSwiper
+> = ({ good }) => {
   useEffect(() => {
     const sliderThumbsParams: SwiperOptions = {
       direction: 'vertical',
@@ -69,7 +74,7 @@ export const ExtendedProductCardsSwiper: React.FC<IExtendedProductCard> = ({
               <div className='swiper-container'>
                 <div className='swiper-wrapper'>
                   {good.imageCollection.map((img) => (
-                    <div className='swiper-slide'>
+                    <div key={img} className='swiper-slide'>
                       <div className='slider__image'>
                         <img src={img} alt='' />
                       </div>
@@ -85,7 +90,7 @@ export const ExtendedProductCardsSwiper: React.FC<IExtendedProductCard> = ({
               <div className='swiper-container'>
                 <div className='swiper-wrapper'>
                   {good.imageCollection.map((img) => (
-                    <div className='swiper-slide'>
+                    <div key={img} className='swiper-slide'>
                       <div className='slider__image'>
                         <img src={img} alt='' />
                       </div>

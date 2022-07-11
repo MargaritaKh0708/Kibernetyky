@@ -1,6 +1,17 @@
 .extended-card {
     font-size: 16px;
 
+    &__icon {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+
+        & svg {
+            height: 24px;
+            width: 24px;
+        }
+    }
+
     &__header {
         border-bottom: 1px solid $c-extra-gray;
         justify-content: space-between;
@@ -95,7 +106,7 @@
         align-items: center;
         margin-top: 16px;
         flex-wrap: wrap;
-        height: 150px;
+        height: 170px;
         display: flex;
 
     }
@@ -185,7 +196,6 @@
 
     &__product-info {
         border: 1px solid $c-extra-gray;
-        padding: 8px 24px 16px;
         align-items: center;
         border-radius: 5px;
         margin-top: 16px;
@@ -193,17 +203,38 @@
 
     }
 
+    &__product-info-column {
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 8px 24px;
+        gap: 16px;
+    }
+
+    &__product-info-part {
+        border-right: 1px solid $c-extra-gray;
+        flex-direction: column;
+        margin: 8px 24px;
+        display: flex;
+        width: 50%;
+        gap: 8px;
+
+        &:last-of-type {
+            border: none;
+        }
+    }
+
     &__color-border {
         border: 1px solid $c-text;
         border-radius: 4px;
         align-items: center;
+        cursor: pointer;
         display: flex;
         height: 32px;
         width: 32px;
     }
 
     &__color-bg {
-        border: 1px solid $c-black;
         border-radius: 4px;
         margin: 0 auto;
         display: block;
@@ -216,7 +247,11 @@
     }
 
     &__color-panel {
+        justify-content: flex-start;
+        align-items: center;
         margin-top: 8px;
+        display: flex;
+        gap: 5px;
     }
 
     &__color {
@@ -236,7 +271,15 @@
     }
 
     &__brand-logo {
-        height: 24px;
+        width: 50px;
+    }
+
+    &__memory-block,
+    &__material-block {
+        align-items: center;
+        padding-right: 10px;
+        display: flex;
+        gap: 5px;
     }
 
     &__memory-panel,
@@ -248,6 +291,7 @@
         padding: 5px 16px;
         width: fit-content;
         cursor: pointer;
+        font-size: 14px;
         display: flex;
         height: 37px;
     }
@@ -264,12 +308,245 @@
         gap: 5px;
     }
 
-    &__product-info-part {
-        border-right: 1px solid $c-extra-gray;
-        flex-direction: column;
-        padding-left: 24px;
+    //available field 
+
+    &__available-btn {
+        justify-content: space-between;
+        @include f-Lato-Bold;
+        border-radius: 50px;
+        width: fit-content;
+        padding: 8px 16px;
         display: flex;
-        width: 50%;
-        gap: 8px;
+        height: 40px;
+        gap: 13px;
+    }
+
+    // Buy block
+
+    &__buy-block {
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        display: flex;
+        width: 100%;
+    }
+
+    &__buy-way {
+        flex-direction: column;
+        display: flex;
+    }
+
+    &__prices {
+        justify-content: flex-start;
+        align-items: center;
+        display: flex;
+    }
+
+    &__price,
+    &__credit-price {
+        font-size: 32px;
+    }
+
+    &__old-price {
+        text-decoration: line-through;
+        margin-left: 24px;
+        font-size: 24px;
+    }
+
+    &__benefit {
+        background-color: $c-red;
+        border-radius: 5px;
+        text-align: center;
+        width: fit-content;
+        margin-left: 10px;
+        padding: 2px 4px;
+        font-size: 14px;
+        color: $c-white;
+        height: 20px;
+    }
+
+    &__cashback {
+        border-bottom: 1px dashed $c-green;
+        margin: 14px auto 8px;
+        text-align: center;
+        display: block;
+        color: $c-green;
+        font-size: 14px;
+    }
+
+    &__credit-price {
+        margin: 0 auto 40px;
+    }
+
+
+    // price btns list
+
+    &__price-bnts-list {
+        align-items: center;
+        padding-top: 24px;
+        font-size: 14px;
+        display: flex;
+        width: 100%;
+    }
+
+    &__price-bnt {
+        border: none;
+        border-right: 1px solid $c-extra-gray;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: none;
+        display: flex;
+        height: 97px;
+        width: 25%;
+        gap: 18px;
+
+        & span:last-child {
+            border-bottom: 1px solid $c-text;
+        }
+    }
+
+    //sales block 
+
+    &__product-info--border {
+        flex-direction: column;
+        align-items: flex-start;
+        border: none;
+    }
+
+    &__product-info-title {
+        padding: 8px 24px;
+    }
+
+    &__sales-bnts-list {
+        justify-content: space-between;
+        display: flex;
+        width: 100%;
+    }
+
+    &__sales-bnt {
+        justify-content: space-between;
+        box-shadow: $box-shadow;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background: none;
+        display: flex;
+        height: 124px;
+        border: none;
+        width: 24%;
+
+
+        & span:first-child {
+            @include f-Lato-Bold;
+        }
+    }
+
+    &__sales-btn-sub-title {
+        color: $c-light-gray;
+        font-size: 12px;
+        padding-left: 10px;
+    }
+
+    &__sales-btn-title {
+        @include f-Lato-Bold;
+    }
+
+    // insurence 
+
+    &__insurence-info {
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 8px 24px 16px;
+        gap: 16px;
+    }
+
+    &__insurence-info-sub {
+        font-size: 14px;
+        color: $c-link;
+    }
+
+    &__insurence-group {
+        justify-content: space-between;
+        flex-direction: column;
+        transition: height 1s;
+        height: 120px;
+        display: flex;
+        width: 100%;
+        gap: 16px;
+
+        &--transition {
+            height: 320px;
+        }
+    }
+
+
+    &__insurence-list {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        width: 100%;
+    }
+
+    &__insurence-item {
+        justify-content: flex-start;
+        align-items: center;
+        display: flex;
+    }
+
+    &__insurence-title {
+        padding: 0 10px 0 16px
+    }
+
+    &__insurence-price {
+        @include f-Lato-SemiBold;
+    }
+
+    &__see-all {
+        border: none;
+        border-bottom: 1px solid $c-link;
+        width: fit-content;
+        padding-top: 25px;
+        background: none;
+        color: $c-link;
+    }
+
+    //Payway block
+
+    &__payway-list {
+        align-items: center;
+        flex-wrap: wrap;
+        display: flex;
+        gap: 16px;
+    }
+
+    &__payway-btn {
+        background: $c-extra-gray;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50px;
+        width: fit-content;
+        min-width: 60px;
+        display: flex;
+        height: 36px;
+        padding: 8px;
+        border: none;
+    }
+
+    &__payway-icon {
+        padding-right: 7px;
+        max-width: 100%;
+    }
+
+    //Garanty 
+
+    &__garanty-title {
+        padding-left: 7px;
+
+        &--bold {
+            @include f-Lato-SemiBold;
+        }
     }
 }

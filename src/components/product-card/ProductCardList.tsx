@@ -14,10 +14,20 @@ export interface IProductCardListItem {
   model: string;
   name: string;
   specifications: {
-    description: string;
-    icon: string | JSX.Element;
-    value: string;
-  }[];
+    main: {
+      description: string;
+      icon: string | JSX.Element;
+      value: string;
+    }[];
+    colors: {
+      color: string;
+      colorName: string;
+    }[];
+
+    ram: number[];
+    memorySize: string[];
+    corps: string[];
+  };
   category: {
     mainImage: string;
     coupled: number[];

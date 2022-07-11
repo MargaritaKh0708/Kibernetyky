@@ -37,7 +37,7 @@ export const AccordionItem: React.FC<IAccordionItem> = ({
             : 'accordion__panel'
         }
       >
-        <p>{children}</p>
+        <div>{children}</div>
       </div>
     </>
   );
