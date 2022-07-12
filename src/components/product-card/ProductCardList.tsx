@@ -15,15 +15,24 @@ export interface IProductCardListItem {
   name: string;
   specifications: {
     main: {
-      description: string;
       icon: string | JSX.Element;
+      description: string;
       value: string;
+    }[];
+    detailed: {
+      title: string;
+      value: string[];
+    }[];
+    article: {
+      title: string;
+      content: string;
+      subcontent: string;
+      photo: string[];
     }[];
     colors: {
       color: string;
       colorName: string;
     }[];
-
     ram: number[];
     memorySize: string[];
     corps: string[];

@@ -1,4 +1,5 @@
 .extended-card {
+    background: $c-white;
     font-size: 16px;
 
     &__icon {
@@ -152,6 +153,7 @@
         align-items: center;
         text-align: center;
         position: relative;
+        margin-top: 17px;
         overflow: hidden;
         padding: 0 55px;
         display: flex;
@@ -455,7 +457,8 @@
 
     // insurence 
 
-    &__insurence-info {
+    &__insurence-info,
+    .delivery {
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
@@ -513,6 +516,12 @@
         color: $c-link;
     }
 
+    &__discription-part {
+        justify-content: space-between;
+        margin-top: 20px;
+        display: flex;
+    }
+
     //Payway block
 
     &__payway-list {
@@ -549,4 +558,305 @@
             @include f-Lato-SemiBold;
         }
     }
+}
+
+//Article styles
+.article {
+    background: $c-white;
+    margin-top: 34px;
+
+    &__title {
+        padding-bottom: 112px;
+        text-align: left;
+        font-size: 32px;
+    }
+
+    &__wrapper {
+        flex-direction: column;
+        display: flex;
+    }
+
+    &__block {
+        justify-content: space-between;
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+
+        &--row {
+            flex-direction: row;
+        }
+
+        &--column {
+            flex-direction: column;
+        }
+    }
+
+    &__text-content {
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+
+        &--align {
+            justify-content: center;
+            align-items: center;
+        }
+
+        &--direction {
+            align-items: center;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        &--width {
+            width: 50%;
+        }
+    }
+
+    &__content-title {
+        font-size: 24px;
+    }
+
+    &__sub-content {
+        width: 50%;
+    }
+
+    &__content {
+        padding-top: 32px;
+        font-size: 16px;
+
+        &--flex {
+            flex: 1;
+        }
+
+        &--center {
+            text-align: center;
+            line-height: 21px;
+            width: 70%;
+        }
+    }
+
+    &__photo-content {
+        position: relative;
+        width: 50%;
+        gap: 80px;
+
+        @include media (max, 'hd') {
+            gap: 40px;
+        }
+
+        &--width {
+            flex-wrap: nowrap;
+            margin-top: 40px;
+            display: flex;
+            width: 100%;
+        }
+
+
+    }
+
+    &__photo-content-item-0 {
+        width: 50%;
+    }
+
+    &__photo-content-item-1 {
+        position: relative;
+        z-index: 1;
+        width: 50%;
+
+        & img {
+            position: absolute;
+            width: 45%;
+        }
+    }
+
+    &__photo-content-item-2 {
+        position: absolute;
+        width: 30%;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+
+//!Specifications Block style
+
+
+.specifications {
+    margin-bottom: 55px;
+    width: 50%;
+
+    &__title {
+        line-height: 36px;
+        font-size: 24px;
+    }
+
+    &__wrapper {
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
+        gap: 18px;
+    }
+
+    &__list {
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
+        gap: 24px;
+    }
+
+    &__items {
+        justify-content: space-between;
+        align-items: baseline;
+        display: flex;
+    }
+
+    &__dots {
+        border-bottom: 1px dotted #DEDEDE;
+        flex: 1 0;
+    }
+
+    &__values {
+        flex-direction: column;
+        color: $c-link;
+        display: flex;
+        width: 30%;
+        gap: 8px;
+    }
+
+
+}
+
+//!Review Block style
+
+.review {
+    width: 50%;
+
+    &__wrapper {
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
+        gap: 16px;
+    }
+
+    &__header {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+    }
+
+    &__btn {
+        background-color: $c-brand-yellow;
+        justify-content: center;
+        @include f-Lato-Bold;
+        border-radius: 50px;
+        align-items: center;
+        padding: 12px 70px;
+        flex-wrap: nowrap;
+        height: 48px;
+        display: flex;
+        border: none;
+
+    }
+
+    &__title {
+        font-size: 24px;
+        width: 30%;
+    }
+
+    &__example {
+        border: 1px solid $c-extra-gray;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 16px 24px;
+        border-radius: 4px;
+        display: flex;
+        gap: 16px;
+    }
+
+    &__user-info {
+        flex-direction: column;
+        display: flex;
+        gap: 8px;
+    }
+
+    &__user-name {
+        font-size: 20px;
+    }
+
+    &__date {
+        color: $c-light-gray;
+        font-size: 14px;
+    }
+
+    &__text {
+        line-height: 21px;
+        font-size: 14px;
+    }
+
+    &__response {
+        border: none;
+        border-bottom: 1px solid $c-link;
+        width: fit-content;
+        background: none;
+        color: $c-link;
+    }
+}
+
+
+// Delivery styles
+
+.delivery {
+
+
+    &__wrapper {
+        flex-direction: column;
+        font-size: 14px;
+        display: flex;
+        width: 100%;
+        gap: 16px;
+    }
+
+    &__title {
+        font-size: 24px;
+    }
+
+    &__methods {
+        justify-content: space-between;
+        flex-direction: column;
+        display: flex;
+        width: 100%;
+        gap: 16px;
+    }
+
+    &__method {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+    }
+
+    &__method-delivery-term,
+    &__method-delivery-price {
+        flex: 1;
+    }
+
+    &__method-delivery-price {
+        text-align: end;
+    }
+
+    &__method-name {
+        flex: 2;
+    }
+
+    &__place-list {
+        border: none;
+        border-bottom: 1px solid $c-link;
+        width: fit-content;
+        background: none;
+        outline: none;
+    }
+
+}
+
+option {
+    color: $c-text;
 }

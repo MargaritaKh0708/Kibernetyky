@@ -4,6 +4,7 @@ import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { Accordion } from '../UI/accordion/Accordion';
 import { AccordionItem } from '../UI/accordion/AccordionItem';
 import { Field, Form, Formik } from 'formik';
+import { deliveryMethods, deliveryPlaces } from '../backend/DataList';
 
 interface ICart {
   data: IProductCardListItem[];
@@ -47,6 +48,7 @@ export const Cart: React.FC<ICart> = ({
 }) => {
   const [orderProducts, setOrderProducts] = useState<IOrder[]>([]);
   const [deliveryJsx, setDeliveryJsx] = useState<React.ReactNode | null>(null);
+
   // load data from localStorage
   useEffect(() => {
     // get products in cart from localStorage
@@ -347,24 +349,7 @@ export const Cart: React.FC<ICart> = ({
     </div>
   );
   // delivery
-  const deliveryPlaces: { place: string; id: number }[] = [
-    { place: 'Київ', id: 1 },
-    { place: 'Дніпро', id: 2 },
-    { place: 'Львів', id: 3 },
-    { place: 'Запоріжжя', id: 4 },
-    { place: 'Луцьк', id: 5 },
-    { place: 'Суми', id: 6 },
-    { place: 'Одеса', id: 7 },
-    { place: 'Вінниця', id: 8 },
-  ];
-  const deliveryMethods: { method: string; price: number; id: number }[] = [
-    { method: 'Самовивіз із магазинів', price: 0, id: 1 },
-    { method: 'Justin', price: 52, id: 2 },
-    { method: 'Нова пошта', price: 52, id: 3 },
-    { method: 'Укр пошта', price: 52, id: 4 },
-    { method: 'Meest', price: 52, id: 5 },
-    { method: "Кур'єр", price: 152, id: 6 },
-  ];
+
   const deliveryAddresses: string[] = [
     "Дніпровська набережна 9, ТЦ 'River Mall', 2 поверх",
     'вул. Бульварна, 25',

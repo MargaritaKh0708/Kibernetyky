@@ -1,19 +1,19 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
     &__button {
-        background-color: #fff;
+        background-color: $c-white;
+        text-align: left;
+        transition: 1s;
         cursor: pointer;
         padding: 18px;
-        width: 100%;
-        text-align: left;
-        border: none;
         outline: none;
-        transition: 0.4s;
+        border: none;
+        width: 100%;
 
         /* Add a background color to the button if it is clicked on  */
         &--active,
         &:hover {
-            background-color: #fff;
+            background-color: $c-extra-gray;
         }
     }
 
@@ -22,11 +22,11 @@
     }
 
     &__sym {
-        position: relative;
+        display: inline-block;
         transform: scale(0.7);
+        position: relative;
         margin-left: 5px;
         top: 5px;
-        display: inline-block;
     }
 
     &__symbol {
@@ -49,14 +49,15 @@
 
     /* Style the accordion panel. Note: hidden by default */
     &__panel {
-        padding: 0 18px;
+        transition: all 1s ease-out;
         background-color: white;
-        max-height: 0;
         overflow: hidden;
-        transition: all 0.2s ease-out;
+        padding: 0 18px;
+        max-height: 0;
 
         &--active {
-            max-height: fit-content;
+            max-height: 900px;
+            height: fit-content;
         }
     }
 }
