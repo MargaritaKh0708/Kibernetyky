@@ -9,6 +9,7 @@ import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMen
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
 import { Link } from 'react-router-dom';
+import { Login } from 'components/account/Login';
 
 interface IHeader extends ICatalog {
   orderProductsCount: number;
@@ -27,6 +28,8 @@ export const Header: React.FC<IHeader> = ({
 
   const [contactsModalActive, setContactsModalActive] =
     useState<boolean>(false);
+  
+  const [loginModalActive, setLoginModalActive] = useState<boolean>(false);
 
   return (
     <>
@@ -94,7 +97,9 @@ export const Header: React.FC<IHeader> = ({
             </a>
           </div>
           <nav className='menu-block'>
-            <HeaderSvgSelector id='personal' />
+            <div onClick={() => setLoginModalActive(true) }>
+              <HeaderSvgSelector id='personal'/>
+            </div>
             <HeaderSvgSelector id='likes'>
               <span>{favoriteCount}</span>
             </HeaderSvgSelector>
@@ -123,6 +128,7 @@ export const Header: React.FC<IHeader> = ({
         >
           <CallBackForm closeBtnFunction={setContactsModalActive} />
         </ModalWindow>
+        <Login viewWindow={loginModalActive} closeHandler={setLoginModalActive} isLogged={false}/>
       </header>
     </>
   );

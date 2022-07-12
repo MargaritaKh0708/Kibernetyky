@@ -33,7 +33,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
   // Change modal content
 
   const changeContentHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setTimeout((e) => setChangeContent(true), 3000);
+    setTimeout(() => setChangeContent(true), 3000);
   };
 
   // Part of other contenf of modal window

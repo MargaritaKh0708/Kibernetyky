@@ -1,0 +1,199 @@
+.login-block {
+    padding: 3px;
+    width: 100%;
+
+    &__row {
+        display: flex;
+        margin-bottom: 15px;
+        &--center {
+            @extend .login-block__row;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        &--right {
+            @extend .login-block__row;
+            justify-content: end;
+            margin-bottom: 10px;
+        }
+        &--space-between {
+            @extend .login-block__row;
+            justify-content: space-between;
+        }
+    }
+
+
+    &__title {
+        font-size: 20px;
+        line-height: 20px;
+    }
+    &__text {
+        font-size: 14px;
+        line-height: 21px;
+
+        &--bold {
+            @extend .login-block__text;
+            font-weight: 600;
+        }
+
+        &--center {
+            text-align: center;
+            line-height: 17px;
+            font-size: 14px;
+        }
+    }
+    &__text12 {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    &__subtext {
+        font-size: 14px;
+        line-height: 17px;
+        color: #9E9E9E;
+    }
+
+    &__link {
+        @extend .login-block__subtext;
+        color: #235ED0;
+        text-decoration: underline;
+    }
+
+    &-input {
+        width: 100%;
+        &__name {
+            display: block;
+            font-size: 12px;
+            line-height: 14px;
+            color: #9E9E9E;
+            padding-bottom: 3px;
+        }
+        &__field {
+            display: block;
+            font-size: 12px;
+            line-height: 14px;
+            padding: 10px 10px 10px 16px;
+        
+            border: 1px solid #F2F2F2;
+            border-radius: 5px;
+            width: 100%;
+        }
+        &-block {
+            @extend .login-block-input__field;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+
+            &__field {
+                flex-grow: 4;
+                font-size: 12px;
+                line-height: 14px;
+                padding: 10px 10px 10px 16px;
+                border: none;
+                outline: none;
+            }
+            &__show-pass {
+                flex-grow: 1;
+                text-align: center;
+                padding: 10px 0;
+                cursor: pointer;
+            }
+        }
+        &__error {
+            font-size: 12px;
+            line-height: 14px;
+            color: #F54503;
+        }
+        &__radio-label {
+            font-size: 14px;
+            line-height: 17px;
+            & > input {
+                margin-right: 5px;
+            }
+            margin-right: 15px;
+        }
+        &__checkbox-label {
+            @extend .login-block-input__radio-label;
+            margin-right: 10px;
+        }
+    }
+    &__submit-btn {
+        background: #F9E505;
+        border-radius: 20px;
+        padding: 12px 71px 12px 70px;
+        width: 100%;
+        font-size: 16px;
+        line-height: 19px;
+        border: none;
+    }
+}
+
+.mr-right-10 {
+    margin-left: 10px;
+}
+
+.mr-bottom-15 {
+    margin-bottom: 15px;
+}
+
+.social-button {
+    background: #FFFFFF;
+    border: 1px solid #F2F2F2;
+    border-radius: 50px;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 10px 20px 10px 35px;
+    position: relative;
+
+    &:first-child {
+        margin-right: 16px;
+    }
+    &__image {
+        position: absolute;
+        top: 6px;
+        left: 9px;
+    }
+}
+
+.del-sign {
+    margin-left: 5px;
+    color: #F9E505;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.radio-btn {
+    position: relative;
+    min-width: 160px;
+    &__field:checked, &__field:not(checked) {
+        position: absolute;
+        left: -9999px;
+    }
+    &__name {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 18px;
+        padding: 10px 15px 15px 15px;
+    }
+    &__field:checked + &__name::before, &__field:checked + &__name::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 160px;
+        height: 34px;
+        border-radius: 50px;
+        background-color: #F9E505;
+        z-index: -1;
+    }
+    &__field:not(checked) + &__name::before, &__field:not(checked) + &__name::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 160px;
+        height: 34px;
+        border-radius: 50px;
+        background-color: #F2F2F2;
+        z-index: -1;
+    }
+}

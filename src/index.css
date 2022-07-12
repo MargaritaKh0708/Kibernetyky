@@ -2224,4 +2224,186 @@ ul {
   max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
   max-height: fit-content;
+}
+
+.login-block {
+  padding: 3px;
+  width: 100%;
+}
+.login-block__row, .login-block__row--space-between, .login-block__row--right, .login-block__row--center {
+  display: flex;
+  margin-bottom: 15px;
+}
+.login-block__row--center {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.login-block__row--right {
+  justify-content: end;
+  margin-bottom: 10px;
+}
+.login-block__row--space-between {
+  justify-content: space-between;
+}
+.login-block__title {
+  font-size: 20px;
+  line-height: 20px;
+}
+.login-block__text, .login-block__text--bold {
+  font-size: 14px;
+  line-height: 21px;
+}
+.login-block__text--bold {
+  font-weight: 600;
+}
+.login-block__text--center {
+  text-align: center;
+  line-height: 17px;
+  font-size: 14px;
+}
+.login-block__text12 {
+  font-size: 12px;
+  line-height: 14px;
+}
+.login-block__subtext, .login-block__link {
+  font-size: 14px;
+  line-height: 17px;
+  color: #9E9E9E;
+}
+.login-block__link {
+  color: #235ED0;
+  text-decoration: underline;
+}
+.login-block-input {
+  width: 100%;
+}
+.login-block-input__name {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  color: #9E9E9E;
+  padding-bottom: 3px;
+}
+.login-block-input__field, .login-block-input-block {
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 10px 10px 10px 16px;
+  border: 1px solid #F2F2F2;
+  border-radius: 5px;
+  width: 100%;
+}
+.login-block-input-block {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.login-block-input-block__field {
+  flex-grow: 4;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 10px 10px 10px 16px;
+  border: none;
+  outline: none;
+}
+.login-block-input-block__show-pass {
+  flex-grow: 1;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.login-block-input__error {
+  font-size: 12px;
+  line-height: 14px;
+  color: #F54503;
+}
+.login-block-input__radio-label, .login-block-input__checkbox-label {
+  font-size: 14px;
+  line-height: 17px;
+  margin-right: 15px;
+}
+.login-block-input__radio-label > input, .login-block-input__checkbox-label > input {
+  margin-right: 5px;
+}
+.login-block-input__checkbox-label {
+  margin-right: 10px;
+}
+.login-block__submit-btn {
+  background: #F9E505;
+  border-radius: 20px;
+  padding: 12px 71px 12px 70px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 19px;
+  border: none;
+}
+
+.mr-right-10 {
+  margin-left: 10px;
+}
+
+.mr-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.social-button {
+  background: #FFFFFF;
+  border: 1px solid #F2F2F2;
+  border-radius: 50px;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 10px 20px 10px 35px;
+  position: relative;
+}
+.social-button:first-child {
+  margin-right: 16px;
+}
+.social-button__image {
+  position: absolute;
+  top: 6px;
+  left: 9px;
+}
+
+.del-sign {
+  margin-left: 5px;
+  color: #F9E505;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.radio-btn {
+  position: relative;
+  min-width: 160px;
+}
+.radio-btn__field:checked, .radio-btn__field:not(checked) {
+  position: absolute;
+  left: -9999px;
+}
+.radio-btn__name {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 10px 15px 15px 15px;
+}
+.radio-btn__field:checked + .radio-btn__name::before, .radio-btn__field:checked + .radio-btn__name::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 160px;
+  height: 34px;
+  border-radius: 50px;
+  background-color: #F9E505;
+  z-index: -1;
+}
+.radio-btn__field:not(checked) + .radio-btn__name::before, .radio-btn__field:not(checked) + .radio-btn__name::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 160px;
+  height: 34px;
+  border-radius: 50px;
+  background-color: #F2F2F2;
+  z-index: -1;
 }/*# sourceMappingURL=index.css.map */
