@@ -8,6 +8,7 @@ import { MainPage } from 'components/Pages/MainPage';
 import { Footer } from 'components/footer/Footer';
 import { Route, Routes } from 'react-router';
 import { useState } from 'react';
+import { ProductCardList } from 'components/product-card/ProductCardList';
 
 import {
   AdditionalServices,
@@ -31,6 +32,19 @@ function App() {
   const [addToCartActive, setAddToCartActive] = useState<boolean>(false);
   const [currentProductId, setCurrentProductId] = useState<number>(0);
   const [compareCount, setCompareCount] = useState<number>(0);
+
+  const coupledJsx = (
+  <ProductCardList
+  setCurrentProductIdHandler={setCurrentProductId}
+  setAddToCartActiveHandler={setAddToCartActive}
+  setOrderCountHandler={setOrderProductsCount}
+  setFavoriteCountHandler={setFavoriteCount}
+  setCompareCountHandler={setCompareCount}
+  addToCartActive={addToCartActive}
+  type='coupled'
+  data={MainGoodsData}
+  />
+  );
 
   return (
     <div className='App'>
@@ -85,14 +99,15 @@ function App() {
             }
           ></Route>
           <Route
-            path='/product'
+            path='/product/:productId'
             element={
               <ExtendedProductCard
                 serviseList={AdditionalServices}
-                good={MainGoodsData[0]}
+                goods={MainGoodsData}
                 payWaysList={PayWayList}
                 delivery={deliveryMethods}
                 place={deliveryPlaces}
+                coupledJsx={coupledJsx}
               />
             }
           ></Route>

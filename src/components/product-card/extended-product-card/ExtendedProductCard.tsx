@@ -9,6 +9,7 @@ import { AboutProductArticle } from './AboutProductArticle';
 import { SpecificationsBlock } from './SpecificationsBlock';
 import { ReviewBlock } from './ReviewBlock';
 import { Delivery, IDeliveryMethod, IIDeliveryPlace } from './Delivery';
+import { useParams } from 'react-router';
 //Pay Ways
 interface IPayWays {
   payWaysList: IPayWay[];
@@ -35,10 +36,11 @@ interface IAdditionalServicesItem {
 
 export interface IExtendedProductCard {
   serviseList: IAdditionalServices;
-  good: IProductCardListItem;
+  goods: IProductCardListItem[];
   payWaysList: IPayWay[];
   delivery: IDeliveryMethod[];
   place: IIDeliveryPlace[];
+  coupledJsx: React.ReactNode;
 }
 
 export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
@@ -46,7 +48,8 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   payWaysList,
   delivery,
   place,
-  good,
+  goods,
+  coupledJsx,
 }) => {
   const [productColor, setProductColor] = useState<string>(''); // for color panel
   const [chooseItemColorRam, setChooseItemColorRam] = useState<number>(); // for color of item that shoosed
@@ -55,6 +58,20 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   const [chooseItemColorCorps, setChooseItemColorCorps] = useState<string>(); // for color of item that shoosed
 
   const [seeMoreInsurence, setSeeMoreInsurence] = useState<boolean>(false); // for more information of insurence list
+
+  // get current product id from url
+  const {productId} = useParams();
+  let goodsById = goods.filter(good => good.id === parseInt(productId || '0'));
+  let good:IProductCardListItem = {} as IProductCardListItem;
+  if (goodsById.length > 0) {
+    good = goodsById[0];
+  }
+  else {
+    return <p>Товар відсутній</p>
+  }
+  
+  //console.log(productId);
+  
 
   // For insurence list lenght
   let renderServiseList: IAdditionalServicesItem[] = [];
@@ -416,9 +433,8 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                 }
               >
                 {renderServiseList.map((item) => (
-                  <div className='extended-card__insurence-list'>
+                  <div className='extended-card__insurence-list' key={item.id}>
                     <label
-                      key={item.id}
                       className='extended-card__insurence-item'
                     >
                       <input
@@ -498,6 +514,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
           <SpecificationsBlock good={good} />
           <ReviewBlock />
         </div>
+        {coupledJsx}
       </div>
     </section>
   );

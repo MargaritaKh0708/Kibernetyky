@@ -8,6 +8,7 @@ import {
   IOrder,
 } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
+import { Link } from 'react-router-dom';
 
 interface IRating {
   productId: number;
@@ -338,9 +339,11 @@ export const ProductCard: React.FC<IProductCardProps> = ({
               </div>
             </div>
           </div>
-          <span className='product-card__goodname'>
-            {goodName} ({goodModel})
-          </span>
+          <Link to={`/product/${productId}`}>
+            <span className='product-card__goodname'>
+              {goodName} ({goodModel})
+            </span>
+          </Link>
           <div className='product-card__part clients-mark'>
             <div className='product-card__clients-mark'>
               <div className='product-card__rating'>
