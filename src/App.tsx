@@ -32,7 +32,7 @@ function App() {
   const [addToCartActive, setAddToCartActive] = useState<boolean>(false);
   const [currentProductId, setCurrentProductId] = useState<number>(0);
   const [compareCount, setCompareCount] = useState<number>(0);
-
+  
   const coupledJsx = (
   <ProductCardList
   setCurrentProductIdHandler={setCurrentProductId}
@@ -43,6 +43,7 @@ function App() {
   addToCartActive={addToCartActive}
   type='coupled'
   data={MainGoodsData}
+  productId={currentProductId}
   />
   );
 
@@ -107,6 +108,7 @@ function App() {
                 payWaysList={PayWayList}
                 delivery={deliveryMethods}
                 place={deliveryPlaces}
+                setCurrentProductIdHandler={setCurrentProductId}
                 coupledJsx={coupledJsx}
               />
             }

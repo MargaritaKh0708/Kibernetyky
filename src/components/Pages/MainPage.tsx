@@ -58,6 +58,7 @@ export const MainPage: React.FC<IMainPage> = ({
         addToCartActive={isActive}
         type='leaders'
         data={goods}
+        productId={productId}
       />
       <ProductCardList
         setCurrentProductIdHandler={setCurrentProductIdHandler}
@@ -68,6 +69,7 @@ export const MainPage: React.FC<IMainPage> = ({
         addToCartActive={isActive}
         type='novelties'
         data={goods}
+        productId={productId}
       />
       <TopCategoriesBlock data={goods} />
       <VideoReviewBlock/>

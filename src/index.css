@@ -3366,7 +3366,6 @@ option {
   .slider__flex {
     flex-direction: column-reverse;
   }
-
   .slider__col {
     flex-direction: row;
     align-items: center;
@@ -3374,17 +3373,14 @@ option {
     margin-top: 24px;
     width: 100%;
   }
-
   .slider__images {
     width: 100%;
   }
-
   .slider__thumbs {
     height: 100px;
     width: calc(100% - 96px);
     margin: 0 16px;
   }
-
   .slider__prev,
 .slider__next {
     height: auto;

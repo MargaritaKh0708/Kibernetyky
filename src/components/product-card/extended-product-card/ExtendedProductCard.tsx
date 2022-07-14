@@ -41,6 +41,7 @@ export interface IExtendedProductCard {
   delivery: IDeliveryMethod[];
   place: IIDeliveryPlace[];
   coupledJsx: React.ReactNode;
+  setCurrentProductIdHandler:(productId: number) => void;
 }
 
 export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
@@ -50,6 +51,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   place,
   goods,
   coupledJsx,
+  setCurrentProductIdHandler,
 }) => {
   const [productColor, setProductColor] = useState<string>(''); // for color panel
   const [chooseItemColorRam, setChooseItemColorRam] = useState<number>(); // for color of item that shoosed
@@ -65,8 +67,10 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   let good:IProductCardListItem = {} as IProductCardListItem;
   if (goodsById.length > 0) {
     good = goodsById[0];
+    setCurrentProductIdHandler(parseInt(productId || '0'));
   }
   else {
+    setCurrentProductIdHandler(0);
     return <p>Товар відсутній</p>
   }
   

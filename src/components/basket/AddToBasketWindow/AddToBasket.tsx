@@ -79,10 +79,10 @@ export const AddToCart: React.FC<AddToCartType> = ({
   }
 
   // find coupled products
-  const coupledCategories = product.category.coupled;
+ /*  const coupledCategories = product.category.coupled;
   const coupledProducts = products.filter((p) =>
     coupledCategories.includes(p.category.id)
-  );
+  ); */
 
   const ProductJsx = (
     <div className='add-to-cart-modal__head-part'>
@@ -155,7 +155,7 @@ export const AddToCart: React.FC<AddToCartType> = ({
           closeFunction={() => viewHandler(false)}
           arrowBorder='add-to-cart-arrow'
         />
-        {[ProductJsx]}
+        {ProductJsx}
       </>
     </ModalWindow>
   );

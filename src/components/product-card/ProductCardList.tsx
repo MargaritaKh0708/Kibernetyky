@@ -66,6 +66,7 @@ export interface IProductCardList {
   data: IProductCardListItem[];
   addToCartActive: boolean;
   type: string;
+  productId: number;
 }
 
 export enum WindowVariant {
@@ -87,6 +88,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
   addToCartActive,
   data,
   type,
+  productId,
 }) => {
   const [cardQuantity, setCardQuantity] = useState<number>(0); // state on numbers of column
   const [categoryId, setCategoryId] = useState<number>(0); // state on category of good
@@ -146,8 +148,23 @@ export const ProductCardList: React.FC<IProductCardList> = ({
         : item.novelty
     );
   } else if (type === 'coupled') {
+    // find product by id
+    const foundProducts = data.filter((product) => product.id === productId);
+    const product = foundProducts.length > 0 ? foundProducts[0] : null;
+    
+    // find coupled products
+    let coupledProducts = [];
+    if (product) {
+      const coupledCategories = product.category.coupled;
+      coupledProducts = data.filter((p) =>
+        coupledCategories.includes(p.category.id)
+      );
+    }
+    else {
+      return <></>;
+    }
     // Finds 'coupled' by category
-    list = data.filter((item) =>
+    list = coupledProducts.filter((item) =>
       categoryId > 0 ? item.category.id === categoryId : true
     );
   }
