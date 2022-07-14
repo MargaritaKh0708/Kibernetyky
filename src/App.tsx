@@ -14,10 +14,15 @@ import {
   AdditionalServices,
   deliveryMethods,
   deliveryPlaces,
-  MainGoodsData,
+  //MainGoodsData,
   CategoryList,
   PayWayList,
 } from 'components/backend/DataList';
+
+import {getData} from 'components/backend/Data';
+const MainGoodsData = getData();
+console.log(MainGoodsData);
+
 
 function App() {
   const [orderProductsCount, setOrderProductsCount] = useState(0);

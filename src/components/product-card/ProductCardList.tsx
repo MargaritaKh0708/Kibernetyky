@@ -198,6 +198,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
         >
           {renderItems.map((item) => (
             <ProductCard
+              mainPic = {item.imageCollection.length > 0 ? item.imageCollection[0] : ''}
               available={item.available}
               oldprice={item.oldprice}
               goodModel={item.model}

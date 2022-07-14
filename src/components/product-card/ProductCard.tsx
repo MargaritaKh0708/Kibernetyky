@@ -1,4 +1,4 @@
-import mainPic from 'assets/icons/goods-card-icons/mainPic.png';
+//import mainPic from 'assets/icons/goods-card-icons/mainPic.png';
 import { ProductCardSvgSelector } from './ProductCardSvgSelector';
 import { StarRating, IStarRatingProps } from './star-rating/StarRating';
 import { useEffect, useState } from 'react';
@@ -23,6 +23,7 @@ interface IProductCardProps {
   oldprice: number;
   goodName: string;
   goodModel: string;
+  mainPic: string;
   price: number;
   setOrderCountHandler?: (count: number) => void;
   setFavoriteCountHandler?: (count: number) => void;
@@ -47,6 +48,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   oldprice,
   leaders,
   price,
+  mainPic,
 }) => {
   const [rating, setRating] = useState<number>(0); // Star rating value
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
