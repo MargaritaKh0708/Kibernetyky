@@ -17,6 +17,7 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
         <li className='burger__list-item'>
           <HeaderSvgSelector id='personal-b' className='burger-icon' />
           <span>Вхід</span>
+          <span className='burger-icon--border' />
           <span>Реєстрація</span>
         </li>
         <li className='burger__list-item' onClick={() => setOpen(true)}>
@@ -71,14 +72,16 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
         <li className='burger__list-item'>Кредити</li>
         <li className='burger__list-item'>Оплата і доставка</li>
         <li className='burger__list-item-epmty'></li>
-        <li className='burger__list-item'>Ще</li>
+        <li className='burger__list-item burger__list-item--color'>Ще</li>
         <li className='burger__list-item'>Про нас</li>
         <li className='burger__list-item'>Вакансії</li>
         <li className='burger__list-item'>Кібер-обмін</li>
         <li className='burger__list-item'>Кібер-послуги</li>
         <li className='burger__list-item'>Страхування</li>
         <li className='burger__list-item'>Гарантія. Обмін і повернення</li>
-        <li className='footer__main-content-list-item '>Ми в соц. мережах</li>
+        <li className='footer__main-content-list-item  burger__list-item--color'>
+          Ми в соц. мережах
+        </li>
         <li className='footer__main-content-list-item footer__main-content-list-item_flex'>
           <FooterImgSelector id='insta' />
           <FooterImgSelector id='tiktok' />

@@ -6,15 +6,19 @@ import viber from '../../assets/icons/footer-icons/viber.png';
 import logo from '../../assets/icons/footer-icons/logo.png';
 
 export interface IFooterImgSelector {
+  style?: string;
   id: string;
 }
 
-export const FooterImgSelector: React.FC<IFooterImgSelector> = ({ id }) => {
+export const FooterImgSelector: React.FC<IFooterImgSelector> = ({
+  id,
+  style,
+}) => {
   switch (id) {
     case 'facebook':
       return (
         <a
-          className='social-media'
+          className={`social-media ${style}`}
           href='https://www.facebook.com/kibernetiki.com.ua/'
         >
           <img src={facebook} alt='facebook' />

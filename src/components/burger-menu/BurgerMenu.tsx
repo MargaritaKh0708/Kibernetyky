@@ -1,6 +1,7 @@
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { BurgerMenuList } from './BurgerMenuList';
 import { HeaderSvgSelector } from '../header/HeaderSvgSelector';
+import { Link } from 'react-router-dom';
 
 interface IBurgerMenu {
   setContactsModalState: (value: boolean) => void;
@@ -21,7 +22,9 @@ export const BurgerMenu: React.FC<IBurgerMenu> = ({
         className='burger-modal'
       >
         <div className='burger__list-header'>
-          <HeaderSvgSelector id='logo' />
+          <Link to='/'>
+            <HeaderSvgSelector id='logo' />
+          </Link>
           <div className='burger__closer' onClick={() => setBurgerState(false)}>
             <span className='burger__arrow-btn burger__arrow-btn_left '></span>
             <span className='burger__arrow-btn'></span>

@@ -4,7 +4,11 @@ import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { Accordion } from '../UI/accordion/Accordion';
 import { AccordionItem } from '../UI/accordion/AccordionItem';
 import { Field, Form, Formik } from 'formik';
-import { deliveryMethods, deliveryPlaces } from '../backend/DataList';
+import {
+  deliveryMethods,
+  deliveryPlaces,
+  bankArray,
+} from '../backend/DataList';
 
 interface ICart {
   data: IProductCardListItem[];
@@ -140,15 +144,15 @@ export const Cart: React.FC<ICart> = ({
             <p className='product-form__subtitle'>{orderProductItem.name}</p>
             <p className='product-form__subtitle--grey'>
               {orderProductItem.count} x {orderProductItem.price}
-              <span className='grivna-sign'>&#8372;</span>
+              <span className='grivna-sign'>₴</span>
             </p>
             <p className='product-form__title'>
               {orderProductItem.price * orderProductItem.count}
-              <span className='grivna-sign'>&#8372;</span>
+              <span className='grivna-sign'>₴</span>
               <span className='product-form__title--line-through'>
                 {orderProductItem.oldPrice * orderProductItem.count}
               </span>
-              <span className='grivna-sign'>&#8372;</span>
+              <span className='grivna-sign'>₴</span>
             </p>
           </div>
         </div>
@@ -159,44 +163,50 @@ export const Cart: React.FC<ICart> = ({
   const productFormJsx = (
     <div className='product-form'>
       <div className='product-form__header'>
-        <p className='product-form__title'>Ваше замовлення</p>
+        <span className='product-form__title'>Ваше замовлення</span>
         <a className='product-form__link'>Змінити</a>
       </div>
       <div className='product-form__products'>{orderProductsDataRendered}</div>
       <div className='product-form__bonuses'>
-        <input type='checkbox' name='bonuses' id='bonuses' />
         <label className='product-form__title--check' htmlFor='bonuses'>
-          Використати бонуси
+          <span>Використати бонуси</span>
+          <input
+            type='checkbox'
+            name='bonuses'
+            id='bonuses'
+            className='product-form__checkbox form-checkbox'
+          />
+          <span className='checkbox-fake' />
         </label>
       </div>
       <div className='product-form__promo'>
-        <p className='product-form__title'>Промокод</p>
+        <span className='product-form__title'>Промокод</span>
         <a className='product-form__link'>Додати</a>
       </div>
       <div className='product-form__prices'>
-        <p className='product-form__title'>Разом</p>
+        <span className='product-form__title'>Разом</span>
         <div className='product-form__price'>
-          <p className='product-form__subtitle'>
-            {orderCount} {orderCountJsx} на суму
-          </p>
-          <p className='product-form__title'>
-            {totalSum}
-            <span className='grivna-sign'>&#8372;</span>
-          </p>
+          <span className='product-form__subtitle'>
+            &nbsp;{orderCount}&nbsp; {orderCountJsx} &nbsp;на суму
+          </span>
+          <span className='product-form__title'>
+            &nbsp;{totalSum}&nbsp;
+            <span className='grivna-sign'>₴</span>
+          </span>
         </div>
         <div className='product-form__price'>
-          <p className='product-form__subtitle'>Вартість доставки</p>
-          <p className='product-form__title'>
-            {deliverySum}
-            <span className='grivna-sign'>&#8372;</span>
-          </p>
+          <span className='product-form__subtitle'>Вартість доставки</span>
+          <span className='product-form__title'>
+            &nbsp;{`${deliverySum}`}&nbsp;
+            <span className='grivna-sign'>₴</span>
+          </span>
         </div>
         <div className='product-form__price'>
-          <p className='product-form__subtitle'>До сплати</p>
-          <p className='product-form__title'>
-            {totalSum + deliverySum}
-            <span className='grivna-sign'>&#8372;</span>
-          </p>
+          <span className='product-form__subtitle'>До сплати</span>
+          <span className='product-form__title'>
+            &nbsp;{totalSum + deliverySum}&nbsp;
+            <span className='grivna-sign'>₴</span>
+          </span>
         </div>
       </div>
       <div className='product-form__confirm'>
@@ -260,9 +270,15 @@ export const Cart: React.FC<ICart> = ({
           htmlFor='needregister'
           className='cart-block-input__checkbox-label'
         >
-          Зареєструватись
+          <span>Зареєструватись</span>
+          <Field
+            id='needregister'
+            name='needregister'
+            type='checkbox'
+            className='form-checkbox product-form__checkbox'
+          />
+          <span className='checkbox-fake' />
         </label>
-        <Field id='needregister' name='needregister' type='checkbox' />
       </div>
     </div>
   );
@@ -313,7 +329,6 @@ export const Cart: React.FC<ICart> = ({
         }}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          console.log(values);
         }}
       >
         {({ values }) => (
@@ -326,8 +341,10 @@ export const Cart: React.FC<ICart> = ({
                     name='stateuser'
                     value='newuser'
                     type='radio'
+                    className='radio-field'
                   />
-                  Я новий користувач
+                  <span className='radio__fake' />
+                  <span> Я новий користувач</span>
                 </label>
                 <label className='cart-block-input__radio-label'>
                   <Field
@@ -335,8 +352,10 @@ export const Cart: React.FC<ICart> = ({
                     name='stateuser'
                     value='persistentuser'
                     type='radio'
+                    className='radio-field'
                   />
-                  Я постійний клієнт
+                  <span className='radio__fake' />
+                  <span> Я постійний клієнт</span>
                 </label>
               </div>
               {values.stateuser === 'newuser'
@@ -396,8 +415,10 @@ export const Cart: React.FC<ICart> = ({
                 name='couriertype'
                 value='novaposhta'
                 type='radio'
+                className='radio-field'
               />
-              Нова Пошта
+              <span className='radio__fake' />
+              <span> Нова Пошта</span>
             </label>
             <label className='cart-block-input__radio-label'>
               <Field
@@ -405,8 +426,10 @@ export const Cart: React.FC<ICart> = ({
                 name='couriertype'
                 value='meest'
                 type='radio'
+                className='radio-field'
               />
-              Meest
+              <span className='radio__fake' />
+              <span> Meest</span>
             </label>
             <label className='cart-block-input__radio-label'>
               <Field
@@ -414,8 +437,10 @@ export const Cart: React.FC<ICart> = ({
                 name='couriertype'
                 value='justin'
                 type='radio'
+                className='radio-field'
               />
-              Justin
+              <span className='radio__fake' />
+              <span>Justin</span>
             </label>
           </div>
           <div className='cart-block__row'>
@@ -572,8 +597,10 @@ export const Cart: React.FC<ICart> = ({
                     name='deliveryperson'
                     value='iam'
                     type='radio'
+                    className='radio-field'
                   />
-                  Я одержувач
+                  <span className='radio__fake' />
+                  <span> Я одержувач</span>
                 </label>
                 <label className='cart-block-input__radio-label'>
                   <Field
@@ -581,8 +608,10 @@ export const Cart: React.FC<ICart> = ({
                     name='deliveryperson'
                     value='other'
                     type='radio'
+                    className='radio-field'
                   />
-                  Інша людина
+                  <span className='radio__fake' />
+                  <span> Інша людина</span>
                 </label>
               </div>
               {values.deliveryperson === 'other' ? [otherPersonDeliver] : false}
@@ -620,9 +649,15 @@ export const Cart: React.FC<ICart> = ({
                   htmlFor='phoneconfirm'
                   className='cart-block-input__checkbox-label'
                 >
-                  Передзвоніть мені для уточнення замовлення
+                  <span>Передзвоніть мені для уточнення замовлення</span>
+                  <Field
+                    id='phoneconfirm'
+                    name='phoneconfirm'
+                    type='checkbox'
+                    className='product-form__checkbox form-checkbox'
+                  />
+                  <span className='checkbox-fake' />
                 </label>
-                <Field id='phoneconfirm' name='phoneconfirm' type='checkbox' />
               </div>
               <div>
                 {deliveryMethods.map((methodItem) => (
@@ -634,6 +669,7 @@ export const Cart: React.FC<ICart> = ({
                       id='deliverymethod'
                       name='deliverymethod'
                       type='radio'
+                      className='radio-field'
                       value={methodItem.method}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => {
                         setFieldValue('deliverymethod', e.target.value);
@@ -643,14 +679,20 @@ export const Cart: React.FC<ICart> = ({
                         );
                       }}
                     />
-                    {methodItem.method}
-                    <p className='cart-block-input__radio-subtitle'>
-                      Вартість доставки{' '}
-                      {methodItem.price > 0 ? methodItem.price : 'Безкоштовно'}
-                    </p>
-                    {methodItem.method === values.deliverymethod
-                      ? [deliveryJsx]
-                      : false}
+                    <span className='radio__fake' />
+                    <div className='cart-block-input__radio-descrip'>
+                      {' '}
+                      {methodItem.method}
+                      <p className='cart-block-input__radio-subtitle'>
+                        <span> Вартість доставки</span> &nbsp;
+                        {methodItem.price > 0
+                          ? `${methodItem.price} ₴`
+                          : 'Безкоштовно'}
+                      </p>
+                      {methodItem.method === values.deliverymethod
+                        ? [deliveryJsx]
+                        : false}
+                    </div>
                   </label>
                 ))}
               </div>
@@ -669,15 +711,7 @@ export const Cart: React.FC<ICart> = ({
     { payMethod: 'Оплата Apple Pay', id: 5 },
     { payMethod: 'Оплата Google Pay', id: 6 },
   ];
-  const bankArray: { name: string; id: number }[] = [
-    { name: 'Приват Банк', id: 1 },
-    { name: 'Альфа Банк', id: 2 },
-    { name: 'А-банк', id: 3 },
-    { name: 'ОТП банк', id: 4 },
-    { name: 'УкрСібБанк', id: 5 },
-    { name: 'ПУМБ', id: 6 },
-    { name: 'Монобанк', id: 7 },
-  ];
+
   const bankPortionJsx = (
     <div className='cart-block__row' key={5}>
       <div className='cart-block-input'>
@@ -706,28 +740,35 @@ export const Cart: React.FC<ICart> = ({
           <Form>
             <>
               {payMethods.map((payMethod) => (
-                <div key={payMethod.id}>
+                <div key={payMethod.id} className='cart-block-input__paymethod'>
                   <label className='cart-block-input__radio-block'>
                     <Field
                       id='paymethod'
                       name='paymethod'
                       value={payMethod.payMethod}
                       type='radio'
+                      className='radio-field'
                     />
+                    <span className='radio__fake' />
                     {payMethod.payMethod}
                   </label>
                   {payMethod.payMethod === values.paymethod &&
                   values.paymethod === 'Кредит і оплата частинами'
                     ? [
                         bankArray.map((bank: { name: string; id: number }) => (
-                          <div key={bank.id}>
+                          <div
+                            key={bank.id}
+                            className='cart-block-input__paymethod'
+                          >
                             <label className='cart-block-input__radio-block--push'>
                               <Field
                                 id='bank'
                                 name='bank'
                                 value={bank.name}
                                 type='radio'
+                                className='radio-field'
                               />
+                              <span className='radio__fake' />
                               {bank.name}
                             </label>
                             {values.bank === bank.name

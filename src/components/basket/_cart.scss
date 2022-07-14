@@ -8,16 +8,28 @@
     &-form {
         justify-content: space-between;
         display: flex;
+        gap: 30px;
+
+        @include media (max, 'iPad') {
+            flex-direction: column;
+            gap: 20px;
+        }
     }
 }
 
 .info-form {
     max-width: 988px;
+    width: fit-content;
     flex-grow: 2;
+
+    @include media (max, 'iPad') {
+        width: auto;
+    }
 }
 
 .product-form {
     background-color: $c-white;
+    height: fit-content;
     padding: 10px;
     width: auto;
 
@@ -30,6 +42,10 @@
         line-height: 30px;
         font-size: 20px;
 
+        @include media (max, 'mobile-horizontal') {
+            font-size: 16px;
+        }
+
         &--line-through {
             @extend .product-form__title;
             text-decoration: line-through;
@@ -38,7 +54,9 @@
 
         &--check {
             @extend .product-form__title;
-            padding-left: 10px;
+            align-items: center;
+            display: flex;
+            gap: 10px;
         }
     }
 
@@ -105,7 +123,8 @@
     }
 
     &__confirm {
-        justify-content: end;
+        justify-content: center;
+        align-items: center;
         margin: 16px 0;
         display: flex;
     }
@@ -119,7 +138,13 @@
         font-size: 16px;
         border: none;
     }
+
+    &__checkbox {
+        display: none;
+    }
+
 }
+
 
 .grivna-sign {
     padding: 0 4px;
@@ -131,14 +156,22 @@
     &__row {
         margin-bottom: 15px;
         display: flex;
+
+        @include media (max, 'mobile-horizontal') {
+            flex-direction: column;
+            gap: 15px;
+        }
     }
 
     &-input {
         margin-right: 15px;
 
         &__radio-label {
+            align-items: center;
             line-height: 17px;
             font-size: 14px;
+            display: flex;
+            gap: 10px;
 
             &>input {
                 margin-right: 5px;
@@ -150,29 +183,28 @@
         &__radio-block {
             @extend .cart-block-input__radio-label;
             padding-bottom: 10px;
+            align-items: flex-start;
             margin-right: 0;
-            display: block;
-
-            &>input {
-                display: inline-block;
-            }
+            display: flex;
+            gap: 10px;
 
             &--push {
                 @extend .cart-block-input__radio-block;
+                align-items: center;
                 padding: 10px;
+                display: flex;
             }
         }
 
         &__radio-subtitle {
-            padding: 10px 0 10px 15px;
+            padding: 10px 0;
             color: $c-light-gray;
             line-height: 17px;
             font-size: 14px;
         }
 
         &__checkbox-label {
-            @extend .cart-block-input__radio-label;
-            margin-right: 10px;
+            @extend .product-form__title--check;
         }
 
         &__name {
@@ -205,4 +237,8 @@
         background-color: $c-extra-gray;
         color: #2B2A29;
     }
+}
+
+.cart-block-input__paymethod {
+    padding-top: 10px;
 }

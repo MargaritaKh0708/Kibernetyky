@@ -9,7 +9,9 @@ import { AboutProductArticle } from './AboutProductArticle';
 import { SpecificationsBlock } from './SpecificationsBlock';
 import { ReviewBlock } from './ReviewBlock';
 import { Delivery, IDeliveryMethod, IIDeliveryPlace } from './Delivery';
-//Pay Ways
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+
 interface IPayWays {
   payWaysList: IPayWay[];
 }
@@ -34,19 +36,25 @@ interface IAdditionalServicesItem {
 }
 
 export interface IExtendedProductCard {
+  setCurrentProductIdHandler: (productId: number) => void;
   serviseList: IAdditionalServices;
-  good: IProductCardListItem;
-  payWaysList: IPayWay[];
+  goods: IProductCardListItem[];
   delivery: IDeliveryMethod[];
+  coupledJsx: React.ReactNode;
   place: IIDeliveryPlace[];
+  payWaysList: IPayWay[];
+  similarJsx: React.ReactNode;
 }
 
 export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
+  setCurrentProductIdHandler,
   serviseList,
   payWaysList,
+  coupledJsx,
+  similarJsx,
   delivery,
   place,
-  good,
+  goods,
 }) => {
   const [productColor, setProductColor] = useState<string>(''); // for color panel
   const [chooseItemColorRam, setChooseItemColorRam] = useState<number>(); // for color of item that shoosed
@@ -56,22 +64,43 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
 
   const [seeMoreInsurence, setSeeMoreInsurence] = useState<boolean>(false); // for more information of insurence list
 
+  // get current product id from url
+  const { productId } = useParams();
+  let goodsById = goods.filter(
+    (good) => good.id === parseInt(productId || '0')
+  );
+  let good: IProductCardListItem = {} as IProductCardListItem; // чтобы не требовало все поля этого типа
+  if (goodsById.length > 0) {
+    good = goodsById[0];
+    setCurrentProductIdHandler(parseInt(productId || '0'));
+  } else {
+    setCurrentProductIdHandler(0);
+    return <p>Товар відсутній</p>;
+  }
+
+  //get raiting
+
+  const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
+  const foundRating = ratings.filter(
+    (rating: { productId: number; value: number }) =>
+      rating.productId === good.id
+  );
+
   // For insurence list lenght
   let renderServiseList: IAdditionalServicesItem[] = [];
 
   seeMoreInsurence
     ? (renderServiseList = serviseList.insurance)
     : (renderServiseList = serviseList.insurance.slice(0, 2));
-  // const data = new Date();
-  // const day = data.toLocaleDateString;
-  // const tomorrow = data.setDate(+1);
 
   return (
     <section className='extended-card main-content '>
       <div className='extended-card__wrapper container'>
         <div className='extended-card__header'>
           <div className='extended-card__path'>
-            <span className='extended-card__path-item'>Головна</span>
+            <Link to='/'>
+              <span className='extended-card__path-item'>Головна</span>
+            </Link>
             <span className='extended-card__path-circle'></span>
             <span className='extended-card__path-item'>Каталог</span>
             <span className='extended-card__path-circle'></span>
@@ -86,8 +115,16 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                 Оцінка користувачів
               </span>
               <div className='extended-card__rating'>
-                <StarRating count={5} activeColor={'#F9E505'} />
-                <span className='product-card__rating-value'>{'raiting'}</span>
+                <StarRating
+                  count={5}
+                  activeColor={'#F9E505'}
+                  value={foundRating[0].value}
+                />
+                <span className='product-card__rating-value'>
+                  {foundRating[0].value === 0
+                    ? 'Оцініть першим'
+                    : foundRating[0].value}
+                </span>
               </div>
 
               <span>
@@ -160,7 +197,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   {good.specifications.colors.map((color) => (
                     <label
                       key={`${color.colorName}+${good.id}`}
-                      className='extended-card__color-border'
+                      className={
+                        productColor === color.colorName
+                          ? 'extended-card__color-border active-color'
+                          : 'extended-card__color-border'
+                      }
                     >
                       <span
                         className='extended-card__color-bg'
@@ -416,16 +457,14 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                 }
               >
                 {renderServiseList.map((item) => (
-                  <div className='extended-card__insurence-list'>
-                    <label
-                      key={item.id}
-                      className='extended-card__insurence-item'
-                    >
+                  <div className='extended-card__insurence-list' key={item.id}>
+                    <label className='extended-card__insurence-item'>
                       <input
                         type='checkbox'
-                        className='extended-card__insurence-input'
+                        className='form-checkbox extended-card__insurence-input '
                         value={item.id}
                       />
+                      <span className='checkbox-fake' />
                       <span className='extended-card__insurence-title'>
                         {item.name}
                       </span>
@@ -493,12 +532,14 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
             </div>
           </div>
         </div>
+        {coupledJsx}
         <AboutProductArticle good={good} />
         <div className='extended-card__discription-part'>
           <SpecificationsBlock good={good} />
           <ReviewBlock />
         </div>
       </div>
+      {similarJsx}
     </section>
   );
 };

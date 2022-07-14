@@ -12,6 +12,7 @@ import nocash from 'assets/icons/payway/nocath.png';
 import privat24 from 'assets/icons/payway/privat24.png';
 import privatpart from 'assets/icons/payway/privatpart.png';
 import visa from 'assets/icons/payway/visa.png';
+import otp from 'assets/icons/product-card/otp.png';
 
 //!For main data
 import pic from 'assets/main-page/presentation-block-swiper/green/main-picture.png';
@@ -91,6 +92,84 @@ export const deliveryPlaces: { place: string; id: number }[] = [
   { place: 'Суми', id: 1033 },
   { place: 'Одеса', id: 1034 },
   { place: 'Вінниця', id: 1035 },
+];
+
+export const bankArray: {
+  icon: string;
+  name: string;
+  id: number;
+  credit_programs: { term: number; percent: number }[];
+}[] = [
+  {
+    icon: privatpart,
+    name: 'Приват Банк',
+    credit_programs: [
+      { term: 3, percent: 0 },
+      { term: 6, percent: 0 },
+      { term: 10, percent: 0 },
+      { term: 12, percent: 0 },
+    ],
+    id: 1,
+  },
+  {
+    icon: cash,
+    name: 'Альфа Банк',
+    credit_programs: [
+      { term: 3, percent: 5 },
+      { term: 6, percent: 10 },
+      { term: 10, percent: 10 },
+      { term: 12, percent: 30 },
+    ],
+    id: 2,
+  },
+  {
+    icon: privatpart,
+    name: 'А-банк',
+    credit_programs: [
+      { term: 3, percent: 5 },
+      { term: 6, percent: 10 },
+      { term: 10, percent: 10 },
+      { term: 12, percent: 30 },
+    ],
+    id: 3,
+  },
+  {
+    icon: otp,
+    name: 'ОТП банк',
+    credit_programs: [
+      { term: 3, percent: 5 },
+      { term: 6, percent: 10 },
+      { term: 10, percent: 10 },
+      { term: 12, percent: 25 },
+      { term: 24, percent: 15 },
+    ],
+    id: 4,
+  },
+  {
+    icon: cash,
+    name: 'УкрСібБанк',
+    credit_programs: [{ term: 6, percent: 30 }],
+    id: 5,
+  },
+  {
+    icon: cash,
+    name: 'ПУМБ',
+    credit_programs: [{ term: 12, percent: 34 }],
+    id: 6,
+  },
+  {
+    icon: mono,
+    name: 'Монобанк',
+    credit_programs: [
+      { term: 1, percent: 0 },
+      { term: 3, percent: 0 },
+      { term: 10, percent: 0 },
+      { term: 12, percent: 0 },
+      { term: 24, percent: 10 },
+      { term: 36, percent: 8 },
+    ],
+    id: 7,
+  },
 ];
 export const AdditionalServices = {
   insurance: [
@@ -279,10 +358,10 @@ export const MainGoodsData = [
     imageCollection: [pic0, pic1, pic2, pic3, pic4, pic5],
     model: 'ZA5T0095UA',
     oldprice: 1400,
-    price: 453,
-    leader: true,
     available: true,
     novelty: false,
+    leader: true,
+    price: 453,
     id: 199001,
     specifications: {
       main: [
@@ -335,7 +414,7 @@ export const MainGoodsData = [
           colorName: 'Black',
         },
         {
-          color: '#111',
+          color: '#fff',
           colorName: 'White',
         },
       ],
@@ -433,7 +512,7 @@ export const MainGoodsData = [
   {
     name: 'Lenovo Tab M10 Plus FHD Wi-Fi 4/128Gb Iron Grey',
     model: 'ZA5T0095UA',
-    imageCollection: [],
+    imageCollection: [pic0, pic1, pic2, pic3, pic4, pic5],
     novelty: false,
     available: true,
     leader: false,

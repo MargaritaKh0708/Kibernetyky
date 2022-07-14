@@ -46,10 +46,21 @@
         justify-content: space-between;
         align-items: center;
         display: flex;
+
+        @include media (max, 'iPad') {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 16px 0;
+            gap: 16px;
+        }
     }
 
     &__title {
         font-size: 24px;
+
+        @include media (max, 'iPad') {
+            font-size: 20px;
+        }
     }
 
     &__clients-mark {
@@ -59,6 +70,9 @@
         display: flex;
         gap: 14px;
 
+        @include media (max, 'iPad') {
+            align-items: flex-start;
+        }
     }
 
     &__rating {
@@ -83,6 +97,12 @@
         font-size: 16px;
         display: flex;
         gap: 32px;
+
+        @include media (max, 'iPad') {
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
     }
 
     &__menu-item {
@@ -110,6 +130,13 @@
         height: 170px;
         display: flex;
 
+        @include media (max, 'mobile-horizontal') {
+            flex-direction: column;
+            align-items: flex-start;
+            height: fit-content;
+            gap: 8px;
+        }
+
     }
 
     &__main-characteristic-item {
@@ -118,6 +145,10 @@
         display: flex;
         width: 33%;
         gap: 10px;
+
+        @include media (max, 'mobile-horizontal') {
+            width: fit-content;
+        }
     }
 
     &__text-part {
@@ -141,10 +172,18 @@
     &__main-part {
         justify-content: space-between;
         display: flex;
+
+        @include media (max, 'hd') {
+            flex-direction: column;
+        }
     }
 
     &__main-part-block {
         width: 50%;
+
+        @include media (max, 'hd') {
+            width: 100%;
+        }
     }
 
     &__sale-banner {
@@ -158,6 +197,10 @@
         padding: 0 55px;
         display: flex;
         height: 95px;
+
+        @include media (max, 'mobile-horizontal') {
+            padding: 0 10px;
+        }
 
         & span:first-child {
             font-size: 16px;
@@ -194,6 +237,10 @@
         width: 95px;
         top: 20px;
         left: 0;
+
+        @include media (max, 'mobile-horizontal') {
+            display: none;
+        }
     }
 
     &__product-info {
@@ -202,6 +249,12 @@
         border-radius: 5px;
         margin-top: 16px;
         display: flex;
+
+        @include media (max, 'mobile-horizontal') {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 8px;
+        }
 
     }
 
@@ -221,19 +274,28 @@
         width: 50%;
         gap: 8px;
 
+        @include media (max, 'mobile-horizontal') {
+            margin: 8px;
+            width: 100%;
+        }
+
         &:last-of-type {
             border: none;
         }
     }
 
     &__color-border {
-        border: 1px solid $c-text;
+        border: 1px solid $c-white;
         border-radius: 4px;
         align-items: center;
         cursor: pointer;
         display: flex;
         height: 32px;
         width: 32px;
+
+        &.active-color {
+            border: 1px solid $c-text;
+        }
     }
 
     &__color-bg {
@@ -308,9 +370,18 @@
         align-items: center;
         display: flex;
         gap: 5px;
+
+        @include media (max, 'mobile-horizontal') {
+            flex-wrap: wrap;
+        }
     }
 
     //available field 
+    &__available {
+        @include media (max, 'mobile-horizontal') {
+            margin: 0 auto;
+        }
+    }
 
     &__available-btn {
         justify-content: space-between;
@@ -329,8 +400,15 @@
         justify-content: space-between;
         align-items: center;
         padding-top: 16px;
+        flex-wrap: wrap;
         display: flex;
         width: 100%;
+
+
+        @include media (max, 'mobile-horizontal') {
+            justify-content: center;
+            gap: 40px;
+        }
     }
 
     &__buy-way {
@@ -389,6 +467,10 @@
         font-size: 14px;
         display: flex;
         width: 100%;
+
+        @include media (max, 'mobile-horizontal') {
+            flex-wrap: wrap;
+        }
     }
 
     &__price-bnt {
@@ -402,6 +484,10 @@
         height: 97px;
         width: 25%;
         gap: 18px;
+
+        @include media (max, 'mobile-horizontal') {
+            width: 50%;
+        }
 
         & span:last-child {
             border-bottom: 1px solid $c-text;
@@ -424,6 +510,10 @@
         justify-content: space-between;
         display: flex;
         width: 100%;
+
+        @include media (max, 'mobile-horizontal') {
+            flex-wrap: wrap;
+        }
     }
 
     &__sales-bnt {
@@ -438,6 +528,10 @@
         height: 124px;
         border: none;
         width: 24%;
+
+        @include media (max, 'mobile-horizontal') {
+            width: 45%;
+        }
 
 
         & span:first-child {
@@ -475,6 +569,7 @@
         justify-content: space-between;
         flex-direction: column;
         transition: height 1s;
+        font-size: 14px;
         height: 120px;
         display: flex;
         width: 100%;
@@ -499,6 +594,10 @@
         display: flex;
     }
 
+    &__insurence-input {
+        display: none;
+    }
+
     &__insurence-title {
         padding: 0 10px 0 16px
     }
@@ -520,6 +619,11 @@
         justify-content: space-between;
         margin-top: 20px;
         display: flex;
+
+        @include media (max, 'iPad') {
+            flex-direction: column;
+        }
+
     }
 
     //Payway block
@@ -569,6 +673,11 @@
         padding-bottom: 112px;
         text-align: left;
         font-size: 32px;
+
+        @include media (max, 'mobile-horizontal') {
+            padding-bottom: 40px;
+            font-size: 20px;
+        }
     }
 
     &__wrapper {
@@ -614,6 +723,10 @@
 
     &__content-title {
         font-size: 24px;
+
+        @include media (max, 'mobile-horizontal') {
+            font-size: 20px;
+        }
     }
 
     &__sub-content {
@@ -632,6 +745,10 @@
             text-align: center;
             line-height: 21px;
             width: 70%;
+
+            @include media (max, 'mobile-horizontal') {
+                text-align: start;
+            }
         }
     }
 
@@ -685,9 +802,17 @@
     margin-bottom: 55px;
     width: 50%;
 
+    @include media (max, 'iPad') {
+        width: 100%
+    }
+
     &__title {
         line-height: 36px;
         font-size: 24px;
+
+        @include media (max, 'mobile-horizontal') {
+            font-size: 20px;
+        }
     }
 
     &__wrapper {
@@ -731,17 +856,28 @@
 .review {
     width: 50%;
 
+    @include media (max, 'iPad') {
+        width: 100%
+    }
+
+
     &__wrapper {
         justify-content: space-between;
         flex-direction: column;
         display: flex;
         gap: 16px;
+
+
     }
 
     &__header {
         justify-content: space-between;
         align-items: center;
         display: flex;
+
+        @include media (max, 'mobile-horizontal') {
+            gap: 5px;
+        }
     }
 
     &__btn {
@@ -756,11 +892,18 @@
         display: flex;
         border: none;
 
+        @include media (max, 'mobile-horizontal') {
+            padding: 12px 30px;
+        }
     }
 
     &__title {
         font-size: 24px;
         width: 30%;
+
+        @include media (max, 'mobile-horizontal') {
+            font-size: 20px;
+        }
     }
 
     &__example {
@@ -818,6 +961,11 @@
 
     &__title {
         font-size: 24px;
+
+        @include media (max, 'mobile-horizontal') {
+            font-size: 20px;
+        }
+
     }
 
     &__methods {
@@ -849,7 +997,6 @@
 
     &__place-list {
         border: none;
-        border-bottom: 1px solid $c-link;
         width: fit-content;
         background: none;
         outline: none;

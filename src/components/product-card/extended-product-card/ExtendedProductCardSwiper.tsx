@@ -40,6 +40,7 @@ export const ExtendedProductCardsSwiper: React.FC<
     const sliderImages = new Swiper('.slider__images .swiper-container', {
       modules: [Thumbs, Mousewheel, FreeMode, Navigation],
       direction: 'vertical',
+      initialSlide: 3,
       slidesPerView: 1,
       spaceBetween: 32,
       mousewheel: true,

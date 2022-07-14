@@ -25,6 +25,8 @@
             flex-wrap: wrap;
             gap: 30px;
         }
+
+
     }
 
     &__main-content-list {
@@ -35,6 +37,11 @@
 
         @include media (max, 'iPad') {
             justify-content: space-between;
+            width: 30%;
+        }
+
+        @include media (max, 'mobile-horizontal') {
+            width: 45%;
         }
 
         & a {

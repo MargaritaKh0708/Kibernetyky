@@ -1,21 +1,54 @@
 import { ProductCardSvgSelector } from '../ProductCardSvgSelector';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
+import { bankArray } from '../../backend/DataList';
 
+interface IBank {
+  icon: string;
+  name: string;
+  id: number;
+  credit_programs: { term: number; percent: number }[];
+}
 interface ISelectListProps {
-  hiddenList: boolean;
   setHiddenList: (value: boolean) => void;
+  hiddenList: boolean;
   price: number;
+  bankArray: IBank[];
 }
 
 export const SelectList: React.FC<ISelectListProps> = ({
   setHiddenList,
   hiddenList,
+  bankArray,
   price,
 }) => {
+  const [randerBankArray, setRanderBankArray] = useState<IBank[]>([]);
   const [mainValue, setMainValue] = useState<string>(
     `Розстрочка ${Math.round(price / 7)} грн - 7 міс`
   );
+
+  // for bank sort
+  const compareBank: (a: IBank, b: IBank) => number = (a, b) => {
+    if (a.credit_programs.length > b.credit_programs.length) return -1;
+    else if (a.credit_programs.length < b.credit_programs.length) return 1;
+    else return 0;
+  };
+
+  //for bank program sort
+  const compareCreditProgram: (
+    a: { term: number; percent: number },
+    b: { term: number; percent: number }
+  ) => number = (a, b) => {
+    if (a.term > b.term) return -1;
+    else if (a.term < b.term) return 1;
+    else return 0;
+  };
+
+  useEffect(() => {
+    let sortBankArray: IBank[] = [...bankArray];
+    sortBankArray.sort(compareBank);
+    setRanderBankArray(sortBankArray.splice(0, 3));
+  }, []);
 
   const ref = useRef(null);
   const isRadioSelected = (value: string): boolean => mainValue === value;
@@ -49,56 +82,49 @@ export const SelectList: React.FC<ISelectListProps> = ({
             hiddenList ? 'select__hidden-list' : 'select__hidden-list active'
           }
         >
-          <label className='select__discription'>
-            <ProductCardSvgSelector id='zero-percent' />
-            <ul className='select__item-description'>
-              <li className='select__item-title'>Супер розстрочка!</li>
-              <li className='select__item-value'>7 143 грн. х7 місяців</li>
-            </ul>
-            <input
-              checked={isRadioSelected(
-                `Розстрочка ${Math.round(price / 7)} грн - 7 міс`
-              )}
-              onChange={Handler}
-              id='selectName0'
-              className='select__item-input'
-              type='radio'
-              value={`Розстрочка ${Math.round(price / 7)} грн - 7 міс`}
-              name='selectName'
-            />
-          </label>
-          <label className='select__discription'>
-            <ProductCardSvgSelector id='privat' />
-            <ul className='select__item-description'>
-              <li className='select__item-title'>ПриватБанк</li>
-              <li className='select__item-value'>5 000 грн. х10 місяців</li>
-            </ul>
-            <input
-              onChange={Handler}
-              checked={isRadioSelected('5 000 грн. х10 місяців')}
-              id='selectName1'
-              className='select__item-input'
-              type='radio'
-              value='5 000 грн. х10 місяців'
-              name='selectName'
-            />
-          </label>
-          <label className='select__discription'>
-            <ProductCardSvgSelector id='mono' />
-            <ul className='select__item-description'>
-              <li className='select__item-title'>Monobank</li>
-              <li className='select__item-value'>7 143 грн. х7 місяців</li>
-            </ul>
-            <input
-              onChange={Handler}
-              checked={isRadioSelected('7 143 грн. х7 місяців')}
-              id='selectName2'
-              className='select__item-input'
-              type='radio'
-              value='7 143 грн. х7 місяців'
-              name='selectName'
-            />
-          </label>
+          {randerBankArray.map((bank, index) => (
+            <label className='select__discription' key={bank.id}>
+              <div className='select__icon'>
+                <img src={bank.icon} alt='bank-icon' />
+              </div>
+              <ul className='select__item-description'>
+                <li className='select__item-title'>
+                  {index === 0
+                    ? `Супер розстрочка від ${bank.name}!`
+                    : `${bank.name}`}
+                </li>
+                <li className='select__item-value'>
+                  <span>{`${Math.round(
+                    price /
+                      bank.credit_programs.sort(compareCreditProgram)[0].term
+                  )}грн на ${
+                    bank.credit_programs.sort(compareCreditProgram)[0].term
+                  } міс.`}</span>
+                </li>
+              </ul>
+              <input
+                checked={isRadioSelected(
+                  `Розстрочка ${Math.round(
+                    price /
+                      bank.credit_programs.sort(compareCreditProgram)[0].term
+                  )} грн -  ${
+                    bank.credit_programs.sort(compareCreditProgram)[0].term
+                  } міс`
+                )}
+                onChange={Handler}
+                id={`selectName${index}`}
+                className='select__item-input'
+                type='radio'
+                value={`Розстрочка ${Math.round(
+                  price /
+                    bank.credit_programs.sort(compareCreditProgram)[0].term
+                )} грн -  ${
+                  bank.credit_programs.sort(compareCreditProgram)[0].term
+                } міс`}
+                name='selectName'
+              />
+            </label>
+          ))}
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import { Header } from 'components/header/Header';
 
 import { ExtendedProductCard } from './components/product-card/extended-product-card/ExtendedProductCard';
 import { OpenCatalogContext } from 'components/goods-presentation-block/AsideMenu/OpenCatalogContext';
+import { ProductCardList } from 'components/product-card/ProductCardList';
 import { CartPage } from 'components/Pages/CartPage';
 import { MainPage } from 'components/Pages/MainPage';
 import { Footer } from 'components/footer/Footer';
@@ -31,6 +32,35 @@ function App() {
   const [addToCartActive, setAddToCartActive] = useState<boolean>(false);
   const [currentProductId, setCurrentProductId] = useState<number>(0);
   const [compareCount, setCompareCount] = useState<number>(0);
+
+  const similarJsx = (
+    <ProductCardList
+      setCurrentProductIdHandler={setCurrentProductId}
+      setAddToCartActiveHandler={setAddToCartActive}
+      setOrderCountHandler={setOrderProductsCount}
+      setFavoriteCountHandler={setFavoriteCount}
+      setCompareCountHandler={setCompareCount}
+      addToCartActive={addToCartActive}
+      productId={currentProductId}
+      data={MainGoodsData}
+      type='similar'
+      rowQuantity={1}
+    />
+  );
+  const coupledJsx = (
+    <ProductCardList
+      setCurrentProductIdHandler={setCurrentProductId}
+      setAddToCartActiveHandler={setAddToCartActive}
+      setOrderCountHandler={setOrderProductsCount}
+      setFavoriteCountHandler={setFavoriteCount}
+      setCompareCountHandler={setCompareCount}
+      addToCartActive={addToCartActive}
+      productId={currentProductId}
+      rowQuantity={1}
+      type='coupled'
+      data={MainGoodsData}
+    />
+  );
 
   return (
     <div className='App'>
@@ -85,14 +115,17 @@ function App() {
             }
           ></Route>
           <Route
-            path='/product'
+            path='/product/:productId'
             element={
               <ExtendedProductCard
+                coupledJsx={coupledJsx}
+                setCurrentProductIdHandler={setCurrentProductId}
                 serviseList={AdditionalServices}
-                good={MainGoodsData[0]}
-                payWaysList={PayWayList}
                 delivery={deliveryMethods}
+                payWaysList={PayWayList}
+                similarJsx={similarJsx}
                 place={deliveryPlaces}
+                goods={MainGoodsData}
               />
             }
           ></Route>

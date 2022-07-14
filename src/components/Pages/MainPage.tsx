@@ -49,6 +49,8 @@ export const MainPage: React.FC<IMainPage> = ({
       <GoodsPresentationBlock goods={oldgoods} />
       <BrandsLine data={goods} />
       <ProductCardList
+        productId={productId}
+        rowQuantity={2}
         setCurrentProductIdHandler={setCurrentProductIdHandler}
         setAddToCartActiveHandler={setAddToCartActiveHandler}
         setOrderCountHandler={setOrderCountHandler}
@@ -59,6 +61,8 @@ export const MainPage: React.FC<IMainPage> = ({
         data={goods}
       />
       <ProductCardList
+        rowQuantity={2}
+        productId={productId}
         setCurrentProductIdHandler={setCurrentProductIdHandler}
         setAddToCartActiveHandler={setAddToCartActiveHandler}
         setOrderCountHandler={setOrderCountHandler}

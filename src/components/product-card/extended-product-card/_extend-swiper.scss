@@ -1,7 +1,11 @@
 .slider {
     position: relative;
+    color: $c-white;
     padding: 32px;
-    color: #fff;
+
+    @include media (max, 'iPad') {
+        padding: 0;
+    }
 }
 
 .slider .swiper-container {

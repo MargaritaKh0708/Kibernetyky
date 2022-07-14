@@ -45,6 +45,7 @@
 
     &__list-item {
         align-items: center;
+        cursor: pointer;
         display: flex;
         gap: 11px;
 
@@ -60,11 +61,13 @@
         &_language-ua {
             display: flex;
             gap: 8px;
-
         }
 
+        &--color {
+            color: $c-light-gray;
+            text-align: start;
+        }
     }
-
 
 
 }
@@ -73,6 +76,12 @@
     align-items: center;
     display: flex;
     gap: 11px;
+
+    &--border {
+        border-left: 1px solid $c-text;
+        height: 24px;
+    }
+
 }
 
 .burger-modal {
@@ -98,7 +107,5 @@
     &::-webkit-scrollbar-thumb {
         background-color: $c-brand-yellow;
     }
-
-
 
 }
