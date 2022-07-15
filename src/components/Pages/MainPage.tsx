@@ -36,9 +36,6 @@ export const MainPage: React.FC<IMainPage> = ({
   oldgoods,
   goods,
 }) => {
-  useEffect(() => {
-    console.log(getData());
-  });
   return (
     <div className='main-page-content main-content'>
       <AddToCart

@@ -47,7 +47,7 @@ export const CatalogView: React.FC<ICatalogView> = ({
             <div
               className='goods-presentation-block__menu__item'
               key={item.id}
-              onMouseEnter={() => {
+              onClick={() => {
                 setDisplayWidth(false); // show 2d part of window
                 showDetailedInformation(item.id); //read id for render item information
                 readItemName(item.goodType); // read its name for come-back btn

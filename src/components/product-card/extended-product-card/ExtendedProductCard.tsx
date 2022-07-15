@@ -11,6 +11,7 @@ import { ReviewBlock } from './ReviewBlock';
 import { Delivery, IDeliveryMethod, IIDeliveryPlace } from './Delivery';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { IOrder } from '../../basket/AddToBasketWindow/AddToBasket';
 
 interface IPayWays {
   payWaysList: IPayWay[];
@@ -37,17 +38,19 @@ interface IAdditionalServicesItem {
 
 export interface IExtendedProductCard {
   setCurrentProductIdHandler: (productId: number) => void;
+  setOrderProductsCount: (count: number) => void;
   serviseList: IAdditionalServices;
   goods: IProductCardListItem[];
+  similarJsx: React.ReactNode;
   delivery: IDeliveryMethod[];
   coupledJsx: React.ReactNode;
   place: IIDeliveryPlace[];
   payWaysList: IPayWay[];
-  similarJsx: React.ReactNode;
 }
 
 export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   setCurrentProductIdHandler,
+  setOrderProductsCount,
   serviseList,
   payWaysList,
   coupledJsx,
@@ -56,15 +59,14 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   place,
   goods,
 }) => {
-  const [productColor, setProductColor] = useState<string>(''); // for color panel
+  const [chooseItemColorCorps, setChooseItemColorCorps] = useState<string>(); // for color of item that shoosed
   const [chooseItemColorRam, setChooseItemColorRam] = useState<number>(); // for color of item that shoosed
+  const [seeMoreInsurence, setSeeMoreInsurence] = useState<boolean>(false); // for more information of insurence list
+  const [productColor, setProductColor] = useState<string>(''); // for color panel
   const [chooseItemColorMemSize, setChooseItemColorMemSize] =
     useState<string>(); // for color of item that shoosed
-  const [chooseItemColorCorps, setChooseItemColorCorps] = useState<string>(); // for color of item that shoosed
 
-  const [seeMoreInsurence, setSeeMoreInsurence] = useState<boolean>(false); // for more information of insurence list
-
-  // get current product id from url
+  //* get current product id from url
   const { productId } = useParams();
   let goodsById = goods.filter(
     (good) => good.id === parseInt(productId || '0')
@@ -78,7 +80,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
     return <p>Товар відсутній</p>;
   }
 
-  //get raiting
+  //*get raiting
 
   const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
   const foundRating = ratings.filter(
@@ -88,12 +90,48 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   const rating: { productId: number; value: number } | null =
     foundRating.length > 0 ? foundRating[0] : null;
 
-  // For insurence list lenght
+  //* For insurence list lenght
   let renderServiseList: IAdditionalServicesItem[] = [];
-
+  // To see more
   seeMoreInsurence
     ? (renderServiseList = serviseList.insurance)
     : (renderServiseList = serviseList.insurance.slice(0, 2));
+
+  //*Buy something
+  const addToCartHandler: () => void = () => {
+    // get products in cart from localStorage
+    const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
+    // return if product is not available
+    if (!good.available) {
+      return;
+    }
+    // add product to cart
+    const orderItems = orderProducts.filter(
+      (order: IOrder) => order.productId === good.id // compare good id that we choose with that which in basket already
+    );
+    if (orderItems.length === 0) {
+      localStorage.setItem(
+        'order',
+        JSON.stringify([
+          ...orderProducts,
+          { productId: good.id, count: 1, credit: false },
+        ])
+      );
+      // set count
+      setOrderCount([
+        ...orderProducts,
+        { productId: good.id, count: 1, credit: false },
+      ]);
+    }
+  };
+
+  // set count of products in cart
+  const setOrderCount: (orderProducts: IOrder[]) => void = (orderProducts) => {
+    // calc count of products in order
+    let count = 0;
+    orderProducts.forEach((order) => (count += order.count));
+    setOrderProductsCount(count);
+  };
 
   return (
     <section className='extended-card main-content '>
@@ -199,9 +237,9 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   Колір: <span>{productColor}</span>
                 </span>
                 <div className='extended-card__color-panel'>
-                  {good.specifications.colors.map((color) => (
+                  {good.specifications.colors.map((color, index) => (
                     <label
-                      key={`${color.colorName}+${good.id}`}
+                      key={good.id + index}
                       className={
                         productColor === color.colorName
                           ? 'extended-card__color-border active-color'
@@ -226,9 +264,12 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
               <div className='extended-card__brand extended-card__product-info-part'>
                 <span className='extended-card__brand-title'>Назва бренду</span>
                 <div className='extended-card__brand-info'>
-                  <div className='extended-card__brand-logo'>
-                    <img src={good.brand.logo} alt='brand' />
-                  </div>
+                  <div
+                    className='extended-card__brand-logo'
+                    style={{
+                      background: `center / contain no-repeat url(${good.brand.logo})`,
+                    }}
+                  />
                   <span className='extended-card__brand-name'>
                     {good.brand.name}
                   </span>
@@ -390,7 +431,12 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   <span className='extended-card__cashback'>
                     {Math.round(good.price * 0.1)} бонусних ₴
                   </span>
-                  <button className='add-to-cart-modal__buy-btn'>Купити</button>
+                  <button
+                    className='add-to-cart-modal__buy-btn'
+                    onClick={() => addToCartHandler()}
+                  >
+                    Купити
+                  </button>
                 </div>
                 <div className='extended-card__buy-way'>
                   <span className='extended-card__credit-price'>

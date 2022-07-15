@@ -7,6 +7,7 @@ export interface ICatalog {
 
 export interface ICatalogItem {
   icon: string | JSX.Element;
+  subcategory: { title: string; value: string[] }[];
   goodType: string;
   id: string;
 }

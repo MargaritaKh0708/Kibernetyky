@@ -103,30 +103,53 @@ export const CatalogModal: React.FC<ICatalog> = ({ goods }) => {
               <span className='catalog-menu__detailed-arrow arrow' />
               <span>{lastTargetName}</span>
             </a>
-            {detailedInformationItem.map((item) => (
-              <div key={item.id} className='catalog-menu__detailed-wrapper'>
-                <div className='catalog-menu__detailed-item'>
-                  <span>{item.id}</span>
-                  <span>{item.id}</span>
-                  <span>{item.id}</span>
-                </div>
-                <div className='catalog-menu__detailed-item'>
-                  <span>{item.goodType}</span>
-                  <span>{item.goodType}</span>
-                  <span>{item.goodType}</span>
-                  <span>{item.goodType}</span>
-                  <span>{item.goodType}</span>
-                </div>
-                <div className='catalog-menu__detailed-item'>
-                  <span>{item.icon}</span>
-                  <span>{item.goodType}</span>
-                  <span>{item.goodType}</span>
-                </div>
-              </div>
-            ))}
+            <div className='catalog-menu__detailed-wrapper'>
+              {detailedInformationItem.map((item) =>
+                item.subcategory.map((category, index) => (
+                  <div
+                    key={item.id + index}
+                    className='catalog-menu__detailed-item'
+                  >
+                    <span className='catalog-menu__detailed-title'>
+                      {category.title}
+                    </span>
+                    {category.value.map((value) => (
+                      <span
+                        className='catalog-menu__detailed-value'
+                        key={value + index}
+                      >
+                        {value}
+                      </span>
+                    ))}
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </ModalWindow>
     </>
   );
 };
+
+{
+  /* <div key={item.id} className='catalog-menu__detailed-wrapper'>
+  <div className='catalog-menu__detailed-item'>
+    <span>{item.id}</span>
+    <span>{item.id}</span>
+    <span>{item.id}</span>
+  </div>
+  <div className='catalog-menu__detailed-item'>
+    <span>{item.goodType}</span>
+    <span>{item.goodType}</span>
+    <span>{item.goodType}</span>
+    <span>{item.goodType}</span>
+    <span>{item.goodType}</span>
+  </div>
+  <div className='catalog-menu__detailed-item'>
+    <span>{item.icon}</span>
+    <span>{item.goodType}</span>
+    <span>{item.goodType}</span>
+  </div>
+</div>; */
+}

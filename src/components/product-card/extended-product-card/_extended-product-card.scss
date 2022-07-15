@@ -311,6 +311,7 @@
     }
 
     &__color-bg {
+        border: 1px solid $c-extra-gray;
         border-radius: 4px;
         margin: 0 auto;
         display: block;
@@ -341,13 +342,14 @@
     }
 
     &__brand-info {
-        align-items: flex-start;
+        align-items: center;
         display: flex;
         gap: 5px;
     }
 
     &__brand-logo {
         width: 50px;
+        height: 30px;
     }
 
     &__memory-block,

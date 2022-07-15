@@ -7008,12 +7008,12 @@ export const getData: () => IProductCardListItem[] = () => {
     good.specifications.memorySize.push('128ГБ', '256ГБ', '512ГБ', '1ТБ');
     // category
     good.category.name = 'Телефони';
+    good.category.top = true;
     good.category.mainImage =
       'https://content1.rozetka.com.ua/goods/images/big/221208453.jpg';
     good.category.coupled.push(1);
     good.category.id = 3;
     if (index % 4 === 0) {
-      good.category.top = true;
     } else {
       good.category.top = false;
     }
@@ -7225,6 +7225,7 @@ export const getData: () => IProductCardListItem[] = () => {
         colorName: 'Purple',
       }
     );
+    good.category.top = true;
     good.category.mainImage =
       'https://content1.rozetka.com.ua/goods/images/big/249845992.png';
     // ram
@@ -7595,6 +7596,7 @@ export const getData: () => IProductCardListItem[] = () => {
         value: '737.4 x 465.4 x 150.5 мм',
       }
     );
+    good.category.top = true;
     // detailed
     good.specifications.detailed.push(
       {
@@ -7691,6 +7693,7 @@ export const getData: () => IProductCardListItem[] = () => {
         colorName: 'Срібний',
       }
     );
+    good.category.top = false;
     // category
     good.category.name = 'Телевізори';
     good.category.mainImage =
@@ -7780,6 +7783,7 @@ export const getData: () => IProductCardListItem[] = () => {
     } else {
       good.novelty = false;
     }
+    good.category.top = true;
 
     // model
     good.model = `Model ${index}`;

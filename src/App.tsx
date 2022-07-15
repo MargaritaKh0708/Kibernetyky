@@ -129,12 +129,13 @@ function App() {
             path='/product/:productId'
             element={
               <ExtendedProductCard
-                coupledJsx={coupledJsx}
+                setOrderProductsCount={setOrderProductsCount}
                 setCurrentProductIdHandler={setCurrentProductId}
                 serviseList={AdditionalServices}
                 delivery={deliveryMethods}
                 payWaysList={PayWayList}
                 similarJsx={similarJsx}
+                coupledJsx={coupledJsx}
                 place={deliveryPlaces}
                 goods={MainGoodsData}
               />

@@ -67,6 +67,10 @@
 
 .catalog-menu {
 
+    &__detailed-title {
+        @include f-Lato-SemiBold;
+    }
+
     &__arrow-down {
         transform: rotate(135deg);
         margin: 0 auto;
@@ -86,10 +90,10 @@
     }
 
     &__detailed-wrapper {
-        justify-content: space-between;
+        justify-content: flex-start;
         display: flex;
         height: 100%;
-        gap: 50px;
+        gap: 10px;
 
         @include media ('max', 'iPad') {
             gap: 10px;
@@ -100,7 +104,9 @@
         border-right: 1px solid $c-extra-gray;
         justify-content: flex-start;
         flex-direction: column;
+        padding: 0 10px;
         display: flex;
+        gap: 10px;
 
 
 

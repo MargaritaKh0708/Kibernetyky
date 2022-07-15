@@ -299,7 +299,10 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             ></div>
             <div className='product-card__colors-panel'>
               {product.specifications.colors.map((color) => (
-                <label className='product-card__colors-panel-item'>
+                <label
+                  className='product-card__colors-panel-item'
+                  key={product.id + color.colorName}
+                >
                   <input
                     type='checkbox'
                     className='product-card__active-color'
@@ -468,8 +471,11 @@ export const ProductCard: React.FC<IProductCardProps> = ({
         </div>
         <div className='product-card__part hide-part'>
           <ul className='product-card__hide-list'>
-            {product.specifications.main.map((specification) => (
-              <li className='product-card__hide-list-item'>
+            {product.specifications.main.map((specification, index) => (
+              <li
+                className='product-card__hide-list-item'
+                key={product.id + index}
+              >
                 <span className='product-card__hide-list-item-value'>
                   {specification.description}:&nbsp;
                 </span>
