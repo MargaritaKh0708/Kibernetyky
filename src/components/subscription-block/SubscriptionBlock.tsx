@@ -1,7 +1,13 @@
 import { SubscriptionBlockSvgSelector } from './SubscriptionBlockSvgSelector';
 import { Formik, Field, Form } from 'formik';
+import { SubscripModal } from './SubscripModal';
+import { useState } from 'react';
 
 export const SubscriptionBlock: React.FC = () => {
+  const [activeModal, setActiveModal] = useState<boolean>(false); // open thanks window
+
+  //Reset handler
+
   return (
     <div className='subscription-block'>
       <div className='subscription-block__wrapper container'>
@@ -38,8 +44,10 @@ export const SubscriptionBlock: React.FC = () => {
               }
               return errors;
             }}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+              //onSubmit будет вызвана при нажатии кнопки, в случае если все поля пройдут валидацию
               setSubmitting(false);
+              resetForm();
             }}
           >
             {({ values, errors, touched }) => (
@@ -73,7 +81,12 @@ export const SubscriptionBlock: React.FC = () => {
                       </div>
                     ) : null}
                   </div>
-                  <button type='submit'>
+                  <button
+                    type='submit'
+                    onClick={() => {
+                      setActiveModal(true);
+                    }}
+                  >
                     <span>Підписатися</span>
                   </button>
                 </div>
@@ -93,6 +106,10 @@ export const SubscriptionBlock: React.FC = () => {
           </a>
         </div>
       </div>
+      <SubscripModal
+        openSubscripModal={activeModal}
+        setOpenSubscripModal={setActiveModal}
+      />
     </div>
   );
 };

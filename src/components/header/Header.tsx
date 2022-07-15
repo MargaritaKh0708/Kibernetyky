@@ -6,12 +6,13 @@ import { useState } from 'react';
 import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
-import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/OpenCatalogContext';
+import { useGlobalContext } from '../goods-presentation-block/AsideMenu/GlobalContext';
 import { CatalogModal } from 'components/goods-presentation-block/AsideMenu/CatalogModal';
 import { SearchFieldForm } from './search-field/SearchFieldForm';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import { Login } from 'components/account/Login';
 import { Link } from 'react-router-dom';
+import { LikesModal } from './likes-modal/LikesModal';
 
 interface IHeader extends ICatalog {
   maindata: IProductCardListItem[];
@@ -30,8 +31,15 @@ export const Header: React.FC<IHeader> = ({
   const [burgerActive, setBurgerActive] = useState<boolean>(false); // for BURGER open
   const [contactsModalActive, setContactsModalActive] =
     useState<boolean>(false); // for menu 'CONTACTS' open
-  const [loginModalActive, setLoginModalActive] = useState<boolean>(false); // for login form
-  const { open, setOpen } = useOpenCatalogContext(); // for open catalog from 3 places - header, burger, presentation-block
+
+  const {
+    open,
+    setOpen,
+    likesModalActive,
+    setLikesModalActive,
+    loginModalActive,
+    setLoginModalActive,
+  } = useGlobalContext(); // for open catalog from 3 places - header, burger, presentation-block
 
   return (
     <>
@@ -78,7 +86,11 @@ export const Header: React.FC<IHeader> = ({
             >
               <HeaderSvgSelector id='personal' />
             </button>
-            <button type='button' className='header__btn header__btn--likes'>
+            <button
+              onClick={() => setLikesModalActive(true)}
+              type='button'
+              className='header__btn header__btn--likes'
+            >
               <HeaderSvgSelector id='likes'>
                 <span>{favoriteCount}</span>
               </HeaderSvgSelector>
@@ -122,6 +134,12 @@ export const Header: React.FC<IHeader> = ({
           viewWindow={loginModalActive}
           closeHandler={setLoginModalActive}
           isLogged={false}
+        />
+        <LikesModal
+          products={maindata}
+          favoriteCountQuantity={favoriteCount}
+          activeLikesModal={likesModalActive}
+          setActiveLikesModal={setLikesModalActive}
         />
       </header>
     </>

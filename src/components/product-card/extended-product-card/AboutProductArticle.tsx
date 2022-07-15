@@ -25,11 +25,12 @@ export const AboutProductArticle: React.FC<IAboutProductArticle> = ({
           <div className='article__photo-content'>
             {good.specifications.article[0].photo.map((item) => (
               <div
+                style={{
+                  background: `center / contain no-repeat url(${item})`,
+                }}
                 className='article__photo-content-item'
                 key={`${item}+${good.id}`}
-              >
-                <img src={item} alt={good.name} />
-              </div>
+              />
             ))}
           </div>
         </div>
@@ -50,9 +51,10 @@ export const AboutProductArticle: React.FC<IAboutProductArticle> = ({
               <div
                 className='article__photo-content-item'
                 key={`${item}+${good.id}`}
-              >
-                <img src={item} alt={good.name} />
-              </div>
+                style={{
+                  background: `center / contain no-repeat url(${item})`,
+                }}
+              />
             ))}
           </div>
         </div>
@@ -68,11 +70,12 @@ export const AboutProductArticle: React.FC<IAboutProductArticle> = ({
           <div className='article__photo-content article__photo-content--width'>
             {good.specifications.article[2].photo.map((item, index) => (
               <div
+                style={{
+                  background: `center / contain no-repeat url(${item})`,
+                }}
                 className={`article__photo-content-item article__photo-content-item-${index}`}
                 key={`${item}+${good.id}`}
-              >
-                <img src={item} alt={good.name} />
-              </div>
+              />
             ))}
           </div>
         </div>
@@ -88,11 +91,12 @@ export const AboutProductArticle: React.FC<IAboutProductArticle> = ({
           <div className='article__photo-content'>
             {good.specifications.article[3].photo.map((item, index) => (
               <div
+                style={{
+                  background: `center / contain no-repeat url(${item})`,
+                }}
                 key={`${item}+${good.id}`}
                 className='article__photo-content-item'
-              >
-                <img src={item} alt={good.name} />
-              </div>
+              />
             ))}
           </div>
         </div>

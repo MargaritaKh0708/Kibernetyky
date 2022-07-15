@@ -1,6 +1,6 @@
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
 import { HeaderSvgSelector } from '../../header/HeaderSvgSelector';
-import { useOpenCatalogContext } from './OpenCatalogContext';
+import { useGlobalContext } from './GlobalContext';
 import { Closer } from 'components/UI/closer/Closer';
 import { CatalogView } from './CatalogView';
 import { useEffect } from 'react';
@@ -18,7 +18,7 @@ export const CatalogModal: React.FC<ICatalog> = ({ goods }) => {
     displayWidth,
     setOpen,
     open,
-  } = useOpenCatalogContext(); // for open catalog
+  } = useGlobalContext(); // for open catalog
   // use resizer for getting window size
   useEffect(() => {
     const handleResize: () => void = () => {

@@ -78,9 +78,12 @@ export const TopCategoriesSwiper: React.FC<IProductCardList> = ({ data }) => {
         <SwiperSlide key={index + 3}>
           <div className='top-card'>
             <span className='top-card__title'>{el.name}</span>
-            <div className='top-card__image'>
-              <img src={el.mainImage} alt='top-category' />
-            </div>
+            <div
+              className='top-card__image'
+              style={{
+                background: `center / contain no-repeat url(${el.mainImage})`,
+              }}
+            ></div>
             <a
               href='https://rozetka.com.ua/ua/promo/firstharvests/'
               className='top-card__view-btn'

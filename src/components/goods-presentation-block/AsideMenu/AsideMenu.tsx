@@ -1,5 +1,5 @@
 import { CatalogView } from './CatalogView';
-import { useOpenCatalogContext } from './OpenCatalogContext';
+import { useGlobalContext } from './GlobalContext';
 
 export interface ICatalog {
   goods: ICatalogItem[];
@@ -18,7 +18,7 @@ export const AsideMenu: React.FC<ICatalog> = ({ goods }) => {
     hideCategoryList,
     setLastTargetName,
     open,
-  } = useOpenCatalogContext(); // for open catalog
+  } = useGlobalContext(); // for open catalog
 
   // Find uniq category of goods
   let catalogItems: ICatalogItem[] = [];

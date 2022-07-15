@@ -1,9 +1,3 @@
-import {
-  deliveryDate,
-  deliveryPlaces,
-  deliveryMethods,
-} from 'components/backend/DataList';
-
 export interface IDeliveryMethod {
   method: string;
   price: number;

@@ -231,7 +231,7 @@ export const Login: React.FC<ILogin> = ({
                 type='radio'
               />
               <label htmlFor='loginmethod' className='radio-btn__name'>
-                Увійти за паролем
+                <span>Увійти за паролем</span>
               </label>
             </div>
             <div className='radio-btn'>
@@ -243,7 +243,7 @@ export const Login: React.FC<ILogin> = ({
                 type='radio'
               />
               <label htmlFor='loginmethod1' className='radio-btn__name'>
-                Увійти по смс
+                <span> Увійти по смс</span>
               </label>
             </div>
           </div>
@@ -252,7 +252,7 @@ export const Login: React.FC<ILogin> = ({
               <div className='login-block__row'>
                 <div className='login-block-input'>
                   <label htmlFor='password' className='login-block-input__name'>
-                    Пароль
+                    <span>Пароль</span>
                   </label>
                   <div className='login-block-input-block'>
                     <Field
@@ -299,9 +299,11 @@ export const Login: React.FC<ILogin> = ({
           ) : (
             <div>
               <div className='login-block__row'>
-                <p className='login-block__text12'>
-                  Ми надіслали одноразовий код для підтвердження входу:
-                </p>
+                <span className='login-block__text12'>
+                  <span>
+                    Ми надіслали одноразовий код для підтвердження входу:
+                  </span>
+                </span>
               </div>
               <div className='login-block-input'>
                 <label htmlFor='code' className='login-block-input__name'>
@@ -333,7 +335,7 @@ export const Login: React.FC<ILogin> = ({
           )}
           <div className='login-block__row'>
             <button type='submit' className='login-block__submit-btn'>
-              Увійти
+              <span>Увійти</span>
             </button>
           </div>
           <div className='login-block__row login-block__row--color'>
@@ -412,7 +414,7 @@ export const Login: React.FC<ILogin> = ({
           </div>
           <div className='login-block__row'>
             <button type='submit' className='login-block__submit-btn'>
-              Увійти
+              <span>Увійти</span>
             </button>
           </div>
           <div className='login-block__row'>
@@ -457,7 +459,7 @@ export const Login: React.FC<ILogin> = ({
           <div className='login-block__row'>
             <div className='login-block-input'>
               <label htmlFor='email' className='login-block-input__name'>
-                Email
+                <span>Email</span>
               </label>
               <Field
                 id='email'

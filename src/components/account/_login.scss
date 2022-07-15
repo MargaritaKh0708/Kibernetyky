@@ -19,6 +19,8 @@
         &--center {
             @extend .login-block__row;
             justify-content: center;
+            align-items: center;
+            gap: 20px;
         }
 
         &--right {
@@ -216,10 +218,12 @@
     }
 
     &__name {
-        padding: 10px 15px 15px 15px;
+        white-space: nowrap;
+        text-align: center;
         line-height: 18px;
         font-weight: 600;
         font-size: 12px;
+        display: block;
     }
 
     &__field:checked+&__name::before,

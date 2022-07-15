@@ -87,8 +87,8 @@ export const ProductCardList: React.FC<IProductCardList> = ({
   setCompareCountHandler,
   setOrderCountHandler,
   addToCartActive,
-  productId,
   rowQuantity,
+  productId,
   data,
   type,
 }) => {
@@ -97,12 +97,6 @@ export const ProductCardList: React.FC<IProductCardList> = ({
   const [n, setN] = useState<number>(rowQuantity); // state on numbers of row
 
   //! ADAPTIVE
-
-  // useEffect(() => {
-  //   console.log(n);
-  //   console.log(window.innerWidth);
-  //   console.log(cardQuantity);
-  // }, []);
 
   useEffect(() => {
     const handleResize: () => void = () => {
@@ -135,6 +129,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
 
   // find products by type
   let list: IProductCardListItem[] = [];
+  let coupledProducts: IProductCardListItem[] = [];
   if (type === 'leaders') {
     // Finds 'leaders' in big data
     list = data.filter((item) =>
@@ -160,7 +155,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
     const product = foundProducts.length > 0 ? foundProducts[0] : null;
 
     // find coupled products
-    let coupledProducts = [];
+
     if (product) {
       const coupledCategories = product.category.coupled;
       coupledProducts = data.filter((p) =>
@@ -169,6 +164,10 @@ export const ProductCardList: React.FC<IProductCardList> = ({
     } else {
       return <></>;
     }
+    // Finds 'coupled' by category
+    list = coupledProducts.filter((item) =>
+      categoryId > 0 ? item.category.id === categoryId : true
+    );
   }
   // choose title by type
   const title =
@@ -195,7 +194,16 @@ export const ProductCardList: React.FC<IProductCardList> = ({
     <>
       <section className='product-list product-list-leaders container'>
         <h2 className='product-list__title title'>{title}</h2>
-        <CardsFilterLine data={data} handler={categoryChange} />
+        <CardsFilterLine
+          data={
+            type === 'similar'
+              ? list
+              : type === 'coupled'
+              ? coupledProducts
+              : data
+          }
+          handler={categoryChange}
+        />
         <div
           className={
             n > 2

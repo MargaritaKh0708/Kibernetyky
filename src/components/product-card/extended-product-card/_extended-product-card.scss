@@ -70,15 +70,27 @@
         display: flex;
         gap: 14px;
 
-        @include media (max, 'iPad') {
+        @include media (max, 'hd') {
             align-items: flex-start;
+
         }
     }
 
     &__rating {
+        white-space: nowrap;
         align-items: center;
         display: flex;
         gap: 5px;
+
+        @include media (max, 'hd') {
+            flex-direction: column;
+            align-items: flex-start;
+
+        }
+
+        &-value {
+            white-space: nowrap;
+        }
 
     }
 
@@ -761,6 +773,11 @@
             gap: 40px;
         }
 
+        &-item {
+            height: 300px;
+            width: 100%;
+        }
+
         &--width {
             flex-wrap: nowrap;
             margin-top: 40px;
@@ -1006,4 +1023,8 @@
 
 option {
     color: $c-text;
+}
+
+.hidden-info {
+    display: none;
 }

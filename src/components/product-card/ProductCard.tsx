@@ -4,13 +4,9 @@ import { StarRating, IStarRatingProps } from './star-rating/StarRating';
 import { useEffect, useState } from 'react';
 import { SelectList } from './select-list/SelectList';
 import { bankArray } from 'components/backend/DataList';
-import {
-  AddToCart,
-  IOrder,
-} from 'components/basket/AddToBasketWindow/AddToBasket';
+import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { Link } from 'react-router-dom';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
-import { createModuleResolutionCache } from 'typescript';
 
 interface IRating {
   productId: number;
@@ -19,21 +15,21 @@ interface IRating {
 
 interface IProductCardProps {
   product: IProductCardListItem; //array of products
-  setOrderCountHandler?: (count: number) => void;
+  setCurrentProductIdHandler: (productId: number) => void;
+  setAddToCartActiveHandler: (state: boolean) => void;
   setFavoriteCountHandler?: (count: number) => void;
   setCompareCountHandler: (count: number) => void;
-  setAddToCartActiveHandler: (state: boolean) => void;
-  setCurrentProductIdHandler: (productId: number) => void;
-  addToCartActive: Boolean;
+  setOrderCountHandler?: (count: number) => void;
+  addToCartActive: boolean;
 }
 
 export const ProductCard: React.FC<IProductCardProps> = ({
-  setOrderCountHandler,
-  setCompareCountHandler,
-  setFavoriteCountHandler,
-  addToCartActive,
-  setAddToCartActiveHandler,
   setCurrentProductIdHandler,
+  setAddToCartActiveHandler,
+  setFavoriteCountHandler,
+  setCompareCountHandler,
+  setOrderCountHandler,
+  addToCartActive,
   product,
 }) => {
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
@@ -52,8 +48,20 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     count: 5,
     onChange: (newRating: number) => {
       setRatingHandler(newRating);
+      setRating(newRating);
     },
   };
+
+  useEffect(() => {
+    // get rating data from localStorage
+    const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
+    ratings.forEach((rating: IRating) => {
+      if (rating.productId === product.id) {
+        setRating(rating.value);
+      }
+    });
+    console.log('оцінка встановилась', rating);
+  }, [rating]);
 
   // load data from localStorage
   useEffect(() => {
@@ -81,17 +89,8 @@ export const ProductCard: React.FC<IProductCardProps> = ({
       }
     });
     setCompareProductsCount(compareIdList);
-
-    // get rating data from localStorage
-    const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
-    ratings.forEach((rating: IRating) => {
-      if (rating.productId === product.id) {
-        setRating(rating.value);
-      }
-    });
   }, []);
 
-  console.log('hello', rating);
   const setRatingHandler: (ratingValue: number) => void = (ratingValue) => {
     // get ratings from localStorage
     const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
@@ -121,7 +120,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     setRating(ratingValue);
   };
 
-  //
+  //Buy something
   const addToCartHandler: () => void = () => {
     // get products in cart from localStorage
     const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
@@ -273,7 +272,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     <>
       <div className='product-card'>
         <div className='product-card__wrapper'>
-          <div className='product-card__part'>
+          <div className='product-card__part head__part'>
             <div className='product-card__promo'>
               {product.leader ? (
                 <div className='top'>
@@ -288,9 +287,16 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 </div>
               }
             </div>
-            <div className='product-card__picture'>
-              <img src={mainPic} alt='good' />
-            </div>
+            <div
+              className='product-card__picture'
+              style={{
+                background: `center / contain no-repeat url(${
+                  product.imageCollection.length > 0
+                    ? product.imageCollection[0]
+                    : product.category.mainImage
+                })`,
+              }}
+            ></div>
             <div className='product-card__colors-panel'>
               {product.specifications.colors.map((color) => (
                 <label className='product-card__colors-panel-item'>
@@ -358,7 +364,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                   onChange={(newRating: number) => {
                     setRatingHandler(newRating);
                     setRating(newRating);
-                    console.log(newRating);
+                    console.log('raiting', newRating);
                   }}
                 />
                 <span className='product-card__rating-value'>{rating}</span>
@@ -459,20 +465,20 @@ export const ProductCard: React.FC<IProductCardProps> = ({
               </span>
             </button>
           </div>
-          <div className='product-card__part hide-part'>
-            <ul className='product-card__hide-list'>
-              {product.specifications.main.map((specification) => (
-                <li className='product-card__hide-list-item'>
-                  <span className='product-card__hide-list-item-value'>
-                    {specification.description}:&nbsp;
-                  </span>
-                  <span className='product-card__hide-list-item-property'>
-                    {specification.value}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        </div>
+        <div className='product-card__part hide-part'>
+          <ul className='product-card__hide-list'>
+            {product.specifications.main.map((specification) => (
+              <li className='product-card__hide-list-item'>
+                <span className='product-card__hide-list-item-value'>
+                  {specification.description}:&nbsp;
+                </span>
+                <span className='product-card__hide-list-item-property'>
+                  {specification.value}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>

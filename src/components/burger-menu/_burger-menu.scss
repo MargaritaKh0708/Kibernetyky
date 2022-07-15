@@ -1,5 +1,9 @@
 .burger {
 
+    &__list {
+        color: $c-text;
+    }
+
     &__arrow-btn {
         border-top: 1px solid white;
         transform: rotate(45deg);

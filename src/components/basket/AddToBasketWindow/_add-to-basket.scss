@@ -9,6 +9,13 @@
     padding: 16px;
     width: 990px;
 
+    @include media (max, 'iPad') {
+        height: 80vh;
+        width: 300px;
+        margin: 20px auto 0;
+
+    }
+
     &--display {
         display: none;
     }
@@ -23,6 +30,11 @@
         margin-bottom: 32px;
         display: flex;
         width: 100%;
+
+        @include media (max, 'iPad') {
+            flex-direction: column;
+
+        }
     }
 
     &__img-block {
@@ -33,6 +45,11 @@
 
     &__buy-block {
         width: 75%;
+
+        @include media (max, 'iPad') {
+            width: 100%;
+
+        }
     }
 
     &__text {
@@ -55,6 +72,12 @@
         align-items: baseline;
         display: flex;
         width: 100%;
+
+        @include media (max, 'iPad') {
+            align-items: center;
+            flex-direction: column;
+        }
+
     }
 
     &__link {
@@ -73,6 +96,12 @@
         display: flex;
         height: 48px;
         gap: 16px;
+
+        @include media (max, 'iPad') {
+            flex-direction: column;
+            padding-top: 6px;
+            width: 100%;
+        }
     }
 
     &__credit-btn,
@@ -85,6 +114,11 @@
         font-size: 20px;
         display: flex;
         width: 274px;
+
+
+        @include media (max, 'iPad') {
+            width: 100%;
+        }
     }
 
     &__credit-btn {

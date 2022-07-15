@@ -92,6 +92,11 @@
 .product-card-list-row {
     @extend .product-card-list;
     height: 360px;
+
+}
+
+.product-card-list-row .change-height {
+    height: 570px;
 }
 
 
@@ -150,12 +155,7 @@
 
     &__picture {
         padding-top: 10px;
-        max-width: 163px;
-        margin: 0 auto;
-
-        @include media ('max', 'mobile-horizontal') {
-            max-width: 119px;
-        }
+        height: 100%;
     }
 
     // The good's color panel styles
@@ -170,8 +170,8 @@
 
         @include media ('max', 'mobile-horizontal') {
             right: -5px;
-            gap: 4px;
             top: -3px;
+            gap: 4px;
         }
 
     }
@@ -244,8 +244,12 @@
     // Style of good name position
 
     &__goodname {
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
         line-height: 18px;
         margin-top: 5px;
+        overflow: hidden;
     }
 
     // Style of star-rating & review fields
@@ -490,7 +494,6 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-top: 1px solid white;
-    transform: translateY(-100%);
     background-color: $c-white;
     box-shadow: $box-shadow;
     transition: transform 1s;
@@ -499,9 +502,9 @@
     padding: 10px;
     display: none;
     width: 262px;
-    left: -10px;
-    z-index: 4;
-    top: 308px;
+    left: 0px;
+    z-index: 10;
+    top: 320px;
 
     @include media('within', 'fullHd') {
         width: 245px;
@@ -522,15 +525,13 @@
     text-decoration: underline;
 }
 
-.product-card__goodname-link:hover~.hide-part {
+.product-card:hover .hide-part {
     @include media('min', 'hd') {
         border-top: 1px solid $c-extra-gray;
-        transform: translateY(0);
         display: block;
     }
 
 }
-
 
 // Hovers
 
@@ -560,4 +561,8 @@
         align-items: center;
         display: flex;
     }
+}
+
+.head__part {
+    height: 110px;
 }

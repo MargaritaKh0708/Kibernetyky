@@ -1,6 +1,7 @@
 import { FooterImgSelector } from 'components/footer/FooterImgSelector';
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
-import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/OpenCatalogContext';
+import { useGlobalContext } from '../goods-presentation-block/AsideMenu/GlobalContext';
+import { Link } from 'react-router-dom';
 
 interface IBurgerMenuList {
   contactsModalState: (value: boolean) => void;
@@ -9,12 +10,16 @@ interface IBurgerMenuList {
 export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
   contactsModalState,
 }) => {
-  const { setOpen } = useOpenCatalogContext();
+  const { setOpen, setLikesModalActive, setLoginModalActive } =
+    useGlobalContext();
 
   return (
     <div className='burger__list'>
       <ul className='burger__list-items'>
-        <li className='burger__list-item'>
+        <li
+          className='burger__list-item'
+          onClick={() => setLoginModalActive(true)}
+        >
           <HeaderSvgSelector id='personal-b' className='burger-icon' />
           <span>Вхід</span>
           <span className='burger-icon--border' />
@@ -24,11 +29,16 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
           <HeaderSvgSelector id='catalog-b' className='burger-icon' />
           <span>Каталог товарів</span>
         </li>
-        <li className='burger__list-item'>
-          <HeaderSvgSelector id='basket-b' className='burger-icon' />
-          <span>Кошик</span>
-        </li>
-        <li className='burger__list-item'>
+        <Link to='/cart'>
+          <li className='burger__list-item'>
+            <HeaderSvgSelector id='basket-b' className='burger-icon' />
+            <span>Кошик</span>
+          </li>
+        </Link>
+        <li
+          className='burger__list-item'
+          onClick={() => setLikesModalActive(true)}
+        >
           <HeaderSvgSelector id='likes-b' className='burger-icon' />
           <span>Обране</span>
         </li>

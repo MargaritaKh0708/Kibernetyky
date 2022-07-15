@@ -8,6 +8,8 @@ import { ShopHistory } from 'components/shop-history/ShopHistory';
 import { ICatalogItem } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
+import { getData } from 'components/backend/getData';
+import { useEffect } from 'react';
 
 export interface IMainPage {
   setOrderCountHandler: (value: number) => void;
@@ -34,6 +36,9 @@ export const MainPage: React.FC<IMainPage> = ({
   oldgoods,
   goods,
 }) => {
+  useEffect(() => {
+    console.log(getData());
+  });
   return (
     <div className='main-page-content main-content'>
       <AddToCart

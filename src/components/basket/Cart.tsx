@@ -111,7 +111,10 @@ export const Cart: React.FC<ICart> = ({
           count: orderProduct.count,
           price: productFromBase.price,
           oldPrice: productFromBase.oldprice,
-          photo: productFromBase.category.mainImage,
+          photo:
+            productFromBase.imageCollection.length > 0
+              ? productFromBase.imageCollection[0]
+              : productFromBase.category.mainImage,
         });
       }
     });
@@ -137,7 +140,12 @@ export const Cart: React.FC<ICart> = ({
     (orderProductItem) => {
       return (
         <div className='product-form__product' key={orderProductItem.id}>
-          <div className='product-form__photo'>
+          <div
+            className='product-form__photo'
+            // style={{
+            //   background: `center / contain no-repeat url(${orderProductItem.imageCollection[0]})`,
+            // }}
+          >
             <img src={orderProductItem.photo} alt={orderProductItem.name} />
           </div>
           <div className='product-form__details'>

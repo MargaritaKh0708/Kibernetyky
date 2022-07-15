@@ -1,7 +1,9 @@
 import React from 'react';
 import { useContext } from 'react';
 
-export type OpenCatalogContent = {
+// const [likesModalActive, setLikesModalActive] = useState<boolean>(false); // open modal of favorite goods
+
+export type GlobalContext = {
   detailedInformation: string;
   setDetailedInformation: (value: string) => void;
   displayWidth: boolean;
@@ -12,9 +14,13 @@ export type OpenCatalogContent = {
   setHideCategoryList: (value: boolean) => void;
   setOpen: (c: boolean) => void;
   open: boolean;
+  setLikesModalActive: (value: boolean) => void;
+  likesModalActive: boolean;
+  setLoginModalActive: (value: boolean) => void;
+  loginModalActive: boolean;
 };
 
-export const OpenCatalogContext = React.createContext<OpenCatalogContent>({
+export const GlobalContext = React.createContext<GlobalContext>({
   detailedInformation: '',
   setDetailedInformation: () => {},
   displayWidth: false,
@@ -25,6 +31,10 @@ export const OpenCatalogContext = React.createContext<OpenCatalogContent>({
   setHideCategoryList: () => {},
   open: false,
   setOpen: () => {},
+  setLikesModalActive: () => {},
+  likesModalActive: false,
+  setLoginModalActive: () => {},
+  loginModalActive: false,
 });
 
-export const useOpenCatalogContext = () => useContext(OpenCatalogContext);
+export const useGlobalContext = () => useContext(GlobalContext);
