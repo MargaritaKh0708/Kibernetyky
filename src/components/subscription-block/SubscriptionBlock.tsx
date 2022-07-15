@@ -36,8 +36,9 @@ export const SubscriptionBlock: React.FC = () => {
               }
               return errors;
             }}
-            onSubmit={(values, { setSubmitting }) => {
+            onSubmit={(values, { setSubmitting, resetForm }) => {
               setSubmitting(false);
+              resetForm();
             }}
           >
             {({ values, errors, touched }) => (

@@ -29,6 +29,11 @@
         margin: 0 auto;
         height: 150px;
         width: 150px;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
     }
 
     &__buy-block {

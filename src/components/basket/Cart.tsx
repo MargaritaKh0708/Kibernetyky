@@ -107,7 +107,7 @@ export const Cart: React.FC<ICart> = ({
           count: orderProduct.count,
           price: productFromBase.price,
           oldPrice: productFromBase.oldprice,
-          photo: productFromBase.category.mainImage,
+          photo: productFromBase.imageCollection.length > 0 ? productFromBase.imageCollection[0] : productFromBase.category.mainImage,
         });
       }
     });

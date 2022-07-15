@@ -1968,6 +1968,10 @@ ul {
   height: 150px;
   width: 150px;
 }
+.add-to-cart-modal__img-block img {
+  width: auto;
+  height: 100%;
+}
 .add-to-cart-modal__buy-block {
   width: 75%;
 }
