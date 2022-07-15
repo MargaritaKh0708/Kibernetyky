@@ -1,6 +1,7 @@
 import { FooterImgSelector } from 'components/footer/FooterImgSelector';
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
-import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/OpenCatalogContext';
+import { useGlobalContext } from '../goods-presentation-block/AsideMenu/GlobalContext';
+import { Link } from 'react-router-dom';
 
 interface IBurgerMenuList {
   contactsModalState: (value: boolean) => void;
@@ -9,25 +10,35 @@ interface IBurgerMenuList {
 export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
   contactsModalState,
 }) => {
-  const { setOpen } = useOpenCatalogContext();
+  const { setOpen, setLikesModalActive, setLoginModalActive } =
+    useGlobalContext();
 
   return (
     <div className='burger__list'>
       <ul className='burger__list-items'>
-        <li className='burger__list-item'>
+        <li
+          className='burger__list-item'
+          onClick={() => setLoginModalActive(true)}
+        >
           <HeaderSvgSelector id='personal-b' className='burger-icon' />
           <span>Вхід</span>
+          <span className='burger-icon--border' />
           <span>Реєстрація</span>
         </li>
         <li className='burger__list-item' onClick={() => setOpen(true)}>
           <HeaderSvgSelector id='catalog-b' className='burger-icon' />
           <span>Каталог товарів</span>
         </li>
-        <li className='burger__list-item'>
-          <HeaderSvgSelector id='basket-b' className='burger-icon' />
-          <span>Кошик</span>
-        </li>
-        <li className='burger__list-item'>
+        <Link to='/cart'>
+          <li className='burger__list-item'>
+            <HeaderSvgSelector id='basket-b' className='burger-icon' />
+            <span>Кошик</span>
+          </li>
+        </Link>
+        <li
+          className='burger__list-item'
+          onClick={() => setLikesModalActive(true)}
+        >
           <HeaderSvgSelector id='likes-b' className='burger-icon' />
           <span>Обране</span>
         </li>
@@ -71,14 +82,16 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
         <li className='burger__list-item'>Кредити</li>
         <li className='burger__list-item'>Оплата і доставка</li>
         <li className='burger__list-item-epmty'></li>
-        <li className='burger__list-item'>Ще</li>
+        <li className='burger__list-item burger__list-item--color'>Ще</li>
         <li className='burger__list-item'>Про нас</li>
         <li className='burger__list-item'>Вакансії</li>
         <li className='burger__list-item'>Кібер-обмін</li>
         <li className='burger__list-item'>Кібер-послуги</li>
         <li className='burger__list-item'>Страхування</li>
         <li className='burger__list-item'>Гарантія. Обмін і повернення</li>
-        <li className='footer__main-content-list-item '>Ми в соц. мережах</li>
+        <li className='footer__main-content-list-item  burger__list-item--color'>
+          Ми в соц. мережах
+        </li>
         <li className='footer__main-content-list-item footer__main-content-list-item_flex'>
           <FooterImgSelector id='insta' />
           <FooterImgSelector id='tiktok' />

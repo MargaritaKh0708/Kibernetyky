@@ -1,0 +1,86 @@
+.likes-modal {
+
+    @include media (max, 'iPad') {
+        max-height: 100vh;
+        margin: 0;
+    }
+
+    //! Scroll-bar styles
+
+    &::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: $c-extra-gray;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $c-brand-yellow;
+    }
+
+    @extend .add-to-cart-modal;
+    width: fit-content;
+    max-width: 900px;
+    max-height: 70vh;
+    overflow: auto;
+
+
+
+    &__text {
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        overflow: hidden;
+    }
+
+    &__head-part {
+        flex-direction: column;
+        display: flex;
+        gap: 20px;
+    }
+
+    &__list {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        display: flex;
+        height: 50%;
+        gap: 20px;
+    }
+
+    &__product {
+        box-shadow: $box-shadow;
+        position: relative;
+        padding: 10px;
+        width: 22%;
+    }
+
+    &__img-block {
+        margin: 0 auto;
+        height: 70px;
+
+    }
+
+    &__price {
+        padding-top: 10px;
+    }
+
+    &__buttons {
+        align-items: center;
+        display: flex;
+        gap: 20px;
+
+        &:first-child button {
+            background-color: $c-brand-yellow;
+            color: $c-text;
+        }
+
+    }
+
+    &__credit-btn,
+    &__buy-btn {
+        @extend .add-to-cart-modal__credit-btn;
+        cursor: pointer;
+    }
+
+}

@@ -1,7 +1,7 @@
 //Main product list style 
 
 .product-list {
-    margin-top: 20px;
+    margin: 20px auto;
 
     //! Filter-line styles
 
@@ -77,7 +77,7 @@
         border-radius: 20px;
         align-items: center;
         flex-wrap: nowrap;
-        margin: 0 auto;
+        margin: 20px auto 0;
         display: flex;
         width: 134px;
         height: 37px;
@@ -88,6 +88,16 @@
     }
 }
 
+
+.product-card-list-row {
+    @extend .product-card-list;
+    height: 360px;
+
+}
+
+.product-card-list-row .change-height {
+    height: 570px;
+}
 
 
 // Main card style
@@ -145,12 +155,7 @@
 
     &__picture {
         padding-top: 10px;
-        max-width: 163px;
-        margin: 0 auto;
-
-        @include media ('max', 'mobile-horizontal') {
-            max-width: 119px;
-        }
+        height: 100%;
     }
 
     // The good's color panel styles
@@ -165,8 +170,8 @@
 
         @include media ('max', 'mobile-horizontal') {
             right: -5px;
-            gap: 4px;
             top: -3px;
+            gap: 4px;
         }
 
     }
@@ -211,6 +216,10 @@
         align-items: center;
         display: flex;
         gap: 8px;
+
+        &-item {
+            white-space: nowrap;
+        }
     }
 
     &__cashback-sum {
@@ -235,8 +244,12 @@
     // Style of good name position
 
     &__goodname {
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
         line-height: 18px;
         margin-top: 5px;
+        overflow: hidden;
     }
 
     // Style of star-rating & review fields
@@ -428,7 +441,7 @@
 .pay-ways-block {
     position: absolute;
     margin-top: 12px;
-    z-index: 2;
+    z-index: 5;
 }
 
 
@@ -483,14 +496,15 @@
     border-top: 1px solid white;
     background-color: $c-white;
     box-shadow: $box-shadow;
+    transition: transform 1s;
     position: absolute;
     margin-top: 10px;
     padding: 10px;
     display: none;
     width: 262px;
-    left: -10px;
-    z-index: 1;
-    top: 308px;
+    left: 0px;
+    z-index: 10;
+    top: 320px;
 
     @include media('within', 'fullHd') {
         width: 245px;
@@ -505,24 +519,19 @@
     }
 }
 
-.product-card__goodname:hover~.hide-part {
 
+
+.product-card__goodname:hover {
+    text-decoration: underline;
+}
+
+.product-card:hover .hide-part {
     @include media('min', 'hd') {
         border-top: 1px solid $c-extra-gray;
         display: block;
     }
 
 }
-
-.product-card__goodname:hover {
-    text-decoration: underline;
-}
-
-// .select__head.open::after {
-//     // прокрутить стрелку
-//     transform: translateY(50%) rotate(180deg);
-// }
-
 
 // Hovers
 
@@ -552,4 +561,8 @@
         align-items: center;
         display: flex;
     }
+}
+
+.head__part {
+    height: 110px;
 }

@@ -1,7 +1,13 @@
 import { SubscriptionBlockSvgSelector } from './SubscriptionBlockSvgSelector';
 import { Formik, Field, Form } from 'formik';
+import { SubscripModal } from './SubscripModal';
+import { useState } from 'react';
 
 export const SubscriptionBlock: React.FC = () => {
+  const [activeModal, setActiveModal] = useState<boolean>(false); // open thanks window
+
+  //Reset handler
+
   return (
     <div className='subscription-block'>
       <div className='subscription-block__wrapper container'>
@@ -20,23 +26,26 @@ export const SubscriptionBlock: React.FC = () => {
         <div className='subscription-block__form-part'>
           <Formik
             initialValues={{ tel: '', email: '' }}
-            validate={values => {
-              const errors: { tel?: string, email?: string } = {};
+            validate={(values) => {
+              const errors: { tel?: string; email?: string } = {};
               if (!values.tel) {
                 errors.tel = "Телефон є обов'язковим";
-              }
-              else if (!/^\+38[0-9]{3}[0-9]{2}[0-9]{2}[0-9]{3}$/i.test(values.tel)) {
-                errors.tel = "Невірний номер телефону";
+              } else if (
+                !/^\+38[0-9]{3}[0-9]{2}[0-9]{2}[0-9]{3}$/i.test(values.tel)
+              ) {
+                errors.tel = 'Невірний номер телефону';
               }
               if (!values.email) {
                 errors.tel = "Телефон є обов'язковим";
-              }
-              else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = "Неправильна ел. адреса";
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+              ) {
+                errors.email = 'Неправильна ел. адреса';
               }
               return errors;
             }}
             onSubmit={(values, { setSubmitting, resetForm }) => {
+              //onSubmit будет вызвана при нажатии кнопки, в случае если все поля пройдут валидацию
               setSubmitting(false);
               resetForm();
             }}
@@ -49,22 +58,35 @@ export const SubscriptionBlock: React.FC = () => {
                       type='tel'
                       className='subscription-block__phone-field'
                       placeholder='Номер телeфону'
-                      name="tel"
-                      id="tel"
+                      name='tel'
+                      id='tel'
                     />
-                    {touched.tel && errors.tel ? <div className="login-block-input__error">{errors.tel}</div> : null}
+                    {touched.tel && errors.tel ? (
+                      <div className='login-block-input__error'>
+                        {errors.tel}
+                      </div>
+                    ) : null}
                   </div>
                   <div>
                     <Field
                       type='email'
                       className='subscription-block__email-field'
                       placeholder='Email'
-                      name="email"
-                      id="email"
+                      name='email'
+                      id='email'
                     />
-                    {touched.email && errors.email ? <div className="login-block-input__error">{errors.email}</div> : null}
+                    {touched.email && errors.email ? (
+                      <div className='login-block-input__error'>
+                        {errors.email}
+                      </div>
+                    ) : null}
                   </div>
-                  <button type='submit'>
+                  <button
+                    type='submit'
+                    onClick={() => {
+                      setActiveModal(true);
+                    }}
+                  >
                     <span>Підписатися</span>
                   </button>
                 </div>
@@ -84,6 +106,10 @@ export const SubscriptionBlock: React.FC = () => {
           </a>
         </div>
       </div>
+      <SubscripModal
+        openSubscripModal={activeModal}
+        setOpenSubscripModal={setActiveModal}
+      />
     </div>
   );
 };

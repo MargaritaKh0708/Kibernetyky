@@ -48,7 +48,6 @@
 
     &__form-fields {
         justify-content: space-between;
-        //align-items: center;
         display: flex;
         gap: 16px;
 
@@ -119,4 +118,10 @@
         }
     }
 
+
+}
+
+.login-block-input__error {
+    padding-top: 10px;
+    height: 10px;
 }

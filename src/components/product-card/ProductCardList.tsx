@@ -65,8 +65,9 @@ export interface IProductCardList {
   setOrderCountHandler?: (count: number) => void;
   data: IProductCardListItem[];
   addToCartActive: boolean;
-  type: string;
+  rowQuantity: number;
   productId: number;
+  type: string;
 }
 
 export enum WindowVariant {
@@ -86,21 +87,16 @@ export const ProductCardList: React.FC<IProductCardList> = ({
   setCompareCountHandler,
   setOrderCountHandler,
   addToCartActive,
+  rowQuantity,
+  productId,
   data,
   type,
-  productId,
 }) => {
   const [cardQuantity, setCardQuantity] = useState<number>(0); // state on numbers of column
   const [categoryId, setCategoryId] = useState<number>(0); // state on category of good
-  const [n, setN] = useState<number>(2); // state on numbers of row
+  const [n, setN] = useState<number>(rowQuantity); // state on numbers of row
 
   //! ADAPTIVE
-
-  // useEffect(() => {
-  //   console.log(n);
-  //   console.log(window.innerWidth);
-  //   console.log(cardQuantity);
-  // }, []);
 
   useEffect(() => {
     const handleResize: () => void = () => {
@@ -133,6 +129,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
 
   // find products by type
   let list: IProductCardListItem[] = [];
+  let coupledProducts: IProductCardListItem[] = [];
   if (type === 'leaders') {
     // Finds 'leaders' in big data
     list = data.filter((item) =>
@@ -147,20 +144,24 @@ export const ProductCardList: React.FC<IProductCardList> = ({
         ? item.novelty && item.category.id === categoryId
         : item.novelty
     );
+  } else if (type === 'similar') {
+    // Finds 'similar' in big data
+    list = data.filter((item) =>
+      categoryId > 0 ? item.category.id === categoryId : item.category.id
+    );
   } else if (type === 'coupled') {
     // find product by id
     const foundProducts = data.filter((product) => product.id === productId);
     const product = foundProducts.length > 0 ? foundProducts[0] : null;
-    
+
     // find coupled products
-    let coupledProducts = [];
+
     if (product) {
       const coupledCategories = product.category.coupled;
       coupledProducts = data.filter((p) =>
         coupledCategories.includes(p.category.id)
       );
-    }
-    else {
+    } else {
       return <></>;
     }
     // Finds 'coupled' by category
@@ -168,13 +169,14 @@ export const ProductCardList: React.FC<IProductCardList> = ({
       categoryId > 0 ? item.category.id === categoryId : true
     );
   }
-
   // choose title by type
   const title =
     type === 'leaders'
       ? 'Лідери продажу'
       : type === 'novelties'
       ? 'Новинки'
+      : type === 'similar'
+      ? 'Також, Вас можуть зацікавити:'
       : 'Товари, які купують разом';
 
   // Add limit to render depend on window size
@@ -192,31 +194,44 @@ export const ProductCardList: React.FC<IProductCardList> = ({
     <>
       <section className='product-list product-list-leaders container'>
         <h2 className='product-list__title title'>{title}</h2>
-        <CardsFilterLine data={data} handler={categoryChange} />
+        <CardsFilterLine
+          data={
+            type === 'similar'
+              ? list
+              : type === 'coupled'
+              ? coupledProducts
+              : data
+          }
+          handler={categoryChange}
+        />
         <div
-          className={n > 2 ? 'product-card-list h-height' : 'product-card-list'}
+          className={
+            n > 2
+              ? 'product-card-list h-height'
+              : rowQuantity === 1
+              ? 'product-card-list-row'
+              : 'product-card-list'
+          }
         >
           {renderItems.map((item) => (
             <ProductCard
-              mainPic = {item.imageCollection.length > 0 ? item.imageCollection[0] : ''}
-              available={item.available}
-              oldprice={item.oldprice}
-              goodModel={item.model}
-              leaders={item.leader}
-              goodName={item.name}
-              productId={item.id}
-              price={item.price}
-              products={data}
               key={item.id}
-              setOrderCountHandler={setOrderCountHandler}
+              setCurrentProductIdHandler={setCurrentProductIdHandler}
+              setAddToCartActiveHandler={setAddToCartActiveHandler}
               setFavoriteCountHandler={setFavoriteCountHandler}
               setCompareCountHandler={setCompareCountHandler}
-              setAddToCartActiveHandler={setAddToCartActiveHandler}
-              setCurrentProductIdHandler={setCurrentProductIdHandler}
+              setOrderCountHandler={setOrderCountHandler}
               addToCartActive={addToCartActive}
+              product={item}
             />
           ))}
-          <div className='product-card-list__opacity-block opacity' />
+          <div
+            className={
+              rowQuantity === 1
+                ? 'hidden'
+                : 'product-card-list__opacity-block opacity'
+            }
+          />
         </div>
         <button
           onClick={() => {

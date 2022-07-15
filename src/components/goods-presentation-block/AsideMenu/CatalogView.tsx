@@ -1,5 +1,5 @@
 import { ICatalogItem } from './AsideMenu';
-import { useOpenCatalogContext } from './OpenCatalogContext';
+import { useGlobalContext } from './GlobalContext';
 
 interface ICatalogView {
   showDetailedInformation: (value: string) => void;
@@ -24,7 +24,7 @@ export const CatalogView: React.FC<ICatalogView> = ({
   changeView,
   data,
 }) => {
-  const { setOpen } = useOpenCatalogContext(); // for open CATALOG
+  const { setOpen } = useGlobalContext(); // for open CATALOG
 
   const catalogView = (
     <div
@@ -47,7 +47,7 @@ export const CatalogView: React.FC<ICatalogView> = ({
             <div
               className='goods-presentation-block__menu__item'
               key={item.id}
-              onClick={() => {
+              onMouseEnter={() => {
                 setDisplayWidth(false); // show 2d part of window
                 showDetailedInformation(item.id); //read id for render item information
                 readItemName(item.goodType); // read its name for come-back btn
@@ -60,7 +60,7 @@ export const CatalogView: React.FC<ICatalogView> = ({
                 {item.icon}
                 <span>{item.goodType}</span>
               </div>
-              <span className='arrow'></span>
+              <span className='arrow' />
             </div>
           ))}
         </div>

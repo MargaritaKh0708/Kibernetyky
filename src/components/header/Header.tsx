@@ -6,11 +6,13 @@ import { useState } from 'react';
 import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
-import { useOpenCatalogContext } from '../goods-presentation-block/AsideMenu/OpenCatalogContext';
+import { useGlobalContext } from '../goods-presentation-block/AsideMenu/GlobalContext';
 import { CatalogModal } from 'components/goods-presentation-block/AsideMenu/CatalogModal';
 import { SearchFieldForm } from './search-field/SearchFieldForm';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
+import { Login } from 'components/account/Login';
 import { Link } from 'react-router-dom';
+import { LikesModal } from './likes-modal/LikesModal';
 
 interface IHeader extends ICatalog {
   maindata: IProductCardListItem[];
@@ -27,12 +29,17 @@ export const Header: React.FC<IHeader> = ({
   goods,
 }) => {
   const [burgerActive, setBurgerActive] = useState<boolean>(false); // for BURGER open
-  // const [searchActive, setSearchActive] = useState<boolean>(false); // for SEARCH field open
-
   const [contactsModalActive, setContactsModalActive] =
     useState<boolean>(false); // for menu 'CONTACTS' open
 
-  const { open, setOpen } = useOpenCatalogContext(); // for open catalog from 3 pleces - header, burger, presentation-block
+  const {
+    open,
+    setOpen,
+    likesModalActive,
+    setLikesModalActive,
+    loginModalActive,
+    setLoginModalActive,
+  } = useGlobalContext(); // for open catalog from 3 places - header, burger, presentation-block
 
   return (
     <>
@@ -57,9 +64,7 @@ export const Header: React.FC<IHeader> = ({
           </Link>
           <div className='catalog' onClick={() => setOpen(open ? false : true)}>
             <HeaderSvgSelector id='catalog' />
-            <a href='#' className='catalog__href'>
-              <span> Каталог </span>
-            </a>
+            <span className='catalog__href'> Каталог </span>
           </div>
           <SearchFieldForm data={goods} goods={maindata} />
           <div className='help-army'>
@@ -74,10 +79,18 @@ export const Header: React.FC<IHeader> = ({
             </a>
           </div>
           <nav className='menu-block'>
-            <button type='button' className='header__btn header__btn--personal'>
+            <button
+              type='button'
+              className='header__btn header__btn--personal'
+              onClick={() => setLoginModalActive(true)}
+            >
               <HeaderSvgSelector id='personal' />
             </button>
-            <button type='button' className='header__btn header__btn--likes'>
+            <button
+              onClick={() => setLikesModalActive(true)}
+              type='button'
+              className='header__btn header__btn--likes'
+            >
               <HeaderSvgSelector id='likes'>
                 <span>{favoriteCount}</span>
               </HeaderSvgSelector>
@@ -117,6 +130,17 @@ export const Header: React.FC<IHeader> = ({
           <CallBackForm closeBtnFunction={setContactsModalActive} />
         </ModalWindow>
         <CatalogModal goods={goods} />
+        <Login
+          viewWindow={loginModalActive}
+          closeHandler={setLoginModalActive}
+          isLogged={false}
+        />
+        <LikesModal
+          products={maindata}
+          favoriteCountQuantity={favoriteCount}
+          activeLikesModal={likesModalActive}
+          setActiveLikesModal={setLikesModalActive}
+        />
       </header>
     </>
   );

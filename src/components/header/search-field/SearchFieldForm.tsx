@@ -1,11 +1,14 @@
 import { HeaderSvgSelector } from '../HeaderSvgSelector';
 import { HeaderIconsSelector } from '../HeaderIconsSelector';
 import { ICatalogItem } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
-import Dictaphone from 'elements/Recording/Dictaphone';
+import { Dictaphone } from 'elements/Recording/Dictaphone';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import React, { useState, useRef, useEffect } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 import { Closer } from 'components/UI/closer/Closer';
+
+// @ts-ignore
+import { useSpeechRecognition } from 'react-speech-recognition';
 
 interface ISearchFieldForm {
   goods: IProductCardListItem[];
@@ -28,6 +31,9 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
   data,
   goods,
 }) => {
+  const { transcript, listening, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
+
   const [searchActive, setSearchActive] = useState<boolean>(false); // State for search field open (last req version)
   const [searchFieldValue, setSearchFieldValue] = useState<string>(''); // state for reading value of search field
   const [searchResultsFieldActive, setSearchResultsFieldActive] =
@@ -41,7 +47,14 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
   ); // state for keepping user requests (by name search)
   const [searchingCategory, setSearchingCategory] = useState<ICategory[]>([]); // state for keepping user requests (by category search)
 
-  //!search__onfocus
+  //* speechy used
+
+  useEffect(() => {
+    setSearchFieldValue(transcript);
+    searchResultsGoods();
+  }, [transcript]);
+
+  //?search__onfocus
 
   // load past user requests from localStorage
   useEffect(() => {
@@ -72,17 +85,15 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
   //!search__oninput
 
   const searchResultsGoods: () => void = () => {
-    let filterGoods = goods.filter(
-      (good) =>
-        good.name.toLowerCase().startsWith(searchFieldValue.toLowerCase()) // тут должны быть популярные
+    let filterGoods = goods.filter((good) =>
+      good.name.toLowerCase().startsWith(searchFieldValue.toLowerCase())
     );
 
     if (filterGoods.length === 0) {
-      filterGoods = goods.filter(
-        (good) =>
-          good.category.name
-            .toLowerCase()
-            .startsWith(searchFieldValue.toLowerCase()) // тут должны быть популярные
+      filterGoods = goods.filter((good) =>
+        good.category.name
+          .toLowerCase()
+          .startsWith(searchFieldValue.toLowerCase())
       );
     }
 
@@ -109,7 +120,6 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
   useOnClickOutside(ref, handleClickOutside);
 
   //ENTER press
-
   const handleKeyDown = (event: React.KeyboardEvent<Element>) => {
     if (event.keyCode === 13) {
       closeSearchResultsField();
@@ -117,7 +127,6 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
   };
 
   // CLOSE SEARCH
-
   const closeSearchResultsField: () => void = () => {
     setSearchResultsFieldActive(false);
     addRequestToPrevious();
@@ -144,7 +153,11 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
           name='search'
           type='text'
         />
-        <Dictaphone />
+        <Dictaphone
+          onClickHandler={() => setSearchResultsFieldActive(true)}
+          listening={listening}
+          browserSupportsSpeechRecognition={browserSupportsSpeechRecognition}
+        />
         <button className='search-field__btn' onClick={closeSearchResultsField}>
           <span> Знайти </span>
         </button>
@@ -183,9 +196,9 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
                 <HeaderSvgSelector id='clock' />
                 <span> Ви ще нічого не шукали </span>
               </li>
-              {previousSearchRequest.map((request) => (
+              {previousSearchRequest.map((request, index) => (
                 <li
-                  key={`client ${request.searchFieldValue}`}
+                  key={` ${index} ${request.searchFieldValue}`}
                   className='search__onfocus-history-item'
                 >
                   <HeaderSvgSelector id='clock' />

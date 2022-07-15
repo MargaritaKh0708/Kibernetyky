@@ -1,9 +1,3 @@
-import {
-  deliveryDate,
-  deliveryPlaces,
-  deliveryMethods,
-} from 'components/backend/DataList';
-
 export interface IDeliveryMethod {
   method: string;
   price: number;
@@ -43,14 +37,12 @@ export const Delivery: React.FC<IDelivery> = ({ method, place }) => {
         return 'Сьогодні';
       }
       return 'Завтра';
-    }
-    else if (term === '02') {
+    } else if (term === '02') {
       return 'Завтра';
     }
 
     return deliveryDateStroke;
   };
-
   return (
     <div className='delivery extended-card__product-info extended-card__insurence-info'>
       <div className='delivery__wrapper'>
@@ -66,11 +58,6 @@ export const Delivery: React.FC<IDelivery> = ({ method, place }) => {
               <span className='delivery__method-name'>{item.method}</span>
               <span className='delivery__method-delivery-term'>
                 {deliveryDate(item.terms)}
-                {/* {item.terms === '01'
-                  ? 'Сьогодні'
-                  : item.terms === '02'
-                  ? 'Завтра'
-                  : deliveryDateStroke} */}
               </span>
               <span className='delivery__method-delivery-price'>
                 {item.price === 0 ? 'Безкоштовно' : `${item.price} ₴`}

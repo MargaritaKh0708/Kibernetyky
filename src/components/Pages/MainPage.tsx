@@ -8,7 +8,8 @@ import { ShopHistory } from 'components/shop-history/ShopHistory';
 import { ICatalogItem } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
-import { VideoReviewBlock } from 'components/video-review/VideoReviewBlock';
+import { getData } from 'components/backend/getData';
+import { useEffect } from 'react';
 
 export interface IMainPage {
   setOrderCountHandler: (value: number) => void;
@@ -35,6 +36,9 @@ export const MainPage: React.FC<IMainPage> = ({
   oldgoods,
   goods,
 }) => {
+  useEffect(() => {
+    console.log(getData());
+  });
   return (
     <div className='main-page-content main-content'>
       <AddToCart
@@ -50,6 +54,8 @@ export const MainPage: React.FC<IMainPage> = ({
       <GoodsPresentationBlock goods={oldgoods} />
       <BrandsLine data={goods} />
       <ProductCardList
+        productId={productId}
+        rowQuantity={2}
         setCurrentProductIdHandler={setCurrentProductIdHandler}
         setAddToCartActiveHandler={setAddToCartActiveHandler}
         setOrderCountHandler={setOrderCountHandler}
@@ -58,9 +64,10 @@ export const MainPage: React.FC<IMainPage> = ({
         addToCartActive={isActive}
         type='leaders'
         data={goods}
-        productId={productId}
       />
       <ProductCardList
+        rowQuantity={2}
+        productId={productId}
         setCurrentProductIdHandler={setCurrentProductIdHandler}
         setAddToCartActiveHandler={setAddToCartActiveHandler}
         setOrderCountHandler={setOrderCountHandler}
@@ -69,10 +76,9 @@ export const MainPage: React.FC<IMainPage> = ({
         addToCartActive={isActive}
         type='novelties'
         data={goods}
-        productId={productId}
       />
       <TopCategoriesBlock data={goods} />
-      <VideoReviewBlock/>
+      {/* <VideoReviewBlock /> */}
       <BenefitsLine />
       <SubscriptionBlock />
       <ShopHistory />

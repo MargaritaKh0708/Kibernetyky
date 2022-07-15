@@ -23,10 +23,6 @@ export interface IOrder {
 }
 
 export const AddToCart: React.FC<AddToCartType> = ({
-  setCurrentProductIdHandler,
-  setFavoriteCountHandler,
-  setCompareCountHandler,
-  setOrderCountHandler,
   viewHandler,
   products,
   isActive,
@@ -78,17 +74,24 @@ export const AddToCart: React.FC<AddToCartType> = ({
     );
   }
 
-  // find coupled products
- /*  const coupledCategories = product.category.coupled;
-  const coupledProducts = products.filter((p) =>
-    coupledCategories.includes(p.category.id)
-  ); */
+  // // find coupled products
+  // const coupledCategories = product.category.coupled;
+  // const coupledProducts = products.filter((p) =>
+  //   coupledCategories.includes(p.category.id) //TODO
+  // );
 
   const ProductJsx = (
     <div className='add-to-cart-modal__head-part'>
       <div className='add-to-cart-modal__row'>
         <div className='add-to-cart-modal__img-block'>
-          <img src={product.imageCollection.length > 0 ? product.imageCollection[0] : product.category.mainImage} alt='img'></img>
+          <img
+            src={
+              product.imageCollection.length > 0
+                ? product.imageCollection[0]
+                : product.category.mainImage
+            }
+            alt='img'
+          ></img>
         </div>
         <div className='add-to-cart-modal__buy-block'>
           <p className='add-to-cart-modal__text'>

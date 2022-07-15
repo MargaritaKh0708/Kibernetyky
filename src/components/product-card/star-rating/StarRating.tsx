@@ -7,7 +7,7 @@ export interface IStarRatingProps {
   filledIcon?: string;
   isHalf?: boolean;
   color?: string;
-  value?: number;
+  value: number;
   count: number;
   size?: number;
 }

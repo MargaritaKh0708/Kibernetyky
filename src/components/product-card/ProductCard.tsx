@@ -1,14 +1,12 @@
-//import mainPic from 'assets/icons/goods-card-icons/mainPic.png';
+import mainPic from 'assets/icons/goods-card-icons/mainPic.png';
 import { ProductCardSvgSelector } from './ProductCardSvgSelector';
 import { StarRating, IStarRatingProps } from './star-rating/StarRating';
 import { useEffect, useState } from 'react';
 import { SelectList } from './select-list/SelectList';
-import {
-  AddToCart,
-  IOrder,
-} from 'components/basket/AddToBasketWindow/AddToBasket';
-import { IProductCardListItem } from 'components/product-card/ProductCardList';
+import { bankArray } from 'components/backend/DataList';
+import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { Link } from 'react-router-dom';
+import { IProductCardListItem } from 'components/product-card/ProductCardList';
 
 interface IRating {
   productId: number;
@@ -16,74 +14,68 @@ interface IRating {
 }
 
 interface IProductCardProps {
-  products: IProductCardListItem[]; //array of products
-  available: boolean;
-  productId: number; //id of good that we want to bye
-  leaders: boolean;
-  oldprice: number;
-  goodName: string;
-  goodModel: string;
-  mainPic: string;
-  price: number;
-  setOrderCountHandler?: (count: number) => void;
+  product: IProductCardListItem; //array of products
+  setCurrentProductIdHandler: (productId: number) => void;
+  setAddToCartActiveHandler: (state: boolean) => void;
   setFavoriteCountHandler?: (count: number) => void;
   setCompareCountHandler: (count: number) => void;
-  setAddToCartActiveHandler: (state: boolean) => void;
-  setCurrentProductIdHandler: (productId: number) => void;
-  addToCartActive: Boolean;
+  setOrderCountHandler?: (count: number) => void;
+  addToCartActive: boolean;
 }
 
 export const ProductCard: React.FC<IProductCardProps> = ({
-  setOrderCountHandler,
-  setCompareCountHandler,
-  setFavoriteCountHandler,
-  addToCartActive,
-  setAddToCartActiveHandler,
   setCurrentProductIdHandler,
-  goodModel,
-  available,
-  productId,
-  goodName,
-  products,
-  oldprice,
-  leaders,
-  price,
-  mainPic,
+  setAddToCartActiveHandler,
+  setFavoriteCountHandler,
+  setCompareCountHandler,
+  setOrderCountHandler,
+  addToCartActive,
+  product,
 }) => {
-  const [rating, setRating] = useState<number>(0); // Star rating value
-  const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
+  const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
   const [deal, setDeal] = useState<boolean>(false); // Basket changes
-
-  //const [viewCart, setViewCart] = useState<boolean>(false); // for pre-basket card
+  const [rating, setRating] = useState<number>(0); // Star rating value
 
   const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
 
   const StarRatingProps: IStarRatingProps = {
-    size: 12,
-    count: 5,
-    color: '#9E9E9E',
     activeColor: '#F9E505',
+    color: '#9E9E9E',
     isHalf: true,
     value: rating,
+    size: 12,
+    count: 5,
     onChange: (newRating: number) => {
       setRatingHandler(newRating);
+      setRating(newRating);
     },
   };
+
+  useEffect(() => {
+    // get rating data from localStorage
+    const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
+    ratings.forEach((rating: IRating) => {
+      if (rating.productId === product.id) {
+        setRating(rating.value);
+      }
+    });
+    console.log('оцінка встановилась', rating);
+  }, [rating]);
 
   // load data from localStorage
   useEffect(() => {
     // get products in cart from localStorage
     const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
     orderProducts.forEach((order: IOrder) => {
-      if (order.productId === productId) setDeal(true);
+      if (order.productId === product.id) setDeal(true);
     });
     setOrderProductsCount(orderProducts);
 
     // get favorites from localStorage
     const favorites = JSON.parse(localStorage.getItem('favorite') || '[]');
     favorites.forEach((favoriteProductId: number) => {
-      if (favoriteProductId === productId) {
+      if (favoriteProductId === product.id) {
         setFavorite(true);
       }
     });
@@ -92,19 +84,11 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     // get compare data from localStorage
     const compareIdList = JSON.parse(localStorage.getItem('compare') || '[]');
     compareIdList.forEach((compareProductId: number) => {
-      if (compareProductId === productId) {
+      if (compareProductId === product.id) {
         setCompare(true);
       }
     });
     setCompareProductsCount(compareIdList);
-
-    // get rating data from localStorage
-    const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
-    ratings.forEach((rating: IRating) => {
-      if (rating.productId === productId) {
-        setRating(rating.value);
-      }
-    });
   }, []);
 
   const setRatingHandler: (ratingValue: number) => void = (ratingValue) => {
@@ -112,7 +96,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
 
     const foundRating = ratings.filter(
-      (rating: IRating) => rating.productId === productId
+      (rating: IRating) => rating.productId === product.id
     );
 
     let ratingsToSave: IRating[] = [];
@@ -121,19 +105,22 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     } else {
       // replace rating value
       const changedRating = ratings.filter(
-        (rating: IRating) => rating.productId !== productId
+        (rating: IRating) => rating.productId !== product.id
       );
       ratingsToSave = changedRating;
     }
     // save rating
     localStorage.setItem(
       'rating',
-      JSON.stringify([...ratingsToSave, { productId, value: ratingValue }])
+      JSON.stringify([
+        ...ratingsToSave,
+        { productId: product.id, value: ratingValue },
+      ])
     );
     setRating(ratingValue);
   };
 
-  //
+  //Buy something
   const addToCartHandler: () => void = () => {
     // get products in cart from localStorage
     const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
@@ -141,7 +128,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     if (deal) {
       // delete product by productId
       const changedOrderProducts = orderProducts.filter(
-        (order: IOrder) => order.productId !== productId
+        (order: IOrder) => order.productId !== product.id
       );
       // write to localStorage if product was deleted
       if (orderProducts.length !== changedOrderProducts.length) {
@@ -153,30 +140,30 @@ export const ProductCard: React.FC<IProductCardProps> = ({
       setDeal(false);
     } else {
       // return if product is not available
-      if (!available) {
+      if (!product.available) {
         return;
       }
 
       // add product to cart
       const orderItems = orderProducts.filter(
-        (order: IOrder) => order.productId === productId // compare good id that we choose with that which in basket already
+        (order: IOrder) => order.productId === product.id // compare good id that we choose with that which in basket already
       );
       if (orderItems.length === 0) {
         localStorage.setItem(
           'order',
           JSON.stringify([
             ...orderProducts,
-            { productId, count: 1, credit: false },
+            { productId: product.id, count: 1, credit: false },
           ])
         );
         // set count
         setOrderProductsCount([
           ...orderProducts,
-          { productId, count: 1, credit: false },
+          { productId: product.id, count: 1, credit: false },
         ]);
 
         // set productId for AddToCart component
-        setCurrentProductIdHandler(productId);
+        setCurrentProductIdHandler(product.id);
         // toggle view of AddToCart component
         setAddToCartActiveHandler(addToCartActive ? false : true);
         //setViewCart(viewCart ? false : true);
@@ -205,7 +192,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     if (favorite) {
       // delete favorite by productId
       const changedFavorites = favorites.filter(
-        (favoriteProductId: number) => favoriteProductId !== productId
+        (favoriteProductId: number) => favoriteProductId !== product.id
       );
       // write to localStorage if product was deleted
       if (favorites.length !== changedFavorites.length) {
@@ -216,15 +203,15 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     } else {
       // add favorite product to localStorage
       const favoriteItems = favorites.filter(
-        (favoriteProductId: number) => favoriteProductId === productId
+        (favoriteProductId: number) => favoriteProductId === product.id
       );
       if (favoriteItems.length === 0) {
         localStorage.setItem(
           'favorite',
-          JSON.stringify([...favorites, productId])
+          JSON.stringify([...favorites, product.id])
         );
         // set count
-        setFavoriteProductsCount([...favorites, productId]);
+        setFavoriteProductsCount([...favorites, product.id]);
       }
     }
     setFavorite(favorite ? false : true);
@@ -247,7 +234,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     if (compare) {
       // delete compare by productId
       const changedCompareIdList = compareIdList.filter(
-        (compareProductId: number) => compareProductId !== productId
+        (compareProductId: number) => compareProductId !== product.id
       );
       // write to localStorage if product was deleted
       if (compareIdList.length !== changedCompareIdList.length) {
@@ -258,15 +245,15 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     } else {
       // add compare product to localStorage
       const compareItems = compareIdList.filter(
-        (compareProductId: number) => compareProductId === productId
+        (compareProductId: number) => compareProductId === product.id
       );
       if (compareItems.length === 0) {
         localStorage.setItem(
           'compare',
-          JSON.stringify([...compareIdList, productId])
+          JSON.stringify([...compareIdList, product.id])
         );
         // set count
-        setCompareProductsCount([...compareIdList, productId]);
+        setCompareProductsCount([...compareIdList, product.id]);
       }
     }
     setCompare(compare ? false : true);
@@ -285,9 +272,9 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     <>
       <div className='product-card'>
         <div className='product-card__wrapper'>
-          <div className='product-card__part'>
+          <div className='product-card__part head__part'>
             <div className='product-card__promo'>
-              {leaders ? (
+              {product.leader ? (
                 <div className='top'>
                   <span>Топ продажів</span>
                 </div>
@@ -300,32 +287,47 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 </div>
               }
             </div>
-            <div className='product-card__picture'>
-              <img src={mainPic} alt='good' />
-            </div>
+            <div
+              className='product-card__picture'
+              style={{
+                background: `center / contain no-repeat url(${
+                  product.imageCollection.length > 0
+                    ? product.imageCollection[0]
+                    : product.category.mainImage
+                })`,
+              }}
+            ></div>
             <div className='product-card__colors-panel'>
-              <label className='product-card__colors-panel-item'>
-                <input type='checkbox' className='product-card__active-color' />
-                <span className='product-card__color'></span>
-              </label>
-              <label className='product-card__colors-panel-item'>
-                <input type='checkbox' className='product-card__active-color' />
-                <span className='product-card__color'></span>
-              </label>
+              {product.specifications.colors.map((color) => (
+                <label className='product-card__colors-panel-item'>
+                  <input
+                    type='checkbox'
+                    className='product-card__active-color'
+                  />
+                  <span
+                    className='product-card__color'
+                    style={{ backgroundColor: `${color.color}` }}
+                  ></span>
+                </label>
+              ))}
             </div>
           </div>
           <div className='product-card__part main-info-part'>
             <div className='product-card__info'>
               <div className='product-card__availiable'>
-                {available ? (
+                {product.available ? (
                   <>
                     <ProductCardSvgSelector id='available' />
-                    <span>В наявності</span>
+                    <span className='product-card__availiable-item'>
+                      В наявності
+                    </span>
                   </>
                 ) : (
                   <>
                     <ProductCardSvgSelector id='none' />
-                    <span>Немає в наявності</span>
+                    <span className='product-card__availiable-item'>
+                      Немає в наявності
+                    </span>
                   </>
                 )}
               </div>
@@ -334,22 +336,37 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 <div className='product-card__cashback-sum'>
                   <span className='product-card__cashback-title'>Кешбек:</span>
                   <span className='product-card__cashback-value'>
-                    {Math.round(price * 0.1)}
+                    {Math.round(product.price * 0.1)}
                   </span>
                   <span className='product-card__currency'>{'₴'}</span>
                 </div>
               </div>
             </div>
           </div>
-          <Link to={`/product/${productId}`}>
+          <Link
+            className='product-card__goodname-link'
+            to={`/product/${product.id}`}
+          >
             <span className='product-card__goodname'>
-              {goodName} ({goodModel})
+              {product.name} ({product.model})
             </span>
           </Link>
           <div className='product-card__part clients-mark'>
             <div className='product-card__clients-mark'>
               <div className='product-card__rating'>
-                <StarRating {...StarRatingProps} />
+                <StarRating
+                  activeColor='#F9E505'
+                  color='#9E9E9E'
+                  isHalf={true}
+                  value={rating}
+                  size={12}
+                  count={5}
+                  onChange={(newRating: number) => {
+                    setRatingHandler(newRating);
+                    setRating(newRating);
+                    console.log('raiting', newRating);
+                  }}
+                />
                 <span className='product-card__rating-value'>{rating}</span>
               </div>
               <div className='product-card__review'>
@@ -380,7 +397,8 @@ export const ProductCard: React.FC<IProductCardProps> = ({
           </div>
           <div className='product-card__part pay-ways-block'>
             <SelectList
-              price={price}
+              bankArray={bankArray}
+              price={product.price}
               hiddenList={hiddenList}
               setHiddenList={setHiddenList}
             />
@@ -388,13 +406,13 @@ export const ProductCard: React.FC<IProductCardProps> = ({
           <div className='product-card__part bottom-part'>
             <div className='product-card__price'>
               <div className='product-card__price-value'>
-                <span className='product-card__price-old'>{`${oldprice} ₴`}</span>
+                <span className='product-card__price-old'>{`${product.oldprice} ₴`}</span>
                 <span className='product-card__benefit'>{`-${Math.round(
-                  ((oldprice - price) / oldprice) * 100
+                  ((product.oldprice - product.price) / product.oldprice) * 100
                 )} %`}</span>
               </div>
               <div className='product-card__price-new'>
-                <span className='product-card__price-new-value'>{`${price} ₴`}</span>
+                <span className='product-card__price-new-value'>{`${product.price} ₴`}</span>
               </div>
             </div>
             {/* This block is to small card version */}
@@ -403,7 +421,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
               <div className='product-card__cashback-sum h-small-version-cashback'>
                 <span className='product-card__cashback-title'>Кешбек:</span>
                 <span className='product-card__cashback-value'>
-                  {`${Math.round(price * 0.1)}₴`}
+                  {`${Math.round(product.price * 0.1)}₴`}
                 </span>
               </div>
             </div>
@@ -447,58 +465,20 @@ export const ProductCard: React.FC<IProductCardProps> = ({
               </span>
             </button>
           </div>
-          <div className='product-card__part hide-part'>
-            <ul className='product-card__hide-list'>
+        </div>
+        <div className='product-card__part hide-part'>
+          <ul className='product-card__hide-list'>
+            {product.specifications.main.map((specification) => (
               <li className='product-card__hide-list-item'>
                 <span className='product-card__hide-list-item-value'>
-                  Діагональ екрану:
+                  {specification.description}:&nbsp;
                 </span>
                 <span className='product-card__hide-list-item-property'>
-                  10,3”
+                  {specification.value}
                 </span>
               </li>
-              <li className='product-card__hide-list-item'>
-                <span className='product-card__hide-list-item-value'>
-                  Розширення екрану:
-                </span>
-                <span className='product-card__hide-list-item-property'>
-                  1920х1200
-                </span>
-              </li>
-              <li className='product-card__hide-list-item'>
-                <span className='product-card__hide-list-item-value'>
-                  Матриця:
-                </span>
-                <span className='product-card__hide-list-item-property'>
-                  IPS
-                </span>
-              </li>
-              <li className='product-card__hide-list-item'>
-                <span className='product-card__hide-list-item-value'>
-                  Оперативна пам’ять:
-                </span>
-                <span className='product-card__hide-list-item-property'>
-                  4 ГБ
-                </span>
-              </li>
-              <li className='product-card__hide-list-item'>
-                <span className='product-card__hide-list-item-value'>
-                  Стандарт захисту:
-                </span>
-                <span className='product-card__hide-list-item-property'>
-                  Без захисту
-                </span>
-              </li>
-              <li className='product-card__hide-list-item'>
-                <span className='product-card__hide-list-item-value'>
-                  Процесор:
-                </span>
-                <span className='product-card__hide-list-item-property'>
-                  MediaTek Helio P22T
-                </span>
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
         </div>
       </div>
     </>
