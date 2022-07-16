@@ -1,0 +1,27 @@
+{
+    "burgerMenu": {
+        "signIn": "Sign in",
+        "register": "Sign up",
+        "catalog": "Product catalog",
+        "cart": "Shopping cart",
+        "favorites": "Favorites",
+        "compare": "Product comparison",
+        "language": "Language",
+        "ukrLan": "ukr",
+        "city": "City",
+        "callBack": "Call me back",
+        "actions": "Promotions",
+        "bonuses": "Cyber-bonuses",
+        "shops": "Our shops",
+        "credits": "Credits",
+        "deliveryAndPay": "Payment and delivery",
+        "more": "More",
+        "about": "About us",
+        "vacancies": "Vacancies",
+        "exchange": "Cyber-exchange",
+        "service": "Cyber-services",
+        "insurance": "Insurance",
+        "guarantee": "Guarantee. Exchange and return",
+        "social": "Our socials"
+    }
+}

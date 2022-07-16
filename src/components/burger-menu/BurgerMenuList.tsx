@@ -2,6 +2,7 @@ import { FooterImgSelector } from 'components/footer/FooterImgSelector';
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
 import { useGlobalContext } from '../goods-presentation-block/AsideMenu/GlobalContext';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface IBurgerMenuList {
   contactsModalState: (value: boolean) => void;
@@ -12,6 +13,8 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
 }) => {
   const { setOpen, setLikesModalActive, setLoginModalActive } =
     useGlobalContext();
+  //lang
+  const [t, i18n] = useTranslation('common');
 
   return (
     <div className='burger__list'>
@@ -21,18 +24,18 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
           onClick={() => setLoginModalActive(true)}
         >
           <HeaderSvgSelector id='personal-b' className='burger-icon' />
-          <span>Вхід</span>
+          <span>{t('burgerMenu.signIn')}</span>
           <span className='burger-icon--border' />
-          <span>Реєстрація</span>
+          <span>{t('burgerMenu.register')}</span>
         </li>
         <li className='burger__list-item' onClick={() => setOpen(true)}>
           <HeaderSvgSelector id='catalog-b' className='burger-icon' />
-          <span>Каталог товарів</span>
+          <span>{t('burgerMenu.catalog')}</span>
         </li>
         <Link to='/cart'>
           <li className='burger__list-item'>
             <HeaderSvgSelector id='basket-b' className='burger-icon' />
-            <span>Кошик</span>
+            <span>{t('burgerMenu.cart')}</span>
           </li>
         </Link>
         <li
@@ -40,24 +43,27 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
           onClick={() => setLikesModalActive(true)}
         >
           <HeaderSvgSelector id='likes-b' className='burger-icon' />
-          <span>Обране</span>
+          <span>{t('burgerMenu.favorites')}</span>
         </li>
         <li className='burger__list-item'>
           <HeaderSvgSelector id='compare-b' className='burger-icon' />
-          <span>Порівняння</span>
+          <span>{t('burgerMenu.compare')}</span>
         </li>
         <li className='burger__list-item-epmty'></li>
         <li className='burger__list-item burger__list-item_flex'>
           <HeaderSvgSelector id='language' className='burger-icon'>
-            <span> Мова </span>
+            <span>{t('burgerMenu.language')}</span>
           </HeaderSvgSelector>
-          <span className='burger__list-item_language-ua'>
-            укр <span className='burger__list-item_language-eng'> eng </span>
-          </span>
+          <div className='burger__list-item'>
+            <span className='burger__list-item_language-ua' onClick={() => i18n.changeLanguage('ua')}>
+              {t('burgerMenu.ukrLan')}
+            </span>
+            <span className='burger__list-item_language-eng' onClick={() => i18n.changeLanguage('en')}> eng </span>
+          </div>
         </li>
         <li className='burger__list-item burger__list-item_flex'>
           <HeaderSvgSelector id='city' className='burger-icon'>
-            <span> Місто </span>
+            <span>{t('burgerMenu.city')}</span>
           </HeaderSvgSelector>
           <span className='arrow' />
         </li>
@@ -71,26 +77,26 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
           onClick={() => contactsModalState(true)}
         >
           <HeaderSvgSelector id='incontacts' className='burger-icon'>
-            <span>Передзвоніть мені</span>
+            <span>{t('burgerMenu.callBack')}</span>
           </HeaderSvgSelector>
           <span className='arrow' />
         </li>
         <li className='burger__list-item-epmty'></li>
-        <li className='burger__list-item'>Акції</li>
-        <li className='burger__list-item'>Кібер-бонуси</li>
-        <li className='burger__list-item'>Наші магазини</li>
-        <li className='burger__list-item'>Кредити</li>
-        <li className='burger__list-item'>Оплата і доставка</li>
+        <li className='burger__list-item'>{t('burgerMenu.actions')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.bonuses')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.shops')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.credits')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.deliveryAndPay')}</li>
         <li className='burger__list-item-epmty'></li>
-        <li className='burger__list-item burger__list-item--color'>Ще</li>
-        <li className='burger__list-item'>Про нас</li>
-        <li className='burger__list-item'>Вакансії</li>
-        <li className='burger__list-item'>Кібер-обмін</li>
-        <li className='burger__list-item'>Кібер-послуги</li>
-        <li className='burger__list-item'>Страхування</li>
-        <li className='burger__list-item'>Гарантія. Обмін і повернення</li>
+        <li className='burger__list-item burger__list-item--color'>{t('burgerMenu.more')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.about')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.vacancies')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.exchange')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.service')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.insurance')}</li>
+        <li className='burger__list-item'>{t('burgerMenu.guarantee')}</li>
         <li className='footer__main-content-list-item  burger__list-item--color'>
-          Ми в соц. мережах
+        {t('burgerMenu.social')}
         </li>
         <li className='footer__main-content-list-item footer__main-content-list-item_flex'>
           <FooterImgSelector id='insta' />

@@ -11,6 +11,7 @@ import { ReviewBlock } from './ReviewBlock';
 import { Delivery, IDeliveryMethod, IIDeliveryPlace } from './Delivery';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
 
 interface IPayWays {
   payWaysList: IPayWay[];
@@ -44,6 +45,7 @@ export interface IExtendedProductCard {
   place: IIDeliveryPlace[];
   payWaysList: IPayWay[];
   similarJsx: React.ReactNode;
+  setOrderProductsCount: (count: number) => void;
 }
 
 export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
@@ -55,6 +57,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   delivery,
   place,
   goods,
+  setOrderProductsCount,
 }) => {
   const [productColor, setProductColor] = useState<string>(''); // for color panel
   const [chooseItemColorRam, setChooseItemColorRam] = useState<number>(); // for color of item that shoosed
@@ -94,6 +97,46 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   seeMoreInsurence
     ? (renderServiseList = serviseList.insurance)
     : (renderServiseList = serviseList.insurance.slice(0, 2));
+
+  //Buy something
+  const addToCartHandler: () => void = () => {
+    // get products in cart from localStorage
+    const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
+    // return if product is not available
+    if (!good.available) {
+      return;
+    }
+
+    // add product to cart
+    const orderItems = orderProducts.filter(
+      (order: IOrder) => order.productId === good.id // compare good id that we choose with that which in basket already
+    );
+    if (orderItems.length === 0) {
+      localStorage.setItem(
+        'order',
+        JSON.stringify([
+          ...orderProducts,
+          { productId: good.id, count: 1, credit: false },
+        ])
+      );
+      // set count
+      setOrderCount([
+        ...orderProducts,
+        { productId: good.id, count: 1, credit: false },
+      ]);
+    }
+  };
+
+  // set count of products in cart
+  const setOrderCount: (orderProducts: IOrder[]) => void = (
+    orderProducts
+  ) => {
+    // calc count of products in order
+    let count = 0;
+    orderProducts.forEach((order) => (count += order.count));
+    setOrderProductsCount(count);
+  };
+
 
   return (
     <section className='extended-card main-content '>
@@ -390,7 +433,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   <span className='extended-card__cashback'>
                     {Math.round(good.price * 0.1)} бонусних ₴
                   </span>
-                  <button className='add-to-cart-modal__buy-btn'>Купити</button>
+                  <button className='add-to-cart-modal__buy-btn' onClick={() => addToCartHandler()}>Купити</button>
                 </div>
                 <div className='extended-card__buy-way'>
                   <span className='extended-card__credit-price'>

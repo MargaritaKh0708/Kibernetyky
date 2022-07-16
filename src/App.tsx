@@ -137,6 +137,7 @@ function App() {
                 similarJsx={similarJsx}
                 place={deliveryPlaces}
                 goods={MainGoodsData}
+                setOrderProductsCount={setOrderProductsCount}
               />
             }
           ></Route>

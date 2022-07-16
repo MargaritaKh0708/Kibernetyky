@@ -1,0 +1,27 @@
+{
+    "burgerMenu": {
+        "signIn": "Вхід",
+        "register": "Реєстрація",
+        "catalog": "Каталог товарів",
+        "cart": "Кошик",
+        "favorites": "Обране",
+        "compare": "Порівняння",
+        "language": "Мова",
+        "ukrLan": "укр",
+        "city": "Місто",
+        "callBack": "Передзвоніть мені",
+        "actions": "Акції",
+        "bonuses": "Кібер-бонуси",
+        "shops": "Наші магазини",
+        "credits": "Кредити",
+        "deliveryAndPay": "Оплата і доставка",
+        "more": "Ще",
+        "about": "Про нас",
+        "vacancies": "Вакансії",
+        "exchange": "Кібер-обмін",
+        "service": "Кібер-послуги",
+        "insurance": "Страхування",
+        "guarantee": "Гарантія. Обмін і повернення",
+        "social": "Ми в соц. мережах"
+    }
+}
