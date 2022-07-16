@@ -7,6 +7,7 @@ import { bankArray } from 'components/backend/DataList';
 import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { Link } from 'react-router-dom';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
+import { useGlobalContext } from 'components/goods-presentation-block/AsideMenu/GlobalContext';
 
 interface IRating {
   productId: number;
@@ -16,20 +17,18 @@ interface IRating {
 interface IProductCardProps {
   product: IProductCardListItem; //array of products
   setCurrentProductIdHandler: (productId: number) => void;
-  setAddToCartActiveHandler: (state: boolean) => void;
   setFavoriteCountHandler?: (count: number) => void;
   setCompareCountHandler: (count: number) => void;
   setOrderCountHandler?: (count: number) => void;
-  addToCartActive: boolean;
+  rowQuantity: number;
 }
 
 export const ProductCard: React.FC<IProductCardProps> = ({
   setCurrentProductIdHandler,
-  setAddToCartActiveHandler,
   setFavoriteCountHandler,
   setCompareCountHandler,
   setOrderCountHandler,
-  addToCartActive,
+  rowQuantity,
   product,
 }) => {
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
@@ -38,6 +37,8 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   const [rating, setRating] = useState<number>(0); // Star rating value
 
   const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
+
+  const { addToCartActive, setAddToCartActive } = useGlobalContext();
 
   const StarRatingProps: IStarRatingProps = {
     activeColor: '#F9E505',
@@ -120,7 +121,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     setRating(ratingValue);
   };
 
-  //Buy something
+  //*Buy something
   const addToCartHandler: () => void = () => {
     // get products in cart from localStorage
     const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
@@ -165,8 +166,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
         // set productId for AddToCart component
         setCurrentProductIdHandler(product.id);
         // toggle view of AddToCart component
-        setAddToCartActiveHandler(addToCartActive ? false : true);
-        //setViewCart(viewCart ? false : true);
+        setAddToCartActive(addToCartActive ? false : true);
         // change icon
         setDeal(true);
       }
@@ -185,6 +185,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     }
   };
 
+  //* set like to product
   const setFavoriteHandler: () => void = () => {
     // get fovorites from localStorage
     const favorites = JSON.parse(localStorage.getItem('favorite') || '[]');
@@ -227,6 +228,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     }
   };
 
+  //* set product to compare group
   const setCompareHandler: () => void = () => {
     // get compare data from localStorage
     const compareIdList = JSON.parse(localStorage.getItem('compare') || '[]');
@@ -282,7 +284,11 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                 ''
               )}
               {
-                <div className='sale'>
+                <div
+                  className={
+                    product.oldprice === product.price ? 'sale none' : 'sale'
+                  }
+                >
                   <span> Акція </span>
                 </div>
               }
@@ -329,7 +335,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
                   <>
                     <ProductCardSvgSelector id='none' />
                     <span className='product-card__availiable-item'>
-                      Немає в наявності
+                      Товар в дорозі
                     </span>
                   </>
                 )}
@@ -357,19 +363,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
           <div className='product-card__part clients-mark'>
             <div className='product-card__clients-mark'>
               <div className='product-card__rating'>
-                <StarRating
-                  activeColor='#F9E505'
-                  color='#9E9E9E'
-                  isHalf={true}
-                  value={rating}
-                  size={12}
-                  count={5}
-                  onChange={(newRating: number) => {
-                    setRatingHandler(newRating);
-                    setRating(newRating);
-                    console.log('raiting', newRating);
-                  }}
-                />
+                <StarRating {...StarRatingProps} />
                 <span className='product-card__rating-value'>{rating}</span>
               </div>
               <div className='product-card__review'>
@@ -408,7 +402,13 @@ export const ProductCard: React.FC<IProductCardProps> = ({
           </div>
           <div className='product-card__part bottom-part'>
             <div className='product-card__price'>
-              <div className='product-card__price-value'>
+              <div
+                className={
+                  product.oldprice === product.price
+                    ? 'product-card__price-value none'
+                    : 'product-card__price-value'
+                }
+              >
                 <span className='product-card__price-old'>{`${product.oldprice} ₴`}</span>
                 <span className='product-card__benefit'>{`-${Math.round(
                   ((product.oldprice - product.price) / product.oldprice) * 100
@@ -469,7 +469,13 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             </button>
           </div>
         </div>
-        <div className='product-card__part hide-part'>
+        <div
+          className={
+            rowQuantity === 1
+              ? 'product-card__part  hide-part--row'
+              : 'product-card__part hide-part'
+          }
+        >
           <ul className='product-card__hide-list'>
             {product.specifications.main.map((specification, index) => (
               <li

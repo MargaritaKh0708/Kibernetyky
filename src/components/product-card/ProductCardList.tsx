@@ -59,12 +59,10 @@ export interface IProductCardListItem {
 export interface IProductCardList {
   handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   setCurrentProductIdHandler: (productId: number) => void;
-  setAddToCartActiveHandler: (state: boolean) => void;
   setFavoriteCountHandler?: (count: number) => void;
   setCompareCountHandler: (count: number) => void;
   setOrderCountHandler?: (count: number) => void;
   data: IProductCardListItem[];
-  addToCartActive: boolean;
   rowQuantity: number;
   productId: number;
   type: string;
@@ -82,11 +80,9 @@ export enum WindowVariant {
 
 export const ProductCardList: React.FC<IProductCardList> = ({
   setCurrentProductIdHandler,
-  setAddToCartActiveHandler,
   setFavoriteCountHandler,
   setCompareCountHandler,
   setOrderCountHandler,
-  addToCartActive,
   rowQuantity,
   productId,
   data,
@@ -217,11 +213,10 @@ export const ProductCardList: React.FC<IProductCardList> = ({
             <ProductCard
               key={item.id}
               setCurrentProductIdHandler={setCurrentProductIdHandler}
-              setAddToCartActiveHandler={setAddToCartActiveHandler}
               setFavoriteCountHandler={setFavoriteCountHandler}
               setCompareCountHandler={setCompareCountHandler}
               setOrderCountHandler={setOrderCountHandler}
-              addToCartActive={addToCartActive}
+              rowQuantity={rowQuantity}
               product={item}
             />
           ))}

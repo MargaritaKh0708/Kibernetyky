@@ -9,6 +9,7 @@ import { MainPage } from 'components/Pages/MainPage';
 import { Footer } from 'components/footer/Footer';
 import { Route, Routes } from 'react-router';
 import { useState } from 'react';
+import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
 
 import {
   AdditionalServices,
@@ -22,7 +23,7 @@ import {
 import { getData } from 'components/backend/getData';
 
 const MainGoodsData = getData();
-console.log(MainGoodsData);
+// console.log(MainGoodsData);
 
 function App() {
   const [orderProductsCount, setOrderProductsCount] = useState(0);
@@ -36,18 +37,17 @@ function App() {
   const [hideCategoryList, setHideCategoryList] = useState<boolean>(false); // Property for hidden category list im mobile version work
   const [likesModalActive, setLikesModalActive] = useState<boolean>(false); // open modal of favorite goods
   const [loginModalActive, setLoginModalActive] = useState<boolean>(false); // for login form
-  const [addToCartActive, setAddToCartActive] = useState<boolean>(false);
-  const [currentProductId, setCurrentProductId] = useState<number>(0);
-  const [compareCount, setCompareCount] = useState<number>(0);
+  const [addToCartActive, setAddToCartActive] = useState<boolean>(false); // for add to cart modal
+  const [currentProductId, setCurrentProductId] = useState<number>(0); // for reading current product id
+  const [buyForCreditActive, setBuyForCreditActive] = useState<boolean>(false); // for activate 'buy by credit' modal
+  const [compareCount, setCompareCount] = useState<number>(0); // for comparing
 
   const similarJsx = (
     <ProductCardList
       setCurrentProductIdHandler={setCurrentProductId}
-      setAddToCartActiveHandler={setAddToCartActive}
       setOrderCountHandler={setOrderProductsCount}
       setFavoriteCountHandler={setFavoriteCount}
       setCompareCountHandler={setCompareCount}
-      addToCartActive={addToCartActive}
       productId={currentProductId}
       data={MainGoodsData}
       type='similar'
@@ -57,15 +57,13 @@ function App() {
   const coupledJsx = (
     <ProductCardList
       setCurrentProductIdHandler={setCurrentProductId}
-      setAddToCartActiveHandler={setAddToCartActive}
       setOrderCountHandler={setOrderProductsCount}
       setFavoriteCountHandler={setFavoriteCount}
       setCompareCountHandler={setCompareCount}
-      addToCartActive={addToCartActive}
       productId={currentProductId}
+      data={MainGoodsData}
       rowQuantity={1}
       type='coupled'
-      data={MainGoodsData}
     />
   );
 
@@ -73,13 +71,17 @@ function App() {
     <div className='App'>
       <GlobalContext.Provider
         value={{
+          setBuyForCreditActive,
+          buyForCreditActive,
+          setAddToCartActive,
+          addToCartActive,
           setDetailedInformation,
           setLoginModalActive,
-          loginModalActive,
-          likesModalActive,
           setLikesModalActive,
           detailedInformation,
           setHideCategoryList,
+          loginModalActive,
+          likesModalActive,
           setLastTargetName,
           hideCategoryList,
           setDisplayWidth,
@@ -95,6 +97,16 @@ function App() {
           compareCount={compareCount}
           maindata={MainGoodsData}
           goods={CategoryList}
+        />
+        <AddToCart
+          setCurrentProductIdHandler={setCurrentProductId}
+          setFavoriteCountHandler={setFavoriteCount}
+          setCompareCountHandler={setCompareCount}
+          setOrderCountHandler={setOrderProductsCount}
+          viewHandler={setAddToCartActive}
+          productId={currentProductId}
+          isActive={addToCartActive}
+          products={MainGoodsData}
         />
         <Routes>
           <Route

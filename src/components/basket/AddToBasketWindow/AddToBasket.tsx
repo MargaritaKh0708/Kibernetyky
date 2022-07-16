@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { ProductCardList } from 'components/product-card/ProductCardList';
 import { Closer } from '../../UI/closer/Closer';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../goods-presentation-block/AsideMenu/GlobalContext';
 
 interface AddToCartType {
   products: IProductCardListItem[]; //array of products
@@ -30,6 +31,7 @@ export const AddToCart: React.FC<AddToCartType> = ({
 }) => {
   const [orderProducts, setOrderProducts] = useState<IOrder[]>([]); //basket compatible - goods inside
   const [orderProductsCount, setOrderProductsCount] = useState<number>(0); // count of goods inside
+  const { setBuyForCreditActive } = useGlobalContext();
 
   // load orderProducts from localStorage
   useEffect(() => {
@@ -113,16 +115,21 @@ export const AddToCart: React.FC<AddToCartType> = ({
             <div className='add-to-cart-modal__buttons'>
               <button
                 className='add-to-cart-modal__credit-btn'
-                onClick={() => addProductToOrder(true)}
+                onClick={() => {
+                  addProductToOrder(true);
+                  setBuyForCreditActive(true);
+                }}
               >
                 Купити в кредит
               </button>
-              <button
-                className='add-to-cart-modal__buy-btn'
-                onClick={() => addProductToOrder(false)}
-              >
-                Купити
-              </button>
+              <Link to='/cart'>
+                <button
+                  className='add-to-cart-modal__buy-btn'
+                  onClick={() => addProductToOrder(false)}
+                >
+                  Купити
+                </button>
+              </Link>
             </div>
           </div>
         </div>

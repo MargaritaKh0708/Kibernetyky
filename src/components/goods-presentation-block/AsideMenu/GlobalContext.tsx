@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 
 // const [likesModalActive, setLikesModalActive] = useState<boolean>(false); // open modal of favorite goods
+// const [addToCartActive, setAddToCartActive] = useState<boolean>(false);
 
 export type GlobalContext = {
   detailedInformation: string;
@@ -18,6 +19,10 @@ export type GlobalContext = {
   likesModalActive: boolean;
   setLoginModalActive: (value: boolean) => void;
   loginModalActive: boolean;
+  setAddToCartActive: (value: boolean) => void;
+  addToCartActive: boolean;
+  setBuyForCreditActive: (value: boolean) => void;
+  buyForCreditActive: boolean;
 };
 
 export const GlobalContext = React.createContext<GlobalContext>({
@@ -35,6 +40,10 @@ export const GlobalContext = React.createContext<GlobalContext>({
   likesModalActive: false,
   setLoginModalActive: () => {},
   loginModalActive: false,
+  setAddToCartActive: () => {},
+  addToCartActive: false,
+  setBuyForCreditActive: () => {},
+  buyForCreditActive: false,
 });
 
 export const useGlobalContext = () => useContext(GlobalContext);

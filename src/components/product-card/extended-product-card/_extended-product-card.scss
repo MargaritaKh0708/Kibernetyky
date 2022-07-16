@@ -2,6 +2,10 @@
     background: $c-white;
     font-size: 16px;
 
+    &__clients-mark-title {
+        text-align: end;
+    }
+
     &__icon {
         justify-content: center;
         align-items: center;
@@ -77,13 +81,14 @@
     }
 
     &__rating {
+        justify-content: flex-end;
         white-space: nowrap;
         align-items: center;
+        flex-wrap: wrap;
         display: flex;
         gap: 5px;
 
         @include media (max, 'hd') {
-            flex-direction: column;
             align-items: flex-start;
 
         }

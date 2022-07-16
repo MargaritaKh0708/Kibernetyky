@@ -12,6 +12,9 @@ import { Delivery, IDeliveryMethod, IIDeliveryPlace } from './Delivery';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { IOrder } from '../../basket/AddToBasketWindow/AddToBasket';
+import { useGlobalContext } from 'components/goods-presentation-block/AsideMenu/GlobalContext';
+import { CreditBuyModal } from './CreditBuyModal';
+import { bankArray } from '../../backend/DataList';
 
 interface IPayWays {
   payWaysList: IPayWay[];
@@ -65,6 +68,9 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
   const [productColor, setProductColor] = useState<string>(''); // for color panel
   const [chooseItemColorMemSize, setChooseItemColorMemSize] =
     useState<string>(); // for color of item that shoosed
+
+  const { addToCartActive, setAddToCartActive, setBuyForCreditActive } =
+    useGlobalContext();
 
   //* get current product id from url
   const { productId } = useParams();
@@ -123,6 +129,8 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
         { productId: good.id, count: 1, credit: false },
       ]);
     }
+    // toggle view of AddToCart component
+    setAddToCartActive(addToCartActive ? false : true);
   };
 
   // set count of products in cart
@@ -160,7 +168,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   activeColor={'#F9E505'}
                   value={rating ? rating.value : 0}
                 />
-                <span className='product-card__rating-value'>
+                <span className='extended-card__rating-value'>
                   {rating === null ? 'Оцініть першим' : rating.value}
                 </span>
               </div>
@@ -442,7 +450,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   <span className='extended-card__credit-price'>
                     Від &nbsp;{Math.round(good.price / 36)} &nbsp;₴ / міс
                   </span>
-                  <button className='add-to-cart-modal__credit-btn'>
+                  <button
+                    className='add-to-cart-modal__credit-btn'
+                    type='button'
+                    onClick={() => setBuyForCreditActive(true)}
+                  >
                     Купити в кредит
                   </button>
                 </div>
@@ -609,6 +621,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
         </div>
       </div>
       {similarJsx}
+      <CreditBuyModal good={good} bankList={bankArray} />
     </section>
   );
 };

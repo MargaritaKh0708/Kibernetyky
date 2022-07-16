@@ -210,7 +210,7 @@ export const ProductCardSvgSelector: React.FC<IProductCardSvgSelector> = ({
       );
     case 'none':
       return (
-        <div className='none'>
+        <div>
           <svg
             width='10'
             height='10'

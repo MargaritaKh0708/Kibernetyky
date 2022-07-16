@@ -381,6 +381,9 @@
     color: $c-white;
 }
 
+.none {
+    display: none;
+}
 
 
 // Style of star-rating & review fields
@@ -429,6 +432,7 @@
 
 .bottom-part {
     justify-content: space-between;
+    align-items: center;
     margin-top: 52px;
     flex-wrap: wrap;
     display: flex;
@@ -530,7 +534,14 @@
         border-top: 1px solid $c-extra-gray;
         display: block;
     }
+}
 
+.hide-part--row {
+    @extend .hide-part;
+}
+
+.product-card:hover .hide-part--row {
+    display: none;
 }
 
 // Hovers

@@ -103,7 +103,7 @@ const source = {
       title:
         'Сетевое зарядное устройство BASEUS Type-C to Type-C cable Super Si Quick Charger 1Type-C, 3A/25W адаптер с кабелем Type-C 1м и быстрой зарядкой Black (TZCCSUP-L01)',
       price: 649,
-      old_price: 0,
+      old_price: 987,
       id: 338347336,
     },
     {
@@ -196,7 +196,7 @@ const source = {
       title:
         'Сетевое зарядное устройство BASEUS Type-C to Type-C Cable GaN2 Fast Charger 1C |1Type-C, QC/PD, 100W, 5A| с кабелем Type-C 1.5м. и быстрой зарядкой Black (TZCCGAN-L01)',
       price: 2049,
-      old_price: 0,
+      old_price: 2049,
       id: 338704654,
     },
     {
@@ -356,7 +356,7 @@ const source = {
       title:
         'Кабель Baseus Yiven USB - Lightning для Apple iPhone / iPad / iPod Lightning 2.0 A (1.8 м) Black',
       price: 235,
-      old_price: 0,
+      old_price: 235,
       id: 342227389,
     },
     {
@@ -388,7 +388,7 @@ const source = {
       title:
         'Сетевое зарядное устройство HOCO N6 |2USB, 3A, 2xQC3.0, 18W| адаптер с micro-USB кабелем 1м и быстрой зарядкой Black (N6MUB)',
       price: 359,
-      old_price: 0,
+      old_price: 359,
       id: 338080090,
     },
   ],
@@ -1338,7 +1338,7 @@ const tablets = {
       title:
         'Планшет Lenovo Tab M10 Plus TB-X606F Wi-Fi 4/128GB Platinum Grey (ZA5T0090UA) UA-UCRF [51603]',
       price: 8878,
-      old_price: 0,
+      old_price: 8878,
       id: 273359118,
     },
     {
@@ -1405,7 +1405,7 @@ const tablets = {
       title:
         'Планшетный ПК Lenovo Tab M10 TB-X505F 32GB Polar White (ZA4G0116PL)_; 10.1" (1280х800) IPS / Qualcomm Snapdragon 429 / ОЗУ 2 ГБ / 32 ГБ встроенная + microSD до 256 ГБ / камера 5 Мп + 2 Мп / Wi-Fi, Bluetooth / GPS, GLONASS / ОС Android 9.0 (Pie) / 242 х 16',
       price: 5499,
-      old_price: 0,
+      old_price: 5499,
       id: 345003679,
     },
   ],
@@ -2709,7 +2709,7 @@ const noutbooks = {
       title:
         'Ноутбук Apple MacBook Pro 14" M1 Max 8TB 2021 (Z15G000DW) Space Gray',
       price: 238999,
-      old_price: 0,
+      old_price: 30862,
       id: 344525260,
     },
     {
@@ -2722,7 +2722,7 @@ const noutbooks = {
       ],
       title: 'Ноутбук HP 250 G8 (27K02EA) Jet Black',
       price: 17899,
-      old_price: 0,
+      old_price: 17899,
       id: 303566893,
     },
     {
@@ -3074,7 +3074,7 @@ const noutbooks = {
       ],
       title: 'Ноутбук Acer Nitro 5 AN515-57-57E4 (NH.QEWEU.007) Shale Black',
       price: 46999,
-      old_price: 0,
+      old_price: 50000,
       id: 323225668,
     },
     {
@@ -3378,7 +3378,7 @@ const noutbooks = {
       title:
         'Ноутбук ASUS VivoBook 17 X712EA-BX371 (90NB0TW1-M04480) Transparent Silver / Intel Pentium Gold 7505 / RAM 8 ГБ / SSD 256 ГБ',
       price: 17999,
-      old_price: 0,
+      old_price: 20000,
       id: 330129796,
     },
     {
@@ -3412,7 +3412,7 @@ const noutbooks = {
       title:
         'Ноутбук Acer TravelMate P2 TMP214-52-37Y0 (NX.VLHEU.00C) Shale Black',
       price: 19899,
-      old_price: 0,
+      old_price: 20000,
       id: 335500891,
     },
     {
@@ -3428,7 +3428,7 @@ const noutbooks = {
       ],
       title: 'Ноутбук Dell Vostro 15 3515 (N6262VN3515UA_UBU) Black',
       price: 18499,
-      old_price: 0,
+      old_price: 20000,
       id: 322368373,
     },
   ],
@@ -3458,7 +3458,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Onyx Boox Note 5',
       price: 23990,
-      old_price: 0,
+      old_price: 26000,
       id: 332367724,
     },
     {
@@ -3475,7 +3475,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Onyx Boox Leaf',
       price: 11390,
-      old_price: 0,
+      old_price: 12853,
       id: 329126509,
     },
     {
@@ -3532,7 +3532,7 @@ const ebooks = {
       title:
         'Электронная книга PocketBook 740 Pro Metallic Grey (PB740-3-J-CIS) [68347]',
       price: 8255,
-      old_price: 0,
+      old_price: 10500,
       id: 343877614,
     },
     {
@@ -3557,7 +3557,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Amazon Kindle Paperwhite 10th Gen. 8GB Black',
       price: 4700,
-      old_price: 0,
+      old_price: 5321,
       id: 259279951,
     },
     {
@@ -3578,7 +3578,7 @@ const ebooks = {
       ],
       title: 'Электронная книга ONYX BOOX Livingstone',
       price: 9500,
-      old_price: 0,
+      old_price: 15321,
       id: 165176397,
     },
     {
@@ -3602,7 +3602,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Amazon Kindle 10th Gen. (2019) Black',
       price: 3953,
-      old_price: 0,
+      old_price: 5321,
       id: 260356981,
     },
     {
@@ -3615,7 +3615,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Sony PRS-600 Silver',
       price: 3099,
-      old_price: 0,
+      old_price: 5321,
       id: 62152214,
     },
     {
@@ -3642,7 +3642,7 @@ const ebooks = {
       title:
         'Электронная книга Pocketbook 616 Basic Lux 2 Obsidian Black (PB616-H-CIS) [38945]',
       price: 4244,
-      old_price: 0,
+      old_price: 5321,
       id: 235817605,
     },
     {
@@ -3663,7 +3663,7 @@ const ebooks = {
       ],
       title: 'Электронная книга ONYX BOOX BOOX Kon-Tiki 2',
       price: 15500,
-      old_price: 0,
+      old_price: 15721,
       id: 278896213,
     },
     {
@@ -3675,7 +3675,7 @@ const ebooks = {
       ],
       title: 'Электронная книга EVROMEDIA Cambridge',
       price: 2808,
-      old_price: 0,
+      old_price: 5721,
       id: 68929347,
     },
     {
@@ -3708,7 +3708,7 @@ const ebooks = {
       title:
         'Электронная книга Amazon Kindle All-new Paperwhite 11th Gen. 8GB (2021) Black *online - с возможностью регистрации на Amazon',
       price: 6649,
-      old_price: 0,
+      old_price: 7721,
       id: 331321924,
     },
     {
@@ -3718,7 +3718,7 @@ const ebooks = {
       title:
         'Электронная книга Amazon KIndle Paperwhite 6 8GB (10 gen, 2020) Blue',
       price: 5400,
-      old_price: 0,
+      old_price: 7721,
       id: 307201073,
     },
     {
@@ -3762,7 +3762,7 @@ const ebooks = {
       ],
       title: 'Электронная книга PocketBook 617 Ink Black (PB617-P-CIS) [68129]',
       price: 4244,
-      old_price: 0,
+      old_price: 7721,
       id: 343877617,
     },
     {
@@ -3787,7 +3787,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Amazon Kindle Paperwhite 11th Gen. 8GB Black',
       price: 6349,
-      old_price: 0,
+      old_price: 7721,
       id: 336117655,
     },
     {
@@ -3800,7 +3800,7 @@ const ebooks = {
       ],
       title: 'Электронная книга PocketBook 628 Ink Black (PB628-P-CIS)',
       price: 4286,
-      old_price: 0,
+      old_price: 7721,
       id: 316530574,
     },
     {
@@ -3827,7 +3827,7 @@ const ebooks = {
       title:
         'Электронная книга Amazon Kindle Oasis 10th Gen. 8 Gb (2019) Graphite',
       price: 9649,
-      old_price: 0,
+      old_price: 10721,
       id: 328990279,
     },
     {
@@ -3840,7 +3840,7 @@ const ebooks = {
       title:
         'Электронная книга PocketBook 740 InkPad 3 Dark Brown (PB740-X-RU) [38952]',
       price: 9255,
-      old_price: 0,
+      old_price: 10721,
       id: 239423275,
     },
     {
@@ -3853,7 +3853,7 @@ const ebooks = {
       ],
       title: 'Электронная книга ONYX BOOX Lomonosov',
       price: 14700,
-      old_price: 0,
+      old_price: 15221,
       id: 301936483,
     },
     {
@@ -3899,7 +3899,7 @@ const ebooks = {
       title:
         'Электронная книга Amazon Kindle Oasis 32GB (9 gen, 2019) Graphite',
       price: 9153,
-      old_price: 0,
+      old_price: 15221,
       id: 307200558,
     },
     {
@@ -3935,7 +3935,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Onyx Boox Max Lumi 2 [68122]',
       price: 39577,
-      old_price: 0,
+      old_price: 42021,
       id: 343877608,
     },
     {
@@ -3990,7 +3990,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Amazon Kindle Fire 7" 16 Гб',
       price: 6698,
-      old_price: 0,
+      old_price: 7020,
       id: 323390767,
     },
     {
@@ -4008,7 +4008,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Onyx Boox Nova Air C',
       price: 18890,
-      old_price: 0,
+      old_price: 19020,
       id: 343248058,
     },
     {
@@ -4024,7 +4024,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Onyx Boox Note Air 2',
       price: 22240,
-      old_price: 0,
+      old_price: 25020,
       id: 329126506,
     },
     {
@@ -4041,7 +4041,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Onyx Boox Max Lumi 2',
       price: 39950,
-      old_price: 0,
+      old_price: 40020,
       id: 334953238,
     },
     {
@@ -4060,7 +4060,7 @@ const ebooks = {
       title:
         'Электронная книга PocketBook 1040 InkPad X Metallic Grey (PB1040-J-CIS)',
       price: 20001,
-      old_price: 0,
+      old_price: 22765,
       id: 333146062,
     },
     {
@@ -4072,7 +4072,7 @@ const ebooks = {
       ],
       title: 'Электронная книга EVROMEDIA ONE',
       price: 2610,
-      old_price: 0,
+      old_price: 2765,
       id: 68929329,
     },
     {
@@ -4083,7 +4083,7 @@ const ebooks = {
       title:
         'Электронная книга Amazon Kindle 6 (10 gen, 2019) White (F00189332)',
       price: 4259,
-      old_price: 0,
+      old_price: 5765,
       id: 121507372,
     },
     {
@@ -4107,7 +4107,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Amazon KIndle Paperwhite 6 (6 gen, 2014) Black',
       price: 3083,
-      old_price: 0,
+      old_price: 4765,
       id: 339114625,
     },
     {
@@ -4127,7 +4127,7 @@ const ebooks = {
       title:
         'Электронная книга PocketBook 1040 InkPad X Metallic Grey (PB1040-J-CIS); 10.3" (1872х1404) E Ink Carta, сенсорный с подсветкой, ОЗУ 1 ГБ, 32 ГБ встроенная + microSD до 32 ГБ, Bluetooth, Wi-Fi, 2000 мАч, 249.2 х 173.4 х 7.7 мм, 300 г, серый',
       price: 13699,
-      old_price: 0,
+      old_price: 14765,
       id: 166609906,
     },
     {
@@ -4138,7 +4138,7 @@ const ebooks = {
       ],
       title: 'Электронная книга ONYX BOOX BOOX NOVA 3',
       price: 17500,
-      old_price: 0,
+      old_price: 18765,
       id: 271867071,
     },
     {
@@ -4158,7 +4158,7 @@ const ebooks = {
       title:
         'Электронная книга Pocketbook 628 Touch Lux5 Ruby Red (PB628-R-CIS)',
       price: 4800,
-      old_price: 0,
+      old_price: 5765,
       id: 333570529,
     },
     {
@@ -4205,7 +4205,7 @@ const ebooks = {
       ],
       title: 'Электронная книга Pocketbook 606, Black (PB606-E-CIS)',
       price: 3523,
-      old_price: 0,
+      old_price: 5765,
       id: 334177057,
     },
     {
@@ -4248,7 +4248,7 @@ const ebooks = {
       title:
         'Электронная книга PocketBook 740 Color Moon Silver (PB741-N-CIS) [68348]',
       price: 9466,
-      old_price: 0,
+      old_price: 15765,
       id: 343877671,
     },
     {
@@ -4275,7 +4275,7 @@ const ebooks = {
       ],
       title: 'Электронная книга PocketBook 970 (PB970-M-CIS) Mist Gray [60995]',
       price: 9199,
-      old_price: 0,
+      old_price: 10765,
       id: 335143996,
     },
   ],
@@ -5539,7 +5539,7 @@ const headset = {
       ],
       title: 'Наушники Motorola MOTO ХТ500+ Black (XT500-B)',
       price: 1699,
-      old_price: 0,
+      old_price: 1765,
       id: 333513955,
     },
     {
@@ -5763,7 +5763,7 @@ const headset = {
       ],
       title: 'Наушники OPPO Enco Buds W12 White (OFETI81_WHITE)',
       price: 1555,
-      old_price: 0,
+      old_price: 1765,
       id: 319607278,
     },
     {
@@ -5966,7 +5966,7 @@ const headset = {
       ],
       title: 'Наушники SteelSeries Arctis 5 2019 Edition Black (SS61504)',
       price: 4999,
-      old_price: 0,
+      old_price: 5765,
       id: 58438623,
     },
     {
@@ -6001,7 +6001,7 @@ const headset = {
       ],
       title: 'Наушники 1More Piston Fit Pink',
       price: 229,
-      old_price: 0,
+      old_price: 565,
       id: 12827558,
     },
     {
@@ -6044,7 +6044,7 @@ const headset = {
       title:
         'Наушники HyperX Cloud Core + 7.1 Black (HX-HSCC-2-BK/WW / 4P4F2AA)',
       price: 2799,
-      old_price: 0,
+      old_price: 3565,
       id: 239107423,
     },
     {
@@ -6077,7 +6077,7 @@ const headset = {
       ],
       title: 'Наушники JBL Tune 230 NC TWS Sand (JBLT230NCTWSSAN)',
       price: 2599,
-      old_price: 0,
+      old_price: 3565,
       id: 327142957,
     },
     {
@@ -6157,7 +6157,7 @@ const headset = {
       ],
       title: 'Наушники JBL Wave 200 TWS White (JBLW200TWSWHT)',
       price: 1599,
-      old_price: 0,
+      old_price: 3565,
       id: 327143338,
     },
     {
@@ -6258,7 +6258,7 @@ const headset = {
       ],
       title: 'Наушники HyperX Cloud Stinger (HX-HSCS-BK/EE / 4P5L7AX)',
       price: 2099,
-      old_price: 0,
+      old_price: 3565,
       id: 11689745,
     },
     {
@@ -7022,11 +7022,7 @@ export const getData: () => IProductCardListItem[] = () => {
       good.oldprice = item.old_price;
     }
     // leader
-    if (index % 6 === 0) {
-      good.leader = true;
-    } else {
-      good.leader = false;
-    }
+    good.leader = true;
     // price
     if (item.price) {
       good.price = item.price;
@@ -7894,11 +7890,7 @@ export const getData: () => IProductCardListItem[] = () => {
       good.oldprice = item.old_price;
     }
     // leader
-    if (index % 6 === 0) {
-      good.leader = true;
-    } else {
-      good.leader = false;
-    }
+    good.leader = true;
     // price
     if (item.price) {
       good.price = item.price;

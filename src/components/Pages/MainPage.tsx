@@ -8,8 +8,6 @@ import { ShopHistory } from 'components/shop-history/ShopHistory';
 import { ICatalogItem } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
-import { getData } from 'components/backend/getData';
-import { useEffect } from 'react';
 
 export interface IMainPage {
   setOrderCountHandler: (value: number) => void;
@@ -26,7 +24,6 @@ export interface IMainPage {
 
 export const MainPage: React.FC<IMainPage> = ({
   setCurrentProductIdHandler,
-  setAddToCartActiveHandler,
   setFavoriteCountHandler,
   setCompareCountHandler,
   setOrderCountHandler,
@@ -38,27 +35,25 @@ export const MainPage: React.FC<IMainPage> = ({
 }) => {
   return (
     <div className='main-page-content main-content'>
-      <AddToCart
+      {/* <AddToCart
         setCurrentProductIdHandler={setCurrentProductIdHandler}
-        setOrderCountHandler={setOrderCountHandler}
         setFavoriteCountHandler={setFavoriteCountHandler}
         setCompareCountHandler={setCompareCountHandler}
+        setOrderCountHandler={setOrderCountHandler}
         viewHandler={viewHandler}
         productId={productId}
         isActive={isActive}
         products={goods}
-      />
+      /> */}
       <GoodsPresentationBlock goods={oldgoods} />
       <BrandsLine data={goods} />
       <ProductCardList
         productId={productId}
         rowQuantity={2}
         setCurrentProductIdHandler={setCurrentProductIdHandler}
-        setAddToCartActiveHandler={setAddToCartActiveHandler}
-        setOrderCountHandler={setOrderCountHandler}
         setFavoriteCountHandler={setFavoriteCountHandler}
         setCompareCountHandler={setCompareCountHandler}
-        addToCartActive={isActive}
+        setOrderCountHandler={setOrderCountHandler}
         type='leaders'
         data={goods}
       />
@@ -66,11 +61,9 @@ export const MainPage: React.FC<IMainPage> = ({
         rowQuantity={2}
         productId={productId}
         setCurrentProductIdHandler={setCurrentProductIdHandler}
-        setAddToCartActiveHandler={setAddToCartActiveHandler}
-        setOrderCountHandler={setOrderCountHandler}
         setFavoriteCountHandler={setFavoriteCountHandler}
         setCompareCountHandler={setCompareCountHandler}
-        addToCartActive={isActive}
+        setOrderCountHandler={setOrderCountHandler}
         type='novelties'
         data={goods}
       />
