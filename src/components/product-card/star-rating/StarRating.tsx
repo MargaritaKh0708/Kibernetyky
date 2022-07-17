@@ -1,37 +1,21 @@
-// @ts-ignore
-import ReactStars from 'react-rating-stars-component';
+import React from 'react';
+import { Rating } from 'react-simple-star-rating';
 
 export interface IStarRatingProps {
-  onChange?: (newRating: number) => void;
-  activeColor: string;
-  filledIcon?: string;
-  isHalf?: boolean;
-  color?: string;
-  value: number;
-  count: number;
+  onClick?: (newRating: number) => void;
+  allowHalfIcon?: boolean;
+  allowHover?: boolean;
+  initialValue: number;
+  emptyColor?: string;
+  ratingValue: number;
+  iconsCount: number;
+  readonly?: boolean;
+  fillColor: string;
   size?: number;
 }
 
 export const StarRating: React.FC<IStarRatingProps> = ({
-  activeColor,
-  filledIcon,
-  onChange,
-  value,
-  isHalf,
-  count,
-  color,
-  size,
+  ...IStarRatingProps
 }) => {
-  return (
-    <ReactStars
-      activeColor={activeColor}
-      filledIcon={filledIcon}
-      onChange={onChange}
-      isHalf={isHalf}
-      color={color}
-      value={value}
-      count={count}
-      size={size}
-    />
-  );
+  return <Rating {...IStarRatingProps} />;
 };

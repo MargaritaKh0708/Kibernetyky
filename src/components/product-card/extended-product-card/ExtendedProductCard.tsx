@@ -16,10 +16,6 @@ import { useGlobalContext } from 'components/goods-presentation-block/AsideMenu/
 import { CreditBuyModal } from './CreditBuyModal';
 import { bankArray } from '../../backend/DataList';
 
-interface IPayWays {
-  payWaysList: IPayWay[];
-}
-
 interface IPayWay {
   icon: string;
   name?: string;
@@ -164,12 +160,17 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
               </span>
               <div className='extended-card__rating'>
                 <StarRating
-                  count={5}
-                  activeColor={'#F9E505'}
-                  value={rating ? rating.value : 0}
+                  ratingValue={rating ? rating.value : 0}
+                  initialValue={rating ? rating.value : 0}
+                  fillColor={'#F9E505'}
+                  readonly={true}
+                  iconsCount={5}
+                  size={16}
                 />
                 <span className='extended-card__rating-value'>
-                  {rating === null ? 'Оцініть першим' : rating.value}
+                  {rating === null
+                    ? 'Оцініть першим'
+                    : (rating.value / 20).toFixed(1)}
                 </span>
               </div>
               <span>

@@ -1,14 +1,14 @@
 import { Closer } from 'components/UI/closer/Closer';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
+import { FooterImgSelector } from '../footer/FooterImgSelector';
+import { LoginSvgSelector } from './LoginSvgSelector';
+import google from 'assets/icons/payway/google.webp';
 import { Form, Formik, Field } from 'formik';
 import { useState } from 'react';
-import { LoginSvgSelector } from './LoginSvgSelector';
-import { FooterImgSelector } from '../footer/FooterImgSelector';
-import google from 'assets/icons/payway/google.webp';
 
 interface ILogin {
-  viewWindow: boolean;
   closeHandler: (state: boolean) => void;
+  viewWindow: boolean;
   isLogged: boolean;
 }
 export const Login: React.FC<ILogin> = ({

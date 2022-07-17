@@ -38,18 +38,41 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
   const [deal, setDeal] = useState<boolean>(false); // Basket changes
-  const [rating, setRating] = useState<number>(0); // Star rating value
+  // const [rating, setRating] = useState<number>(0); // Star rating value
 
   const { addToCartActive, setAddToCartActive } = useGlobalContext();
 
+  const [rating, setRating] = useState<number>(0); // initial rating value
+
+  // Catch Rating value
+  const handleRating = (rate: number) => {
+    setRating(rate);
+    // other logic
+  };
+
+  // const StarRatingProps: IStarRatingProps = {
+  //   activeColor: '#F9E505',
+  //   color: '#9E9E9E',
+  //   isHalf: true,
+  //   value: rating,
+  //   size: 12,
+  //   count: 5,
+  //   onChange: (newRating: number) => {
+  //     setRatingHandler(newRating);
+  //     setRating(newRating);
+  //   },
+  // };
+
   const StarRatingProps: IStarRatingProps = {
-    activeColor: '#F9E505',
-    color: '#9E9E9E',
-    isHalf: true,
-    value: rating,
+    fillColor: '#F9E505',
+    emptyColor: '#9E9E9E',
+    allowHalfIcon: true,
+    ratingValue: rating,
+    initialValue: rating,
+    allowHover: true,
     size: 12,
-    count: 5,
-    onChange: (newRating: number) => {
+    iconsCount: 5,
+    onClick: (newRating: number) => {
       setRatingHandler(newRating);
       setRating(newRating);
     },
@@ -394,7 +417,9 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             <div className='product-card__clients-mark'>
               <div className='product-card__rating'>
                 <StarRating {...StarRatingProps} />
-                <span className='product-card__rating-value'>{rating}</span>
+                <span className='product-card__rating-value'>
+                  {(rating / 20).toFixed(1)}
+                </span>
               </div>
               <div className='product-card__review'>
                 <ProductCardSvgSelector id='review' />
