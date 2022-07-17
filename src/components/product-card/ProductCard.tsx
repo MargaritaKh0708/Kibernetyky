@@ -32,7 +32,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   rowQuantity,
   product,
 }) => {
-  const [hidePartApear, setHidePartApear] = useState<boolean>(false);
+  const [hidePartApear, setHidePartApear] = useState<boolean>(false); //set hide part of card apear
   const [googInRoad, setGoodInRoad] = useState<boolean>(false); // set modal good in road
   const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
@@ -64,7 +64,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
       }
     });
     console.log('оцінка встановилась', rating);
-  }, [rating]);
+  }, [rating, product.id]);
 
   // load data from localStorage
   useEffect(() => {
@@ -528,7 +528,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
         <ModalWindow
           active={googInRoad}
           setActive={setGoodInRoad}
-          className='call-back-modal'
+          className='call-back-modal sorry-modal'
         >
           {SorryModalJsx}
         </ModalWindow>

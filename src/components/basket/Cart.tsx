@@ -146,7 +146,11 @@ export const Cart: React.FC<ICart> = ({
             //   background: `center / contain no-repeat url(${orderProductItem.imageCollection[0]})`,
             // }}
           >
-            <img src={orderProductItem.photo} alt={orderProductItem.name} />
+            <img
+              loading='lazy'
+              src={orderProductItem.photo}
+              alt={orderProductItem.name}
+            />
           </div>
           <div className='product-form__details'>
             <p className='product-form__subtitle'>{orderProductItem.name}</p>

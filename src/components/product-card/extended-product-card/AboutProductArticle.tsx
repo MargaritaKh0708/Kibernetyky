@@ -26,7 +26,7 @@ export const AboutProductArticle: React.FC<IAboutProductArticle> = ({
             {good.specifications.article[0].photo.map((item) => (
               <div
                 style={{
-                  background: `center / contain no-repeat url(${item})`,
+                  background: ` center / contain no-repeat url(${item})`,
                 }}
                 className='article__photo-content-item'
                 key={`${item}+${good.id}`}

@@ -3,13 +3,13 @@ import { Header } from 'components/header/Header';
 
 import { ExtendedProductCard } from './components/product-card/extended-product-card/ExtendedProductCard';
 import { GlobalContext } from 'components/goods-presentation-block/AsideMenu/GlobalContext';
+import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { ProductCardList } from 'components/product-card/ProductCardList';
 import { CartPage } from 'components/Pages/CartPage';
 import { MainPage } from 'components/Pages/MainPage';
 import { Footer } from 'components/footer/Footer';
 import { Route, Routes } from 'react-router';
 import { useState } from 'react';
-import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
 
 import {
   AdditionalServices,
@@ -98,6 +98,7 @@ function App() {
           maindata={MainGoodsData}
           goods={CategoryList}
         />
+
         <AddToCart
           setCurrentProductIdHandler={setCurrentProductId}
           setFavoriteCountHandler={setFavoriteCount}

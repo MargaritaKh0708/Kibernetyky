@@ -1483,6 +1483,18 @@ ul {
   height: 110px;
 }
 
+.sorry-modal {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 40px auto 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 4px;
+  padding: 16px;
+}
+
 .select {
   border: 1px solid #F9E505;
   background-color: #FFFFFF;
@@ -2806,7 +2818,6 @@ ul {
 
 @media only screen and (max-width: 1024px) {
   .add-to-cart-modal, .likes-modal, .credit-list-modal {
-    height: 80vh;
     width: 300px;
     margin: 20px auto 0;
   }
@@ -2921,7 +2932,6 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 48px;
   gap: 16px;
 }
 
@@ -2952,12 +2962,6 @@ ul {
   display: -ms-flexbox;
   display: flex;
   width: 274px;
-}
-
-@media only screen and (max-width: 1024px) {
-  .add-to-cart-modal__credit-btn, .likes-modal__credit-btn, .likes-modal__buy-btn, .add-to-cart-modal__buy-btn {
-    width: 100%;
-  }
 }
 
 .add-to-cart-modal__credit-btn, .likes-modal__credit-btn, .likes-modal__buy-btn {
@@ -5415,6 +5419,7 @@ option {
 @media only screen and (max-width: 1024px) {
   .likes-modal {
     max-height: 100vh;
+    height: 100vh;
     margin: 0;
   }
 }

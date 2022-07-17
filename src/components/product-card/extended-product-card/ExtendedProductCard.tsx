@@ -621,7 +621,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                     className='extended-card__payway-btn'
                   >
                     <div className='extended-card__payway-icon'>
-                      <img src={item.icon} alt='img' />
+                      <img loading='lazy' src={item.icon} alt='img' />
                     </div>
                     <span>{item.name}</span>
                   </button>

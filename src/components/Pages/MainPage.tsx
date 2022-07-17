@@ -7,7 +7,6 @@ import { SubscriptionBlock } from 'components/subscription-block/SubscriptionBlo
 import { ShopHistory } from 'components/shop-history/ShopHistory';
 import { ICatalogItem } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
-import { AddToCart } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { VideoReviewBlock } from 'components/video-review/VideoReviewBlock';
 
 export interface IMainPage {

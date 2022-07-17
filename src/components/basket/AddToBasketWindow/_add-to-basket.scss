@@ -10,7 +10,6 @@
     width: 990px;
 
     @include media (max, 'iPad') {
-        height: 80vh;
         width: 300px;
         margin: 20px auto 0;
 
@@ -94,7 +93,6 @@
         justify-content: space-between;
         align-items: center;
         display: flex;
-        height: 48px;
         gap: 16px;
 
         @include media (max, 'iPad') {
@@ -116,9 +114,9 @@
         width: 274px;
 
 
-        @include media (max, 'iPad') {
-            width: 100%;
-        }
+        // @include media (max, 'iPad') {
+        //     width: 100%;
+        // }
     }
 
     &__credit-btn {

@@ -4,6 +4,7 @@ const videoData = [
   {
     iframe: (
       <iframe
+        loading='lazy'
         width='100%'
         src='https://www.youtube.com/embed/mvEkWuZn1-A?controls=0&origin=https://kibernetyky.herokuapp.com/ '
         title='YouTube video player'
@@ -18,6 +19,7 @@ const videoData = [
   {
     iframe: (
       <iframe
+        loading='lazy'
         width='100%'
         src='https://www.youtube.com/embed/pdnRum_gJug?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
@@ -31,6 +33,7 @@ const videoData = [
   {
     iframe: (
       <iframe
+        loading='lazy'
         width='100%'
         src='https://www.youtube.com/embed/Jgzg_lHiMm0?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
@@ -44,6 +47,7 @@ const videoData = [
   {
     iframe: (
       <iframe
+        loading='lazy'
         width='100%'
         src='https://www.youtube.com/embed/krf63SE26cM?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
@@ -57,6 +61,7 @@ const videoData = [
   {
     iframe: (
       <iframe
+        loading='lazy'
         width='100%'
         src='https://www.youtube.com/embed/SK849rZj6yk?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
