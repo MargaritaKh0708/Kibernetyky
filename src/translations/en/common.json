@@ -23,5 +23,57 @@
         "insurance": "Insurance",
         "guarantee": "Guarantee. Exchange and return",
         "social": "Our socials"
+    },
+
+    "benefits": {
+        "title": "Benefits",
+        "cashback": "Guaranteed cashback",
+        "consultation": "Proffesional consultation",
+        "delivery": "Convenient methods of delivery and payment",
+        "guarantee": "Official warranty from the manufacturer",
+        "individual": "An individual approach to each client",
+        "certificate": "Certified product"
+    },
+
+    "contacts": {
+        "title": "Contacts",
+        "formOrder": "Place an order",
+        "support": "Service support",
+        "schedule": "Monday - Sunday, 9:00AM - 06:00PM",
+        "callBack": "Call me back",
+        "repeat": "A callBack request will be available",
+        "threeMin": "in 3 minutes",
+        "waitForCall": "I'm waiting for a call",
+        "ok": "Ok",
+        "connect": "Your call request has been sent! We will contact you shortly!"
+    },
+
+    "brandsline": {
+        "title": "Popular brands",
+        "all": "All brands"
+    },
+
+    "footer": {
+        "about": "About us",
+        "vacancies": "Vacancies",
+        "shops":"Our shops",
+        "callBack": "Feedback",
+        "interesting": "Interesting",
+        "blog": "Blog",
+        "promotions": "Promotions",
+        "bonuses":"Cyber-bonuses",
+        "service": "Service",
+        "credits":"Credits",
+        "insurance": "Insurance",
+        "services": "Cyber-services",
+        "exchange": "Cyber-exchange",
+        "info": "Information",
+        "deliveryAndPay": "Payment and delivery",
+        "guarantee": "Guarantee. Exchange and return",
+        "rules": "Terms of use",
+        "contacts": "Contacts",
+        "socials": "Our socials",
+        "rights": "© 2022 Кібернетіки. All rights reserved",
+        "design": "Design by Bonum Studio"
     }
 }

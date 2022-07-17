@@ -1,5 +1,6 @@
 import { IProductCardListItem } from '../product-card/ProductCardList';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface IProductCardList {
   data: IProductCardListItem[];
@@ -7,6 +8,8 @@ interface IProductCardList {
 
 export const BrandsLine: React.FC<IProductCardList> = ({ data }) => {
   const [seeMoreBrands, setSeeMoreBrands] = useState<boolean>(false);
+  // lang
+  const [t] = useTranslation('common');
 
   let brandsList: {
     logo: string; //? JSX.Element только потому что передаем
@@ -32,7 +35,7 @@ export const BrandsLine: React.FC<IProductCardList> = ({ data }) => {
   return (
     <>
       <section className='brand-block container'>
-        <h2 className='brand-block__title'> Популярні бренди </h2>
+        <h2 className='brand-block__title'>{t('brandsline.title')}</h2>
         <div className='brand-block__logo-list'>
           {randerBrandsList.map((item) => (
             <div className='brand-block__logo-btn' key={item.id}>
@@ -47,7 +50,7 @@ export const BrandsLine: React.FC<IProductCardList> = ({ data }) => {
               onClick={() => setSeeMoreBrands(seeMoreBrands ? false : true)}
               className='brand-block__see-all-btn'
             >
-              {seeMoreBrands ? <span>Сховати</span> : <span>Усі бренди</span>}
+              {seeMoreBrands ? <span>Сховати</span> : <span>{t('brandsline.all')}</span>}
             </button>
           </div>
         </div>

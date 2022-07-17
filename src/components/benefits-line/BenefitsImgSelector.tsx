@@ -7,11 +7,16 @@ import guarantee from '../../assets/icons/benefits-icons/guarantee.png';
 import individual from '../../assets/icons/benefits-icons/individual.png';
 import sertificate from '../../assets/icons/benefits-icons/sertificate.png';
 
+import { useTranslation } from "react-i18next";
+
 interface IBenefitsImgSelector {
   id: string;
 }
 
 export const BenefitsImgSelector: React.FC<IBenefitsImgSelector> = ({ id }) => {
+  //lang
+  const [t] = useTranslation('common');
+
   switch (id) {
     case 'cashback':
       return (
@@ -20,7 +25,7 @@ export const BenefitsImgSelector: React.FC<IBenefitsImgSelector> = ({ id }) => {
             <img src={cashback} alt='cashback' />
           </div>
           <span className='benefits-block__item-title'>
-            Гарантований кешбек
+            {t('benefits.cashback')}
           </span>
         </div>
       );
@@ -31,7 +36,7 @@ export const BenefitsImgSelector: React.FC<IBenefitsImgSelector> = ({ id }) => {
             <img src={consultation} alt='consultation' />
           </div>
           <span className='benefits-block__item-title'>
-            Професійна консультація
+          {t('benefits.consultation')}
           </span>
         </div>
       );
@@ -42,7 +47,7 @@ export const BenefitsImgSelector: React.FC<IBenefitsImgSelector> = ({ id }) => {
             <img src={delivery} alt='delivery' />
           </div>
           <span className='benefits-block__item-title'>
-            Зручні способи доставки і оплати
+          {t('benefits.delivery')}
           </span>
         </div>
       );
@@ -53,7 +58,7 @@ export const BenefitsImgSelector: React.FC<IBenefitsImgSelector> = ({ id }) => {
             <img src={guarantee} alt='guarantee' />
           </div>
           <span className='benefits-block__item-title'>
-            Офіційна гарантія від виробника
+          {t('benefits.guarantee')}
           </span>
         </div>
       );
@@ -64,7 +69,7 @@ export const BenefitsImgSelector: React.FC<IBenefitsImgSelector> = ({ id }) => {
             <img src={individual} alt='individual' />
           </div>
           <span className='benefits-block__item-title'>
-            Індивідуальний підхід до кожного клієнта
+          {t('benefits.individual')}
           </span>
         </div>
       );
@@ -75,7 +80,7 @@ export const BenefitsImgSelector: React.FC<IBenefitsImgSelector> = ({ id }) => {
             <img src={sertificate} alt='sertificate' />
           </div>
           <span className='benefits-block__item-title'>
-            Сертифікований товар
+          {t('benefits.certificate')}
           </span>
         </div>
       );
