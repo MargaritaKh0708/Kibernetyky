@@ -7,6 +7,8 @@ import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
 import { Link } from 'react-router-dom';
 import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import { useGlobalContext } from 'components/goods-presentation-block/AsideMenu/GlobalContext';
+import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
+import { Closer } from '../UI/closer/Closer';
 
 interface IRating {
   productId: number;
@@ -30,12 +32,13 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   rowQuantity,
   product,
 }) => {
+  const [hidePartApear, setHidePartApear] = useState<boolean>(false);
+  const [googInRoad, setGoodInRoad] = useState<boolean>(false); // set modal good in road
+  const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
   const [deal, setDeal] = useState<boolean>(false); // Basket changes
   const [rating, setRating] = useState<number>(0); // Star rating value
-  const [hidePartApear, setHidePartApear] = useState<boolean>(false);
-  const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
 
   const { addToCartActive, setAddToCartActive } = useGlobalContext();
 
@@ -141,7 +144,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     } else {
       // return if product is not available
       if (!product.available) {
-        return;
+        return setGoodInRoad(true);
       }
 
       // add product to cart
@@ -268,6 +271,30 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     setCompareCountHandler(compareIdList.length);
     return undefined;
   };
+
+  const SorryModalJsx = (
+    <div className='call-back-form__thanks-msg'>
+      <span> Вибачте, товар в дорозі &#9785; </span> <br />
+      <Closer
+        closeFunction={() => {
+          setGoodInRoad(false);
+        }}
+        arrowBorder='contacts-closer__color'
+      />
+      <button
+        name='okay'
+        onClick={(e) => {
+          setGoodInRoad(false);
+        }}
+        type='button'
+        className='call-back-form__submit call-back-form__submit_color'
+      >
+        <span className='call-back-form__number-list-item call-back-form__submit-title call-back-form__submit-title_color'>
+          Добре
+        </span>
+      </button>
+    </div>
+  );
 
   return (
     <>
@@ -498,6 +525,13 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             ))}
           </ul>
         </div>
+        <ModalWindow
+          active={googInRoad}
+          setActive={setGoodInRoad}
+          className='call-back-modal'
+        >
+          {SorryModalJsx}
+        </ModalWindow>
       </div>
     </>
   );
