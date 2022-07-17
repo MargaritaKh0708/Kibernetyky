@@ -164,6 +164,7 @@
         flex-direction: column;
         display: flex;
         gap: 5px;
+
     }
 
     &__searching-descrip-code,
@@ -180,4 +181,8 @@
 
 .search_results-field--display {
     display: none;
+}
+
+.main-info {
+    width: 60%;
 }

@@ -9,7 +9,7 @@ interface IBurgerMenu {
   burgerState: boolean;
 }
 
-export const BurgerMenu: React.FC<IBurgerMenu> = ({
+const BurgerMenu: React.FC<IBurgerMenu> = ({
   setContactsModalState,
   setBurgerState,
   burgerState,
@@ -37,3 +37,5 @@ export const BurgerMenu: React.FC<IBurgerMenu> = ({
     </>
   );
 };
+
+export default BurgerMenu;

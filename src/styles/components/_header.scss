@@ -9,13 +9,20 @@
     left: 0;
     top: 0;
 
+    &__icon-basket {
+        &:hover svg {
+            fill: $c-brand-yellow;
+        }
+    }
 
     &__btn {
         border: none;
         border-right: 1px solid $c-brand-yellow;
+        cursor: pointer;
         width: fit-content;
         background: none;
         height: auto;
+
 
         &--border {
             border: none;
@@ -27,6 +34,10 @@
         &--contacts {
             @include media('max', 'iPad') {
                 display: none;
+            }
+
+            &:hover svg {
+                fill: $c-brand-yellow;
             }
         }
     }
@@ -60,6 +71,10 @@
     &__icon-catalog {
         height: 22px;
         width: 22px;
+
+        &:hover svg {
+            fill: $c-brand-yellow;
+        }
     }
 
     &__icon-audio {

@@ -529,7 +529,9 @@
     text-decoration: underline;
 }
 
-.product-card:hover .hide-part {
+.open-part {
+    @extend .hide-part;
+
     @include media('min', 'hd') {
         border-top: 1px solid $c-extra-gray;
         display: block;

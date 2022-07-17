@@ -218,7 +218,7 @@ export const Cart: React.FC<ICart> = ({
         </div>
       </div>
       <div className='product-form__confirm'>
-        <button type='submit' className='product-form__button'>
+        <button name='accept' type='submit' className='product-form__button'>
           Замовлення підтверджую
         </button>
       </div>
@@ -317,7 +317,7 @@ export const Cart: React.FC<ICart> = ({
           />
         </div>
       </div>
-      <button type='button' className='cart-block__btn'>
+      <button name='enter' type='button' className='cart-block__btn'>
         Вхід
       </button>
     </div>

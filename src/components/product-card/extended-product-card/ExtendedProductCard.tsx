@@ -229,7 +229,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                 <span>Встигніть купити товар зі знижкою 7%</span>
                 <span>Акція діє до 28.02.2022</span>
               </div>
-              <button className='extended-card__sale-banner-btn' type='button'>
+              <button
+                name='more'
+                className='extended-card__sale-banner-btn'
+                type='button'
+              >
                 <span>Дізнатися більше</span>
               </button>
             </div>
@@ -440,6 +444,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                     {Math.round(good.price * 0.1)} бонусних ₴
                   </span>
                   <button
+                    name='cash-buy'
                     className='add-to-cart-modal__buy-btn'
                     onClick={() => addToCartHandler()}
                   >
@@ -451,6 +456,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                     Від &nbsp;{Math.round(good.price / 36)} &nbsp;₴ / міс
                   </span>
                   <button
+                    name='credit-buy'
                     className='add-to-cart-modal__credit-btn'
                     type='button'
                     onClick={() => setBuyForCreditActive(true)}
@@ -460,19 +466,35 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                 </div>
               </div>
               <div className='extended-card__price-bnts-list'>
-                <button type='button' className='extended-card__price-bnt'>
+                <button
+                  name='buy-in-one'
+                  type='button'
+                  className='extended-card__price-bnt'
+                >
                   <ProductCardSvgSelector id='basket' />
                   <span> Купити в 1 клік</span>
                 </button>
-                <button type='button' className='extended-card__price-bnt'>
+                <button
+                  name='watch'
+                  type='button'
+                  className='extended-card__price-bnt'
+                >
                   <ExtendedProductCardSvgSelector id='pricewatch' />
                   <span> Слідкувати за ціною</span>
                 </button>
-                <button type='button' className='extended-card__price-bnt'>
+                <button
+                  name='compare'
+                  type='button'
+                  className='extended-card__price-bnt'
+                >
                   <ProductCardSvgSelector id='compare' />
                   <span>Порівняти</span>
                 </button>
-                <button type='button' className='extended-card__price-bnt'>
+                <button
+                  name='favorite'
+                  type='button'
+                  className='extended-card__price-bnt'
+                >
                   <ProductCardSvgSelector id='likes' />
                   <span>Додати в обране</span>
                 </button>
@@ -483,7 +505,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                 Акції та знижки
               </span>
               <div className='extended-card__sales-bnts-list'>
-                <button type='button' className='extended-card__sales-bnt'>
+                <button
+                  name='sale'
+                  type='button'
+                  className='extended-card__sales-bnt'
+                >
                   <ExtendedProductCardSvgSelector id='sale'>
                     <span className='extended-card__sales-btn-sub-title'>
                       Акція
@@ -492,7 +518,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   <span className='extended-card__sales-btn-title'>Акція</span>
                   <span> Суперціна</span>
                 </button>
-                <button type='button' className='extended-card__sales-bnt'>
+                <button
+                  name='payment'
+                  type='button'
+                  className='extended-card__sales-bnt'
+                >
                   <ProductCardSvgSelector id='privat'>
                     <span className='extended-card__sales-btn-sub-title'>
                       x21 міс
@@ -503,7 +533,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   </span>
                   <span> 22 платежі </span>
                 </button>
-                <button type='button' className='extended-card__sales-bnt'>
+                <button
+                  name='advance'
+                  type='button'
+                  className='extended-card__sales-bnt'
+                >
                   <ExtendedProductCardSvgSelector id='percent'>
                     <span className='extended-card__sales-btn-sub-title'>
                       x24 міс
@@ -512,7 +546,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   <span className='extended-card__sales-btn-title'>Кредит</span>
                   <span>25 місяців, аванс 0%</span>
                 </button>
-                <button type='button' className='extended-card__sales-bnt'>
+                <button
+                  name='delivery'
+                  type='button'
+                  className='extended-card__sales-bnt'
+                >
                   <ExtendedProductCardSvgSelector id='delivery'>
                     <span className='extended-card__sales-btn-sub-title'>
                       0 ₴
@@ -557,6 +595,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                   </div>
                 ))}
                 <button
+                  name='insurence'
                   type='button'
                   onClick={() =>
                     setSeeMoreInsurence(seeMoreInsurence ? false : true)
@@ -576,7 +615,11 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
               <span>Оплата</span>
               <div className='extended-card__payway-list'>
                 {payWaysList.map((item) => (
-                  <button key={item.id} className='extended-card__payway-btn'>
+                  <button
+                    name='payway'
+                    key={item.id}
+                    className='extended-card__payway-btn'
+                  >
                     <div className='extended-card__payway-icon'>
                       <img src={item.icon} alt='img' />
                     </div>
@@ -591,7 +634,7 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
             >
               <span>Гарантія</span>
               <div className='extended-card__payway-list'>
-                <button className='extended-card__payway-btn'>
+                <button name='garanty' className='extended-card__payway-btn'>
                   <ExtendedProductCardSvgSelector id='garanty' />
                   <span className='extended-card__garanty-title'>
                     Гарантія &nbsp;
@@ -600,14 +643,14 @@ export const ExtendedProductCard: React.FC<IExtendedProductCard> = ({
                     </span>
                   </span>
                 </button>
-                <button className='extended-card__payway-btn'>
+                <button name='exchange' className='extended-card__payway-btn'>
                   <ExtendedProductCardSvgSelector id='change' />
                   <span className='extended-card__garanty-title'>
                     Обмін/повернення впродовж 14 днів
                   </span>
                 </button>
               </div>
-              <button className='extended-card__see-all'>
+              <button name='learn-more' className='extended-card__see-all'>
                 <span> Дізнатись більше</span>
               </button>
             </div>

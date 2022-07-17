@@ -34,15 +34,16 @@ export const BrandsLine: React.FC<IProductCardList> = ({ data }) => {
       <section className='brand-block container'>
         <h2 className='brand-block__title'> Популярні бренди </h2>
         <div className='brand-block__logo-list'>
-          {randerBrandsList.map((item) => (
+          {randerBrandsList.map((item, index) => (
             <div className='brand-block__logo-btn' key={item.id}>
               <div className='brand-block__logo'>
-                <img src={item.logo} alt='' />
+                <img src={item.logo} alt={`${item.id + index}`} />
               </div>
             </div>
           ))}
           <div className='brand-block__see-all-btn'>
             <button
+              name='hide'
               type='button'
               onClick={() => setSeeMoreBrands(seeMoreBrands ? false : true)}
               className='brand-block__see-all-btn'

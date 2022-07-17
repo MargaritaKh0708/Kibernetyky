@@ -77,7 +77,7 @@ export const ExtendedProductCardsSwiper: React.FC<
                   {good.imageCollection.map((img) => (
                     <div key={img} className='swiper-slide'>
                       <div className='slider__image'>
-                        <img src={img} alt='' />
+                        <img src={img} alt='img' />
                       </div>
                     </div>
                   ))}
@@ -93,7 +93,7 @@ export const ExtendedProductCardsSwiper: React.FC<
                   {good.imageCollection.map((img) => (
                     <div key={img} className='swiper-slide'>
                       <div className='slider__image'>
-                        <img src={img} alt='' />
+                        <img src={img} alt='img' />
                       </div>
                     </div>
                   ))}

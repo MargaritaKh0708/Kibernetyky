@@ -49,6 +49,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
         Вашу заявку на дзвінок надіслано, ми зв'яжемося з вами найближчим часом!
       </span>
       <button
+        name='okay'
         onClick={(e) => {
           closeBtnFunction(false);
         }}
@@ -144,6 +145,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
         </div>
       </div>
       <button
+        name='call'
         onClick={(e) => {
           setUserMsg(true);
           setPhoneValue('');

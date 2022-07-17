@@ -5,7 +5,7 @@ const videoData = [
     iframe: (
       <iframe
         width='100%'
-        src='https://www.youtube-nocookie.com/embed/mvEkWuZn1-A?controls=0&origin=https://localhost:3002'
+        src='https://www.youtube-nocookie.com/embed/mvEkWuZn1-A?controls=0&origin=https://kibernetyky.herokuapp.com/ '
         title='YouTube video player'
         frameBorder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -19,7 +19,7 @@ const videoData = [
     iframe: (
       <iframe
         width='100%'
-        src='https://www.youtube-nocookie.com/embed/pdnRum_gJug?controls=0&origin=https://localhost:3002'
+        src='https://www.youtube-nocookie.com/embed/pdnRum_gJug?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
         frameBorder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -32,7 +32,7 @@ const videoData = [
     iframe: (
       <iframe
         width='100%'
-        src='https://www.youtube-nocookie.com/embed/Jgzg_lHiMm0?controls=0&origin=https://localhost:3002'
+        src='https://www.youtube-nocookie.com/embed/Jgzg_lHiMm0?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
         frameBorder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -45,7 +45,7 @@ const videoData = [
     iframe: (
       <iframe
         width='100%'
-        src='https://www.youtube-nocookie.com/embed/krf63SE26cM?controls=0&origin=https://localhost:3002'
+        src='https://www.youtube-nocookie.com/embed/krf63SE26cM?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
         frameBorder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -58,7 +58,7 @@ const videoData = [
     iframe: (
       <iframe
         width='100%'
-        src='https://www.youtube-nocookie.com/embed/SK849rZj6yk?controls=0&origin=https://localhost:3002'
+        src='https://www.youtube-nocookie.com/embed/SK849rZj6yk?controls=0&origin=https://kibernetyky.herokuapp.com/'
         title='YouTube video player'
         frameBorder='0'
         allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

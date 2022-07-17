@@ -6852,7 +6852,7 @@ export const getData: () => IProductCardListItem[] = () => {
       good.imageCollection = item.images;
     }
     // available
-    if (index % 9 === 0) {
+    if (index % 2 === 0) {
       good.available = false;
     } else {
       good.available = true;
@@ -7242,7 +7242,7 @@ export const getData: () => IProductCardListItem[] = () => {
       good.oldprice = item.old_price;
     }
     // leader
-    if (index % 6 === 0) {
+    if (index % 2 === 0) {
       good.leader = true;
     } else {
       good.leader = false;
@@ -7477,7 +7477,7 @@ export const getData: () => IProductCardListItem[] = () => {
       good.oldprice = item.old_price;
     }
     // leader
-    if (index % 6 === 0) {
+    if (index % 2 === 0) {
       good.leader = true;
     } else {
       good.leader = false;
@@ -7705,7 +7705,7 @@ export const getData: () => IProductCardListItem[] = () => {
       good.oldprice = item.old_price;
     }
     // leader
-    if (index % 6 === 0) {
+    if (index % 3 === 0) {
       good.leader = true;
     } else {
       good.leader = false;

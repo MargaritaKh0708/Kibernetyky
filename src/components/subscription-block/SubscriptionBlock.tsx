@@ -2,6 +2,7 @@ import { SubscriptionBlockSvgSelector } from './SubscriptionBlockSvgSelector';
 import { Formik, Field, Form } from 'formik';
 import { SubscripModal } from './SubscripModal';
 import { useState } from 'react';
+import kiba from 'assets/main-page/kiba.svg';
 
 export const SubscriptionBlock: React.FC = () => {
   const [activeModal, setActiveModal] = useState<boolean>(false); // open thanks window
@@ -21,7 +22,7 @@ export const SubscriptionBlock: React.FC = () => {
           </span>
         </div>
         <div className='subscription-block__logo-part'>
-          <SubscriptionBlockSvgSelector id='logo' />
+          <img src={kiba} alt='kiba' />
         </div>
         <div className='subscription-block__form-part'>
           <Formik

@@ -70,7 +70,11 @@ export const Login: React.FC<ILogin> = ({
             </div>
           </div>
           <div className='login-block__row'>
-            <button type='submit' className='login-block__submit-btn'>
+            <button
+              name='continue'
+              type='submit'
+              className='login-block__submit-btn'
+            >
               Продовжити
             </button>
           </div>
@@ -162,7 +166,11 @@ export const Login: React.FC<ILogin> = ({
             </a>
           </div>
           <div className='login-block__row'>
-            <button type='submit' className='login-block__submit-btn'>
+            <button
+              name='continue'
+              type='submit'
+              className='login-block__submit-btn'
+            >
               Продовжити
             </button>
           </div>
@@ -334,7 +342,11 @@ export const Login: React.FC<ILogin> = ({
             </div>
           )}
           <div className='login-block__row'>
-            <button type='submit' className='login-block__submit-btn'>
+            <button
+              name='enter'
+              type='submit'
+              className='login-block__submit-btn'
+            >
               <span>Увійти</span>
             </button>
           </div>
@@ -413,7 +425,11 @@ export const Login: React.FC<ILogin> = ({
             </div>
           </div>
           <div className='login-block__row'>
-            <button type='submit' className='login-block__submit-btn'>
+            <button
+              name='enter'
+              type='submit'
+              className='login-block__submit-btn'
+            >
               <span>Увійти</span>
             </button>
           </div>
@@ -484,7 +500,11 @@ export const Login: React.FC<ILogin> = ({
             </a>
           </div>
           <div className='login-block__row'>
-            <button type='submit' className='login-block__submit-btn'>
+            <button
+              name='send'
+              type='submit'
+              className='login-block__submit-btn'
+            >
               Надіслати
             </button>
           </div>
@@ -529,11 +549,11 @@ export const Login: React.FC<ILogin> = ({
         <p className='login-block__text'>Або увійти за допомогою</p>
       </div>
       <div className='login-block__row--center login-block__social-btn'>
-        <button type='button' className='social-button '>
+        <button name='facebook' type='button' className='social-button '>
           <FooterImgSelector id='facebook' style='social-button__image' />
           <span>Facebook</span>
         </button>
-        <button type='button' className='social-button'>
+        <button name='google' type='button' className='social-button'>
           <img src={google} className='social-button__image' />
           <span>Google</span>
         </button>
@@ -582,11 +602,11 @@ export const Login: React.FC<ILogin> = ({
         <p className='login-block__text'>Або увійти за допомогою</p>
       </div>
       <div className='login-block__row--center login-block__social-btn'>
-        <button type='button' className='social-button'>
+        <button name='facebook' type='button' className='social-button'>
           <FooterImgSelector id='facebook' style='social-button__image' />
           <span>Facebook</span>
         </button>
-        <button type='button' className='social-button'>
+        <button name='google' type='button' className='social-button'>
           <img src={google} className='social-button__image' />
           <span>Google</span>
         </button>
@@ -736,7 +756,11 @@ export const Login: React.FC<ILogin> = ({
               ) : null}
             </div>
             <div className='login-block__row'>
-              <button type='submit' className='login-block__submit-btn'>
+              <button
+                name='register'
+                type='submit'
+                className='login-block__submit-btn'
+              >
                 Зареєструватись
               </button>
             </div>
@@ -747,11 +771,11 @@ export const Login: React.FC<ILogin> = ({
             </p>
           </div>
           <div className='login-block__row--center login-block__social-btn'>
-            <button type='button' className='social-button'>
+            <button name='facebook' type='button' className='social-button'>
               <FooterImgSelector id='facebook' style='social-button__image' />
               <span>Facebook</span>
             </button>
-            <button type='button' className='social-button'>
+            <button name='google' type='button' className='social-button'>
               <img src={google} id='google' className='social-button__image' />
               <span>Google</span>
             </button>

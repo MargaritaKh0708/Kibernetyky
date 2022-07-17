@@ -2,9 +2,10 @@ import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
 import classNames from 'classnames';
 import '../../index.css';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
+import React from 'react';
 import { ICatalog } from 'components/goods-presentation-block/AsideMenu/AsideMenu';
-import { BurgerMenu } from 'components/burger-menu/BurgerMenu';
+// import  BurgerMenu  from 'components/burger-menu/BurgerMenu';
 import { CallBackForm } from '../burger-menu/CallBackForm';
 import { useGlobalContext } from '../goods-presentation-block/AsideMenu/GlobalContext';
 import { CatalogModal } from 'components/goods-presentation-block/AsideMenu/CatalogModal';
@@ -13,6 +14,10 @@ import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import { Login } from 'components/account/Login';
 import { Link } from 'react-router-dom';
 import { LikesModal } from './likes-modal/LikesModal';
+
+const BurgerMenu = React.lazy(
+  () => import('components/burger-menu/BurgerMenu')
+);
 
 interface IHeader extends ICatalog {
   maindata: IProductCardListItem[];
@@ -45,17 +50,25 @@ export const Header: React.FC<IHeader> = ({
     <>
       <header className='header'>
         <div className={classNames('container', 'header__wrapper')}>
-          <button type='button' className='header__btn header__btn--border'>
+          <button
+            name='burger'
+            type='button'
+            className='header__btn header__btn--border'
+          >
             <div className='burger' onClick={() => setBurgerActive(true)}>
               <span className='burger__item'></span>
               <span className='burger__item'></span>
               <span className='burger__item'></span>
             </div>
-            <BurgerMenu
-              burgerState={burgerActive}
-              setBurgerState={setBurgerActive}
-              setContactsModalState={setContactsModalActive}
-            />
+            <Suspense fallback={<div>Загрузка...</div>}>
+              <section>
+                <BurgerMenu
+                  burgerState={burgerActive}
+                  setBurgerState={setBurgerActive}
+                  setContactsModalState={setContactsModalActive}
+                />
+              </section>
+            </Suspense>
           </button>
           <Link to='/'>
             <div className='logo'>
@@ -80,6 +93,7 @@ export const Header: React.FC<IHeader> = ({
           </div>
           <nav className='menu-block'>
             <button
+              name='personal'
               type='button'
               className='header__btn header__btn--personal'
               onClick={() => setLoginModalActive(true)}
@@ -87,6 +101,7 @@ export const Header: React.FC<IHeader> = ({
               <HeaderSvgSelector id='personal' />
             </button>
             <button
+              name='likes'
               onClick={() => setLikesModalActive(true)}
               type='button'
               className='header__btn header__btn--likes'
@@ -95,19 +110,24 @@ export const Header: React.FC<IHeader> = ({
                 <span>{favoriteCount}</span>
               </HeaderSvgSelector>
             </button>
-            <button type='button' className='header__btn header__btn--compare'>
+            <button
+              name='compare'
+              type='button'
+              className='header__btn header__btn--compare'
+            >
               <HeaderSvgSelector id='compare'>
                 <span>{compareCount}</span>
               </HeaderSvgSelector>
             </button>
             <Link to='/cart'>
-              <button type='button' className='header__btn'>
+              <button name='basket' type='button' className='header__btn'>
                 <HeaderSvgSelector id='basket'>
                   <span>({orderProductsCount})</span>
                 </HeaderSvgSelector>
               </button>
             </Link>
             <button
+              name='contacts'
               type='button'
               className='header__btn header__btn--border header__btn--contacts'
             >

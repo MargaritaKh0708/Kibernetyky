@@ -20,6 +20,7 @@ export const SubscripModal: React.FC<ISubscripModal> = ({
         arrowBorder='contacts-closer__color'
       />
       <button
+        name='okay'
         onClick={(e) => {
           setOpenSubscripModal(false);
         }}

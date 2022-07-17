@@ -248,10 +248,15 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
           <div className='search__searching-main-result'>
             {searchingGoods.map((good) => (
               <div key={good.id} className='search__main-result-item'>
-                <img
+                <div
+                  style={{
+                    background: `center / contain no-repeat url(${
+                      good.imageCollection.length > 0
+                        ? good.imageCollection[0]
+                        : good.category.mainImage
+                    })`,
+                  }}
                   className='search__pic'
-                  src={good.category.mainImage}
-                  alt='img'
                 />
                 <div className='search__searching-descrip main-info'>
                   <span className='search__searching-descrip-code'>

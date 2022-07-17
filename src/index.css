@@ -93,7 +93,7 @@ body {
 }
 
 .main-content {
-  margin-top: 100px;
+  margin-top: 90px;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
@@ -101,6 +101,7 @@ body {
 
 img {
   width: 100%;
+  height: auto;
 }
 
 input {
@@ -290,9 +291,14 @@ ul {
   top: 0;
 }
 
+.header__icon-basket:hover svg {
+  fill: #F9E505;
+}
+
 .header__btn {
   border: none;
   border-right: 1px solid #F9E505;
+  cursor: pointer;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -308,6 +314,10 @@ ul {
   .header__btn--personal, .header__btn--likes, .header__btn--compare, .header__btn--contacts {
     display: none;
   }
+}
+
+.header__btn--personal:hover svg, .header__btn--likes:hover svg, .header__btn--compare:hover svg, .header__btn--contacts:hover svg {
+  fill: #F9E505;
 }
 
 .header__icon-personal, .header__icon-likes, .header__icon-compare, .header__icon-contacts, .header__icon-basket {
@@ -345,6 +355,10 @@ ul {
 .header__icon-catalog {
   height: 22px;
   width: 22px;
+}
+
+.header__icon-catalog:hover svg {
+  fill: #F9E505;
 }
 
 .header__icon-audio {
@@ -1376,7 +1390,7 @@ ul {
   background-color: #FFFFFF;
 }
 
-.hide-part, .hide-part--row {
+.hide-part, .open-part, .hide-part--row {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-top: 1px solid white;
@@ -1398,19 +1412,19 @@ ul {
 }
 
 @media (min-width: 1366px) and (max-width: 1919px) {
-  .hide-part, .hide-part--row {
+  .hide-part, .open-part, .hide-part--row {
     width: 245px;
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1365px) {
-  .hide-part, .hide-part--row {
+  .hide-part, .open-part, .hide-part--row {
     width: 236px;
   }
 }
 
 @media only screen and (min-width: 1920px) {
-  .hide-part, .hide-part--row {
+  .hide-part, .open-part, .hide-part--row {
     width: 232px;
   }
 }
@@ -1420,7 +1434,7 @@ ul {
 }
 
 @media only screen and (min-width: 1280px) {
-  .product-card:hover .hide-part, .product-card:hover .hide-part--row {
+  .open-part {
     border-top: 1px solid #F2F2F2;
     display: block;
   }
@@ -1894,6 +1908,10 @@ ul {
   border-color: #404040;
 }
 
+.top-categories-swiper {
+  margin-top: 20px;
+}
+
 .video-slide {
   background-color: #FFFFFF;
   border-radius: 5px;
@@ -1921,6 +1939,10 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.top-categories-swiper {
+  margin-top: 20px;
 }
 
 .benefits-block {
@@ -3411,6 +3433,11 @@ ul {
   border: none;
 }
 
+.product-form__button:hover, .cart-block__btn:hover {
+  background-color: #F9E505;
+  color: #2B2A29;
+}
+
 .product-form__checkbox {
   display: none;
 }
@@ -3755,6 +3782,10 @@ ul {
 
 .search_results-field--display {
   display: none;
+}
+
+.main-info {
+  width: 60%;
 }
 
 .extended-card {

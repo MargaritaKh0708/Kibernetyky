@@ -114,6 +114,7 @@ export const AddToCart: React.FC<AddToCartType> = ({
             </Link>
             <div className='add-to-cart-modal__buttons'>
               <button
+                name='credit-buy'
                 className='add-to-cart-modal__credit-btn'
                 onClick={() => {
                   addProductToOrder(true);
@@ -124,6 +125,7 @@ export const AddToCart: React.FC<AddToCartType> = ({
               </button>
               <Link to='/cart'>
                 <button
+                  name='cash-buy'
                   className='add-to-cart-modal__buy-btn'
                   onClick={() => addProductToOrder(false)}
                 >

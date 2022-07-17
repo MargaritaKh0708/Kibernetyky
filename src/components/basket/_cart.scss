@@ -137,6 +137,11 @@
         line-height: 19px;
         font-size: 16px;
         border: none;
+
+        &:hover {
+            background-color: $c-brand-yellow;
+            color: $c-text;
+        }
     }
 
     &__checkbox {

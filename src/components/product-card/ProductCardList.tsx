@@ -229,6 +229,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
           />
         </div>
         <button
+          name='see-more'
           onClick={() => {
             setN(n + 2);
             console.log(n);

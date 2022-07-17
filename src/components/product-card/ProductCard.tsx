@@ -1,4 +1,3 @@
-import mainPic from 'assets/icons/goods-card-icons/mainPic.png';
 import { ProductCardSvgSelector } from './ProductCardSvgSelector';
 import { StarRating, IStarRatingProps } from './star-rating/StarRating';
 import { useEffect, useState } from 'react';
@@ -35,7 +34,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
   const [deal, setDeal] = useState<boolean>(false); // Basket changes
   const [rating, setRating] = useState<number>(0); // Star rating value
-
+  const [hidePartApear, setHidePartApear] = useState<boolean>(false);
   const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
 
   const { addToCartActive, setAddToCartActive } = useGlobalContext();
@@ -304,10 +303,10 @@ export const ProductCard: React.FC<IProductCardProps> = ({
               }}
             ></div>
             <div className='product-card__colors-panel'>
-              {product.specifications.colors.map((color) => (
+              {product.specifications.colors.map((color, index) => (
                 <label
                   className='product-card__colors-panel-item'
-                  key={product.id + color.colorName}
+                  key={product.id + index}
                 >
                   <input
                     type='checkbox'
@@ -356,7 +355,11 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             className='product-card__goodname-link'
             to={`/product/${product.id}`}
           >
-            <span className='product-card__goodname'>
+            <span
+              className='product-card__goodname'
+              onMouseEnter={() => setHidePartApear(true)}
+              onMouseLeave={() => setHidePartApear(false)}
+            >
               {product.name} ({product.model})
             </span>
           </Link>
@@ -450,6 +453,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
               </label>
             </div>
             <button
+              name='basket'
               className={
                 deal
                   ? 'product-card__basket-btn in-basket'
@@ -473,6 +477,8 @@ export const ProductCard: React.FC<IProductCardProps> = ({
           className={
             rowQuantity === 1
               ? 'product-card__part  hide-part--row'
+              : hidePartApear
+              ? 'product-card__part open-part'
               : 'product-card__part hide-part'
           }
         >

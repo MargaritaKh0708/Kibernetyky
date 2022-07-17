@@ -94,7 +94,7 @@ export const CreditBuyModal: React.FC<ICreditBuyModal> = ({
                     місяць
                   </span>
                 </span>
-                <button className='credit-modal__choose-btn'>
+                <button name='choose' className='credit-modal__choose-btn'>
                   <span>Обрати</span>
                 </button>
               </div>
