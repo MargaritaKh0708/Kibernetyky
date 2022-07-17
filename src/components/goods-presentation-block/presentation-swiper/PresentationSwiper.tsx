@@ -8,12 +8,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 // Picture imports
-import blue from 'assets/main-page/presentation-block-swiper/blue/background.png';
-import green from 'assets/main-page/presentation-block-swiper/green/background.png';
-import yellow from 'assets/main-page/presentation-block-swiper/yellow/background.png';
-import bluePicture from 'assets/main-page/presentation-block-swiper/blue/main-picture.png';
-import greenPicture from 'assets/main-page/presentation-block-swiper/green/main-picture.png';
-import yellowPicture from 'assets/main-page/presentation-block-swiper/yellow/main-picture.png';
+import blue from 'assets/main-page/presentation-block-swiper/blue/background.webp';
+import green from 'assets/main-page/presentation-block-swiper/green/background.webp';
+import yellow from 'assets/main-page/presentation-block-swiper/yellow/background.webp';
+import bluePicture from 'assets/main-page/presentation-block-swiper/blue/main-picture.webp';
+import greenPicture from 'assets/main-page/presentation-block-swiper/green/main-picture.webp';
+import yellowPicture from 'assets/main-page/presentation-block-swiper/yellow/main-picture.webp';
 
 const data = [
   {
@@ -57,11 +57,11 @@ const data = [
 
 export const PresentationSwiper: React.FC = () => {
   let presentativItems: {
+    setpresentativ: boolean;
+    mainPicture: string;
     background: string;
     cardcolor: string;
     svgId: string;
-    mainPicture: string;
-    setpresentativ: boolean;
   }[] = [];
 
   data.forEach((dataItem) => {

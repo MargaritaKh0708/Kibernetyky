@@ -1,11 +1,11 @@
 // import pictures
 
-import cashback from '../../assets/icons/benefits-icons/cashback.png';
-import consultation from '../../assets/icons/benefits-icons/consultation.png';
-import delivery from '../../assets/icons/benefits-icons/delivery.png';
-import guarantee from '../../assets/icons/benefits-icons/guarantee.png';
-import individual from '../../assets/icons/benefits-icons/individual.png';
-import sertificate from '../../assets/icons/benefits-icons/sertificate.png';
+import cashback from '../../assets/icons/benefits-icons/cashback.webp';
+import consultation from '../../assets/icons/benefits-icons/consultation.webp';
+import delivery from '../../assets/icons/benefits-icons/delivery.webp';
+import guarantee from '../../assets/icons/benefits-icons/guarantee.webp';
+import individual from '../../assets/icons/benefits-icons/individual.webp';
+import sertificate from '../../assets/icons/benefits-icons/sertificate.webp';
 
 interface IBenefitsImgSelector {
   id: string;

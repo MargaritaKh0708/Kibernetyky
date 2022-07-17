@@ -4,7 +4,7 @@ import { Form, Formik, Field } from 'formik';
 import { useState } from 'react';
 import { LoginSvgSelector } from './LoginSvgSelector';
 import { FooterImgSelector } from '../footer/FooterImgSelector';
-import google from 'assets/icons/payway/google.png';
+import google from 'assets/icons/payway/google.webp';
 
 interface ILogin {
   viewWindow: boolean;

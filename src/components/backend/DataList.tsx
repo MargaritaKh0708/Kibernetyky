@@ -2,16 +2,16 @@ import { AsideMenuSvgSelector } from '../goods-presentation-block/AsideMenu/Asid
 import { nanoid } from 'nanoid';
 
 //PayWays
-import applepay from 'assets/icons/payway/apple.png';
-import cash from 'assets/icons/payway/cash.png';
-import google from 'assets/icons/payway/google.png';
-import master from 'assets/icons/payway/master.png';
-import mono from 'assets/icons/payway/mono.png';
-import nocash from 'assets/icons/payway/nocath.png';
-import privat24 from 'assets/icons/payway/privat24.png';
-import privatpart from 'assets/icons/payway/privatpart.png';
-import visa from 'assets/icons/payway/visa.png';
-import otp from 'assets/icons/product-card/otp.png';
+import applepay from 'assets/icons/payway/apple.webp';
+import cash from 'assets/icons/payway/cash.webp';
+import google from 'assets/icons/payway/google.webp';
+import master from 'assets/icons/payway/master.webp';
+import mono from 'assets/icons/payway/mono.webp';
+import nocash from 'assets/icons/payway/nocath.webp';
+import privat24 from 'assets/icons/payway/privat24.webp';
+import privatpart from 'assets/icons/payway/privatpart.webp';
+import visa from 'assets/icons/payway/visa.webp';
+import otp from 'assets/icons/product-card/otp.webp';
 
 //!For main data
 
