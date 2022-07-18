@@ -101,7 +101,7 @@
 
     &__code {
         background-color: $c-extra-gray;
-        border-radius: 5px;
+        border-radius: $c-border-small;
         text-align: center;
         margin-left: 8px;
         padding: 4px 2px;
@@ -230,9 +230,9 @@
     }
 
     &__sale-banner-btn {
+        border-radius: $c-border-large;
         background: $c-white;
         white-space: nowrap;
-        border-radius: 50px;
         width: fit-content;
         text-align: center;
         padding: 12px 40px;
@@ -262,8 +262,8 @@
 
     &__product-info {
         border: 1px solid $c-extra-gray;
+        border-radius: $c-border-small;
         align-items: center;
-        border-radius: 5px;
         margin-top: 16px;
         display: flex;
 
@@ -317,7 +317,7 @@
 
     &__color-bg {
         border: 1px solid $c-extra-gray;
-        border-radius: 4px;
+        border-radius: $c-border-small;
         margin: 0 auto;
         display: block;
         height: 24px;
@@ -368,9 +368,9 @@
     &__memory-panel,
     &__material {
         border: 1px solid $c-extra-gray;
+        border-radius: $c-border-small;
         justify-content: center;
         align-items: center;
-        border-radius: 4px;
         padding: 5px 16px;
         width: fit-content;
         cursor: pointer;
@@ -404,8 +404,8 @@
 
     &__available-btn {
         justify-content: space-between;
+        border-radius: $c-border-large;
         @include f-Lato-Bold;
-        border-radius: 50px;
         width: fit-content;
         padding: 8px 16px;
         display: flex;
@@ -453,8 +453,8 @@
     }
 
     &__benefit {
+        border-radius: $c-border-small;
         background-color: $c-red;
-        border-radius: 5px;
         text-align: center;
         width: fit-content;
         margin-left: 10px;
@@ -537,11 +537,11 @@
 
     &__sales-bnt {
         justify-content: space-between;
+        border-radius: $c-border-small;
         box-shadow: $box-shadow;
         flex-direction: column;
         align-items: center;
         padding: 10px 20px;
-        border-radius: 5px;
         background: none;
         display: flex;
         height: 124px;
@@ -655,10 +655,10 @@
     }
 
     &__payway-btn {
+        border-radius: $c-border-large;
         background: $c-extra-gray;
         justify-content: center;
         align-items: center;
-        border-radius: 50px;
         width: fit-content;
         min-width: 60px;
         display: flex;
@@ -906,9 +906,9 @@
 
     &__btn {
         background-color: $c-brand-yellow;
+        border-radius: $c-border-large;
         justify-content: center;
         @include f-Lato-Bold;
-        border-radius: 50px;
         align-items: center;
         padding: 12px 70px;
         flex-wrap: nowrap;
@@ -933,9 +933,9 @@
     &__example {
         border: 1px solid $c-extra-gray;
         justify-content: space-between;
+        border-radius: $c-border-small;
         flex-direction: column;
         padding: 16px 24px;
-        border-radius: 4px;
         display: flex;
         gap: 16px;
     }

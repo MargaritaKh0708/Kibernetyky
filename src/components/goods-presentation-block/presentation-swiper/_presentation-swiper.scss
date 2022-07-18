@@ -17,10 +17,10 @@
 
 .swiper-card {
     justify-content: space-between;
+    border-radius: $c-border-small;
     background-size: cover;
     flex-direction: column;
     padding: 24px 16px;
-    border-radius: 5px;
     min-height: 465px;
     display: flex;
 

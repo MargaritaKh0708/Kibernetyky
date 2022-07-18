@@ -2,8 +2,8 @@
 
 
 .video-slide {
+    border-radius: $c-border-small;
     background-color: $c-white;
-    border-radius: 5px;
     overflow: hidden;
     max-width: 323px;
     height: 249px;
@@ -14,7 +14,7 @@
     }
 
     &__content {
-        border-radius: 5px;
+        border-radius: $c-border-small;
         overflow: hidden;
         width: 100%;
     }

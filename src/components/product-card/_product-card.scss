@@ -103,10 +103,10 @@
 // Main card style
 
 .product-card {
+    border-radius: $c-border-small;
     background-color: $c-white;
     box-shadow: $box-shadow;
     position: relative;
-    border-radius: 5px;
     min-height: 328px;
     font-size: 12px;
     color: $c-text;
@@ -320,9 +320,9 @@
     }
 
     &__benefit {
+        border-radius: $c-border-small*2;
         background-color: $c-red;
         align-items: center;
-        border-radius: 10px;
         width: fit-content;
         flex-wrap: nowrap;
         color: $c-white;
@@ -361,10 +361,10 @@
 // Promo phrases style
 .top,
 .sale {
+    border-radius: $c-border-small;
     justify-content: center;
     align-items: center;
     width: fit-content;
-    border-radius: 4px;
     flex-wrap: nowrap;
     padding: 3px 5px;
     display: flex;
@@ -453,9 +453,9 @@
 
 .product-card__basket-btn {
     background-color: $c-brand-yellow;
+    border-radius: $c-border-small*4;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
     padding: 6px 10px;
     flex-wrap: nowrap;
     cursor: pointer;

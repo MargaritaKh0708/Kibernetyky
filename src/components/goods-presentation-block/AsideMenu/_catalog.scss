@@ -78,8 +78,8 @@
     }
 
     &__detailed-part {
+        border-radius: $c-border-small;
         padding: 32px 24px;
-        border-radius: 5px;
         width: fit-content;
         height: auto;
         width: 100%;

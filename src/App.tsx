@@ -50,8 +50,8 @@ function App() {
       setCompareCountHandler={setCompareCount}
       productId={currentProductId}
       data={MainGoodsData}
-      type='similar'
       rowQuantity={1}
+      type='similar'
     />
   );
   const coupledJsx = (

@@ -87,7 +87,8 @@
 }
 
 .social-media {
-    border-radius: 5px;
+    border-radius: $c-border-small;
+    ;
     display: block;
     height: 24px;
     width: 24px;

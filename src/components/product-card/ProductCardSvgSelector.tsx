@@ -35,83 +35,77 @@ export const ProductCardSvgSelector: React.FC<IProductCardSvgSelector> = ({
       );
     case 'basket':
       return (
-        <div className='basket'>
-          <svg
-            width='25'
-            height='26'
-            viewBox='0 0 25 26'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <ellipse
-              cx='11.0031'
-              cy='23.2385'
-              rx='2.05196'
-              ry='2.05196'
-              fill='#2B2A29'
-            />
-            <ellipse
-              cx='17.844'
-              cy='23.2385'
-              rx='2.05196'
-              ry='2.05196'
-              fill='#2B2A29'
-            />
-            <path
-              d='M1.73926 1.66211C3.81823 2.70159 4.84829 3.61032 4.84829 6.13911M4.84829 6.13911C4.84829 16.3989 7.58424 18.4509 14.4241 18.4509C21.264 18.4509 23.9999 16.3989 23.9999 8.19107C23.9999 7.03917 23.3159 6.13911 21.9479 6.13911C20.58 6.13911 9.40488 6.13911 4.84829 6.13911Z'
-              stroke='#2B2A29'
-              strokeWidth='1.5'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-          {children}
-        </div>
+        <svg
+          width='25'
+          height='26'
+          viewBox='0 0 25 26'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <ellipse
+            cx='11.0031'
+            cy='23.2385'
+            rx='2.05196'
+            ry='2.05196'
+            fill='#2B2A29'
+          />
+          <ellipse
+            cx='17.844'
+            cy='23.2385'
+            rx='2.05196'
+            ry='2.05196'
+            fill='#2B2A29'
+          />
+          <path
+            d='M1.73926 1.66211C3.81823 2.70159 4.84829 3.61032 4.84829 6.13911M4.84829 6.13911C4.84829 16.3989 7.58424 18.4509 14.4241 18.4509C21.264 18.4509 23.9999 16.3989 23.9999 8.19107C23.9999 7.03917 23.3159 6.13911 21.9479 6.13911C20.58 6.13911 9.40488 6.13911 4.84829 6.13911Z'
+            stroke='#2B2A29'
+            strokeWidth='1.5'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+        </svg>
       );
     case 'full-basket':
       return (
-        <div className='full-basket'>
-          <svg
-            width='29'
-            height='29'
-            viewBox='0 0 29 29'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <ellipse
-              cx='11.0036'
-              cy='26.2395'
-              rx='2.05196'
-              ry='2.05196'
-              fill='#2B2A29'
-            />
-            <ellipse
-              cx='17.844'
-              cy='26.2395'
-              rx='2.05196'
-              ry='2.05196'
-              fill='#2B2A29'
-            />
-            <path
-              d='M1.73926 4.66211C3.81823 5.70159 4.84829 6.61032 4.84829 9.13911M4.84829 9.13911C4.84829 19.3989 7.58424 21.4509 14.4241 21.4509C21.264 21.4509 23.9999 19.3989 23.9999 11.1911C23.9999 10.0392 23.3159 9.13911 21.9479 9.13911C20.58 9.13911 9.40488 9.13911 4.84829 9.13911Z'
-              stroke='#2B2A29'
-              strokeWidth='1.5'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-            <path
-              d='M27 8C27 11.3137 24.3137 14 21 14C17.6863 14 15 11.3137 15 8C15 4.68629 17.6863 2 21 2C24.3137 2 27 4.68629 27 8Z'
-              fill='#05B263'
-            />
-            <path
-              d='M19 8L20.3333 9.33333L23 6.66667M27 8C27 11.3137 24.3137 14 21 14C17.6863 14 15 11.3137 15 8C15 4.68629 17.6863 2 21 2C24.3137 2 27 4.68629 27 8Z'
-              stroke='white'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-          {children}
-        </div>
+        <svg
+          width='29'
+          height='29'
+          viewBox='0 0 29 29'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <ellipse
+            cx='11.0036'
+            cy='26.2395'
+            rx='2.05196'
+            ry='2.05196'
+            fill='#2B2A29'
+          />
+          <ellipse
+            cx='17.844'
+            cy='26.2395'
+            rx='2.05196'
+            ry='2.05196'
+            fill='#2B2A29'
+          />
+          <path
+            d='M1.73926 4.66211C3.81823 5.70159 4.84829 6.61032 4.84829 9.13911M4.84829 9.13911C4.84829 19.3989 7.58424 21.4509 14.4241 21.4509C21.264 21.4509 23.9999 19.3989 23.9999 11.1911C23.9999 10.0392 23.3159 9.13911 21.9479 9.13911C20.58 9.13911 9.40488 9.13911 4.84829 9.13911Z'
+            stroke='#2B2A29'
+            strokeWidth='1.5'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+          <path
+            d='M27 8C27 11.3137 24.3137 14 21 14C17.6863 14 15 11.3137 15 8C15 4.68629 17.6863 2 21 2C24.3137 2 27 4.68629 27 8Z'
+            fill='#05B263'
+          />
+          <path
+            d='M19 8L20.3333 9.33333L23 6.66667M27 8C27 11.3137 24.3137 14 21 14C17.6863 14 15 11.3137 15 8C15 4.68629 17.6863 2 21 2C24.3137 2 27 4.68629 27 8Z'
+            stroke='white'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+        </svg>
       );
     case 'coin':
       return (

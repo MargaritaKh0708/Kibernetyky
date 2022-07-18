@@ -1,20 +1,20 @@
-import { IProductCardListItem, ProductCardList } from '../ProductCardList';
-import { StarRating } from '../star-rating/StarRating';
-import { ExtendedProductCardsSwiper } from './ExtendedProductCardSwiper';
 import { SubscriptionBlockSvgSelector } from 'components/subscription-block/SubscriptionBlockSvgSelector';
-import { ProductCardSvgSelector } from '../ProductCardSvgSelector';
+import { useGlobalContext } from 'components/goods-presentation-block/AsideMenu/GlobalContext';
 import { ExtendedProductCardSvgSelector } from './ExtendedProductCardSvgSelector';
-import { useState } from 'react';
+import { IProductCardListItem, ProductCardList } from '../ProductCardList';
+import { Delivery, IDeliveryMethod, IIDeliveryPlace } from './Delivery';
+import { ExtendedProductCardsSwiper } from './ExtendedProductCardSwiper';
+import { IOrder } from '../../basket/AddToBasketWindow/AddToBasket';
+import { ProductCardSvgSelector } from '../ProductCardSvgSelector';
 import { AboutProductArticle } from './AboutProductArticle';
 import { SpecificationsBlock } from './SpecificationsBlock';
-import { ReviewBlock } from './ReviewBlock';
-import { Delivery, IDeliveryMethod, IIDeliveryPlace } from './Delivery';
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import { IOrder } from '../../basket/AddToBasketWindow/AddToBasket';
-import { useGlobalContext } from 'components/goods-presentation-block/AsideMenu/GlobalContext';
+import { StarRating } from '../star-rating/StarRating';
 import { CreditBuyModal } from './CreditBuyModal';
 import { bankArray } from '../../backend/DataList';
+import { ReviewBlock } from './ReviewBlock';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 interface IPayWay {
   icon: string;

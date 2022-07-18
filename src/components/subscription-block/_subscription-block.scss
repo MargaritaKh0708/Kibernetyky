@@ -59,8 +59,8 @@
 
     &__form-fields input,
     &__form-fields button {
+        border-radius: $c-border-small*4;
         box-shadow: $box-shadow;
-        border-radius: 20px;
         padding: 8px 16px;
         outline: none;
         border: none;

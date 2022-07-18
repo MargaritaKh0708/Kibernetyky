@@ -622,13 +622,13 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-radius: 5px;
   padding: 16px 16px 8px 18px;
   background-color: #FFFFFF;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-radius: 5px;
   position: initial;
   color: #2B2A29;
   display: -webkit-box;
@@ -721,13 +721,13 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-radius: 5px;
   background-size: cover;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 24px 16px;
-  border-radius: 5px;
   min-height: 465px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -923,11 +923,11 @@ ul {
 }
 
 .product-card {
+  border-radius: 5px;
   background-color: #FFFFFF;
   -webkit-box-shadow: 0px 4px 4px #1f1f240d;
           box-shadow: 0px 4px 4px #1f1f240d;
   position: relative;
-  border-radius: 5px;
   min-height: 328px;
   font-size: 12px;
   color: #2B2A29;
@@ -1190,11 +1190,11 @@ ul {
 }
 
 .product-card__benefit {
+  border-radius: 10px;
   background-color: #f54503;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 10px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1239,6 +1239,7 @@ ul {
 
 .top,
 .sale {
+  border-radius: 5px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -1248,7 +1249,6 @@ ul {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border-radius: 4px;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   padding: 3px 5px;
@@ -1341,13 +1341,13 @@ ul {
 
 .product-card__basket-btn {
   background-color: #F9E505;
+  border-radius: 20px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 20px;
   padding: 6px 10px;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
@@ -1858,6 +1858,7 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-radius: 5px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1868,7 +1869,6 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 5px;
   padding: 24px 26px;
   max-width: 262px;
   height: 276px;
@@ -1904,11 +1904,11 @@ ul {
 
 .top-card__view-btn {
   background-color: #F9E505;
+  border-radius: 20px;
   border: 1px solid #FFFFFF;
   font-family: 'Lato', sans-serif;
   font-weight: 600;
   color: #404040;
-  border-radius: 20px;
   padding: 10px 16px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -1925,8 +1925,8 @@ ul {
 }
 
 .video-slide {
-  background-color: #FFFFFF;
   border-radius: 5px;
+  background-color: #FFFFFF;
   overflow: hidden;
   max-width: 323px;
   height: 249px;
@@ -2155,9 +2155,9 @@ ul {
 
 .subscription-block__form-fields input,
 .subscription-block__form-fields button {
+  border-radius: 20px;
   -webkit-box-shadow: 0px 4px 4px #1f1f240d;
           box-shadow: 0px 4px 4px #1f1f240d;
-  border-radius: 20px;
   padding: 8px 16px;
   outline: none;
   border: none;
@@ -2437,7 +2437,7 @@ ul {
 }
 
 .burger__arrow-btn {
-  border-top: 1px solid white;
+  border-top: 1px solid #FFFFFF;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   cursor: pointer;
@@ -2700,7 +2700,7 @@ ul {
 
 .call-back-form__submit {
   background-color: #F2F2F2;
-  border-radius: 20px;
+  border-radius: 50px;
   margin: 40px auto 0;
   cursor: pointer;
   display: block;
@@ -2805,9 +2805,9 @@ ul {
 }
 
 .add-to-cart-modal, .likes-modal, .credit-list-modal {
+  border-radius: 5px;
   background: #f8f8f8;
   margin: 40px auto 0;
-  border-radius: 5px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -2947,6 +2947,7 @@ ul {
 }
 
 .add-to-cart-modal__credit-btn, .likes-modal__credit-btn, .likes-modal__buy-btn, .add-to-cart-modal__buy-btn {
+  border-radius: 50px;
   -webkit-box-shadow: 0px 4px 4px #1f1f240d;
           box-shadow: 0px 4px 4px #1f1f240d;
   -webkit-box-pack: center;
@@ -2955,7 +2956,6 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 50px;
   padding: 12px 0;
   font-size: 20px;
   display: -webkit-box;
@@ -3090,8 +3090,8 @@ ul {
 }
 
 .catalog-menu__detailed-part {
-  padding: 32px 24px;
   border-radius: 5px;
+  padding: 32px 24px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -3428,9 +3428,9 @@ ul {
 }
 
 .product-form__button, .cart-block__btn {
+  border-radius: 50px;
   background: #F2F2F2;
   color: #9E9E9E;
-  border-radius: 50px;
   padding: 12px 70px;
   line-height: 19px;
   font-size: 16px;
@@ -4138,9 +4138,9 @@ ul {
 }
 
 .extended-card__sale-banner-btn {
+  border-radius: 50px;
   background: #FFFFFF;
   white-space: nowrap;
-  border-radius: 50px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -4182,10 +4182,10 @@ ul {
 
 .extended-card__product-info {
   border: 1px solid #F2F2F2;
+  border-radius: 5px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 5px;
   margin-top: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4265,7 +4265,7 @@ ul {
 
 .extended-card__color-bg {
   border: 1px solid #F2F2F2;
-  border-radius: 4px;
+  border-radius: 5px;
   margin: 0 auto;
   display: block;
   height: 24px;
@@ -4333,13 +4333,13 @@ ul {
 
 .extended-card__memory-panel, .extended-card__material {
   border: 1px solid #F2F2F2;
+  border-radius: 5px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 4px;
   padding: 5px 16px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -4390,9 +4390,9 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-radius: 50px;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  border-radius: 50px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -4462,8 +4462,8 @@ ul {
 }
 
 .extended-card__benefit {
-  background-color: #f54503;
   border-radius: 5px;
+  background-color: #f54503;
   text-align: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -4575,6 +4575,7 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-radius: 5px;
   -webkit-box-shadow: 0px 4px 4px #1f1f240d;
           box-shadow: 0px 4px 4px #1f1f240d;
   -webkit-box-orient: vertical;
@@ -4585,7 +4586,6 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px 20px;
-  border-radius: 5px;
   background: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4742,6 +4742,7 @@ ul {
 }
 
 .extended-card__payway-btn {
+  border-radius: 50px;
   background: #F2F2F2;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -4749,7 +4750,6 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 50px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -5076,12 +5076,12 @@ ul {
 
 .review__btn {
   background-color: #F9E505;
+  border-radius: 50px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  border-radius: 50px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -5117,12 +5117,12 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  border-radius: 5px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 16px 24px;
-  border-radius: 4px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5571,8 +5571,8 @@ option {
 
 .login-block__separator {
   border-bottom: 1px solid #F2F2F2;
-  display: block;
   padding-top: 25px;
+  display: block;
   width: 100%;
 }
 
@@ -5688,7 +5688,7 @@ option {
 .login-block__submit-btn {
   background: #F9E505;
   padding: 12px 71px 12px 70px;
-  border-radius: 20px;
+  border-radius: 50px;
   line-height: 19px;
   font-size: 16px;
   border: none;
@@ -5705,9 +5705,9 @@ option {
 
 .social-button {
   border: 1px solid #F2F2F2;
+  border-radius: 50px;
   padding: 10px 20px 10px 35px;
   background: #FFFFFF;
-  border-radius: 50px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

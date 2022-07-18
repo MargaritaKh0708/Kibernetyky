@@ -40,11 +40,11 @@
 
 .top-card {
     justify-content: space-between;
+    border-radius: $c-border-small;
     flex-direction: column;
     box-shadow: $box-shadow;
     background: $c-white;
     align-items: center;
-    border-radius: 5px;
     padding: 24px 26px;
     max-width: 262px;
     height: 276px;
@@ -72,10 +72,10 @@
 
     &__view-btn {
         background-color: $c-brand-yellow;
+        border-radius: $c-border-small*4;
         border: 1px solid $c-white;
         @include f-Lato-SemiBold;
         color: $c-main-gray;
-        border-radius: 20px;
         padding: 10px 16px;
         width: fit-content;
         cursor: pointer;

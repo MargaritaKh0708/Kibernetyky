@@ -141,10 +141,22 @@ export const ProductCardList: React.FC<IProductCardList> = ({
         : item.novelty
     );
   } else if (type === 'similar') {
+    if (productId === 0) {
+      return null;
+    }
+    // find product by id
+    const foundProducts = data.filter((product) => product.id === productId);
+    const product = foundProducts.length > 0 ? foundProducts[0] : null;
+    if (
+      (product && categoryId === 0) ||
+      (product && categoryId !== product.category.id)
+    ) {
+      setCategoryId(product.category.id);
+    }
     // Finds 'similar' in big data
-    list = data.filter((item) =>
-      categoryId > 0 ? item.category.id === categoryId : item.category.id
-    );
+    list = data.filter((item) => {
+      return categoryId > 0 ? item.category.id === categoryId : true;
+    });
   } else if (type === 'coupled') {
     // find product by id
     const foundProducts = data.filter((product) => product.id === productId);
@@ -179,6 +191,7 @@ export const ProductCardList: React.FC<IProductCardList> = ({
   let renderItems = [];
   if (list.length > n * cardQuantity) {
     renderItems = list.slice(0, n * cardQuantity);
+
     console.log(renderItems);
   } else renderItems = list;
 

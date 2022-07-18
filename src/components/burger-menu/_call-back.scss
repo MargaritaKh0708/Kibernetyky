@@ -2,7 +2,7 @@
 
 .call-back-modal {
     transform: translate(10%, 50%);
-    border-radius: 5px;
+    border-radius: $c-border-small;
     height: 100vh;
     width: 100vw;
     padding: 0;
@@ -96,7 +96,7 @@
 
     &__input {
         border: 1px solid $c-extra-gray;
-        border-radius: 5px;
+        border-radius: $c-border-small;
         margin-top: 12px;
         outline: none;
         padding: 8px;
@@ -107,7 +107,7 @@
 
     &__submit {
         background-color: $c-extra-gray;
-        border-radius: 20px;
+        border-radius: $c-border-large;
         margin: 40px auto 0;
         cursor: pointer;
         display: block;

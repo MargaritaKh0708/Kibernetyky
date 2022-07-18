@@ -5,8 +5,8 @@ interface IProductCardLine {
   handler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const CardsFilterLine: React.FC<IProductCardLine> = ({
-  data,
   handler,
+  data,
 }) => {
   let categories: {
     name: string;

@@ -1,15 +1,16 @@
-import { ProductCardSvgSelector } from './ProductCardSvgSelector';
-import { StarRating, IStarRatingProps } from './star-rating/StarRating';
-import { useEffect, useState } from 'react';
-import { SelectList } from './select-list/SelectList';
-import { bankArray } from 'components/backend/DataList';
-import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
-import { Link } from 'react-router-dom';
-import { IProductCardListItem } from 'components/product-card/ProductCardList';
 import { useGlobalContext } from 'components/goods-presentation-block/AsideMenu/GlobalContext';
+import { IProductCardListItem } from 'components/product-card/ProductCardList';
+import { IOrder } from 'components/basket/AddToBasketWindow/AddToBasket';
+import { StarRating, IStarRatingProps } from './star-rating/StarRating';
+import { ProductCardSvgSelector } from './ProductCardSvgSelector';
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
+import { bankArray } from 'components/backend/DataList';
+import { SelectList } from './select-list/SelectList';
 import { Closer } from '../UI/closer/Closer';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
+//Interfaces
 interface IRating {
   productId: number;
   value: number;
@@ -32,37 +33,19 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   rowQuantity,
   product,
 }) => {
+  // states
   const [hidePartApear, setHidePartApear] = useState<boolean>(false); //set hide part of card apear
   const [googInRoad, setGoodInRoad] = useState<boolean>(false); // set modal good in road
   const [hiddenList, setHiddenList] = useState<boolean>(true); // Hidden part state
   const [favorite, setFavorite] = useState<boolean>(false); // Change icon of like-btn
   const [compare, setCompare] = useState<boolean>(false); // Change icon of compare button
   const [deal, setDeal] = useState<boolean>(false); // Basket changes
-  // const [rating, setRating] = useState<number>(0); // Star rating value
-
-  const { addToCartActive, setAddToCartActive } = useGlobalContext();
-
   const [rating, setRating] = useState<number>(0); // initial rating value
 
-  // Catch Rating value
-  const handleRating = (rate: number) => {
-    setRating(rate);
-    // other logic
-  };
+  // context
+  const { addToCartActive, setAddToCartActive } = useGlobalContext();
 
-  // const StarRatingProps: IStarRatingProps = {
-  //   activeColor: '#F9E505',
-  //   color: '#9E9E9E',
-  //   isHalf: true,
-  //   value: rating,
-  //   size: 12,
-  //   count: 5,
-  //   onChange: (newRating: number) => {
-  //     setRatingHandler(newRating);
-  //     setRating(newRating);
-  //   },
-  // };
-
+  // star Rating props
   const StarRatingProps: IStarRatingProps = {
     fillColor: '#F9E505',
     emptyColor: '#9E9E9E',
@@ -70,14 +53,15 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     ratingValue: rating,
     initialValue: rating,
     allowHover: true,
-    size: 12,
     iconsCount: 5,
+    size: 12,
     onClick: (newRating: number) => {
       setRatingHandler(newRating);
       setRating(newRating);
     },
   };
 
+  //*for raiting set
   useEffect(() => {
     // get rating data from localStorage
     const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
@@ -89,7 +73,7 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     console.log('оцінка встановилась', rating);
   }, [rating, product.id]);
 
-  // load data from localStorage
+  // load data from localStorage (fav, compare, oders)
   useEffect(() => {
     // get products in cart from localStorage
     const orderProducts = JSON.parse(localStorage.getItem('order') || '[]');
@@ -116,6 +100,8 @@ export const ProductCard: React.FC<IProductCardProps> = ({
     });
     setCompareProductsCount(compareIdList);
   }, []);
+
+  //*Handlers
 
   const setRatingHandler: (ratingValue: number) => void = (ratingValue) => {
     // get ratings from localStorage
@@ -292,7 +278,6 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   ) => {
     // set count of compare products
     setCompareCountHandler(compareIdList.length);
-    return undefined;
   };
 
   const SorryModalJsx = (

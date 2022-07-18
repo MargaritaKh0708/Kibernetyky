@@ -25,10 +25,11 @@
 
 .goods-presentation-block__catalog-menu {
     justify-content: space-between;
+    border-radius: $c-border-small;
+    ;
     padding: 16px 16px 8px 18px;
     background-color: $c-white;
     flex-direction: column;
-    border-radius: 5px;
     position: initial;
     color: $c-text;
     display: flex;
