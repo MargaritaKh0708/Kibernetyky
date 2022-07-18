@@ -1,6 +1,6 @@
 import { ModalWindow } from 'elements/ModalWindow/ModalWindow';
-import { BurgerMenuList } from './BurgerMenuList';
 import { HeaderSvgSelector } from '../header/HeaderSvgSelector';
+import { BurgerMenuList } from './BurgerMenuList';
 import { Link } from 'react-router-dom';
 
 interface IBurgerMenu {

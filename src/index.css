@@ -2496,7 +2496,7 @@ ul {
   gap: 16px;
 }
 
-.burger__list-item {
+.burger__list-item, .burger__list-item--language {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -2505,6 +2505,12 @@ ul {
   display: -ms-flexbox;
   display: flex;
   gap: 11px;
+}
+
+.burger__list-item--language {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
 .burger__list-item_language-eng {

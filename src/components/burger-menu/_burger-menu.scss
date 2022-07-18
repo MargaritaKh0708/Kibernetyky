@@ -53,6 +53,11 @@
         display: flex;
         gap: 11px;
 
+        &--language {
+            @extend .burger__list-item;
+            align-items: baseline;
+        }
+
         &_language-eng {
             border-left: 1px solid $c-main-gray;
             @include f-Lato-Light;

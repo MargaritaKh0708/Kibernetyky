@@ -1,6 +1,7 @@
 import { HeaderSvgSelector } from 'components/header/HeaderSvgSelector';
 import { Closer } from 'components/UI/closer/Closer';
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ICallBackForm {
   closeBtnFunction: (value: boolean) => void;
@@ -10,6 +11,9 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
   const [phoneValue, setPhoneValue] = useState<string>(''); // read the value of entered phone numbers
   const [userMsg, setUserMsg] = useState<boolean>(false); // set msg for user
   const [changeContent, setChangeContent] = useState<boolean>(false); // change content for user
+
+  // lang
+  const [t] = useTranslation('common');
 
   // Chekes for numbers
   useEffect(() => {
@@ -33,7 +37,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
   // Change modal content
 
   const changeContentHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setTimeout((e) => setChangeContent(true), 3000);
+    setTimeout(() => setChangeContent(true), 3000);
   };
 
   // Part of other contenf of modal window
@@ -45,9 +49,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
           : 'call-back-form__thanks-msg h-hidden'
       }
     >
-      <span>
-        Вашу заявку на дзвінок надіслано, ми зв'яжемося з вами найближчим часом!
-      </span>
+      <span>{t('contacts.connect')}</span>
       <button
         name='okay'
         onClick={(e) => {
@@ -57,7 +59,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
         className='call-back-form__submit call-back-form__submit_color'
       >
         <span className='call-back-form__number-list-item call-back-form__submit-title call-back-form__submit-title_color'>
-          Добре
+          {t('contacts.ok')}
         </span>
       </button>
     </div>
@@ -73,7 +75,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
         }
       >
         <div className='call-back-form__head-part'>
-          <span className='call-back-form__title'>Контакти</span>
+          <span className='call-back-form__title'>{t('contacts.title')}</span>
           <Closer
             closeFunction={() => {
               closeBtnFunction(false);
@@ -90,10 +92,10 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
                 <a href='tel:0800-33-26-96'>+38 050-853-23-83</a>
               </li>
               <li className='call-back-form__number-list-item'>
-                Оформити замовлення
+                {t('contacts.formOrder')}
               </li>
               <li className='call-back-form__number-list-item'>
-                пн-нд, з 9:00 до 18:00
+                {t('contacts.schedule')}
               </li>
             </ul>
           </div>
@@ -104,10 +106,10 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
                 <a href='tel:0800-33-26-96'>0800-33-26-96</a>
               </li>
               <li className='call-back-form__number-list-item'>
-                Служба підтримки
+                {t('contacts.support')}
               </li>
               <li className='call-back-form__number-list-item'>
-                пн-нд, з 9:00 до 18:00
+                {t('contacts.schedule')}
               </li>
             </ul>
           </div>
@@ -118,7 +120,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
               id='incontacts'
               className='call-back-form__support'
             >
-              <span>Передзвоніть мені</span>
+              <span>{t('contacts.callBack')}</span>
             </HeaderSvgSelector>
             <input
               className='call-back-form__input'
@@ -135,8 +137,8 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
             />
             {userMsg ? (
               <span className='call-back-form__user-msg'>
-                Запит повторного дзвінка буде доступний
-                <span>&nbsp;через 3 хвилини</span>
+                {t('contacts.repeat')}
+                <span>&nbsp;{t('contacts.threeMin')}</span>
               </span>
             ) : (
               ''
@@ -168,7 +170,7 @@ export const CallBackForm: React.FC<ICallBackForm> = ({ closeBtnFunction }) => {
               : 'call-back-form__number-list-item call-back-form__submit-title'
           }
         >
-          Чекаю дзвінка
+          {t('contacts.waitForCall')}
         </span>
       </button>
       {ThanksMsgWindow}
