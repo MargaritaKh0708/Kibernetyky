@@ -55,16 +55,16 @@ export const Footer: React.FC = () => {
             <li className='footer__main-content-list-item'>
               <a href='tel:0800-33-26-96'> +38 050-853-23-83</a>
             </li>
-            <ul className='footer__main-content-list visible-part'>
-              <li className='footer__main-content-list-item '>
+            <li className='footer__main-content-list visible-part'>
+              <span className='footer__main-content-list-item '>
                 Ми в соц. мережах
-              </li>
-              <li className='footer__main-content-list-item footer__main-content-list-item_flex'>
+              </span>
+              <div className='footer__main-content-list-item footer__main-content-list-item_flex'>
                 <FooterImgSelector id='insta' />
                 <FooterImgSelector id='tiktok' />
                 <FooterImgSelector id='facebook' />
-              </li>
-            </ul>
+              </div>
+            </li>
           </ul>
           <ul className='footer__main-content-list hidden-part'>
             <li className='footer__main-content-list-item footer__main-content-list-item_font'>

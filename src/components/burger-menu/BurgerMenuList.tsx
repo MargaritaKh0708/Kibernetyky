@@ -31,9 +31,9 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
         </li>
 
         <li className='burger__list-item'>
+          <HeaderSvgSelector id='basket-b' className='burger-icon' />
           <Link to='/cart'>
-            <HeaderSvgSelector id='basket-b' className='burger-icon' />
-            <span>Кошик</span>{' '}
+            <span>Кошик</span>
           </Link>
         </li>
 
