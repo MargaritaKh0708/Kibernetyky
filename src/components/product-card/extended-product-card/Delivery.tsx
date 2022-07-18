@@ -38,7 +38,10 @@ export const Delivery: React.FC<IDelivery> = ({ method, place }) => {
       }
       return 'Завтра';
     } else if (term === '02') {
-      return 'Завтра';
+      if (time < 18) {
+        return 'Завтра';
+      }
+      return deliveryDateStroke;
     }
 
     return deliveryDateStroke;
