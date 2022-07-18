@@ -74,6 +74,7 @@ export const Header: React.FC<IHeader> = ({
             <div className='logo'>
               <HeaderSvgSelector id='logo' />
             </div>
+            <span className='h-hidden'>logo</span>
           </Link>
           <div className='catalog' onClick={() => setOpen(open ? false : true)}>
             <HeaderSvgSelector id='catalog' />

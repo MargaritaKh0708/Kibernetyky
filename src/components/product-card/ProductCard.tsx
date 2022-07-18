@@ -340,10 +340,12 @@ export const ProductCard: React.FC<IProductCardProps> = ({
             <div className='product-card__colors-panel'>
               {product.specifications.colors.map((color, index) => (
                 <label
+                  htmlFor='color'
                   className='product-card__colors-panel-item'
                   key={product.id + index}
                 >
                   <input
+                    name='color'
                     type='checkbox'
                     className='product-card__active-color'
                   />

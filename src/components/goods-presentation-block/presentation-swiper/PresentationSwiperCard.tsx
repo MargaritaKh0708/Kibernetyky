@@ -6,14 +6,12 @@ interface IPresentationSwiperCard {
   mainPicture: string;
   cardcolor: string;
   svgId: string;
-  alt?: string;
 }
 
 export const PresentationSwiperCard: React.FC<IPresentationSwiperCard> = ({
   mainPicture,
   background,
   cardcolor,
-  alt,
   svgId,
 }) => {
   return (
@@ -43,7 +41,7 @@ export const PresentationSwiperCard: React.FC<IPresentationSwiperCard> = ({
         )}
       </div>
       <div className='swiper-card__img'>
-        <img src={mainPicture} alt={alt} />
+        <img src={mainPicture} alt='slider-card' />
       </div>
       <DetailsBtn path='https://swiperjs.com/react#swiper-slide-props'>
         Детальніше

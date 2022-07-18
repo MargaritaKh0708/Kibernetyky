@@ -158,7 +158,11 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
           listening={listening}
           browserSupportsSpeechRecognition={browserSupportsSpeechRecognition}
         />
-        <button className='search-field__btn' onClick={closeSearchResultsField}>
+        <button
+          name='search'
+          className='search-field__btn'
+          onClick={closeSearchResultsField}
+        >
           <span> Знайти </span>
         </button>
       </div>
@@ -208,6 +212,7 @@ export const SearchFieldForm: React.FC<ISearchFieldForm> = ({
             </ul>
           </div>
           <button
+            name='reset'
             className='search__onfocus-reset-btn'
             type='reset'
             onClick={() => {

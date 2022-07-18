@@ -554,7 +554,7 @@ export const Login: React.FC<ILogin> = ({
           <span>Facebook</span>
         </button>
         <button name='google' type='button' className='social-button'>
-          <img src={google} className='social-button__image' />
+          <img src={google} className='social-button__image' alt='google' />
           <span>Google</span>
         </button>
       </div>
@@ -607,7 +607,7 @@ export const Login: React.FC<ILogin> = ({
           <span>Facebook</span>
         </button>
         <button name='google' type='button' className='social-button'>
-          <img src={google} className='social-button__image' />
+          <img src={google} className='social-button__image' alt='google' />
           <span>Google</span>
         </button>
       </div>
@@ -776,7 +776,12 @@ export const Login: React.FC<ILogin> = ({
               <span>Facebook</span>
             </button>
             <button name='google' type='button' className='social-button'>
-              <img src={google} id='google' className='social-button__image' />
+              <img
+                src={google}
+                id='google'
+                className='social-button__image'
+                alt='google'
+              />
               <span>Google</span>
             </button>
           </div>

@@ -29,12 +29,14 @@ export const BurgerMenuList: React.FC<IBurgerMenuList> = ({
           <HeaderSvgSelector id='catalog-b' className='burger-icon' />
           <span>Каталог товарів</span>
         </li>
-        <Link to='/cart'>
-          <li className='burger__list-item'>
+
+        <li className='burger__list-item'>
+          <Link to='/cart'>
             <HeaderSvgSelector id='basket-b' className='burger-icon' />
-            <span>Кошик</span>
-          </li>
-        </Link>
+            <span>Кошик</span>{' '}
+          </Link>
+        </li>
+
         <li
           className='burger__list-item'
           onClick={() => setLikesModalActive(true)}
