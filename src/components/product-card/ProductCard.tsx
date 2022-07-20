@@ -64,7 +64,9 @@ export const ProductCard: React.FC<IProductCardProps> = ({
   //*for raiting set
   useEffect(() => {
     // get rating data from localStorage
-    const ratings = JSON.parse(localStorage.getItem('rating') || '[]');
+    const ratings: IRating[] = JSON.parse(
+      localStorage.getItem('rating') || '[]'
+    );
     ratings.forEach((rating: IRating) => {
       if (rating.productId === product.id) {
         setRating(rating.value);

@@ -25,9 +25,11 @@
     &__input {
         justify-content: flex-start;
         align-items: center;
+        white-space: nowrap;
         border-radius: 20px;
-        display: flex;
         font-size: 12px;
+        color: $c-text;
+        display: flex;
         width: 100%;
 
         @include media ('max', 'mobile-horizontal') {
